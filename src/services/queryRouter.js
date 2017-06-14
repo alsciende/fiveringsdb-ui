@@ -5,6 +5,7 @@ class QueryRouter {
     this.config = {
       id: 'cards-by-card-code',
       p: 'cards-by-pack-code',
+      c: 'cards-by-clan-code',
     };
     this.reverseMatching = {
       'cards-by-search-query': function matcher(route) {
@@ -15,6 +16,9 @@ class QueryRouter {
       },
       'cards-by-pack-code': function matcher(route) {
         return `p:${route.params.code}`;
+      },
+      'cards-by-clan-code': function matcher(route) {
+        return `c:${route.params.code}`;
       },
       'cards-by-default': '',
     };

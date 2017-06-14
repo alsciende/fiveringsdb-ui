@@ -47,9 +47,9 @@ class QueryMapper {
         description: 'Pack',
       },
       c: {
-        name: 'cycles',
-        type: 'join',
-        description: 'Cycle',
+        name: 'clan_code',
+        type: 'code',
+        description: 'Card Clan',
       },
       t: {
         name: 'type_code',

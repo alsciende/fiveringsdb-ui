@@ -29,5 +29,11 @@ export default new Router({
       component: MyCardList,
       props: true,
     },
+    {
+      path: '/clan/:code',
+      name: 'cards-by-clan-code',
+      component: MyCardList,
+      props: true,
+    },
   ],
 });
