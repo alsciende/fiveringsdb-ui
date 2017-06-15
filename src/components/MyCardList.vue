@@ -5,7 +5,7 @@
                 <form v-on:submit.prevent="navigate">
                     <input type="text" class="form-control" v-model="currentQuery" placeholder="Enter query">
                     <small class="form-text text-muted">
-                        Search by name. Prefix with 'x:' to search by text, 'p:' by pack, 'c:' by cycle.
+                        Search by name. Prefix with 'x:' to search by text, 'p:' by pack, 'c:' by clan, 't:' by type.
                     </small>
                 </form>
             </div>
@@ -76,6 +76,7 @@
     watch: {
       currentPage(page) {
         this.cards = this.result.slice((page - 1) * this.perPage, page * this.perPage);
+        scroll(0, 0);
       },
     },
     methods: {
