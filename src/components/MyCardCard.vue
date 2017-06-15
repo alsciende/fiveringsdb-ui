@@ -1,7 +1,10 @@
 <template>
     <div class="card">
         <div class="card-block" v-bind:class="'bg-'+card.clan.code">
-            <h4 class="card-title">{{ card.name }}</h4>
+            <h4 class="card-title">
+                <span v-if="card.is_unique">&#9702;</span>
+                {{ card.name }}
+            </h4>
             <h6 class="card-subtitle mb-2 text-muted">
                 <span v-bind:class="'icon-clan-' + card.clan.code"></span>
                 {{ card.clan.name }} {{ card.type.name }}.
