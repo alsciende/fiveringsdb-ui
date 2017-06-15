@@ -26,7 +26,7 @@ const load = () => Promise.all(resources.map(getResource))
     stores.cards().each((card) => {
       card.type = stores.types({ code: card.type_code }).first();
       card.clan = stores.clans({ code: card.clan_code }).first();
-//      stores.cards.merge(card, 'code');
+      card.element = stores.elements({ code: card.element_code }).first();
     });
   });
 

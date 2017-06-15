@@ -24,6 +24,8 @@
                 <span>Political: {{ card.political_strength_mod === undefined ? '-' : card.political_strength_mod }}.</span>
             </p>
             <p v-if="card.type_code === 'province'">
+                <span v-bind:class="'icon-element-' + card.element.code"></span>
+                <span>{{ card.element.name }}.</span>
                 <span>Strength: {{ card.province_strength }}.</span>
             </p>
             <p v-if="card.type_code === 'event'">
