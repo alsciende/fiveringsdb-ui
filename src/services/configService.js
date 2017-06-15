@@ -1,9 +1,6 @@
-const apiBaseUrl = 'http://fiveringsdb.local:8080/app_dev.php';
-const imageBaseUrl = 'http://fiveringsdb.local:8080/bundles/card_images/';
-
 export default {
-  apiBaseUrl,
+  apiBaseUrl: process.env.API_URL,
   getCardImageURL(card) {
-    return `${imageBaseUrl + card.code}.png`;
+    return `${process.env.IMG_URL + card.code}.png`;
   },
 };
