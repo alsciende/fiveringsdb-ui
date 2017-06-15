@@ -28,6 +28,12 @@
                 <span>{{ card.element.name }}.</span>
                 <span>Strength: {{ card.province_strength }}.</span>
             </p>
+            <p v-if="card.type_code === 'holding'">
+                <span>Strength: {{ card.province_strength_mod }}.</span>
+            </p>
+            <p v-if="card.type_code === 'stronghold'">
+                <span>Strength: {{ card.province_strength_mod }}.</span>
+            </p>
             <p v-if="card.type_code === 'event'">
                 <span>Cost: {{ card.cost }}.</span>
             </p>
