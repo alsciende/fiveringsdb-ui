@@ -5,7 +5,7 @@
                 <form v-on:submit.prevent="navigate">
                     <input type="text" class="form-control" v-model="currentQuery" placeholder="Enter query">
                     <small class="form-text text-muted">
-                        Search by name. Prefix with 'x:' to search by text, 'p:' by pack, 'c:' by clan, 't:' by type.
+                        Search by name. Prefix with 'x:' to search by text, 'p:' by pack, 'c:' by clan, 't:' by type, 'd:' by deck.
                     </small>
                 </form>
             </div>

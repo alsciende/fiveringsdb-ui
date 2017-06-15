@@ -38,12 +38,9 @@
                 <span>Cost: {{ card.cost }}.</span>
             </p>
             <my-card-text-block v-bind:text="line" v-for="(line, index) in textLines" :key="index"></my-card-text-block>
-            <p class="card-text" v-if="card.is_unit">Attack {{ card.attack }} &#9671; Life {{ card.life
-                }} &#9671; Recover {{ card.recover }}</p>
-            <p class="card-text" v-if="card.is_phoenixborn">Battlefield {{ card.battlefield
-                }} &#9671; Life {{ card.lifepool }} &#9671; Spellboard {{ card.spellboard }}</p>
-            <p class="card-text" v-if="card.is_spell_alteration">Attack {{ card.attack_mod
-                }} &#9671; Life {{ card.life_mod }} &#9671; Recover {{ card.recover_mod }}</p>
+            <p v-if="card.side" class="text-right">
+                {{ side }}
+            </p>
         </div>
     </div>
 </template>
@@ -52,6 +49,11 @@
   import MyCardText from './MyCardText';
   import MyCardTextBlock from './MyCardTextBlock';
 
+  const sideNames = {
+    conflict: 'Conflict Deck',
+    dynasty: 'Dynasty Deck',
+  };
+
   export default {
     name: 'my-card-card',
     props: ['card'],
@@ -59,6 +61,9 @@
       textLines() {
         return this.card.text ? this.card.text.split('\n') : [];
       },
+      side() {
+        return sideNames[this.card.side] || '';
+      }
     },
     components: {
       MyCardText,

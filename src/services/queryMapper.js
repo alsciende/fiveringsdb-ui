@@ -56,6 +56,11 @@ class QueryMapper {
         type: 'code',
         description: 'Card Type',
       },
+      d: {
+        name: 'side',
+        type: 'code',
+        description: 'Card Deck',
+      }
     };
   }
   getField(clause) {
