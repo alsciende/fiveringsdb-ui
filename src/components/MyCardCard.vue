@@ -63,7 +63,7 @@
       },
       side() {
         return sideNames[this.card.side] || '';
-      }
+      },
     },
     components: {
       MyCardText,

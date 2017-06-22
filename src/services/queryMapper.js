@@ -60,7 +60,7 @@ class QueryMapper {
         name: 'side',
         type: 'code',
         description: 'Card Deck',
-      }
+      },
     };
   }
   getField(clause) {

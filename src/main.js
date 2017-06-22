@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import VueAnalytics from 'vue-analytics';
 import BootstrapVue from 'bootstrap-vue';
 
 import 'bootstrap-vue/dist/bootstrap-vue.css';
@@ -14,9 +15,14 @@ import MyCardText from './components/MyCardText';
 import MyCardTextBlock from './components/MyCardTextBlock';
 import MyCardList from './components/MyCardList';
 
-Vue.use(BootstrapVue);
 Vue.config.productionTip = false;
+
+Vue.use(BootstrapVue);
 Vue.use(VueRouter);
+Vue.use(VueAnalytics, {
+  id: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
+  router,
+});
 
 storeService.load().then(() => {
   /* eslint-disable no-new */
