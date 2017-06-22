@@ -1,5 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import { sync } from 'vuex-router-sync';
+
 import VueAnalytics from 'vue-analytics';
 import BootstrapVue from 'bootstrap-vue';
 
@@ -7,7 +9,9 @@ import 'bootstrap-vue/dist/bootstrap-vue.css';
 import './style.css';
 import './font.css';
 
+import store from './store';
 import router from './router';
+import { } from './i18n';
 
 import storeService from './services/storeService';
 
@@ -23,6 +27,8 @@ Vue.use(VueAnalytics, {
   id: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
   router,
 });
+
+sync(store, router);
 
 storeService.load().then(() => {
   /* eslint-disable no-new */

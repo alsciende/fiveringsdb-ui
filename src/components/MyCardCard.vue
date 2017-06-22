@@ -49,11 +49,6 @@
   import MyCardText from './MyCardText';
   import MyCardTextBlock from './MyCardTextBlock';
 
-  const sideNames = {
-    conflict: 'Conflict Deck',
-    dynasty: 'Dynasty Deck',
-  };
-
   export default {
     name: 'my-card-card',
     props: ['card'],
@@ -62,7 +57,7 @@
         return this.card.text ? this.card.text.split('\n') : [];
       },
       side() {
-        return sideNames[this.card.side] || '';
+        return this.$t(this.card.side);
       },
     },
     components: {
