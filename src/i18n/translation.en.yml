@@ -1,0 +1,26 @@
+side.conflict: "Conflict Deck"
+side.dynasty: "Dynasty Deck"
+
+type.attachment: "Attachment"
+type.character: "Character"
+type.event: "Event"
+type.holding: "Holding"
+type.province: "Province"
+type.role: "Role"
+type.stronghold: "Stronghold"
+
+element.air: "Air"
+element.earth: "Earth"
+element.fire: "Fire"
+element.void: "Void"
+element.water: "Water"
+
+clan.crab: "Crab"
+clan.crane: "Crane"
+clan.dragon: "Dragon"
+clan.lion: "Lion"
+clan.phoenix: "Phoenix"
+clan.scorpion: "Scorpion"
+clan.unicorn: "Unicorn"
+clan.neutral: "Neutral"
+

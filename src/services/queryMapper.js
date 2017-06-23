@@ -47,12 +47,12 @@ class QueryMapper {
         description: 'Pack',
       },
       c: {
-        name: 'clan_code',
+        name: 'clan',
         type: 'code',
         description: 'Card Clan',
       },
       t: {
-        name: 'type_code',
+        name: 'type',
         type: 'code',
         description: 'Card Type',
       },

@@ -1,16 +1,16 @@
 <template>
     <div class="card">
-        <div class="card-block" v-bind:class="'bg-'+card.clan.code">
+        <div class="card-block" v-bind:class="'bg-'+card.clan">
             <h4 class="card-title">
                 <span v-if="card.is_unique">&#9702;</span>
                 {{ card.name }}
             </h4>
             <h6 class="card-subtitle mb-2 text-muted">
-                <span v-bind:class="'icon-clan-' + card.clan.code"></span>
-                {{ card.clan.name }} {{ card.type.name }}.
+                <span v-bind:class="'icon-clan-' + card.clan"></span>
+                {{ $t('clan.'+card.clan) }} {{ $t('type.'+card.type) }}.
                 {{ card.keywords }}
             </h6>
-            <p v-if="card.type_code === 'character'">
+            <p v-if="card.type === 'character'">
                 <span>Cost: {{ card.cost }}.</span>
                 <span v-if="card.military_strength === undefined"><span class="strike-through">Military</span>.</span>
                 <span v-else>Military: {{ card.military_strength === undefined ? '-' : card.military_strength }}.</span>
@@ -18,28 +18,28 @@
                 <span v-else>Political: {{ card.political_strength === undefined ? '-' : card.political_strength }}.</span>
                 <span>Glory: {{ card.glory }}.</span>
             </p>
-            <p v-if="card.type_code === 'attachment'">
+            <p v-if="card.type === 'attachment'">
                 <span>Cost: {{ card.cost }}.</span>
                 <span>Military: {{ card.military_strength_mod === undefined ? '-' : card.military_strength_mod }}.</span>
                 <span>Political: {{ card.political_strength_mod === undefined ? '-' : card.political_strength_mod }}.</span>
             </p>
-            <p v-if="card.type_code === 'province'">
-                <span v-bind:class="'icon-element-' + card.element.code"></span>
-                <span>{{ card.element.name }}.</span>
+            <p v-if="card.type === 'province'">
+                <span v-bind:class="'icon-element-' + card.element"></span>
+                <span>{{ $t('element.'+card.element) }}.</span>
                 <span>Strength: {{ card.province_strength }}.</span>
             </p>
-            <p v-if="card.type_code === 'holding'">
+            <p v-if="card.type === 'holding'">
                 <span>Strength: {{ card.province_strength_mod }}.</span>
             </p>
-            <p v-if="card.type_code === 'stronghold'">
+            <p v-if="card.type === 'stronghold'">
                 <span>Strength: {{ card.province_strength_mod }}.</span>
             </p>
-            <p v-if="card.type_code === 'event'">
+            <p v-if="card.type === 'event'">
                 <span>Cost: {{ card.cost }}.</span>
             </p>
             <my-card-text-block v-bind:text="line" v-for="(line, index) in textLines" :key="index"></my-card-text-block>
             <p v-if="card.side" class="text-right">
-                {{ side }}
+                {{ $t('side.'+card.side) }}
             </p>
         </div>
     </div>
@@ -55,9 +55,6 @@
     computed: {
       textLines() {
         return this.card.text ? this.card.text.split('\n') : [];
-      },
-      side() {
-        return this.$t(this.card.side);
       },
     },
     components: {

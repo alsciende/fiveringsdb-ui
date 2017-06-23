@@ -6,7 +6,7 @@ import configService from './configService';
 Vue.use(VueResource);
 
 const stores = {};
-const resources = ['cards', 'clans', 'cycles', 'elements', 'packs', 'types'];
+const resources = ['cards', 'cycles', 'packs'];
 const labels = {};
 
 const getResource = resource => Vue.http.get(`${configService.apiBaseUrl}/api/v1/${resource}`)
@@ -14,21 +14,7 @@ const getResource = resource => Vue.http.get(`${configService.apiBaseUrl}/api/v1
     stores[resource] = taffy(response.body.records);
   });
 
-const load = () => Promise.all(resources.map(getResource))
-  .then(() => {
-    resources.forEach((resource) => {
-      labels[resource] = {};
-      stores[resource]().each((record) => {
-        labels[resource][record.code] = record.name;
-      });
-    });
-  }).then(() => {
-    stores.cards().each((card) => {
-      card.type = stores.types({ code: card.type_code }).first();
-      card.clan = stores.clans({ code: card.clan_code }).first();
-      card.element = stores.elements({ code: card.element_code }).first();
-    });
-  });
+const load = () => Promise.all(resources.map(getResource));
 
 export default {
   load,
