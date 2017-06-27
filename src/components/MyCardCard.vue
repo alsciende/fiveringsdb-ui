@@ -6,8 +6,8 @@
                 {{ card.name }}
             </h4>
             <h6 class="card-subtitle mb-2 text-muted">
-                <span v-bind:class="'icon-clan-' + card.clan"></span>
-                {{ $t('clan.'+card.clan) }} {{ $t('type.'+card.type) }}.
+                <span v-if="card.clan" v-bind:class="'icon-clan-' + card.clan"></span>
+                {{ $t('clan.'+(card.clan || 'neutral')) }} {{ $t('type.'+card.type) }}.
                 {{ card.keywords }}
             </h6>
             <p v-if="card.type === 'character'">
@@ -40,6 +40,15 @@
             <my-card-text-block v-bind:text="line" v-for="(line, index) in textLines" :key="index"></my-card-text-block>
             <p v-if="card.side" class="text-right">
                 {{ $t('side.'+card.side) }}
+                <span v-if="card.side === 'conflict' && card.influence_cost">
+                    &ndash; Influence Cost: {{ card.influence_cost }}
+                </span>
+                <span v-if="card.side === 'conflict' && card.clan && ! card.influence_cost">
+                    &ndash; No Influence Cost
+                </span>
+                <span v-if="card.side === 'conflict' && ! card.clan && ! card.influence_cost">
+                    &ndash; Influence Cost: 0
+                </span>
             </p>
         </div>
     </div>
