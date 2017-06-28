@@ -6,8 +6,8 @@
                 {{ card.name }}
             </h4>
             <h6 class="card-subtitle mb-2 text-muted">
-                <span v-if="card.clan" v-bind:class="'icon-clan-' + card.clan"></span>
-                {{ $t('clan.'+(card.clan || 'neutral')) }} {{ $t('type.'+card.type) }}.
+                <span v-if="card.clan !== 'neutral'" v-bind:class="'icon-clan-' + card.clan"></span>
+                {{ $t('clan.'+card.clan) }} {{ $t('type.'+card.type) }}.
                 {{ card.keywords }}
             </h6>
             <p v-if="card.type === 'character'">
@@ -43,10 +43,10 @@
                 <span v-if="card.side === 'conflict' && card.influence_cost">
                     &ndash; Influence Cost: {{ card.influence_cost }}
                 </span>
-                <span v-if="card.side === 'conflict' && card.clan && ! card.influence_cost">
+                <span v-if="card.side === 'conflict' && card.clan !== 'neutral' && ! card.influence_cost">
                     &ndash; No Influence Cost
                 </span>
-                <span v-if="card.side === 'conflict' && ! card.clan && ! card.influence_cost">
+                <span v-if="card.side === 'conflict' && card.clan === 'neutral' && ! card.influence_cost">
                     &ndash; Influence Cost: 0
                 </span>
             </p>
