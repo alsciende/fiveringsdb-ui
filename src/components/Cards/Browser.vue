@@ -1,7 +1,8 @@
 <template>
     <div>
         <form>
-            <div class="form-group">
+        <div class="d-flex">
+            <div class="form-group mr-2" style="flex:1">
                 <form v-on:submit.prevent="navigate">
                     <input type="text" class="form-control" v-model="currentQuery" placeholder="Enter query">
                     <small class="form-text text-muted">
@@ -9,30 +10,44 @@
                     </small>
                 </form>
             </div>
+            <div class="btn-group align-self-start"  data-toggle="buttons">
+                <label v-bind:class="['btn', 'btn-secondary', currentView === 'table' ? 'active' : '']" v-on:click="currentView = 'table'">
+                    <input type="radio" name="currentView" id="table" autocomplete="off" v-model="currentView">
+                    <span class="fa fa-list"></span>
+                </label>
+                <label v-bind:class="['btn', 'btn-secondary', currentView === 'text' ? 'active' : '']" v-on:click="currentView = 'text'">
+                    <input type="radio" name="currentView" id="text" autocomplete="off" v-model="currentView">
+                    <span class="fa fa-th"></span>
+                </label>
+                <label v-bind:class="['btn', 'btn-secondary', currentView === 'image' ? 'active' : '']" v-on:click="currentView = 'image'">
+                    <input type="radio" name="currentView" id="image" autocomplete="off" v-model="currentView">
+                    <span class="fa fa-file-image-o"></span>
+                </label>
+                <label v-bind:class="['btn', 'btn-secondary', currentView === 'full' ? 'active' : '']" v-on:click="currentView = 'full'">
+                    <input type="radio" name="currentView" id="full" autocomplete="off" v-model="currentView">
+                    <span class="fa fa-file-text"></span>
+                </label>
+            </div>
+        </div>
         </form>
         <b-pagination
                 v-bind:total-rows="totalRows"
                 v-bind:per-page="perPage"
                 v-model="currentPage"
                 size="md"
-                class="mb-3 justify-content-center"
+                class="my-3 justify-content-center"
         >
         </b-pagination>
-        <div class="row mb-2" v-for="card in cards">
-            <div class="col-md-7 mb-2">
-                <cards-card v-bind:card="card">
-                </cards-card>
-            </div>
-            <div class="col-md-5 mb-2">
-                <img v-bind:src="getCardImageURL(card)" class="card-image">
-            </div>
-        </div>
+        <cards-list-full v-if="currentView === 'full' || totalRows === 1" v-bind:cards="cards"></cards-list-full>
+        <cards-list-text v-else-if="currentView === 'text'" v-bind:cards="cards"></cards-list-text>
+        <cards-list-image v-else-if="currentView === 'image'" v-bind:cards="cards"></cards-list-image>
+        <cards-list-table v-else-if="currentView === 'table'" v-bind:cards="cards"></cards-list-table>
         <b-pagination
                 v-bind:total-rows="totalRows"
                 v-bind:per-page="perPage"
                 v-model="currentPage"
                 size="md"
-                class="mb-3 justify-content-center"
+                class="my-3 justify-content-center"
         >
         </b-pagination>
     </div>
@@ -40,12 +55,21 @@
 
 <script>
   import storeService from '@/services/storeService';
-  import configService from '@/services/configService';
   import queryParser from '@/services/queryParser';
   import QueryInput from '@/classes/QueryInput';
   import queryBuilder from '@/services/queryBuilder';
   import queryRouter from '@/services/queryRouter';
-  import CardsCard from '@/components/Cards/Card';
+  import CardsListFull from '@/components/Cards/ListFull';
+  import CardsListText from '@/components/Cards/ListText';
+  import CardsListImage from '@/components/Cards/ListImage';
+  import CardsListTable from '@/components/Cards/ListTable';
+
+  function parseRouteQuery(route) {
+    const query = queryRouter.getQuery(route);
+    const page = route.query.page ? parseInt(route.query.page, 10) : 1;
+    const view = route.query.view || 'table';
+    return { query, page, view };
+  }
 
   export default {
     name: 'cards-browser',
@@ -54,33 +78,52 @@
       return {
         cards: [],
         currentQuery: this.query,
-        perPage: 20,
         totalRows: 0,
         currentPage: 1,
         result: [],
+        currentView: 'table', // text | image | full | table
       };
     },
+    computed: {
+      perPage: function () {
+        switch(this.currentView) {
+          case 'table':
+          case 'text':
+            return 300;
+          case 'image':
+          case 'full':
+            return 20;
+        }
+      }
+    },
     beforeRouteEnter(to, from, next) {
-      const query = queryRouter.getQuery(to);
+      const params = parseRouteQuery(to);
+      console.log('beforeRouteEnter', params);
       next((vm) => {
-        vm.currentQuery = query;
+        vm.currentQuery = params.query;
+        vm.currentPage = params.page;
+        vm.currentView = params.view;
         vm.filter();
       });
     },
     beforeRouteUpdate(to, from, next) {
-      const query = queryRouter.getQuery(to);
-      this.currentQuery = query;
+      const params = parseRouteQuery(to);
+      console.log('beforeRouteUpdate', params);
+      this.currentQuery = params.query;
+      this.currentPage = params.page;
+      this.currentView = params.view;
       this.filter();
       next();
     },
     watch: {
-      currentPage(page) {
-        this.cards = this.result.slice((page - 1) * this.perPage, page * this.perPage);
-        scroll(0, 0);
+      currentPage() {
+        this.navigate();
       },
+      currentView() {
+        this.navigate();
+      }
     },
     methods: {
-      getCardImageURL: configService.getCardImageURL,
       filter() {
         const clauses = queryParser.parse(this.currentQuery);
         const queryInput = new QueryInput(clauses);
@@ -88,12 +131,21 @@
         this.result = storeService.stores.cards.apply(this, filters).get();
         this.perPage = 20;
         this.totalRows = this.result.length;
-        this.currentPage = 1;
         this.cards = this.result.slice((this.currentPage - 1)
           * this.perPage, this.currentPage * this.perPage);
       },
       navigate() {
         const route = queryRouter.getRoute(this.currentQuery);
+        if(route.query === undefined) {
+          route.query = {};
+        }
+        if(this.currentPage > 1) {
+          route.query.page = this.currentPage;
+        }
+        if(this.currentView !== 'table') {
+          route.query.view = this.currentView;
+        }
+        console.log('navigate', route);
         this.$router.push(route);
       },
     },
@@ -101,7 +153,10 @@
       this.filter();
     },
     components: {
-      CardsCard,
+      CardsListFull,
+      CardsListText,
+      CardsListImage,
+      CardsListTable,
     },
   };
 </script>

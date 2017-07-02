@@ -6,6 +6,7 @@ import VueAnalytics from 'vue-analytics';
 import BootstrapVue from 'bootstrap-vue';
 
 import 'bootstrap-vue/dist/bootstrap-vue.css';
+
 import './style.css';
 import './font.css';
 

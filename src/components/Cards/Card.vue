@@ -3,7 +3,7 @@
         <div class="card-block" v-bind:class="'bg-'+card.clan">
             <h4 class="card-title">
                 <span v-if="card.is_unique">&#9702;</span>
-                {{ card.name }}
+                <router-link :to="{ name: 'cards-by-card-code', params: { code: card.code } }">{{ card.name }}</router-link>
             </h4>
             <h6 class="card-subtitle mb-2 text-muted">
                 <span v-if="card.clan !== 'neutral'" v-bind:class="'icon-clan-' + card.clan"></span>
