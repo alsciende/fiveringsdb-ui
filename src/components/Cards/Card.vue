@@ -12,27 +12,30 @@
             </h6>
             <p v-if="card.type === 'character'">
                 <span>Cost: {{ card.cost }}.</span>
-                <span v-if="card.military_strength === undefined"><span class="strike-through">Military</span>.</span>
-                <span v-else>Military: {{ card.military_strength === undefined ? '-' : card.military_strength }}.</span>
-                <span v-if="card.political_strength === undefined"><span class="strike-through">Political</span>.</span>
-                <span v-else>Political: {{ card.political_strength === undefined ? '-' : card.political_strength }}.</span>
+                <span v-if="card.military === undefined"><span class="strike-through">Military</span>.</span>
+                <span v-else>Military: {{ card.military === undefined ? '-' : card.military }}.</span>
+                <span v-if="card.political === undefined"><span class="strike-through">Political</span>.</span>
+                <span v-else>Political: {{ card.political === undefined ? '-' : card.political }}.</span>
                 <span>Glory: {{ card.glory }}.</span>
             </p>
             <p v-if="card.type === 'attachment'">
                 <span>Cost: {{ card.cost }}.</span>
-                <span>Military: {{ card.military_strength_mod === undefined ? '-' : card.military_strength_mod }}.</span>
-                <span>Political: {{ card.political_strength_mod === undefined ? '-' : card.political_strength_mod }}.</span>
+                <span>Military: {{ card.military_bonus === undefined ? '-' : card.military_bonus }}.</span>
+                <span>Political: {{ card.political_bonus === undefined ? '-' : card.political_bonus }}.</span>
             </p>
             <p v-if="card.type === 'province'">
                 <span v-bind:class="'icon-element-' + card.element"></span>
                 <span>{{ $t('element.'+card.element) }}.</span>
-                <span>Strength: {{ card.province_strength }}.</span>
+                <span>Strength: {{ card.strength }}.</span>
             </p>
             <p v-if="card.type === 'holding'">
-                <span>Strength: {{ card.province_strength_mod }}.</span>
+                <span>Strength: {{ card.strength_bonus }}.</span>
             </p>
             <p v-if="card.type === 'stronghold'">
-                <span>Strength: {{ card.province_strength_mod }}.</span>
+                <span>Strength: {{ card.strength_bonus }}.</span>
+                <span>Honor: {{ card.honor }}.</span>
+                <span>Fate: {{ card.fate }}.</span>
+                <span>Influence: {{ card.influence_pool }}.</span>
             </p>
             <p v-if="card.type === 'event'">
                 <span>Cost: {{ card.cost }}.</span>
