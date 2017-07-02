@@ -15,9 +15,7 @@ import { } from './i18n';
 
 import storeService from './services/storeService';
 
-import MyCardText from './components/MyCardText';
-import MyCardTextBlock from './components/MyCardTextBlock';
-import MyCardList from './components/MyCardList';
+import CardsBrowser from './components/Cards/Browser';
 
 Vue.config.productionTip = false;
 
@@ -36,9 +34,7 @@ storeService.load().then(() => {
     el: '#app',
     router,
     components: {
-      MyCardList,
-      MyCardTextBlock,
-      MyCardText,
+      CardsBrowser,
     },
   });
 });

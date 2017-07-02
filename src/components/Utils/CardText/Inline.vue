@@ -7,7 +7,7 @@ function replaceIcons(text) {
   return text.replace(/\[([\w-]+)\]/g, '<span class="icon icon-$1"></span>');
 }
 export default {
-  name: 'my-card-text',
+  name: 'utils-card-text-inline',
   props: ['text'],
   computed: {
     formattedText() {

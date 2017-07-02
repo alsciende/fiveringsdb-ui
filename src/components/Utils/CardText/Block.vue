@@ -1,17 +1,17 @@
 <template>
   <p class="card-text">
-    <my-card-text v-bind:text="text"></my-card-text>
+    <utils-card-text-inline v-bind:text="text"></utils-card-text-inline>
   </p>
 </template>
 
 <script>
-import MyCardText from './MyCardText';
+import UtilsCardTextInline from '@/components/Utils/CardText/Inline';
 
 export default {
-  name: 'my-card-text-block',
+  name: 'utils-card-text-block',
   props: ['text'],
   components: {
-    MyCardText,
+    UtilsCardTextInline,
   },
 };
 </script>

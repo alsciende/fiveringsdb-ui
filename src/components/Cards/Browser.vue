@@ -15,13 +15,13 @@
                 v-bind:per-page="perPage"
                 v-model="currentPage"
                 size="md"
-                class="my-3 justify-content-center"
+                class="mb-3 justify-content-center"
         >
         </b-pagination>
         <div class="row mb-2" v-for="card in cards">
             <div class="col-md-7 mb-2">
-                <my-card-card v-bind:card="card">
-                </my-card-card>
+                <cards-card v-bind:card="card">
+                </cards-card>
             </div>
             <div class="col-md-5 mb-2">
                 <img v-bind:src="getCardImageURL(card)" class="card-image">
@@ -32,23 +32,23 @@
                 v-bind:per-page="perPage"
                 v-model="currentPage"
                 size="md"
-                class="my-3 justify-content-center"
+                class="mb-3 justify-content-center"
         >
         </b-pagination>
     </div>
 </template>
 
 <script>
-  import storeService from '../services/storeService';
-  import configService from '../services/configService';
-  import queryParser from '../services/queryParser';
-  import QueryInput from '../classes/QueryInput';
-  import queryBuilder from '../services/queryBuilder';
-  import queryRouter from '../services/queryRouter';
-  import MyCardCard from './MyCardCard';
+  import storeService from '@/services/storeService';
+  import configService from '@/services/configService';
+  import queryParser from '@/services/queryParser';
+  import QueryInput from '@/classes/QueryInput';
+  import queryBuilder from '@/services/queryBuilder';
+  import queryRouter from '@/services/queryRouter';
+  import CardsCard from '@/components/Cards/Card';
 
   export default {
-    name: 'my-card-list',
+    name: 'cards-browser',
     props: ['query'],
     data() {
       return {
@@ -101,7 +101,7 @@
       this.filter();
     },
     components: {
-      MyCardCard,
+      CardsCard,
     },
   };
 </script>

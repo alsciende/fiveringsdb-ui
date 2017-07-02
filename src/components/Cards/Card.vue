@@ -37,7 +37,7 @@
             <p v-if="card.type === 'event'">
                 <span>Cost: {{ card.cost }}.</span>
             </p>
-            <my-card-text-block v-bind:text="line" v-for="(line, index) in textLines" :key="index"></my-card-text-block>
+            <utils-card-text-block v-bind:text="line" v-for="(line, index) in textLines" :key="index"></utils-card-text-block>
             <p v-if="card.side" class="text-right">
                 {{ $t('side.'+card.side) }}
                 <span v-if="card.side === 'conflict' && card.influence_cost">
@@ -55,11 +55,10 @@
 </template>
 
 <script>
-  import MyCardText from './MyCardText';
-  import MyCardTextBlock from './MyCardTextBlock';
+  import UtilsCardTextBlock from '@/components/Utils/CardText/Block';
 
   export default {
-    name: 'my-card-card',
+    name: 'cards-card',
     props: ['card'],
     computed: {
       textLines() {
@@ -67,8 +66,7 @@
       },
     },
     components: {
-      MyCardText,
-      MyCardTextBlock,
+      UtilsCardTextBlock,
     },
   };
 </script>

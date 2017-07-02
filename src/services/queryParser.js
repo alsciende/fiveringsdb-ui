@@ -1,4 +1,4 @@
-import QueryClause from '../classes/QueryClause';
+import QueryClause from '@/classes/QueryClause';
 
 const STATE_INITIAL = 1;
 const STATE_ARGUMENT = 2;
