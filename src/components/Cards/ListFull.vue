@@ -6,7 +6,7 @@
                 </cards-card>
             </div>
             <div class="col-md-5 mb-2">
-                <img v-bind:src="getCardImageURL(card)" class="card-image">
+                <img v-bind:src="getCardImageURL(card)" class="card-image img-fluid">
             </div>
         </div>
     </div>

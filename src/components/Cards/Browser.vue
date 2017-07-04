@@ -1,11 +1,11 @@
 <template>
     <div>
         <form>
-        <div class="d-flex">
+        <div class="d-sm-flex">
             <div class="form-group mr-2" style="flex:1">
                 <form v-on:submit.prevent="navigate">
                     <input type="text" class="form-control" v-model="currentQuery" placeholder="Enter query">
-                    <small class="form-text text-muted">
+                    <small class="form-text text-muted hidden-xs-down">
                         Search by name. Prefix with 'x:' to search by text, 'p:' by pack, 'c:' by clan, 't:' by type, 'd:' by deck.
                     </small>
                 </form>
@@ -98,7 +98,6 @@
     },
     beforeRouteEnter(to, from, next) {
       const params = parseRouteQuery(to);
-      console.log('beforeRouteEnter', params);
       next((vm) => {
         vm.currentQuery = params.query;
         vm.currentPage = params.page;
@@ -108,7 +107,6 @@
     },
     beforeRouteUpdate(to, from, next) {
       const params = parseRouteQuery(to);
-      console.log('beforeRouteUpdate', params);
       this.currentQuery = params.query;
       this.currentPage = params.page;
       this.currentView = params.view;
@@ -145,7 +143,6 @@
         if(this.currentView !== 'table') {
           route.query.view = this.currentView;
         }
-        console.log('navigate', route);
         this.$router.push(route);
       },
     },
