@@ -7,7 +7,7 @@ class QueryMapper {
 
     this.map = {
       '': {
-        name: 'name',
+        name: 'name_canonical',
         type: 'string',
         description: 'Card Title',
       },
@@ -17,7 +17,7 @@ class QueryMapper {
         description: 'Card Code',
       },
       x: {
-        name: 'text',
+        name: 'text_canonical',
         type: 'string',
         description: 'Card Text',
       },

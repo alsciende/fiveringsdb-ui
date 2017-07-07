@@ -23,7 +23,7 @@ class QueryBuilder {
         filter[field.name] = { is: !!clause.getArg() };
         break;
       case 'code':
-        filter[field.name] = { is: clause.args };
+        filter[field.name] = { isnocase: clause.args };
         break;
       case 'join':
         filter[field.name] = { has: clause.args };

@@ -36,13 +36,14 @@ const denormalizeCards = () => {
       },
       {}
     );
-    stores.cards.merge(record, false);
+    stores.cards.merge(record, 'code', false);
   })
 };
 
 const load = () => Promise
   .all(resources.map(getResource))
-  .then(denormalizeCards);
+  .then(denormalizeCards)
+  ;
 
 export default {
   load,
