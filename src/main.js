@@ -12,7 +12,7 @@ import './font.css';
 
 import store from './store';
 import router from './router';
-import { } from './i18n';
+import i18n from './i18n';
 
 import storeService from './services/storeService';
 
@@ -34,6 +34,7 @@ storeService.load().then(() => {
   new Vue({
     el: '#app',
     router,
+    i18n,
     components: {
       CardsBrowser,
     },

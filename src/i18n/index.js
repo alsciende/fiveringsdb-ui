@@ -1,13 +1,16 @@
 import Vue from 'vue';
-import vuexI18n from 'vuex-i18n';
-import store from '@/store';
+import VueI18n from 'vue-i18n';
 
 import en from './translation.en.yml';
 import fr from './translation.fr.yml';
 
-Vue.use(vuexI18n.plugin, store);
+Vue.use(VueI18n);
 
-Vue.i18n.add('en', en);
-Vue.i18n.add('fr', fr);
+export default new VueI18n({
+  locale: 'en',
+  messages: {
+    en,
+    fr
+  },
+});
 
-Vue.i18n.set('en');
