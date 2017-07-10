@@ -14,7 +14,7 @@
         <tbody>
             <tr v-for="card in cards" v-bind:key="card.code">
                 <td>
-                    <utils-card-icon :card="card"></utils-card-icon>
+                    <utils-card-icon :card="card" class="hidden-sm-down"></utils-card-icon>
                     <router-link :to="{ name: 'cards-by-card-code', params: { code: card.code } }">{{ card.name }}</router-link>
                 </td>
                 <td>{{ $t('clan.'+card.clan) }}</td>
