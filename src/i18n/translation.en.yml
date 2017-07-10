@@ -1,6 +1,7 @@
 side:
-    conflict: 'Conflict Deck'
-    dynasty: 'Dynasty Deck'
+    conflict: 'Conflict'
+    dynasty: 'Dynasty'
+    deck: '{side} Deck'
 
 type:
     attachment: 'Attachment'

@@ -42,7 +42,7 @@
             </p>
             <utils-card-text-block v-bind:text="line" v-for="(line, index) in textLines" :key="index"></utils-card-text-block>
             <p v-if="card.side" class="text-right">
-                {{ $t('side.'+card.side) }}
+                {{ $t('side.deck', { side: $t('side.'+card.side) }) }}
                 <span v-if="card.side === 'conflict' && card.influence_cost">
                     &ndash; Influence Cost: {{ card.influence_cost }}
                 </span>

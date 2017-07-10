@@ -19,7 +19,8 @@
                 <td>{{ $t('clan.'+card.clan) }}</td>
                 <td>{{ $t('type.'+card.type) }}</td>
                 <td><span class="card-keyword" v-for="keyword in card.keywords">{{ $t('keyword.'+keyword) }}. </span></td>
-                <td>{{ card.side ? $t('side.'+card.side) : '' }}</td>
+                <td v-if="card.type === 'province'">{{ $t('element.'+card.element) }}</td>
+                <td v-else>{{ card.side ? $t('side.'+card.side) : '' }}</td>
                 <td>{{ card.cost }}</td>
                 <td v-if="card.type === 'attachment'">
                     {{ card.military_bonus }} / {{ card.political_bonus }}

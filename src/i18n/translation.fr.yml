@@ -1,3 +1,4 @@
 side:
-    conflict: "Deck de Conflit"
-    dynasty: "Deck de Dynastie"
+    conflict: 'Conflit'
+    dynasty: 'Dynastie'
+    deck: 'Deck de {side}'
