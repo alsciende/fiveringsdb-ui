@@ -4,3 +4,6 @@ html {
 body {
     background-color: #eee;
 }
+.card-text em {
+    font-weight: 700;
+}

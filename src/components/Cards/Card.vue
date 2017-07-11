@@ -40,8 +40,8 @@
             <p v-if="card.type === 'event'">
                 <span>Cost: {{ card.cost }}.</span>
             </p>
-            <p>
-                <utils-card-text v-bind:text="line" v-for="(line, index) in textLines" :key="index"></utils-card-text>
+            <p v-for="(line, index) in textLines" :key="index" class="card-text">
+                <utils-card-text v-bind:text="line"></utils-card-text>
             </p>
             <p v-if="card.side" class="text-right">
                 {{ $t('side.deck', { side: $t('side.'+card.side) }) }}

@@ -19,8 +19,4 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
-    i {
-        font-weight: bold;
-        font-style: italic;
-    }
 </style>
