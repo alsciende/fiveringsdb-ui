@@ -10,7 +10,7 @@
       'holding': 'home',
       'province': 'map-marker',
       'role': 'asterisk',
-      'stronghold': 'shield',
+      'stronghold': 'university',
     };
   export default {
     name: 'utils-card-icon',
