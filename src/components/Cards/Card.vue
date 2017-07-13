@@ -3,12 +3,12 @@
         <div class="card-block" v-bind:class="'bg-'+card.clan">
             <h4 class="card-title">
                 <span v-if="card.is_unique">&#9702;</span>
-                <router-link :to="{ name: 'cards-by-card-code', params: { code: card.code } }">{{ card.name }}</router-link>
+                <utils-card-link :card="card"></utils-card-link>
             </h4>
             <h6 class="card-subtitle mb-2 text-muted">
                 <span v-if="card.clan !== 'neutral'" v-bind:class="'icon-clan-' + card.clan"></span>
                 {{ $t('clan.'+card.clan) }} {{ $t('type.'+card.type) }}.
-                <span class="card-keyword" v-for="keyword in card.keywords">{{ $t('keyword.'+keyword) }}. </span>
+                <utils-card-keywords :card="card"></utils-card-keywords>
             </h6>
             <p v-if="card.type === 'character'">
                 <span>Cost: {{ card.cost }}.</span>
@@ -61,6 +61,8 @@
 
 <script>
   import UtilsCardText from '@/components/Utils/CardText';
+  import UtilsCardLink from "@/components/Utils/CardLink";
+  import UtilsCardKeywords from "@/components/Utils/CardKeywords";
 
   export default {
     name: 'cards-card',
@@ -72,6 +74,8 @@
     },
     components: {
       UtilsCardText,
+      UtilsCardLink,
+      UtilsCardKeywords,
     },
   };
 </script>

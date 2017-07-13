@@ -15,11 +15,11 @@
             <tr v-for="card in cards" v-bind:key="card.code">
                 <td>
                     <utils-card-icon :card="card" class="hidden-sm-down"></utils-card-icon>
-                    <router-link :to="{ name: 'cards-by-card-code', params: { code: card.code } }">{{ card.name }}</router-link>
+                    <utils-card-link :card="card"></utils-card-link>
                 </td>
                 <td>{{ $t('clan.'+card.clan) }}</td>
                 <td>{{ $t('type.'+card.type) }}</td>
-                <td><span class="card-keyword" v-for="keyword in card.keywords">{{ $t('keyword.'+keyword) }}. </span></td>
+                <td><utils-card-keywords :card="card"></utils-card-keywords></td>
                 <td v-if="card.type === 'province'">{{ $t('element.'+card.element) }}</td>
                 <td v-else>{{ card.side ? $t('side.'+card.side) : '' }}</td>
                 <td>{{ card.cost }}</td>
@@ -54,16 +54,18 @@
 
 <script>
   import CardsCard from '@/components/Cards/Card';
-  import CardIcon from '@/components/Utils/CardIcon';
-  import UtilsCardIcon from "../Utils/CardIcon";
+  import UtilsCardIcon from "@/components/Utils/CardIcon";
+  import UtilsCardLink from "@/components/Utils/CardLink";
+  import UtilsCardKeywords from "@/components/Utils/CardKeywords";
 
   export default {
     name: 'cards-list-table',
     props: ['cards'],
     components: {
       UtilsCardIcon,
+      UtilsCardLink,
+      UtilsCardKeywords,
       CardsCard,
-      CardIcon,
     },
   }
   ;
