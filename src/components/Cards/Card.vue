@@ -1,6 +1,6 @@
 <template>
     <div class="card">
-        <div class="card-block" v-bind:class="'bg-'+card.clan">
+        <div class="card-block" v-bind:class="'bg-clan bg-clan-'+card.clan">
             <h4 class="card-title">
                 <span v-if="card.is_unique">&#9702;</span>
                 <utils-card-link :card="card"></utils-card-link>
@@ -83,11 +83,17 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
     span.strike-through { text-decoration: line-through; }
-    div.card-block.bg-crab { background-color: rgb(231,230,234); }
-    div.card-block.bg-crane { background-color: rgb(227,235,241); }
-    div.card-block.bg-dragon { background-color: rgb(222,227,223); }
-    div.card-block.bg-lion { background-color: rgb(243,234,214); }
-    div.card-block.bg-phoenix { background-color: rgb(254,228,215); }
-    div.card-block.bg-scorpion { background-color: rgb(236,220,213); }
-    div.card-block.bg-unicorn { background-color: rgb(230,226,239); }
+    div.card-block.bg-clan {
+        background-repeat: no-repeat;
+        background-size: 150px;
+        background-position-y: center;
+        background-position-x: 90%;
+    }
+    div.card-block.bg-clan-crab { background-image: url('/static/svg/clan/crab.svg'); }
+    div.card-block.bg-clan-crane { background-image: url('/static/svg/clan/crane.svg'); }
+    div.card-block.bg-clan-dragon { background-image: url('/static/svg/clan/dragon.svg'); }
+    div.card-block.bg-clan-lion { background-image: url('/static/svg/clan/lion.svg'); }
+    div.card-block.bg-clan-phoenix { background-image: url('/static/svg/clan/phoenix.svg'); }
+    div.card-block.bg-clan-scorpion { background-image: url('/static/svg/clan/scorpion.svg'); }
+    div.card-block.bg-clan-unicorn { background-image: url('/static/svg/clan/unicorn.svg'); }
 </style>
