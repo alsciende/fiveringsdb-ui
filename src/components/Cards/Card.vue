@@ -2,7 +2,7 @@
     <div class="card">
         <div class="card-block" v-bind:class="'bg-clan bg-clan-'+card.clan">
             <h4 class="card-title">
-                <span v-if="card.is_unique">&#9702;</span>
+                <span v-if="card.unicity">&#9702;</span>
                 <utils-card-link :card="card"></utils-card-link>
             </h4>
             <h6 class="card-subtitle mb-2 text-muted">
