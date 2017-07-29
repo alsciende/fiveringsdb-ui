@@ -5,9 +5,6 @@
             <div class="form-group mr-2" style="flex:1">
                 <form v-on:submit.prevent="navigate">
                     <input type="text" class="form-control" v-model="currentQuery" placeholder="Enter query">
-                    <small class="form-text text-muted hidden-xs-down">
-                        Search by name. Prefix with 'x:' to search by text, 'p:' by pack, 'c:' by clan, 't:' by type, 'd:' by deck.
-                    </small>
                 </form>
             </div>
             <div class="btn-group align-self-start mr-2"  data-toggle="buttons">
@@ -28,7 +25,7 @@
                     <span class="fa fa-file-text"></span>
                 </label>
             </div>
-            <div class="btn-group align-self-start"  data-toggle="buttons">
+            <div class="btn-group align-self-start mr-2"  data-toggle="buttons">
                 <label v-bind:class="['btn', 'btn-secondary', currentSort === 'name' ? 'active' : '']" v-on:click="currentSort = 'name'" title="Sort by Name">
                     <input type="radio" name="currentSort" id="name" autocomplete="off" v-model="currentSort">
                     <span class="fa fa-font"></span>
@@ -42,6 +39,12 @@
                     <span class="fa fa-cube"></span>
                 </label>
             </div>
+            <div class="btn-group align-self-start">
+                <button type="button" class="btn btn-secondary" data-toggle="collapse" data-target="#searchHelp"><span class="fa fa-info-circle"></span></button>
+            </div>
+        </div>
+        <div class="collapse" id="searchHelp">
+            <div class="card card-block" v-html="searchHelp"></div>
         </div>
         </form>
         <b-pagination
@@ -71,6 +74,7 @@
   import storeService from '@/services/storeService';
   import queryParser from '@/services/queryParser';
   import QueryInput from '@/classes/QueryInput';
+  import queryMapper from '@/services/queryMapper';
   import queryBuilder from '@/services/queryBuilder';
   import queryRouter from '@/services/queryRouter';
   import CardsListFull from '@/components/Cards/ListFull';
@@ -98,6 +102,7 @@
         result: [],
         currentView: 'table', // text | image | full | table
         currentSort: 'name', // name | clan | type
+        searchHelp: queryMapper.formatAsHtml(),
       };
     },
     computed: {

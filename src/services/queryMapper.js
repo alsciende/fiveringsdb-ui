@@ -100,6 +100,15 @@ class QueryMapper {
 
     return Object.assign({}, this.default, data);
   }
+  formatAsHtml() {
+    const lines = [];
+    Object.keys(this.map).forEach((clause) => {
+      if (clause !== '') {
+        lines.push(`<li><tt>${clause}</tt> &ndash; ${this.map[clause].description}</li>`);
+      }
+    });
+    return `<ul>${lines.join('')}</ul>`;
+  }
 }
 
 export default new QueryMapper();
