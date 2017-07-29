@@ -12,14 +12,14 @@
         </tr>
         </thead>
         <tbody>
-            <tr v-for="card in cards" v-bind:key="card.code">
+            <tr v-for="card in cards" v-bind:key="card.id">
                 <td>
                     <utils-card-icon :card="card" class="hidden-sm-down"></utils-card-icon>
                     <utils-card-link :card="card"></utils-card-link>
                 </td>
                 <td>{{ $t('clan.'+card.clan) }}</td>
                 <td>{{ $t('type.'+card.type) }}</td>
-                <td><utils-card-keywords :card="card"></utils-card-keywords></td>
+                <td><utils-card-traits :card="card"></utils-card-traits></td>
                 <td v-if="card.type === 'province'">{{ $t('element.'+card.element) }}</td>
                 <td v-else>{{ card.side ? $t('side.'+card.side) : '' }}</td>
                 <td>{{ card.cost }}</td>
@@ -56,7 +56,7 @@
   import CardsCard from '@/components/Cards/Card';
   import UtilsCardIcon from "@/components/Utils/CardIcon";
   import UtilsCardLink from "@/components/Utils/CardLink";
-  import UtilsCardKeywords from "@/components/Utils/CardKeywords";
+  import UtilsCardTraits from "@/components/Utils/CardTraits";
 
   export default {
     name: 'cards-list-table',
@@ -64,7 +64,7 @@
     components: {
       UtilsCardIcon,
       UtilsCardLink,
-      UtilsCardKeywords,
+      UtilsCardTraits,
       CardsCard,
     },
   }

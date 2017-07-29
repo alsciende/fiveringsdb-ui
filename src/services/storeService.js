@@ -18,25 +18,25 @@ const getResource = resource => Vue.http.get(`${configService.apiBaseUrl}/${reso
   ;
 
 /**
- * add to each Card record 2 properties, packs and cycles, with the codes of each pack and cycle containing the card
+ * add to each Card record 2 properties, packs and cycles, with the ids of each pack and cycle containing the card
  */
 const denormalizeCards = () => {
   stores.cards().each(function (record) {
     record.packs = record.pack_cards.reduce(
       (packs, pack_card) => {
-        packs[pack_card.pack.code] = pack_card.quantity;
+        packs[pack_card.pack.id] = pack_card.quantity;
         return packs;
       },
       {}
     );
     record.cycles = Object.keys(record.packs).reduce(
-      (cycles, pack_code) => {
-        cycles[stores.packs({ code: pack_code }).first().cycle.code] = 1;
+      (cycles, pack_id) => {
+        cycles[stores.packs({ id: pack_id }).first().cycle.id] = 1;
         return cycles;
       },
       {}
     );
-    stores.cards.merge(record, 'code', false);
+    stores.cards.merge(record, 'id', false);
   })
 };
 

@@ -12,9 +12,9 @@ class QueryMapper {
         description: 'Card Title',
       },
       id: {
-        name: 'code',
-        type: 'code',
-        description: 'Card Code',
+        name: 'id',
+        type: 'id',
+        description: 'Card Id',
       },
       x: {
         name: 'text_canonical',
@@ -48,17 +48,17 @@ class QueryMapper {
       },
       c: {
         name: 'clan',
-        type: 'code',
+        type: 'id',
         description: 'Card Clan',
       },
       t: {
         name: 'type',
-        type: 'code',
+        type: 'id',
         description: 'Card Type',
       },
       d: {
         name: 'side',
-        type: 'code',
+        type: 'id',
         description: 'Card Deck',
       },
     };

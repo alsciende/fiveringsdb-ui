@@ -1,5 +1,5 @@
 <template>
-    <router-link :to="{ name: 'cards-by-card-code', params: { code: card.code } }">{{ card.name }}</router-link>
+    <router-link :to="{ name: 'cards-by-card-id', params: { id: card.id } }">{{ card.name }}</router-link>
 </template>
 
 <script>

@@ -3,22 +3,22 @@ import queryParser from './queryParser';
 class QueryRouter {
   constructor() {
     this.config = {
-      id: 'cards-by-card-code',
-      p: 'cards-by-pack-code',
-      c: 'cards-by-clan-code',
+      id: 'cards-by-card-id',
+      p: 'cards-by-pack-id',
+      c: 'cards-by-clan-id',
     };
     this.reverseMatching = {
       'cards-by-search-query': function matcher(route) {
         return route.query.q;
       },
-      'cards-by-card-code': function matcher(route) {
-        return `id:${route.params.code}`;
+      'cards-by-card-id': function matcher(route) {
+        return `id:${route.params.id}`;
       },
-      'cards-by-pack-code': function matcher(route) {
-        return `p:${route.params.code}`;
+      'cards-by-pack-id': function matcher(route) {
+        return `p:${route.params.id}`;
       },
-      'cards-by-clan-code': function matcher(route) {
-        return `c:${route.params.code}`;
+      'cards-by-clan-id': function matcher(route) {
+        return `c:${route.params.id}`;
       },
       'cards-by-default': '',
     };
@@ -33,7 +33,7 @@ class QueryRouter {
       const clause = clauses[0];
       const name = this.config[clause.name];
       if (name && clause.args.length === 1) {
-        const params = { code: clause.getArg() };
+        const params = { id: clause.getArg() };
         return { name, params };
       }
     }

@@ -1,6 +1,6 @@
 <template>
     <div class="cards-list">
-        <div class="row mb-2" v-for="card in cards" v-bind:key="card.code">
+        <div class="row mb-2" v-for="card in cards" v-bind:key="card.id">
             <div class="col-md-7 mb-2">
                 <cards-card v-bind:card="card">
                 </cards-card>

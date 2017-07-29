@@ -22,7 +22,7 @@ class QueryBuilder {
       case 'boolean':
         filter[field.name] = { is: !!clause.getArg() };
         break;
-      case 'code':
+      case 'id':
         filter[field.name] = { isnocase: clause.args };
         break;
       case 'join':

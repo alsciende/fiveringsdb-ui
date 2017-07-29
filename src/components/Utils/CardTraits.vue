@@ -1,10 +1,10 @@
 <template>
-    <span class="card-keywords"><span class="card-keyword" v-for="keyword in card.keywords">{{ $t('keyword.'+keyword) }}. </span></span>
+    <span class="card-traits"><span class="card-keyword" v-for="keyword in card.traits">{{ $t('keyword.'+keyword) }}. </span></span>
 </template>
 
 <script>
   export default {
-    name: 'utils-card-keywords',
+    name: 'utils-card-traits',
     props: ['card'],
   };
 </script>
