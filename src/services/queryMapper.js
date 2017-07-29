@@ -21,30 +21,15 @@ class QueryMapper {
         type: 'string',
         description: 'Card Text',
       },
-      ms: {
-        name: 'military_strength',
-        type: 'integer',
-        description: 'Military Strength',
-      },
-      ps: {
-        name: 'political_strength',
-        type: 'integer',
-        description: 'Political Strength',
-      },
-      mm: {
-        name: 'military_strength_mod',
-        type: 'integer',
-        description: 'Military Strength Modifier',
-      },
-      pm: {
-        name: 'political_strength_mod',
-        type: 'integer',
-        description: 'Military Strength Modifier',
-      },
       p: {
         name: 'packs',
         type: 'join',
         description: 'Pack',
+      },
+      y: {
+        name: 'cycles',
+        type: 'join',
+        description: 'Cycle',
       },
       c: {
         name: 'clan',
@@ -60,6 +45,46 @@ class QueryMapper {
         name: 'side',
         type: 'id',
         description: 'Card Deck',
+      },
+      k: {
+        name: 'traits',
+        type: 'join',
+        description: 'Traits',
+      },
+      i: {
+        name: 'influence_cost',
+        type: 'integer',
+        description: 'Influence Cost',
+      },
+      f: {
+        name: 'cost',
+        type: 'integer',
+        description: 'Fate Cost',
+      },
+      u: {
+        name: 'unicity',
+        type: 'boolean',
+        description: 'Unique',
+      },
+      g: {
+        name: 'glory',
+        type: 'integer',
+        description: 'Glory',
+      },
+      mil: {
+        name: 'military',
+        type: 'integer',
+        description: 'Military Skill',
+      },
+      pol: {
+        name: 'political',
+        type: 'integer',
+        description: 'Political Skill',
+      },
+      str: {
+        name: 'strength',
+        type: 'integer',
+        description: 'Province Strength',
       },
     };
   }
