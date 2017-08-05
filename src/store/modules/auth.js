@@ -2,7 +2,7 @@ import * as types from '../mutation-types';
 
 // getters
 const getters = {
-  isLogged: state => state.isLogged,
+  isLogged: state => state.accessToken !== null,
 };
 
 // actions
@@ -18,7 +18,6 @@ const mutations = {
 
 export default {
   state: {
-    isLogged: false,
     accessToken: null,
   },
   getters,
