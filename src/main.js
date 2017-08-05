@@ -14,9 +14,10 @@ import store from './store';
 import router from './router';
 import i18n from './i18n';
 
-import storeService from './services/storeService';
+import storeService from './service/storeService';
 
-import CardsBrowser from './components/Cards/Browser';
+import AppNavbar from './components/App/Navbar';
+import AppFooter from './components/App/Footer';
 
 Vue.config.productionTip = false;
 
@@ -34,9 +35,11 @@ storeService.load().then(() => {
   new Vue({
     el: '#app',
     router,
+    store,
     i18n,
     components: {
-      CardsBrowser,
+      AppNavbar,
+      AppFooter,
     },
   });
 });

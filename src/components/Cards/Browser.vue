@@ -71,12 +71,12 @@
 </template>
 
 <script>
-  import storeService from '@/services/storeService';
-  import queryParser from '@/services/queryParser';
+  import storeService from '@/service/storeService';
+  import queryParser from '@/service/queryParser';
   import QueryInput from '@/classes/QueryInput';
-  import queryMapper from '@/services/queryMapper';
-  import queryBuilder from '@/services/queryBuilder';
-  import queryRouter from '@/services/queryRouter';
+  import queryMapper from '@/service/queryMapper';
+  import queryBuilder from '@/service/queryBuilder';
+  import queryRouter from '@/service/queryRouter';
   import CardsListFull from '@/components/Cards/ListFull';
   import CardsListText from '@/components/Cards/ListText';
   import CardsListImage from '@/components/Cards/ListImage';

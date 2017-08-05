@@ -10,7 +10,7 @@ export default new VueI18n({
   locale: 'en',
   messages: {
     en,
-    fr
+    fr,
   },
 });
 

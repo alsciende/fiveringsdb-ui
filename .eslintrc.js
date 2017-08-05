@@ -41,5 +41,6 @@ module.exports = {
     'arrow-parens': ['warn', 'as-needed', {
       requireForBlockBody: true,
     }],
+    'no-plusplus': "off",
   },
 };

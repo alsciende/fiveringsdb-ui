@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 
 import Browser from '@/components/Cards/Browser';
+import Builder from '@/components/Builder/Builder';
 
 Vue.use(Router);
 
@@ -34,6 +35,12 @@ export default new Router({
       name: 'cards-by-clan-id',
       component: Browser,
       props: true,
+    },
+    {
+      path: '/deckbuilder',
+      name: 'deckbuilder',
+      component: Builder,
+      props: false,
     },
   ],
 });

@@ -7,7 +7,7 @@
 </template>
 
 <script>
-  import configService from '@/services/configService';
+  import configService from '@/service/configService';
   import CardsCard from '@/components/Cards/Card';
 
   export default {
