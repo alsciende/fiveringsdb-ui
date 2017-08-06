@@ -29,12 +29,12 @@ module.exports = {
         assetsPublicPath: '/',
         proxyTable: {
             '/app_dev.php': {
-                target: 'http://fiveringsdb.local:8080',
+                target: 'http://fiveringsdb.dev:8080',
                 changeOrigin: true,
                 pathRewrite: {}
             },
             '/bundles': {
-                target: 'http://fiveringsdb.local:8080',
+                target: 'http://fiveringsdb.dev:8080',
                 changeOrigin: true,
                 pathRewrite: {}
             }

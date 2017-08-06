@@ -9,7 +9,7 @@ function buildStrWindowFeatures(obj) {
 }
 
 function receiveMessage(event) {
-  if (event.origin !== 'http://fiveringsdb.local:8080') {
+  if (event.origin !== 'http://fiveringsdb.dev:8080') {
     console.log('wrong origin', event.origin);
     return;
   }
@@ -34,7 +34,7 @@ function receiveMessage(event) {
 function initAuth() {
   window.addEventListener('message', receiveMessage, false);
   childWindow = window.open(
-    'http://fiveringsdb.local:8080/app_dev.php/auth/init',
+    'http://fiveringsdb.dev:8080/app_dev.php/auth/init',
     'auth',
     buildStrWindowFeatures({
       dialog: 1,
