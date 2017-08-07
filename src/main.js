@@ -23,7 +23,7 @@ Vue.config.productionTip = false;
 Vue.use(BootstrapVue);
 Vue.use(VueRouter);
 Vue.use(VueAnalytics, {
-  id: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
+  id: process.env.GA_TRACKING_ID,
   router,
 });
 
