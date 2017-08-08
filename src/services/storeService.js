@@ -11,7 +11,7 @@ const resources = ['cards', 'cycles', 'packs'];
 /**
  * load a resource from the server and creates a TAFFY db with the records
  */
-const getResource = resource => Vue.http.get(`${configService.apiBaseUrl}/${resource}`)
+const getResource = resource => Vue.http.get(`${configService.apiBaseUrl}${resource}`)
   .then((response) => {
     stores[resource] = taffy(response.body.records);
   })
