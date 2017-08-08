@@ -47,6 +47,9 @@
                 <td v-if="card.type === 'event'">
 
                 </td>
+                <td v-if="card.type === 'role'">
+
+                </td>
             </tr>
         </tbody>
     </table>
