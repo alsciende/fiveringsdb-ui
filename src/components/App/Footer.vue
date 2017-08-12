@@ -1,5 +1,5 @@
 <template>
-    <footer class="bg-inverse text-white mt-5 p-2">
+    <footer class="bg-dark text-white mt-5 p-2">
         <div class="container">
             Work in progress by <a href="https://twitter.com/alsciende">@alsciende</a>. Documentation at <a href="https://alsciende.github.io/fiveringsdb/">https://alsciende.github.io/fiveringsdb/</a>.
         </div>

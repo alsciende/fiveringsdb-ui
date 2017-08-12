@@ -44,7 +44,7 @@
             </div>
         </div>
         <div class="collapse" id="searchHelp">
-            <div class="card card-block" v-html="searchHelp"></div>
+            <div class="card card-body" v-html="searchHelp"></div>
         </div>
         </form>
         <b-pagination

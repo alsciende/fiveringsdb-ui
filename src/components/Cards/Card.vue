@@ -1,6 +1,6 @@
 <template>
     <div class="card">
-        <div class="card-block" v-bind:class="'bg-clan bg-clan-'+card.clan">
+        <div class="card-body" v-bind:class="'bg-clan bg-clan-'+card.clan">
             <h4 class="card-title">
                 <span v-if="card.unicity">&#9702;</span>
                 <utils-card-link :card="card"></utils-card-link>
@@ -83,17 +83,18 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
     span.strike-through { text-decoration: line-through; }
-    div.card-block.bg-clan {
+    div.card-body.bg-clan {
         background-repeat: no-repeat;
         background-size: 150px;
         background-position-y: center;
         background-position-x: 90%;
+        min-height: 200px;
     }
-    div.card-block.bg-clan-crab { background-image: url('/static/svg/clan/crab.svg'); }
-    div.card-block.bg-clan-crane { background-image: url('/static/svg/clan/crane.svg'); }
-    div.card-block.bg-clan-dragon { background-image: url('/static/svg/clan/dragon.svg'); }
-    div.card-block.bg-clan-lion { background-image: url('/static/svg/clan/lion.svg'); }
-    div.card-block.bg-clan-phoenix { background-image: url('/static/svg/clan/phoenix.svg'); }
-    div.card-block.bg-clan-scorpion { background-image: url('/static/svg/clan/scorpion.svg'); }
-    div.card-block.bg-clan-unicorn { background-image: url('/static/svg/clan/unicorn.svg'); }
+    div.card-body.bg-clan-crab { background-image: url('/static/svg/clan/crab.svg'); }
+    div.card-body.bg-clan-crane { background-image: url('/static/svg/clan/crane.svg'); }
+    div.card-body.bg-clan-dragon { background-image: url('/static/svg/clan/dragon.svg'); }
+    div.card-body.bg-clan-lion { background-image: url('/static/svg/clan/lion.svg'); }
+    div.card-body.bg-clan-phoenix { background-image: url('/static/svg/clan/phoenix.svg'); }
+    div.card-body.bg-clan-scorpion { background-image: url('/static/svg/clan/scorpion.svg'); }
+    div.card-body.bg-clan-unicorn { background-image: url('/static/svg/clan/unicorn.svg'); }
 </style>
