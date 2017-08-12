@@ -5,9 +5,6 @@ export default {
   post(token) {
     return Vue.http.post(config.getApiURL('tokens'), {
       id: token,
-    }).then((response) => {
-      console.log('response', response.body.record);
-      return response.body.record.id;
-    });
+    }).then(response => response.body.record);
   },
 };

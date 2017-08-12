@@ -153,7 +153,6 @@
         const queryInput = new QueryInput(clauses);
         const filters = queryBuilder.build(queryInput);
         this.result = storeService.stores.cards.apply(this, filters).order(this.currentSort).get();
-        this.perPage = 20;
         this.totalRows = this.result.length;
         this.cards = this.result.slice((this.currentPage - 1)
           * this.perPage, this.currentPage * this.perPage);

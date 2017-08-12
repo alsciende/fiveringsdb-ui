@@ -5,6 +5,11 @@ export default {
     }
     return `${process.env.API_URL + path}`;
   },
+  getApiOrigin() {
+    const parser = document.createElement('a');
+    parser.href = this.getApiURL();
+    return parser.origin;
+  },
   getCardImageURL(card) {
     return `${process.env.IMG_URL + card.id}.png`;
   },

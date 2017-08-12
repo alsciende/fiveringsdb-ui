@@ -25,8 +25,6 @@
 </template>
 
 <script>
-  import authService from '@/service/authService';
-
   export default {
     name: 'app-navbar',
     props: [],
@@ -37,7 +35,7 @@
     },
     methods: {
       login() {
-        authService.initAuth();
+        this.$store.dispatch('login');
       },
     },
   };
