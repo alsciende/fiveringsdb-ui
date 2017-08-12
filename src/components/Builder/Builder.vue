@@ -5,8 +5,16 @@
 </template>
 
 <script>
+  import store from '@/store/index';
+
   export default {
     name: 'builder-builder',
+    beforeRouteEnter(to, from, next) {
+      store.dispatch('login').then(
+        () => next(),
+        reason => next(new Error(reason)),
+      );
+    },
   };
 </script>
 

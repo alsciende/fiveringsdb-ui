@@ -13,7 +13,7 @@
                     <a class="nav-link" href="#/deckbuilder">Deckbuilder</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" v-on:click.prevent="login()">{{ isLogged }}</a>
+                    <a class="nav-link" href="#" v-on:click.prevent="login()">{{ username }}</a>
                 </li>
             </ul>
             <form class="form-inline mt-2 mt-md-0" action="" method="GET">
@@ -29,13 +29,16 @@
     name: 'app-navbar',
     props: [],
     computed: {
-      isLogged() {
-        return this.$store.getters.isLogged ? 'Oui' : 'Non';
+      username() {
+        return this.$store.getters.username;
       },
     },
     methods: {
       login() {
-        this.$store.dispatch('login');
+        this.$store.dispatch('login').then(
+          result => console.log('resolved', result),
+          reason => console.log('rejected', reason)
+        );
       },
     },
   };

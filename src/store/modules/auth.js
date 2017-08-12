@@ -1,4 +1,4 @@
-import tokens from '@/api/tokens';
+import rest from '@/api/rest';
 import config from '@/config/index';
 import * as types from '../mutation-types';
 
@@ -20,7 +20,6 @@ const actions = {
 
     return new Promise((resolve, reject) => {
       if (getters.isLogged) {
-        console.log('already logged in');
         return state.token;
       }
 
@@ -37,13 +36,12 @@ const actions = {
         window.removeEventListener('message', callback, false);
 
         // ask the server to create a token with this access token
-        resolve(tokens.post(event.data.access_token).then((token) => {
-          console.log('token', token);
+        resolve(rest.post('tokens', { id: event.data.access_token }).then((response) => {
           commit({
             type: types.SAVE_TOKEN,
-            token,
+            token: response.record,
           });
-          return token;
+          return response.record;
         }));
       };
 
@@ -59,7 +57,7 @@ const actions = {
 // getters
 const getters = {
   isLogged: state => state.token !== null,
-  username: state => state.token && state.token.username,
+  username: state => (state.token ? state.token.user.username : 'Not logged in'),
 };
 
 // mutations
