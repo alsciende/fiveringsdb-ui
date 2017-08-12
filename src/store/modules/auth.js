@@ -20,7 +20,7 @@ const actions = {
 
     return new Promise((resolve, reject) => {
       if (getters.isLogged) {
-        return state.token;
+        return resolve(state.token);
       }
 
       // called when the child window sends the access token
