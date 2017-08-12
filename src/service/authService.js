@@ -1,5 +1,6 @@
 import tokens from '@/api/tokens';
 import store from '@/store/index';
+import config from '@/config/index';
 import * as types from '@/store/mutation-types';
 
 let childWindow = null;
@@ -9,7 +10,10 @@ function buildStrWindowFeatures(obj) {
 }
 
 function receiveMessage(event) {
-  if (event.origin !== 'http://fiveringsdb.dev:8080') {
+  const parser = document.createElement('a');
+  parser.href = config.getApiURL();
+
+  if (event.origin !== parser.origin) {
     console.log('wrong origin', event.origin);
     return;
   }
@@ -22,7 +26,7 @@ function receiveMessage(event) {
   window.removeEventListener('message', receiveMessage, false);
 
   console.log('data', event.data);
-  tokens.post(event.data.access_token).then(token => {
+  tokens.post(event.data.access_token).then((token) => {
     console.log('token', token);
     store.commit({
       type: types.SAVE_TOKEN,
@@ -34,7 +38,7 @@ function receiveMessage(event) {
 function initAuth() {
   window.addEventListener('message', receiveMessage, false);
   childWindow = window.open(
-    'http://fiveringsdb.dev:8080/app_dev.php/auth/init',
+    config.getApiURL('auth/init'),
     'auth',
     buildStrWindowFeatures({
       dialog: 1,

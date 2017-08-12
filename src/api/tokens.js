@@ -1,9 +1,9 @@
 import Vue from 'vue';
-import configService from '@/service/configService';
+import config from '@/config/index';
 
 export default {
   post(token) {
-    return Vue.http.post(`${configService.apiBaseUrl}/tokens`, {
+    return Vue.http.post(config.getApiURL('tokens'), {
       id: token,
     }).then((response) => {
       console.log('response', response.body.record);

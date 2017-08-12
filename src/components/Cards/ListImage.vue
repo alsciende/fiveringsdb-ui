@@ -7,14 +7,14 @@
 </template>
 
 <script>
-  import configService from '@/service/configService';
+  import config from '@/config/index';
   import CardsCard from '@/components/Cards/Card';
 
   export default {
     name: 'cards-list-image',
     props: ['cards'],
     methods: {
-      getCardImageURL: configService.getCardImageURL,
+      getCardImageURL: config.getCardImageURL,
     },
     components: {
       CardsCard,

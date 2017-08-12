@@ -1,8 +1,11 @@
 html {
     font-size: 14px;
+    position: relative;
+    min-height: 100%;
 }
 body {
     background-color: #eee;
+    margin-bottom: 74px;
 }
 .card-text em {
     font-weight: 700;

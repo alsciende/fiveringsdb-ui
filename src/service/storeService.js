@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueResource from 'vue-resource';
 import { taffy } from 'taffydb';
-import configService from './configService';
+import config from '@/config/index';
 
 Vue.use(VueResource);
 
@@ -11,7 +11,7 @@ const resources = ['cards', 'cycles', 'packs'];
 /**
  * load a resource from the server and creates a TAFFY db with the records
  */
-const getResource = resource => Vue.http.get(`${configService.apiBaseUrl}${resource}`)
+const getResource = resource => Vue.http.get(config.getApiURL(resource))
   .then((response) => {
     stores[resource] = taffy(response.body.records);
   })
