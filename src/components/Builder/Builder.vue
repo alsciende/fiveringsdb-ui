@@ -5,7 +5,8 @@
 </template>
 
 <script>
-  import store from '@/store/index';
+  import store from '@/store';
+  import rest from '@/rest';
 
   export default {
     name: 'builder-builder',
@@ -14,6 +15,11 @@
         () => next(),
         reason => next(new Error(reason)),
       );
+    },
+    mounted() {
+      rest.get('strains').then((result) => {
+        console.log('strains', result);
+      });
     },
   };
 </script>

@@ -1,5 +1,5 @@
-import rest from '@/api/rest';
-import config from '@/config/index';
+import rest from '@/rest';
+import config from '@/config';
 import * as types from '../mutation-types';
 
 function buildStrWindowFeatures(obj) {
@@ -52,12 +52,19 @@ const actions = {
       return true;
     });
   },
+  logout({ commit }) {
+    commit({
+      type: types.SAVE_TOKEN,
+      token: null,
+    });
+  }
 };
 
 // getters
 const getters = {
   isLogged: state => state.token !== null,
   username: state => (state.token ? state.token.user.username : 'Not logged in'),
+  accessToken: state => (state.token ? state.token.id : null),
 };
 
 // mutations

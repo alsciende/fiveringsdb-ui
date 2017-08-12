@@ -13,6 +13,8 @@ import './font.css';
 import store from './store';
 import router from './router';
 import i18n from './i18n';
+import rest from './rest';
+import auth from './rest/auth';
 
 import storeService from './service/storeService';
 
@@ -29,6 +31,7 @@ Vue.use(VueAnalytics, {
 });
 
 sync(store, router);
+auth(store, rest);
 
 storeService.load().then(() => {
   /* eslint-disable no-new */
