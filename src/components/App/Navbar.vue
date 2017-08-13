@@ -15,6 +15,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#" v-on:click.prevent="login()">{{ username }}</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" v-on:click.prevent="logout()">Logout</a>
+                </li>
             </ul>
             <form class="form-inline mt-2 mt-md-0" action="" method="GET">
                 <input class="form-control mr-sm-2" type="text" placeholder="Search" name="q">
@@ -39,6 +42,9 @@
           result => console.log('resolved', result),
           reason => console.log('rejected', reason)
         );
+      },
+      logout() {
+        this.$store.dispatch('logout');
       },
     },
   };
