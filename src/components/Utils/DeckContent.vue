@@ -1,0 +1,98 @@
+<template>
+    <div class="deck-content">
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <utils-card-image :card="stronghold"></utils-card-image>
+            </div>
+            <div class="col-md-8">
+                <div>
+                    <utils-card-icon :card="stronghold"></utils-card-icon>
+                    <utils-card-link :card="stronghold"></utils-card-link>
+                </div>
+                <div>
+                    <utils-card-icon :card="role"></utils-card-icon>
+                    <utils-card-link :card="role"></utils-card-link>
+                </div>
+                <div v-for="card in provinceDeck" :key="card.id">
+                    <utils-card-icon :card="card" shape="element"></utils-card-icon>
+                    <utils-card-link :card="card"></utils-card-link>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h5>Dynasty Deck</h5>
+                <div v-for="slot in dynastyDeck" :key="slot.card.id">
+                    <span class="quantity">{{ slot.quantity }}x</span>
+                    <utils-card-icon :card="slot.card"></utils-card-icon>
+                    <utils-card-link :card="slot.card"></utils-card-link>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h5>Conflict Deck</h5>
+                <div v-for="slot in conflictDeck" :key="slot.card.id">
+                    <span class="">{{ slot.quantity }}x</span>
+                    <utils-card-icon :card="slot.card"></utils-card-icon>
+                    <utils-card-link :card="slot.card"></utils-card-link>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+  import _ from 'underscore';
+
+  import UtilsCardLink from '@/components/Utils/CardLink';
+  import UtilsCardIcon from '@/components/Utils/CardIcon';
+  import UtilsCardImage from '@/components/Utils/CardImage';
+  import storeService from '@/service/storeService';
+  import DeckInspector from '@/classes/DeckInspector';
+
+  export default {
+    name: 'utils-deck-content',
+    components: {
+      UtilsCardLink,
+      UtilsCardIcon,
+      UtilsCardImage,
+    },
+    props: ['deck', 'view'],
+    computed: {
+      slots() {
+        return Object.keys(this.deck.cards).map(cardId => ({
+          quantity: this.deck.cards[cardId],
+          card: storeService.stores.cards({ id: cardId }).first(),
+        }));
+      },
+      inspector() {
+        return new DeckInspector(this.slots);
+      },
+      stronghold() {
+        return this.inspector.findCardByType('stronghold');
+      },
+      role() {
+        return this.inspector.findCardByType('role');
+      },
+      provinceDeck() {
+        return _.sortBy(_.pluck(this.inspector.findSlotsBy('type', 'province'), 'card'), 'element');
+      },
+      dynastyDeck() {
+        return this.inspector.findSlotsBy('side', 'dynasty');
+      },
+      conflictDeck() {
+        return this.inspector.findSlotsBy('side', 'conflict');
+      },
+    },
+    watch: {
+    },
+  };
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+span.quantity {
+    display: inline-block;
+    width: 1.25em;
+    text-align: right;
+}
+</style>

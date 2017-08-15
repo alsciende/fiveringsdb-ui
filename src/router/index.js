@@ -3,6 +3,7 @@ import Router from 'vue-router';
 
 import Browser from '@/components/Cards/Browser';
 import Builder from '@/components/Builder/Builder';
+import Editor from '@/components/Builder/Editor';
 
 Vue.use(Router);
 
@@ -41,6 +42,12 @@ export default new Router({
       name: 'deckbuilder',
       component: Builder,
       props: false,
+    },
+    {
+      path: '/deckbuilder/:strainId/deck/:id/edit',
+      name: 'deck-edit',
+      component: Editor,
+      props: true,
     },
   ],
 });

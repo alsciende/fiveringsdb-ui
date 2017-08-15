@@ -24,6 +24,12 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon.icon-fw {
+  width: 18px;
+  display: inline-block;
+  text-align: center;
+}
+
 .icon-conflict-military:before {
   content: "\e900";
 }

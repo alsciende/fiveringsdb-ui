@@ -3,29 +3,38 @@
 </template>
 
 <script>
-    const typeIcons = {
-      'attachment': 'paperclip',
-      'character': 'user',
-      'event': 'bolt',
-      'holding': 'home',
-      'province': 'map-marker',
-      'role': 'asterisk',
-      'stronghold': 'university',
-    };
-  export default {
-    name: 'utils-card-icon',
-    props: ['card'],
-    computed: {
-      classObject: function () {
+const typeIcons = {
+  attachment: 'paperclip',
+  character: 'user',
+  event: 'bolt',
+  holding: 'home',
+  province: 'map-marker',
+  role: 'asterisk',
+  stronghold: 'university',
+};
+export default {
+  name: 'utils-card-icon',
+  props: ['card', 'shape'],
+  computed: {
+    classObject() {
+      if (this.shape === 'element') {
         return [
-          'fa',
-          'fa-fw',
-          'fa-'+typeIcons[this.card.type],
-          'fg-'+this.card.clan,
+          'icon',
+          'icon-fw',
+          `icon-element-${this.card.element}`,
+          `fg-${this.card.clan}`,
         ];
-      },
+      }
+
+      return [
+        'fa',
+        'fa-fw',
+        `fa-${typeIcons[this.card.type]}`,
+        `fg-${this.card.clan}`,
+      ];
     },
-  };
+  },
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

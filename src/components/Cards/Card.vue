@@ -61,8 +61,8 @@
 
 <script>
   import UtilsCardText from '@/components/Utils/CardText';
-  import UtilsCardLink from "@/components/Utils/CardLink";
-  import UtilsCardTraits from "@/components/Utils/CardTraits";
+  import UtilsCardLink from '@/components/Utils/CardLink';
+  import UtilsCardTraits from '@/components/Utils/CardTraits';
 
   export default {
     name: 'cards-card',

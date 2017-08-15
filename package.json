@@ -16,6 +16,7 @@
   "dependencies": {
     "bootstrap-vue": "^0.15.8",
     "taffydb": "^2.7.3",
+    "underscore": "^1.8.3",
     "vue": "^2.4.2",
     "vue-analytics": "^4.2.2",
     "vue-cli": "^2.8.2",

@@ -79,3 +79,7 @@ keyword:
     water: 'Water'
     weapon: 'Weapon'
     yojimbo: 'Yōjimbō'
+
+format:
+    standard: 'Standard Format'
+    single-core: 'Single-Core Format'
