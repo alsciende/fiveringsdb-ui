@@ -1,10 +1,10 @@
 <template>
     <div class="deck-content">
         <div class="row mb-4">
-            <div class="col-md-4">
+            <div class="col-sm-4 d-none d-sm-block">
                 <utils-card-image :card="stronghold"></utils-card-image>
             </div>
-            <div class="col-md-8">
+            <div class="col-sm-8">
                 <div>
                     <utils-card-icon :card="stronghold"></utils-card-icon>
                     <utils-card-link :card="stronghold"></utils-card-link>
@@ -20,7 +20,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-sm-6">
                 <h5>Dynasty Deck</h5>
                 <div v-for="slot in dynastyDeck" :key="slot.card.id">
                     <span class="quantity">{{ slot.quantity }}x</span>
@@ -28,7 +28,7 @@
                     <utils-card-link :card="slot.card"></utils-card-link>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-sm-6">
                 <h5>Conflict Deck</h5>
                 <div v-for="slot in conflictDeck" :key="slot.card.id">
                     <span class="">{{ slot.quantity }}x</span>

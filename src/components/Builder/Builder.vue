@@ -2,7 +2,7 @@
     <div>
 <!--        <builder-editor v-if="deck" :deck="deck"></builder-editor>-->
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-lg-6">
                 <h1>
                     Deckbuilder
                 </h1>
@@ -20,7 +20,7 @@
                     </tr>
                 </table>
             </div>
-            <div class="col-md-6">
+            <div class="col-lg-6">
                 <div v-if="deck">
                     <h2>{{ deck.name }}</h2>
                     <utils-deck-content :deck="deck"></utils-deck-content>

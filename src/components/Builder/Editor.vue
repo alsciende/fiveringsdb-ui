@@ -4,10 +4,10 @@
             {{ deck.name }}
         </h2>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-lg-6">
                 <utils-deck-content :deck="deck"></utils-deck-content>
             </div>
-            <div class="col-md-6">
+            <div class="col-lg-6">
             </div>
         </div>
     </div>
