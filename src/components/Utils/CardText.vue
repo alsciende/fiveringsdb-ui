@@ -3,15 +3,14 @@
 </template>
 
 <script>
-  function replaceIcons(text) {
-    return text.replace(/\[([\w-]+)\]/g, '<span class="icon icon-$1"></span>');
-  }
+  import cardFormatter from '@/service/cardFormatter';
+
   export default {
     name: 'utils-card-text',
     props: ['text'],
     computed: {
       formattedText() {
-        return replaceIcons(this.text);
+        return cardFormatter.format(this.text);
       },
     },
   };

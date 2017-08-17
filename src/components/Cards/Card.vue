@@ -3,7 +3,9 @@
         <div class="card-body" v-bind:class="'bg-clan bg-clan-'+card.clan">
             <h4 class="card-title">
                 <span v-if="card.unicity">&#9702;</span>
-                <utils-card-link :card="card"></utils-card-link>
+                <slot>
+                    {{ card.name }}
+                </slot>
             </h4>
             <h6 class="card-subtitle mb-2 text-muted">
                 <span v-if="card.clan !== 'neutral'" v-bind:class="'icon-clan-' + card.clan"></span>
@@ -61,21 +63,19 @@
 
 <script>
   import UtilsCardText from '@/components/Utils/CardText';
-  import UtilsCardLink from '@/components/Utils/CardLink';
   import UtilsCardTraits from '@/components/Utils/CardTraits';
 
   export default {
     name: 'cards-card',
+    components: {
+        UtilsCardText,
+        UtilsCardTraits,
+    },
     props: ['card'],
     computed: {
       textLines() {
         return this.card.text ? this.card.text.split('\n') : [];
       },
-    },
-    components: {
-      UtilsCardText,
-      UtilsCardLink,
-      UtilsCardTraits,
     },
   };
 </script>
