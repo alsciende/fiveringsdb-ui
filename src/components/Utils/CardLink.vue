@@ -1,5 +1,5 @@
 <template>
-    <popper trigger="hover" :visible-arrow="true" :append-to-body="true" :options="{placement: 'auto-right'}">
+    <popper trigger="hover" :visible-arrow="true" :append-to-body="true" :options="{gpuAcceleration: false, placement: 'auto-right'}">
         <div class="popper">
             <cards-card v-bind:card="card" v-bind:use-link="false"></cards-card>
         </div>
