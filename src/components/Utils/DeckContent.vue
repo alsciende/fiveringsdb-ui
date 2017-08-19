@@ -14,7 +14,7 @@
                     <utils-card-link :card="role"></utils-card-link>
                 </div>
                 <div v-for="card in provinceDeck" :key="card.id">
-                    <utils-card-icon :card="card" shape="element"></utils-card-icon>
+                    <utils-card-icon :card="card"></utils-card-icon>
                     <utils-card-link :card="card"></utils-card-link>
                 </div>
             </div>

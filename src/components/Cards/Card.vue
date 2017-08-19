@@ -110,6 +110,10 @@
         background-image: url('/static/svg/clan/lion.svg');
     }
 
+    div.card-body.bg-clan-neutral {
+        background-image: url('/static/svg/clan/neutral.svg');
+    }
+
     div.card-body.bg-clan-phoenix {
         background-image: url('/static/svg/clan/phoenix.svg');
     }

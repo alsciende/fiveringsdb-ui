@@ -51,6 +51,9 @@
 .icon-element-water:before {
   content: "\e906";
 }
+.icon-clan-neutral:before {
+  content: "\e90e";
+}
 .icon-clan-crab:before {
   content: "\e907";
 }
@@ -72,4 +75,3 @@
 .icon-clan-unicorn:before {
   content: "\e90d";
 }
-

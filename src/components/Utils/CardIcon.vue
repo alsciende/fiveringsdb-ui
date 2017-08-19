@@ -3,21 +3,14 @@
 </template>
 
 <script>
-  const typeIcons = {
-    attachment: 'paperclip',
-    character: 'user',
-    event: 'bolt',
-    holding: 'home',
-    province: 'map-marker',
-    role: 'asterisk',
-    stronghold: 'university',
-  };
+  import typeIcons from '@/service/typeIcons';
+
   export default {
     name: 'utils-card-icon',
-    props: ['card', 'shape'],
+    props: ['card'],
     computed: {
       classObject() {
-        if (this.shape === 'element') {
+        if (this.card.type === 'province') {
           return [
             'icon',
             'icon-fw',
@@ -29,7 +22,7 @@
         return [
           'fa',
           'fa-fw',
-          `fa-${typeIcons[this.card.type]}`,
+          `fa-${typeIcons.icon(this.card.type)}`,
           `fg-${this.card.clan}`,
         ];
       },
@@ -68,6 +61,6 @@
     }
 
     .fg-neutral {
-        color: rgb(168, 169, 171);
+        color: rgb(100, 100, 100);
     }
 </style>
