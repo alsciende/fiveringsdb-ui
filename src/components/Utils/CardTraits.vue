@@ -1,5 +1,6 @@
 <template>
-    <span class="card-traits"><span class="card-keyword" v-for="keyword in card.traits">{{ $t('keyword.'+keyword) }}. </span></span>
+    <span class="card-traits"><span class="card-keyword" v-for="keyword in card.traits">{{ $t('keyword.' + keyword)
+        }}. </span></span>
 </template>
 
 <script>

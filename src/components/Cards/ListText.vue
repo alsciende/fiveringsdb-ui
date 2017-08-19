@@ -16,9 +16,9 @@
     name: 'cards-list-text',
     props: ['cards'],
     components: {
-        UtilsCardLink,
-        CardsCard,
-    }
+      UtilsCardLink,
+      CardsCard,
+    },
   }
   ;
 </script>

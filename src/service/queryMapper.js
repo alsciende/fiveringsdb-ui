@@ -88,6 +88,7 @@ class QueryMapper {
       },
     };
   }
+
   getField(clause) {
     if (this.map[clause.name] === null) {
       return false;
@@ -100,6 +101,7 @@ class QueryMapper {
 
     return Object.assign({}, this.default, data);
   }
+
   formatAsHtml() {
     const lines = [];
     Object.keys(this.map).forEach((clause) => {

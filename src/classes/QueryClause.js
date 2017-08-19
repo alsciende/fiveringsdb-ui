@@ -4,12 +4,15 @@ class QueryClause {
     this.type = type;
     this.args = args;
   }
+
   hasArgs() {
     return this.args.length > 0;
   }
+
   addArg(arg) {
     this.args.push(arg);
   }
+
   getArg(i = 0) {
     if (this.args.length > i) {
       return this.args[i];

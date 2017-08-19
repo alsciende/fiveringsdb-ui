@@ -1,7 +1,9 @@
 <template>
     <nav class="navbar navbar-expand-md mb-4">
         <a class="navbar-brand" href="/">FiveringsDB</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+                aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -40,7 +42,7 @@
       login() {
         this.$store.dispatch('login').then(
           result => console.log('resolved', result),
-          reason => console.log('rejected', reason)
+          reason => console.log('rejected', reason),
         );
       },
       logout() {

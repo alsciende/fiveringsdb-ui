@@ -9,7 +9,7 @@
             </h4>
             <h6 class="card-subtitle mb-2 text-muted">
                 <span v-if="card.clan !== 'neutral'" v-bind:class="'icon-clan-' + card.clan"></span>
-                {{ $t('clan.'+card.clan) }} {{ $t('type.'+card.type) }}.
+                {{ $t('clan.' + card.clan) }} {{ $t('type.' + card.type) }}.
                 <utils-card-traits :card="card"></utils-card-traits>
             </h6>
             <p v-if="card.type === 'character'">
@@ -27,7 +27,7 @@
             </p>
             <p v-if="card.type === 'province'">
                 <span v-bind:class="'icon-element-' + card.element"></span>
-                <span>{{ $t('element.'+card.element) }}.</span>
+                <span>{{ $t('element.' + card.element) }}.</span>
                 <span>Strength: {{ card.strength }}.</span>
             </p>
             <p v-if="card.type === 'holding'">
@@ -46,7 +46,7 @@
                 <utils-card-text v-bind:text="line"></utils-card-text>
             </p>
             <p v-if="card.side" class="text-right">
-                {{ $t('side.deck', { side: $t('side.'+card.side) }) }}
+                {{ $t('side.deck', { side: $t('side.' + card.side) }) }}
                 <span v-if="card.side === 'conflict' && card.influence_cost">
                     &ndash; Influence Cost: {{ card.influence_cost }}
                 </span>
@@ -68,8 +68,8 @@
   export default {
     name: 'cards-card',
     components: {
-        UtilsCardText,
-        UtilsCardTraits,
+      UtilsCardText,
+      UtilsCardTraits,
     },
     props: ['card'],
     computed: {
@@ -82,7 +82,10 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
-    span.strike-through { text-decoration: line-through; }
+    span.strike-through {
+        text-decoration: line-through;
+    }
+
     div.card-body.bg-clan {
         background-repeat: no-repeat;
         background-size: 150px;
@@ -90,11 +93,32 @@
         background-position-x: 90%;
         min-height: 200px;
     }
-    div.card-body.bg-clan-crab { background-image: url('/static/svg/clan/crab.svg'); }
-    div.card-body.bg-clan-crane { background-image: url('/static/svg/clan/crane.svg'); }
-    div.card-body.bg-clan-dragon { background-image: url('/static/svg/clan/dragon.svg'); }
-    div.card-body.bg-clan-lion { background-image: url('/static/svg/clan/lion.svg'); }
-    div.card-body.bg-clan-phoenix { background-image: url('/static/svg/clan/phoenix.svg'); }
-    div.card-body.bg-clan-scorpion { background-image: url('/static/svg/clan/scorpion.svg'); }
-    div.card-body.bg-clan-unicorn { background-image: url('/static/svg/clan/unicorn.svg'); }
+
+    div.card-body.bg-clan-crab {
+        background-image: url('/static/svg/clan/crab.svg');
+    }
+
+    div.card-body.bg-clan-crane {
+        background-image: url('/static/svg/clan/crane.svg');
+    }
+
+    div.card-body.bg-clan-dragon {
+        background-image: url('/static/svg/clan/dragon.svg');
+    }
+
+    div.card-body.bg-clan-lion {
+        background-image: url('/static/svg/clan/lion.svg');
+    }
+
+    div.card-body.bg-clan-phoenix {
+        background-image: url('/static/svg/clan/phoenix.svg');
+    }
+
+    div.card-body.bg-clan-scorpion {
+        background-image: url('/static/svg/clan/scorpion.svg');
+    }
+
+    div.card-body.bg-clan-unicorn {
+        background-image: url('/static/svg/clan/unicorn.svg');
+    }
 </style>

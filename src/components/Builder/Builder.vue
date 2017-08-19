@@ -1,6 +1,5 @@
 <template>
     <div>
-<!--        <builder-editor v-if="deck" :deck="deck"></builder-editor>-->
         <div class="row">
             <div class="col-lg-6">
                 <h1>
@@ -15,7 +14,9 @@
                             {{ strain.head.name }}
                         </td>
                         <td class="actions">
-                            <button type="button" class="btn btn-secondary btn-sm" v-on:click.prevent="view(strain.head)">View</button>
+                            <button type="button" class="btn btn-outline-secondary btn-sm"
+                                    v-on:click.prevent="view(strain.head)">View
+                            </button>
                         </td>
                     </tr>
                 </table>
@@ -23,6 +24,8 @@
             <div class="col-lg-6">
                 <div v-if="deck">
                     <h2>{{ deck.name }}</h2>
+                    <router-link :to="{ name: 'deck-edit', params: { strainId: deck.strain, deckId: deck.id } }">Edit
+                    </router-link>
                     <utils-deck-content :deck="deck"></utils-deck-content>
                 </div>
             </div>

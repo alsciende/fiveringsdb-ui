@@ -1,51 +1,59 @@
 <template>
     <div>
         <form>
-        <div class="d-sm-flex">
-            <div class="form-group mr-2" style="flex:1">
-                <form v-on:submit.prevent="navigate">
-                    <input type="text" class="form-control" v-model="currentQuery" placeholder="Enter query">
-                </form>
+            <div class="d-sm-flex">
+                <div class="form-group mr-2" style="flex:1">
+                    <form v-on:submit.prevent="navigate">
+                        <input type="text" class="form-control" v-model="currentQuery" placeholder="Enter query">
+                    </form>
+                </div>
+                <div class="btn-group align-self-start mr-2" data-toggle="buttons">
+                    <label v-bind:class="['btn', 'btn-outline-secondary', currentView === 'table' ? 'active' : '']"
+                           v-on:click="currentView = 'table'" title="View as Table">
+                        <input type="radio" name="currentView" id="table" autocomplete="off" v-model="currentView">
+                        <span class="fa fa-list"></span>
+                    </label>
+                    <label v-bind:class="['btn', 'btn-outline-secondary', currentView === 'text' ? 'active' : '']"
+                           v-on:click="currentView = 'text'" title="View as Text">
+                        <input type="radio" name="currentView" id="text" autocomplete="off" v-model="currentView">
+                        <span class="fa fa-th"></span>
+                    </label>
+                    <label v-bind:class="['btn', 'btn-outline-secondary', currentView === 'image' ? 'active' : '']"
+                           v-on:click="currentView = 'image'" title="View as Image">
+                        <input type="radio" name="currentView" id="image" autocomplete="off" v-model="currentView">
+                        <span class="fa fa-file-image-o"></span>
+                    </label>
+                    <label v-bind:class="['btn', 'btn-outline-secondary', currentView === 'full' ? 'active' : '']"
+                           v-on:click="currentView = 'full'" title="View as Both">
+                        <input type="radio" name="currentView" id="full" autocomplete="off" v-model="currentView">
+                        <span class="fa fa-file-text"></span>
+                    </label>
+                </div>
+                <div class="btn-group align-self-start mr-2" data-toggle="buttons">
+                    <label v-bind:class="['btn', 'btn-outline-secondary', currentSort === 'name' ? 'active' : '']"
+                           v-on:click="currentSort = 'name'" title="Sort by Name">
+                        <input type="radio" name="currentSort" id="name" autocomplete="off" v-model="currentSort">
+                        <span class="fa fa-font"></span>
+                    </label>
+                    <label v-bind:class="['btn', 'btn-outline-secondary', currentSort === 'clan' ? 'active' : '']"
+                           v-on:click="currentSort = 'clan'" title="Sort by Clan">
+                        <input type="radio" name="currentSort" id="clan" autocomplete="off" v-model="currentSort">
+                        <span class="fa fa-flag"></span>
+                    </label>
+                    <label v-bind:class="['btn', 'btn-outline-secondary', currentSort === 'type' ? 'active' : '']"
+                           v-on:click="currentSort = 'type'" title="Sort by Type">
+                        <input type="radio" name="currentSort" id="type" autocomplete="off" v-model="currentSort">
+                        <span class="fa fa-cube"></span>
+                    </label>
+                </div>
+                <div class="btn-group align-self-start">
+                    <button type="button" class="btn btn-outline-secondary" data-toggle="collapse" data-target="#searchHelp">
+                        <span class="fa fa-info-circle"></span></button>
+                </div>
             </div>
-            <div class="btn-group align-self-start mr-2"  data-toggle="buttons">
-                <label v-bind:class="['btn', 'btn-secondary', currentView === 'table' ? 'active' : '']" v-on:click="currentView = 'table'" title="View as Table">
-                    <input type="radio" name="currentView" id="table" autocomplete="off" v-model="currentView">
-                    <span class="fa fa-list"></span>
-                </label>
-                <label v-bind:class="['btn', 'btn-secondary', currentView === 'text' ? 'active' : '']" v-on:click="currentView = 'text'" title="View as Text">
-                    <input type="radio" name="currentView" id="text" autocomplete="off" v-model="currentView">
-                    <span class="fa fa-th"></span>
-                </label>
-                <label v-bind:class="['btn', 'btn-secondary', currentView === 'image' ? 'active' : '']" v-on:click="currentView = 'image'" title="View as Image">
-                    <input type="radio" name="currentView" id="image" autocomplete="off" v-model="currentView">
-                    <span class="fa fa-file-image-o"></span>
-                </label>
-                <label v-bind:class="['btn', 'btn-secondary', currentView === 'full' ? 'active' : '']" v-on:click="currentView = 'full'" title="View as Both">
-                    <input type="radio" name="currentView" id="full" autocomplete="off" v-model="currentView">
-                    <span class="fa fa-file-text"></span>
-                </label>
+            <div class="collapse" id="searchHelp">
+                <div class="card card-body" v-html="searchHelp"></div>
             </div>
-            <div class="btn-group align-self-start mr-2"  data-toggle="buttons">
-                <label v-bind:class="['btn', 'btn-secondary', currentSort === 'name' ? 'active' : '']" v-on:click="currentSort = 'name'" title="Sort by Name">
-                    <input type="radio" name="currentSort" id="name" autocomplete="off" v-model="currentSort">
-                    <span class="fa fa-font"></span>
-                </label>
-                <label v-bind:class="['btn', 'btn-secondary', currentSort === 'clan' ? 'active' : '']" v-on:click="currentSort = 'clan'" title="Sort by Clan">
-                    <input type="radio" name="currentSort" id="clan" autocomplete="off" v-model="currentSort">
-                    <span class="fa fa-flag"></span>
-                </label>
-                <label v-bind:class="['btn', 'btn-secondary', currentSort === 'type' ? 'active' : '']" v-on:click="currentSort = 'type'" title="Sort by Type">
-                    <input type="radio" name="currentSort" id="type" autocomplete="off" v-model="currentSort">
-                    <span class="fa fa-cube"></span>
-                </label>
-            </div>
-            <div class="btn-group align-self-start">
-                <button type="button" class="btn btn-secondary" data-toggle="collapse" data-target="#searchHelp"><span class="fa fa-info-circle"></span></button>
-            </div>
-        </div>
-        <div class="collapse" id="searchHelp">
-            <div class="card card-body" v-html="searchHelp"></div>
-        </div>
         </form>
         <b-pagination
                 v-bind:total-rows="totalRows"
@@ -71,7 +79,7 @@
 </template>
 
 <script>
-  import storeService from '@/service/storeService';
+  import stores from '@/service/storeService';
   import queryParser from '@/service/queryParser';
   import QueryInput from '@/classes/QueryInput';
   import queryMapper from '@/service/queryMapper';
@@ -107,7 +115,7 @@
     },
     computed: {
       perPage: function () {
-        switch(this.currentView) {
+        switch (this.currentView) {
           case 'table':
           case 'text':
             return 300;
@@ -115,7 +123,7 @@
           case 'full':
             return 20;
         }
-      }
+      },
     },
     beforeRouteEnter(to, from, next) {
       const params = parseRouteQuery(to);
@@ -145,31 +153,31 @@
       },
       currentSort() {
         this.navigate();
-      }
+      },
     },
     methods: {
       filter() {
         const clauses = queryParser.parse(this.currentQuery);
         const queryInput = new QueryInput(clauses);
         const filters = queryBuilder.build(queryInput);
-        this.result = storeService.stores.cards.apply(this, filters).order(this.currentSort).get();
+        this.result = stores.cards.apply(this, filters).order(this.currentSort).get();
         this.totalRows = this.result.length;
         this.cards = this.result.slice((this.currentPage - 1)
           * this.perPage, this.currentPage * this.perPage);
-        window.scrollTo(0,0);
+        window.scrollTo(0, 0);
       },
       navigate() {
         const route = queryRouter.getRoute(this.currentQuery);
-        if(route.query === undefined) {
+        if (route.query === undefined) {
           route.query = {};
         }
-        if(this.currentPage > 1) {
+        if (this.currentPage > 1) {
           route.query.page = this.currentPage;
         }
-        if(this.currentView !== 'table') {
+        if (this.currentView !== 'table') {
           route.query.view = this.currentView;
         }
-        if(this.currentSort !== 'name') {
+        if (this.currentSort !== 'name') {
           route.query.sort = this.currentSort;
         }
         this.$router.push(route);

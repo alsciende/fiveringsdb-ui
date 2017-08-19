@@ -3,9 +3,12 @@ import queryMapper from './queryMapper';
 class QueryBuilder {
   build(queryInput) {
     this.filters = [];
-    queryInput.clauses.forEach((clause) => { this.process(clause); });
+    queryInput.clauses.forEach((clause) => {
+      this.process(clause);
+    });
     return this.filters;
   }
+
   process(clause) {
     const field = queryMapper.getField(clause);
     if (field === false) {

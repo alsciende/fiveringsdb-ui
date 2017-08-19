@@ -1,9 +1,14 @@
-import { taffy } from 'taffydb';
+import {taffy} from 'taffydb';
 
 import rest from '@/rest';
 
-const stores = {};
+const stores = {
+  cards: taffy([]),
+  cycles: taffy([]),
+  packs: taffy([]),
+};
 const resources = ['cards', 'cycles', 'packs'];
+
 
 /**
  * load a resource from the server and creates a TAFFY db with the records
@@ -14,7 +19,7 @@ const getResource = resource => rest.get(resource)
   }, () => {
     stores[resource] = taffy([]);
   })
-  ;
+;
 
 /**
  * add to each Card record 2 properties, packs and cycles,
@@ -35,12 +40,9 @@ const denormalizeCards = () => {
   });
 };
 
-const load = () => Promise
+export const load = () => Promise
   .all(resources.map(getResource))
   .then(denormalizeCards)
-  ;
+;
 
-export default {
-  load,
-  stores,
-};
+export default stores;

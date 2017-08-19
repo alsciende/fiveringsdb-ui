@@ -46,7 +46,7 @@
   import UtilsCardLink from '@/components/Utils/CardLink';
   import UtilsCardIcon from '@/components/Utils/CardIcon';
   import UtilsCardImage from '@/components/Utils/CardImage';
-  import storeService from '@/service/storeService';
+  import stores from '@/service/storeService';
   import DeckInspector from '@/classes/DeckInspector';
 
   export default {
@@ -57,11 +57,15 @@
       UtilsCardImage,
     },
     props: ['deck', 'view'],
+    data() {
+      return {};
+    },
+    methods: {},
     computed: {
       slots() {
         return Object.keys(this.deck.cards).map(cardId => ({
           quantity: this.deck.cards[cardId],
-          card: storeService.stores.cards({ id: cardId }).first(),
+          card: stores.cards({ id: cardId }).first(),
         }));
       },
       inspector() {
@@ -83,16 +87,14 @@
         return this.inspector.findSlotsBy('side', 'conflict');
       },
     },
-    watch: {
-    },
   };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-span.quantity {
-    display: inline-block;
-    width: 1.25em;
-    text-align: right;
-}
+    span.quantity {
+        display: inline-block;
+        width: 1.25em;
+        text-align: right;
+    }
 </style>

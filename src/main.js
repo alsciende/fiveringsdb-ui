@@ -14,7 +14,7 @@ import i18n from './i18n';
 import rest from './rest';
 import auth from './rest/auth';
 
-import storeService from './service/storeService';
+import { load } from './service/storeService';
 
 import AppNavbar from './components/App/Navbar';
 import AppFooter from './components/App/Footer';
@@ -31,7 +31,7 @@ Vue.use(VueAnalytics, {
 sync(store, router);
 auth(store, rest);
 
-storeService.load().then(() => {
+load().then(() => {
   /* eslint-disable no-new */
   new Vue({
     el: '#app',

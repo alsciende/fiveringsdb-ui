@@ -1,10 +1,12 @@
 <template>
-    <popper trigger="hover" :visible-arrow="true" :append-to-body="true" :options="{gpuAcceleration: false, placement: 'auto-right'}">
+    <popper trigger="hover" :visible-arrow="true" :append-to-body="true"
+            :options="{gpuAcceleration: false, placement: 'auto-right'}">
         <div class="popper">
             <cards-card v-bind:card="card" v-bind:use-link="false"></cards-card>
         </div>
 
-        <router-link slot="reference" :to="{ name: 'cards-by-card-id', params: { id: card.id } }">{{ card.name }}</router-link>
+        <router-link slot="reference" :to="{ name: 'cards-by-card-id', params: { id: card.id } }">{{ card.name }}
+        </router-link>
     </popper>
 </template>
 
@@ -15,12 +17,12 @@
   export default {
     name: 'utils-card-link',
     components: {
-        Popper,
-        CardsCard,
+      Popper,
+      CardsCard,
     },
     props: ['card'],
     created() {
-    }
+    },
   };
 </script>
 

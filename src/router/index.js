@@ -44,7 +44,7 @@ export default new Router({
       props: false,
     },
     {
-      path: '/deckbuilder/:strainId/deck/:id/edit',
+      path: '/deckbuilder/:strainId/deck/:deckId/edit',
       name: 'deck-edit',
       component: Editor,
       props: true,

@@ -6,6 +6,7 @@ import config from '@/config';
 Vue.use(VueResource);
 
 const observers = [];
+
 function notifyObservers(reason) {
   return new Promise((resolve, reject) => {
     observers.forEach(observer => observer(reason));
@@ -24,7 +25,7 @@ export default {
       .then(response => response.body, notifyObservers)
       ;
   },
-  get(resourcePath) {
+  get (resourcePath) {
     return Vue
       .http
       .get(config.getApiURL(resourcePath))
