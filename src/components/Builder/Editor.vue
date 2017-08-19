@@ -14,6 +14,15 @@
                     {{ deck.name }}
                 </h2>
                 <utils-deck-content :deck="deck"></utils-deck-content>
+                <div class="btn-group my-4" role="group" aria-label="Deck Controls">
+                    <a
+                            href="#"
+                            :class="{'btn btn-success': true, 'disabled': saving}"
+                            :aria-disabled="saving"
+                            @click.prevent="saveDeck"
+                    >Save
+                    </a>
+                </div>
             </div>
             <div class="col-md-6">
                 <builder-collection
@@ -29,7 +38,7 @@
   import UtilsDeckContent from '@/components/Utils/DeckContent';
   import rest from '@/rest';
   import BuilderCollection from './Collection';
-  import BuilderBuilder from './Builder';
+  import BuilderBuilder from './List';
 
   export default {
     name: 'builder-editor',
@@ -41,6 +50,7 @@
     data() {
       return {
         loading: false,
+        saving: false,
         deck: null,
         error: null,
       };
@@ -71,6 +81,31 @@
         } else {
           this.$delete(this.deck.cards, msg.cardId);
         }
+      },
+      saveDeck() {
+        this.saving = true;
+        this.$notify({
+          text: 'Saving...',
+        });
+        rest
+          .post(`strains/${this.$route.params.strainId}/decks`, this.deck)
+          .then((result) => {
+            this.$notify({
+              title: 'Success',
+              text: 'Saved successfully!',
+              type: 'success',
+            });
+          })
+          .catch((reason) => {
+            this.$notify({
+              title: 'Error',
+              text: reason,
+              type: 'error',
+            });
+          })
+          .then(() => {
+            this.saving = false;
+          });
       },
     },
     created() {

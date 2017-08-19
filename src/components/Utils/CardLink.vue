@@ -1,4 +1,5 @@
 <template>
+<!--
     <popper trigger="hover" :visible-arrow="true" :append-to-body="true"
             :options="{gpuAcceleration: false, placement: 'auto-right'}">
         <div class="popper">
@@ -8,6 +9,9 @@
         <router-link slot="reference" :to="{ name: 'cards-by-card-id', params: { id: card.id } }">{{ card.name }}
         </router-link>
     </popper>
+-->
+    <router-link slot="reference" :to="{ name: 'cards-by-card-id', params: { id: card.id } }">{{ card.name }}
+    </router-link>
 </template>
 
 <script>

@@ -8,19 +8,23 @@
                     @change="change"
             ></builder-quantity-selector>
         </td>
-        <td>
-            {{ cardslot.card.name }}
+        <td class="card-name">
+            <utils-card-link
+                    :card="cardslot.card"
+            ></utils-card-link>
         </td>
     </tr>
 </template>
 
 <script>
+  import UtilsCardLink from '@/components/Utils/CardLink';
   import BuilderQuantitySelector from './QuantitySelector';
 
   export default {
     name: 'builder-collection-row',
     components: {
       BuilderQuantitySelector,
+      UtilsCardLink,
     },
     props: {
       cardslot: {
@@ -40,5 +44,8 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
+<style scoped>
+    .card-name {
+        padding: .55rem .25rem;
+    }
 </style>

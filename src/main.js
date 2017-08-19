@@ -4,6 +4,8 @@ import { sync } from 'vuex-router-sync';
 import VueAnalytics from 'vue-analytics';
 import BootstrapVue from 'bootstrap-vue';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
+import Notifications from 'vue-notification';
+import 'vue-multiselect/dist/vue-multiselect.min.css';
 
 import './style.css';
 import './font.css';
@@ -21,14 +23,14 @@ import AppFooter from './components/App/Footer';
 
 Vue.config.productionTip = false;
 
-Vue.use(BootstrapVue);
 Vue.use(VueRouter);
+sync(store, router);
 Vue.use(VueAnalytics, {
   id: process.env.GA_TRACKING_ID,
   router,
 });
-
-sync(store, router);
+Vue.use(BootstrapVue);
+Vue.use(Notifications);
 auth(store, rest);
 
 load().then(() => {

@@ -14,6 +14,16 @@ function notifyObservers(reason) {
   });
 }
 
+function validateStatus(response) {
+  return new Promise((resolve, reject) => {
+    if (response.body.success) {
+      resolve(response.body);
+    } else {
+      reject(response.body.description);
+    }
+  });
+}
+
 export default {
   observe(cb) {
     observers.push(cb);
@@ -22,14 +32,16 @@ export default {
     return Vue
       .http
       .post(config.getApiURL(resourcePath), resource)
-      .then(response => response.body, notifyObservers)
+      .then(validateStatus)
+      .catch(notifyObservers)
       ;
   },
-  get (resourcePath) {
+  get(resourcePath) {
     return Vue
       .http
       .get(config.getApiURL(resourcePath))
-      .then(response => response.body, notifyObservers)
+      .then(validateStatus)
+      .catch(notifyObservers)
       ;
   },
 };

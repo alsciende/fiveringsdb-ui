@@ -40,7 +40,7 @@
   import BuilderEditor from './Editor';
 
   export default {
-    name: 'builder-builder',
+    name: 'builder-list',
     components: {
       BuilderEditor,
       UtilsDeckContent,
