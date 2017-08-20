@@ -6,6 +6,7 @@ import BootstrapVue from 'bootstrap-vue';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 import Notifications from 'vue-notification';
 import 'vue-multiselect/dist/vue-multiselect.min.css';
+import moment from 'moment';
 
 import './style.css';
 import './font.css';
@@ -31,6 +32,8 @@ Vue.use(VueAnalytics, {
 });
 Vue.use(BootstrapVue);
 Vue.use(Notifications);
+Vue.filter('formatDate', value => value && moment(String(value)).format('DD MMM YYYY'));
+
 auth(store, rest);
 
 load().then(() => {

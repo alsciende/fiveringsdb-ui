@@ -62,6 +62,16 @@
       fetchData() {
         this.error = null;
         this.deck = null;
+
+        if(this.$route.name === 'deck-new') {
+          this.deck = {
+            name: 'The deck with no name',
+            cards: {},
+            format: 'single-core'
+          };
+          return;
+        }
+
         this.loading = true;
         rest
           .get(`strains/${this.$route.params.strainId}/decks/${this.$route.params.deckId}`)

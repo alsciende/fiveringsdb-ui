@@ -42,11 +42,11 @@
       const types = {};
       const clanOptions = this.getClanOptions();
       clanOptions.forEach((clan) => {
-        clans[clan.id] = clan.id === this.clan;
+        clans[clan.id] = this.clan ? clan.id === this.clan : true;
       });
       const typeOptions = this.getTypeOptions();
       typeOptions.forEach((type) => {
-        types[type.id] = type.id !== 'stronghold' && type.id !== 'role';
+        types[type.id] = this.clan ? type.id !== 'stronghold' && type.id !== 'role' : type.id === 'stronghold';
       });
 
       return {
@@ -104,6 +104,9 @@
         ;
         return _.sortBy(types, 'name');
       },
+    },
+    mounted() {
+      this.updateFilter();
     },
   };
 </script>

@@ -1,8 +1,10 @@
 <template>
     <div class="deck-content">
         <div v-if="problem" class="row">
-            <div class="col-md-12 alert alert-warning">
-                {{ $t('problem.'+problem) }}
+            <div class="col-md-12">
+                <div class="alert alert-warning">
+                    {{ $t('problem.'+problem) }}
+                </div>
             </div>
         </div>
         <div class="row mb-4">

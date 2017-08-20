@@ -43,9 +43,6 @@
     data() {
       const filter = {};
       const initialClan = this.findDeckClan(this.deck);
-      if (initialClan !== null) {
-        filter.clan = [initialClan];
-      }
       return {
         filter,
         initialClan,
@@ -73,7 +70,7 @@
           stronghold = stores.cards({ id: cardId, type: 'stronghold' }).first();
           return stronghold !== false;
         });
-        return stronghold === undefined ? null : stronghold.clan;
+        return stronghold ? stronghold.clan : null;
       },
       changeQuantity(msg) {
         this.$emit('change', msg);

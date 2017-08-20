@@ -49,5 +49,11 @@ export default new Router({
       component: BuilderEditor,
       props: true,
     },
+    {
+      path: '/deckbuilder/:strainId/new',
+      name: 'deck-new',
+      component: BuilderEditor,
+      props: true,
+    },
   ],
 });
