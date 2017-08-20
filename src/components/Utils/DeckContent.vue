@@ -1,5 +1,10 @@
 <template>
     <div class="deck-content">
+        <div v-if="problem" class="row">
+            <div class="col-md-12 alert alert-warning">
+                {{ $t('problem.'+problem) }}
+            </div>
+        </div>
         <div class="row mb-4">
             <div v-if="stronghold" class="col-sm-4 d-none d-sm-block">
                 <utils-card-image :card="stronghold"></utils-card-image>
@@ -17,11 +22,6 @@
                     <utils-card-icon :card="card"></utils-card-icon>
                     <utils-card-link :card="card"></utils-card-link>
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                {{ $t('problem.'+problem) }}
             </div>
         </div>
         <div class="row">

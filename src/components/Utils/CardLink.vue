@@ -10,7 +10,7 @@
         </router-link>
     </popper>
 -->
-    <router-link slot="reference" :to="{ name: 'cards-by-card-id', params: { id: card.id } }">{{ card.name }}
+    <router-link target="_blank" :to="{ name: 'cards-by-card-id', params: { id: card.id } }">{{ card.name }}
     </router-link>
 </template>
 
