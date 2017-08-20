@@ -1,15 +1,15 @@
 <template>
     <div class="deck-content">
         <div class="row mb-4">
-            <div class="col-sm-4 d-none d-sm-block">
+            <div v-if="stronghold" class="col-sm-4 d-none d-sm-block">
                 <utils-card-image :card="stronghold"></utils-card-image>
             </div>
             <div class="col-sm-8">
-                <div>
+                <div v-if="stronghold">
                     <utils-card-icon :card="stronghold"></utils-card-icon>
                     <utils-card-link :card="stronghold"></utils-card-link>
                 </div>
-                <div>
+                <div v-if="role">
                     <utils-card-icon :card="role"></utils-card-icon>
                     <utils-card-link :card="role"></utils-card-link>
                 </div>
@@ -17,6 +17,11 @@
                     <utils-card-icon :card="card"></utils-card-icon>
                     <utils-card-link :card="card"></utils-card-link>
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                {{ $t('problem.'+problem) }}
             </div>
         </div>
         <div class="row">
@@ -69,7 +74,7 @@
         }));
       },
       inspector() {
-        return new DeckInspector(this.slots);
+        return new DeckInspector(this.slots, this.deck.format);
       },
       stronghold() {
         return this.inspector.findCardByType('stronghold');
@@ -85,6 +90,15 @@
       },
       conflictDeck() {
         return this.inspector.findSlotsBy('side', 'conflict');
+      },
+      problem() {
+        return this.inspector.getProblem();
+      },
+    },
+    watch: {
+      deck() {
+        console.log('deck changed');
+
       },
     },
   };

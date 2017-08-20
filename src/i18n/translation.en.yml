@@ -83,3 +83,23 @@ keyword:
 format:
     standard: 'Standard Format'
     single-core: 'Single-Core Format'
+
+problem:
+    0: This deck is valid
+    1: There are too many copies of one or more cards
+    2: This deck does not have a Stronghold
+    3: This deck has more than one Strongohld
+    4: This deck has more than one Role card
+    5: The Dynasty deck has too few cards
+    6: The Dynasty deck has too many cards
+    7: The Dynasty deck has cards from too many clans
+    8: The Conflict deck has too few cards
+    9: The Conflict deck has too many cards
+    10: The Conflict deck uses more Influence than what is available
+    11: The Conflict deck has cards from too many clans
+    12: The Conflict deck has too many Character cards
+    13: The Province deck has too few cards
+    14: The Province deck has too many cards
+    15: The Province deck has too many cards with the same Element
+    16: The Province deck has cards from too many clans
+    17: The Conflict deck uses an off-clan card with no influence
