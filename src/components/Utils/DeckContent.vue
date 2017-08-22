@@ -29,18 +29,24 @@
         <div class="row">
             <div class="col-sm-6">
                 <h5>Dynasty Deck</h5>
-                <div v-for="slot in dynastyDeck" :key="slot.card.id">
-                    <span class="quantity">{{ slot.quantity }}x</span>
-                    <utils-card-icon :card="slot.card"></utils-card-icon>
-                    <utils-card-link :card="slot.card"></utils-card-link>
+                <div v-for="type in dynastyTypes" :key="type" class="mb-2">
+                    <h6><span :class="['fa fa-fw fa-'+typeIcon(type)]"></span> {{ $t('type.'+type) }}</h6>
+                    <div v-for="slot in filterByType(dynastyDeck, type)" :key="slot.card.id">
+                        <span class="quantity">{{ slot.quantity }}x</span>
+                        <utils-card-icon :card="slot.card"></utils-card-icon>
+                        <utils-card-link :card="slot.card"></utils-card-link>
+                    </div>
                 </div>
             </div>
             <div class="col-sm-6">
                 <h5>Conflict Deck</h5>
-                <div v-for="slot in conflictDeck" :key="slot.card.id">
-                    <span class="">{{ slot.quantity }}x</span>
-                    <utils-card-icon :card="slot.card"></utils-card-icon>
-                    <utils-card-link :card="slot.card"></utils-card-link>
+                <div v-for="type in conflictTypes" :key="type" class="mb-2">
+                    <h6><span :class="['fa fa-fw fa-'+typeIcon(type)]"></span> {{ $t('type.'+type) }}</h6>
+                    <div v-for="slot in filterByType(conflictDeck, type)" :key="slot.card.id">
+                        <span class="quantity">{{ slot.quantity }}x</span>
+                        <utils-card-icon :card="slot.card"></utils-card-icon>
+                        <utils-card-link :card="slot.card"></utils-card-link>
+                    </div>
                 </div>
             </div>
         </div>
@@ -55,6 +61,7 @@
   import UtilsCardImage from '@/components/Utils/CardImage';
   import stores from '@/service/storeService';
   import DeckInspector from '@/classes/DeckInspector';
+  import typeIcons from '@/service/typeIcons';
 
   export default {
     name: 'utils-deck-content',
@@ -65,9 +72,19 @@
     },
     props: ['deck', 'view'],
     data() {
-      return {};
+      return {
+        dynastyTypes: ['character', 'holding'],
+        conflictTypes: ['event', 'attachment', 'character'],
+      };
     },
-    methods: {},
+    methods: {
+      filterByType(slots, type) {
+        return DeckInspector.findSlotsBy(slots, 'type', type);
+      },
+      typeIcon(type) {
+        return typeIcons.icon(type);
+      },
+    },
     computed: {
       slots() {
         return Object.keys(this.deck.cards).map(cardId => ({

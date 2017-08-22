@@ -9,6 +9,7 @@
             ></builder-quantity-selector>
         </td>
         <td class="card-name">
+            <utils-card-icon :card="cardslot.card"></utils-card-icon>
             <utils-card-link
                     :card="cardslot.card"
             ></utils-card-link>
@@ -18,6 +19,7 @@
 
 <script>
   import UtilsCardLink from '@/components/Utils/CardLink';
+  import UtilsCardIcon from '@/components/Utils/CardIcon';
   import BuilderQuantitySelector from './QuantitySelector';
 
   export default {
@@ -25,6 +27,7 @@
     components: {
       BuilderQuantitySelector,
       UtilsCardLink,
+      UtilsCardIcon,
     },
     props: {
       cardslot: {

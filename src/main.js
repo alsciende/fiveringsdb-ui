@@ -7,7 +7,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css';
 import Notifications from 'vue-notification';
 import 'vue-multiselect/dist/vue-multiselect.min.css';
 import moment from 'moment';
-import {default as Vuedals, Component as Vuedal, Bus as VuedalsBus} from 'vuedals';
+import { default as Vuedals, Component as Vuedal } from 'vuedals';
 
 import './style.css';
 import './font.css';
@@ -48,16 +48,16 @@ load().then(() => {
     components: {
       AppNavbar,
       AppFooter,
-        Vuedal,
+      Vuedal,
     },
-      methods: {
-          closeModal() {
-            try {
-                this.$vuedals.close();
-            } catch(e) {
+    methods: {
+      closeModal() {
+        try {
+          this.$vuedals.close();
+        } catch (e) {
 
-            }
-          },
-      }
+        }
+      },
+    },
   });
 });

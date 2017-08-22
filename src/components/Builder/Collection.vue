@@ -50,7 +50,15 @@
     },
     computed: {
       cards() {
-        return stores.cards(this.filter);
+        const clan = this.findDeckClan(this.deck);
+        if (clan === null) {
+          return stores.cards(this.filter);
+        }
+
+        const mainClanFilter = { clan: ['neutral', clan] };
+        const conflictFilter = { side: 'conflict', influence_cost: { isUndefined: false } };
+
+        return stores.cards([mainClanFilter, conflictFilter]).filter(this.filter);
       },
       cardslots() {
         return this.cards.map((record) => {

@@ -1,6 +1,6 @@
 <template>
     <div class="row">
-        <div v-if="image" class="col-4">
+        <div v-if="image" class="col-4 d-sm-none">
             <utils-card-image :card="card"></utils-card-image>
         </div>
         <div :class="[ image ? 'col-8' : 'col-12' ]">
