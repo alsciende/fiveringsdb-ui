@@ -7,6 +7,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css';
 import Notifications from 'vue-notification';
 import 'vue-multiselect/dist/vue-multiselect.min.css';
 import moment from 'moment';
+import {default as Vuedals, Component as Vuedal, Bus as VuedalsBus} from 'vuedals';
 
 import './style.css';
 import './font.css';
@@ -33,6 +34,7 @@ Vue.use(VueAnalytics, {
 Vue.use(BootstrapVue);
 Vue.use(Notifications);
 Vue.filter('formatDate', value => value && moment(String(value)).format('DD MMM YYYY'));
+Vue.use(Vuedals);
 
 auth(store, rest);
 
@@ -46,6 +48,16 @@ load().then(() => {
     components: {
       AppNavbar,
       AppFooter,
+        Vuedal,
     },
+      methods: {
+          closeModal() {
+            try {
+                this.$vuedals.close();
+            } catch(e) {
+
+            }
+          },
+      }
   });
 });
