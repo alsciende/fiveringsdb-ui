@@ -1,6 +1,6 @@
 <template>
     <div class="card">
-        <div class="card-body" v-bind:class="'bg-clan bg-clan-'+card.clan">
+        <div class="card-body" v-bind:class="'bg-clan clan-'+card.clan">
             <h4 class="card-title">
                 <span v-if="card.unicity">&#9702;</span>
                 <slot>
@@ -42,9 +42,11 @@
             <p v-if="card.type === 'event'">
                 <span>Cost: {{ card.cost }}.</span>
             </p>
-            <p v-for="(line, index) in textLines" :key="index" class="card-text">
-                <utils-card-text v-bind:text="line"></utils-card-text>
-            </p>
+            <div class="card-text">
+                <p v-for="(line, index) in textLines" :key="index" class="card-text">
+                    <utils-card-text v-bind:text="line"></utils-card-text>
+                </p>
+            </div>
             <p v-if="card.side" class="text-right">
                 {{ $t('side.deck', { side: $t('side.' + card.side) }) }}
                 <span v-if="card.side === 'conflict' && card.influence_cost">
@@ -94,35 +96,74 @@
         min-height: 200px;
     }
 
-    div.card-body.bg-clan-crab {
+    div.card-body.bg-clan.clan-crab {
         background-image: url('/static/svg/clan/crab.svg');
     }
 
-    div.card-body.bg-clan-crane {
+    div.card-body.bg-clan.clan-crane {
         background-image: url('/static/svg/clan/crane.svg');
     }
 
-    div.card-body.bg-clan-dragon {
+    div.card-body.bg-clan.clan-dragon {
         background-image: url('/static/svg/clan/dragon.svg');
     }
 
-    div.card-body.bg-clan-lion {
+    div.card-body.bg-clan.clan-lion {
         background-image: url('/static/svg/clan/lion.svg');
     }
 
-    div.card-body.bg-clan-neutral {
+    div.card-body.bg-clan.clan-neutral {
         background-image: url('/static/svg/clan/neutral.svg');
     }
 
-    div.card-body.bg-clan-phoenix {
+    div.card-body.bg-clan.clan-phoenix {
         background-image: url('/static/svg/clan/phoenix.svg');
     }
 
-    div.card-body.bg-clan-scorpion {
+    div.card-body.bg-clan.clan-scorpion {
         background-image: url('/static/svg/clan/scorpion.svg');
     }
 
-    div.card-body.bg-clan-unicorn {
+    div.card-body.bg-clan.clan-unicorn {
         background-image: url('/static/svg/clan/unicorn.svg');
+    }
+
+    div.card-text {
+        border-width: 0;
+        border-left-width: 2px;
+        border-style: solid;
+        padding-left: 5px;
+    }
+
+    .clan-crab .card-text {
+        border-color: rgb(0, 28, 148);
+    }
+
+    .clan-crane .card-text {
+        border-color: rgb(0, 137, 222);
+    }
+
+    .clan-dragon .card-text {
+        border-color: rgb(0, 164, 114);
+    }
+
+    .clan-lion .card-text {
+        border-color: rgb(203, 157, 0);
+    }
+
+    .clan-phoenix .card-text {
+        border-color: rgb(193, 100, 0);
+    }
+
+    .clan-scorpion .card-text {
+        border-color: rgb(166, 22, 0);
+    }
+
+    .clan-unicorn .card-text {
+        border-color: rgb(120, 0, 152);
+    }
+
+    .clan-neutral .card-text {
+        border-color: rgb(160, 160, 160);
     }
 </style>
