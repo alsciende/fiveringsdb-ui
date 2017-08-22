@@ -11,15 +11,18 @@
       CardsCard,
     },
     props: ['card'],
-      methods: {
-          showModal(card) {
-                this.$vuedals.open({
-                   name: 'card-popup',
-                   component: CardsCard,
-                    props: { card: this.card }
-                });
-          }
-      }
+    methods: {
+      showModal(card) {
+        this.$vuedals.open({
+          name: 'card-popup',
+          component: CardsCard,
+          props: {
+            card: this.card,
+            image: true,
+          },
+        });
+      },
+    },
   };
 </script>
 
