@@ -6,23 +6,21 @@
                 </cards-card>
             </div>
             <div class="col-md-5 mb-2">
-                <img v-bind:src="getCardImageURL(card)" class="card-image img-fluid">
+                <utils-card-image :card="card" class="card-image img-fluid"></utils-card-image>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-  import config from '@/config/index';
   import CardsCard from '@/components/Cards/Card';
+  import UtilsCardImage from '@/components/Utils/CardImage';
 
   export default {
     name: 'cards-list-full',
     props: ['cards'],
-    methods: {
-      getCardImageURL: config.getCardImageURL,
-    },
     components: {
+      UtilsCardImage,
       CardsCard,
     },
   }

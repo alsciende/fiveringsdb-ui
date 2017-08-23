@@ -10,7 +10,4 @@ export default {
     parser.href = this.getApiURL();
     return parser.origin;
   },
-  getCardImageURL(card) {
-    return `${process.env.IMG_URL + card.id}.png`;
-  },
 };

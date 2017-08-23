@@ -1,4 +1,4 @@
-import {taffy} from 'taffydb';
+import { taffy } from 'taffydb';
 
 import rest from '@/rest';
 
@@ -9,15 +9,14 @@ const stores = {
 };
 const resources = ['cards', 'cycles', 'packs'];
 
-
 /**
  * load a resource from the server and creates a TAFFY db with the records
  */
 const getResource = resource => rest.get(resource)
   .then((response) => {
     stores[resource] = taffy(response.records);
-  }, () => {
-    stores[resource] = taffy([]);
+  }, (reason) => {
+    console.log(reason);
   })
 ;
 

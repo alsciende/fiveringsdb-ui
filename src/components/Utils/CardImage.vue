@@ -3,13 +3,13 @@
 </template>
 
 <script>
-  import config from '@/config';
-
   export default {
     name: 'utils-card-image',
     props: ['card', 'classes'],
     methods: {
-      getCardImageURL: config.getCardImageURL,
+      getCardImageURL(card) {
+        return `${process.env.IMG_URL}${Object.keys(card.packs)[0]}/${card.id}.png`;
+      },
     },
     data() {
       return {

@@ -1,5 +1,5 @@
 <template>
-    <a href="#" @click.prevent="showModal(card)">{{ card.name }}</a>
+    <a href="#" @click.prevent="showModal">{{ card.name }}</a>
 </template>
 
 <script>
@@ -12,7 +12,7 @@
     },
     props: ['card'],
     methods: {
-      showModal(card) {
+      showModal() {
         this.$vuedals.open({
           name: 'card-popup',
           component: CardsCard,
