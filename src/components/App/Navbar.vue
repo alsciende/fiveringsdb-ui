@@ -1,6 +1,6 @@
 <template>
     <nav class="navbar navbar-expand-md mb-4">
-        <a class="navbar-brand" href="/"><img src="/static/favicon-32x32.png" style="height:16px; vertical-align: baseline"> FiveringsDB</a>
+        <a class="navbar-brand" href="/"><img src="/static/favicon-32x32.png" style="height:16px; vertical-align: baseline"> FiveRingsDB</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
                 aria-label="Toggle navigation">
