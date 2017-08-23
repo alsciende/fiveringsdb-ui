@@ -25,8 +25,17 @@
                 </div>
             </div>
             <div class="col-md-6">
+                <div class="deck-settings row">
+                    <div class="col-6">
+                        <b-form-select v-model="deck.format" :options="formatOptions" class="mb-3"></b-form-select>
+                    </div>
+                    <div class="col-6">
+                        <b-form-select v-model="coreCount" :options="coreCountOptions" class="mb-3"></b-form-select>
+                    </div>
+                </div>
                 <builder-collection
                         :deck="deck"
+                        :coreCount="coreCount"
                         @change="changeQuantity"
                 ></builder-collection>
             </div>
@@ -48,7 +57,12 @@
       UtilsDeckContent,
     },
     data() {
+      const formats = ['single-core', 'standard'];
+      const coreCounts = [1, 2, 3];
       return {
+        coreCount: coreCounts[0],
+        formatOptions: formats.map(format => ({ value: format, text: this.$t(`format.${format}`) })),
+        coreCountOptions: coreCounts.map(coreCount => ({ value: coreCount, text: `${coreCount} Core${coreCount > 1 ? 's' : ''}` })),
         loading: false,
         saving: false,
         deck: null,

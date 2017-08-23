@@ -33,9 +33,13 @@
     },
     data() {
       return {
-        range: _.range(this.min, this.max + 1),
         value: this.current,
       };
+    },
+    computed: {
+      range() {
+        return _.range(this.min, this.max + 1);
+      },
     },
     methods: {
       select(value) {

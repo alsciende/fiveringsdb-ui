@@ -2,16 +2,16 @@
     <tr class="collection-row">
         <td>
             <builder-quantity-selector
-                    :min="cardslot.min"
-                    :max="cardslot.max"
-                    :current="cardslot.current"
+                    :min="min"
+                    :max="max"
+                    :current="current"
                     @change="change"
             ></builder-quantity-selector>
         </td>
         <td class="card-name">
-            <utils-card-icon :card="cardslot.card"></utils-card-icon>
+            <utils-card-icon :card="card"></utils-card-icon>
             <utils-card-link
-                    :card="cardslot.card"
+                    :card="card"
             ></utils-card-link>
         </td>
     </tr>
@@ -29,16 +29,11 @@
       UtilsCardLink,
       UtilsCardIcon,
     },
-    props: {
-      cardslot: {
-        type: Object,
-        required: true,
-      },
-    },
+    props: ['card', 'min', 'max', 'current'],
     methods: {
       change(quantity) {
         this.$emit('change', {
-          cardId: this.cardslot.card.id,
+          cardId: this.card.id,
           quantity,
         });
       },

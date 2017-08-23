@@ -17,7 +17,10 @@
             <builder-collection-row
                     v-for="cardslot in cardslots"
                     :key="cardslot.card.id"
-                    :cardslot="cardslot"
+                    :card="cardslot.card"
+                    :min="cardslot.min"
+                    :max="cardslot.max"
+                    :current="cardslot.current"
                     @change="changeQuantity"
             >
             </builder-collection-row>
@@ -39,7 +42,7 @@
       BuilderCollectionRow,
       BuilderCollectionFilter,
     },
-    props: ['deck'],
+    props: ['deck', 'coreCount'],
     data() {
       const filter = {};
       const initialClan = this.findDeckClan(this.deck);
@@ -62,10 +65,15 @@
       },
       cardslots() {
         return this.cards.map((record) => {
+          let max = record.deck_limit;
+          const coreSlot = record.pack_cards.find(slot => slot.pack.id === 'core');
+          if(coreSlot) {
+            max = Math.min(max, this.coreCount * coreSlot.quantity);
+          }
           return {
             card: record,
             min: 0,
-            max: record.deck_limit,
+            max,
             current: this.deck.cards[record.id] || 0,
           };
         });
