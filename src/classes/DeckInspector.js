@@ -83,7 +83,7 @@ class DeckInspector {
       let seekerException = false;
 
       const role = this.findCardByType('role');
-      if (role !== null && role.traits.includes('seeker')) {
+      if (role && role.traits.includes('seeker')) {
         if (_.difference(provinceElements, role.traits).length === 3) {
           seekerException = true;
         }
@@ -95,7 +95,7 @@ class DeckInspector {
     }
 
     const stronghold = this.findCardByType('stronghold');
-    if (stronghold !== null) {
+    if (stronghold) {
       const clan = stronghold.clan;
 
       const offclans = DeckInspector.findSlotsOffClan(provinceDeck, clan);
@@ -122,7 +122,7 @@ class DeckInspector {
     }
 
     const stronghold = this.findCardByType('stronghold');
-    if (stronghold !== null) {
+    if (stronghold) {
       const clan = stronghold.clan;
 
       const offclans = DeckInspector.findSlotsOffClan(dynastyDeck, clan);
@@ -154,11 +154,11 @@ class DeckInspector {
     }
 
     const stronghold = this.findCardByType('stronghold');
-    if (stronghold !== null) {
+    if (stronghold) {
       const clan = stronghold.clan;
       let influencePool = stronghold.influence_pool;
       const role = this.findCardByType('role');
-      if (role !== null && role.traits.includes('keeper')) {
+      if (role && role.traits.includes('keeper')) {
         influencePool += 3;
       }
 
