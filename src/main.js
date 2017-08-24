@@ -5,7 +5,6 @@ import VueAnalytics from 'vue-analytics';
 import BootstrapVue from 'bootstrap-vue';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 import Notifications from 'vue-notification';
-import 'vue-multiselect/dist/vue-multiselect.min.css';
 import moment from 'moment';
 import { default as Vuedals, Component as Vuedal } from 'vuedals';
 
