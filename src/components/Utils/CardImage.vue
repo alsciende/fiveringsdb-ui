@@ -8,7 +8,7 @@
     props: ['card', 'classes'],
     methods: {
       getCardImageURL(card) {
-        return `${process.env.IMG_URL}${Object.keys(card.packs)[0]}/${card.id}.png`;
+        return `${process.env.IMG_URL}${Object.keys(card.packs)[0]}/${card.id}.jpg`;
       },
     },
     data() {
