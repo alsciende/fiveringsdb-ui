@@ -116,7 +116,7 @@ class DeckInspector {
       return 5;
     }
 
-    const maxCount = this.format === 'single-core' ? 30 : 40;
+    const maxCount = this.format === 'single-core' ? 30 : 45;
     if (dynastyCount > maxCount) {
       return 6;
     }
@@ -143,7 +143,7 @@ class DeckInspector {
       return 8;
     }
 
-    const maxCount = this.format === 'single-core' ? 30 : 40;
+    const maxCount = this.format === 'single-core' ? 30 : 45;
     if (conflictCount > maxCount) {
       return 9;
     }
