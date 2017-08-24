@@ -20,6 +20,10 @@ const getResource = resource => rest.get(resource)
   })
 ;
 
+const cardNullableFields = [
+  'role_restriction',
+];
+
 /**
  * add to each Card record 2 properties, packs and cycles,
  * with the ids of each pack and cycle containing the card
@@ -35,6 +39,11 @@ const denormalizeCards = () => {
         cycles[stores.packs({ id: packId }).first().cycle.id] = 1;
         return cycles;
       }, {});
+    cardNullableFields.forEach((field) => {
+      if (record[field] === undefined) {
+        record[field] = null;
+      }
+    });
     stores.cards.merge(record, 'id', false);
   });
 };

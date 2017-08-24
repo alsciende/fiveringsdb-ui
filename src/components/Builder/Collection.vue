@@ -61,14 +61,22 @@
 
         const mainClanFilter = { clan: ['neutral', this.clan] };
         const conflictFilter = { side: 'conflict', influence_cost: { isUndefined: false } };
+        const roleRestrictionFilter = [{ role_restriction: { isNull: true } }];
 
-        return stores.cards([mainClanFilter, conflictFilter]).filter(this.filter);
+        const role = this.findDeckRole(this.deck);
+        if (role && role.traits) {
+          role.traits.forEach((trait) => {
+            roleRestrictionFilter.push({ role_restriction: trait });
+          });
+        }
+
+        return stores.cards([mainClanFilter, conflictFilter]).filter(roleRestrictionFilter).filter(this.filter);
       },
       cardslots() {
         return this.cards.map((record) => {
           let max = record.deck_limit;
           const coreSlot = record.pack_cards.find(slot => slot.pack.id === 'core');
-          if(coreSlot) {
+          if (coreSlot) {
             max = Math.min(max, this.coreCount * coreSlot.quantity);
           }
           return {
@@ -88,6 +96,14 @@
           return stronghold !== false;
         });
         return stronghold ? stronghold.clan : null;
+      },
+      findDeckRole(deck) {
+        let role = null;
+        _.find(Object.keys(deck.cards), (cardId) => {
+          role = stores.cards({ id: cardId, type: 'role' }).first();
+          return role !== false;
+        });
+        return role;
       },
       changeQuantity(msg) {
         this.$emit('change', msg);
