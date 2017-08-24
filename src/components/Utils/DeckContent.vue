@@ -28,10 +28,17 @@
         </div>
         <div class="row">
             <div class="col-sm-6">
-                <h5>Dynasty Deck</h5>
-                <div v-for="type in dynastyTypes" :key="type" class="mb-2">
-                    <h6><span :class="['fa fa-fw fa-'+typeIcon(type)]"></span> {{ $t('type.'+type) }}</h6>
-                    <div v-for="slot in filterByType(dynastyDeck, type)" :key="slot.card.id">
+                <h5>
+                    Dynasty Deck
+                    ({{ count(dynastyDeck) }})
+                </h5>
+                <div v-for="(slots, type) in dynastyDeckByTypes" :key="type" v-if="count(slots) > 0" class="mb-2">
+                    <h6>
+                        <span :class="['fa fa-fw fa-'+typeIcon(type)]"></span>
+                        {{ $t('type.'+type) }}
+                        ({{ count(slots) }})
+                    </h6>
+                    <div v-for="slot in slots" :key="slot.card.id">
                         <span class="quantity">{{ slot.quantity }}x</span>
                         <utils-card-icon :card="slot.card"></utils-card-icon>
                         <utils-card-link :card="slot.card"></utils-card-link>
@@ -39,10 +46,17 @@
                 </div>
             </div>
             <div class="col-sm-6">
-                <h5>Conflict Deck</h5>
-                <div v-for="type in conflictTypes" :key="type" class="mb-2">
-                    <h6><span :class="['fa fa-fw fa-'+typeIcon(type)]"></span> {{ $t('type.'+type) }}</h6>
-                    <div v-for="slot in filterByType(conflictDeck, type)" :key="slot.card.id">
+                <h5>
+                    Conflict Deck
+                    ({{ count(conflictDeck) }})
+                </h5>
+                <div v-for="(slots, type) in conflictDeckByTypes" :key="type" v-if="count(slots) > 0" class="mb-2">
+                    <h6>
+                        <span :class="['fa fa-fw fa-'+typeIcon(type)]"></span>
+                        {{ $t('type.'+type) }}
+                        ({{ count(slots) }})
+                    </h6>
+                    <div v-for="slot in slots" :key="slot.card.id">
                         <span class="quantity">{{ slot.quantity }}x</span>
                         <utils-card-icon :card="slot.card"></utils-card-icon>
                         <utils-card-link :card="slot.card"></utils-card-link>
@@ -62,6 +76,11 @@
   import stores from '@/service/storeService';
   import DeckInspector from '@/classes/DeckInspector';
   import typeIcons from '@/service/typeIcons';
+
+  const sideTypes = {
+    dynasty: ['character', 'holding'],
+    conflict: ['event', 'attachment', 'character'],
+  };
 
   export default {
     name: 'utils-deck-content',
@@ -83,6 +102,16 @@
       },
       typeIcon(type) {
         return typeIcons.icon(type);
+      },
+      count(slots) {
+        return DeckInspector.count(slots);
+      },
+      deckByTypes(deck, side) {
+        const byTypes = {};
+        sideTypes[side].forEach((type) => {
+          byTypes[type] = this.filterByType(deck, type);
+        });
+        return byTypes;
       },
     },
     computed: {
@@ -110,14 +139,14 @@
       conflictDeck() {
         return this.inspector.findSlotsBy('side', 'conflict');
       },
+      dynastyDeckByTypes() {
+        return this.deckByTypes(this.dynastyDeck, 'dynasty');
+      },
+      conflictDeckByTypes() {
+        return this.deckByTypes(this.conflictDeck, 'conflict');
+      },
       problem() {
         return this.inspector.getProblem();
-      },
-    },
-    watch: {
-      deck() {
-        console.log('deck changed');
-
       },
     },
   };
