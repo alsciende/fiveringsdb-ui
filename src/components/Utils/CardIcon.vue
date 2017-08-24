@@ -1,5 +1,5 @@
 <template>
-    <span v-bind:class="classObject"></span>
+    <span :class="classObject" :title="title"></span>
 </template>
 
 <script>
@@ -9,6 +9,13 @@
     name: 'utils-card-icon',
     props: ['card'],
     computed: {
+      title() {
+        if (this.card.type === 'province') {
+          return this.$t(`element.${this.card.element}`);
+        }
+
+        return this.$t(`type.${this.card.type}`);
+      },
       classObject() {
         if (this.card.type === 'province') {
           return [
