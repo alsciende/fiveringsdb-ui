@@ -2,7 +2,7 @@
     <div class="collection">
 
         <builder-collection-filter
-                :clan="initialClan"
+                :clan="clan"
                 @change="changeFilter"
         ></builder-collection-filter>
 
@@ -21,6 +21,7 @@
                     :min="cardslot.min"
                     :max="cardslot.max"
                     :current="cardslot.current"
+                    :influence="cardslot.card.clan !== clan"
                     @change="changeQuantity"
             >
             </builder-collection-row>
@@ -45,20 +46,20 @@
     props: ['deck', 'coreCount'],
     data() {
       const filter = {};
-      const initialClan = this.findDeckClan(this.deck);
       return {
         filter,
-        initialClan,
       };
     },
     computed: {
+      clan() {
+        return this.findDeckClan(this.deck);
+      },
       cards() {
-        const clan = this.findDeckClan(this.deck);
-        if (clan === null) {
+        if (this.clan === null) {
           return stores.cards(this.filter);
         }
 
-        const mainClanFilter = { clan: ['neutral', clan] };
+        const mainClanFilter = { clan: ['neutral', this.clan] };
         const conflictFilter = { side: 'conflict', influence_cost: { isUndefined: false } };
 
         return stores.cards([mainClanFilter, conflictFilter]).filter(this.filter);

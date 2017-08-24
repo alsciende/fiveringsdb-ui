@@ -60,6 +60,7 @@
                         <span class="quantity">{{ slot.quantity }}x</span>
                         <utils-card-icon :card="slot.card"></utils-card-icon>
                         <utils-card-link :card="slot.card"></utils-card-link>
+                        <utils-influence-cost v-if="slot.card.clan !== clan" :card="slot.card" :quantity="slot.quantity"></utils-influence-cost>
                     </div>
                 </div>
             </div>
@@ -72,6 +73,7 @@
 
   import UtilsCardLink from '@/components/Utils/CardLink';
   import UtilsCardIcon from '@/components/Utils/CardIcon';
+  import UtilsInfluenceCost from '@/components/Utils/InfluenceCost';
   import UtilsCardImage from '@/components/Utils/CardImage';
   import stores from '@/service/storeService';
   import DeckInspector from '@/classes/DeckInspector';
@@ -88,6 +90,7 @@
       UtilsCardLink,
       UtilsCardIcon,
       UtilsCardImage,
+      UtilsInfluenceCost,
     },
     props: ['deck', 'view'],
     data() {
@@ -126,6 +129,9 @@
       },
       stronghold() {
         return this.inspector.findCardByType('stronghold');
+      },
+      clan() {
+        return this.stronghold ? this.stronghold.clan : null;
       },
       role() {
         return this.inspector.findCardByType('role');

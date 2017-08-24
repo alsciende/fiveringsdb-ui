@@ -14,12 +14,16 @@
                     :card="card"
             ></utils-card-link>
         </td>
+        <td>
+            <utils-influence-cost v-if="influence" :card="card"></utils-influence-cost>
+        </td>
     </tr>
 </template>
 
 <script>
   import UtilsCardLink from '@/components/Utils/CardLink';
   import UtilsCardIcon from '@/components/Utils/CardIcon';
+  import UtilsInfluenceCost from '@/components/Utils/InfluenceCost';
   import BuilderQuantitySelector from './QuantitySelector';
 
   export default {
@@ -28,8 +32,9 @@
       BuilderQuantitySelector,
       UtilsCardLink,
       UtilsCardIcon,
+      UtilsInfluenceCost,
     },
-    props: ['card', 'min', 'max', 'current'],
+    props: ['card', 'min', 'max', 'current', 'influence'],
     methods: {
       change(quantity) {
         this.$emit('change', {
