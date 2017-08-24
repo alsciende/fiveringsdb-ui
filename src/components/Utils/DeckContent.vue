@@ -155,7 +155,7 @@
         return this.deckByTypes(this.conflictDeck, 'conflict');
       },
       problem() {
-        return this.inspector.getProblem();
+        return this.inspector.findProblem();
       },
       influencePool() {
         return this.inspector.getInfluencePool();

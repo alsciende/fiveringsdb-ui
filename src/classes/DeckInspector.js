@@ -4,7 +4,6 @@ class DeckInspector {
   constructor(slots, format) {
     this.slots = slots;
     this.format = format;
-    this.problem = this.findProblem();
     this.stronghold = this.findCardByType('stronghold');
     this.clan = this.stronghold ? this.stronghold.clan : null;
     this.role = this.findCardByType('role');
@@ -44,10 +43,6 @@ class DeckInspector {
 
   count() {
     return DeckInspector.count(this.slots);
-  }
-
-  getProblem() {
-    return this.problem;
   }
 
   findProblem() {
@@ -108,7 +103,6 @@ class DeckInspector {
     const provinceElements = _.map(provinceDeck, slot => slot.card.element);
     if (_.uniq(provinceElements).length < 5) {
       let seekerException = false;
-
       if (this.role && this.role.traits.includes('seeker')) {
         if (_.difference(provinceElements, this.role.traits).length === 3) {
           seekerException = true;
