@@ -24,6 +24,9 @@
                     <utils-card-icon :card="card"></utils-card-icon>
                     <utils-card-link :card="card"></utils-card-link>
                 </div>
+                <div class="mt-4">
+                    Influence: {{ influenceSpent }}/{{ influencePool }}, {{ influencePool - influenceSpent }} remaining
+                </div>
             </div>
         </div>
         <div class="row">
@@ -153,6 +156,12 @@
       },
       problem() {
         return this.inspector.getProblem();
+      },
+      influencePool() {
+        return this.inspector.getInfluencePool();
+      },
+      influenceSpent() {
+        return this.inspector.getInfluenceSpent();
       },
     },
   };

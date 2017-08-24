@@ -5,6 +5,9 @@ class DeckInspector {
     this.slots = slots;
     this.format = format;
     this.problem = this.findProblem();
+    this.stronghold = this.findCardByType('stronghold');
+    this.clan = this.stronghold ? this.stronghold.clan : null;
+    this.role = this.findCardByType('role');
   }
 
   findCardByType(type) {
@@ -13,6 +16,30 @@ class DeckInspector {
 
   findSlotsBy(keyName, key) {
     return DeckInspector.findSlotsBy(this.slots, keyName, key);
+  }
+
+  getInfluencePool() {
+    let influencePool = 0;
+
+    if (this.stronghold) {
+      influencePool = this.stronghold.influence_pool;
+    }
+
+    if (this.role && this.role.traits.includes('keeper')) {
+      influencePool += 3;
+    }
+
+    return influencePool;
+  }
+
+  getInfluenceSpent() {
+    return this.findSlotsBy('side', 'conflict').reduce((influenceSpent, slot) => {
+      if (this.clan && slot.card.clan === this.clan) {
+        return influenceSpent;
+      }
+
+      return influenceSpent + (slot.quantity * slot.card.influence_cost);
+    }, 0);
   }
 
   count() {
@@ -82,9 +109,8 @@ class DeckInspector {
     if (_.uniq(provinceElements).length < 5) {
       let seekerException = false;
 
-      const role = this.findCardByType('role');
-      if (role && role.traits.includes('seeker')) {
-        if (_.difference(provinceElements, role.traits).length === 3) {
+      if (this.role && this.role.traits.includes('seeker')) {
+        if (_.difference(provinceElements, this.role.traits).length === 3) {
           seekerException = true;
         }
       }
@@ -94,11 +120,8 @@ class DeckInspector {
       }
     }
 
-    const stronghold = this.findCardByType('stronghold');
-    if (stronghold) {
-      const clan = stronghold.clan;
-
-      const offclans = DeckInspector.findSlotsOffClan(provinceDeck, clan);
+    if (this.clan) {
+      const offclans = DeckInspector.findSlotsOffClan(provinceDeck, this.clan);
       if (offclans.length > 0) {
         return 16;
       }
@@ -121,11 +144,8 @@ class DeckInspector {
       return 6;
     }
 
-    const stronghold = this.findCardByType('stronghold');
-    if (stronghold) {
-      const clan = stronghold.clan;
-
-      const offclans = DeckInspector.findSlotsOffClan(dynastyDeck, clan);
+    if (this.clan) {
+      const offclans = DeckInspector.findSlotsOffClan(dynastyDeck, this.clan);
       if (offclans.length > 0) {
         return 7;
       }
@@ -153,16 +173,10 @@ class DeckInspector {
       return 12;
     }
 
-    const stronghold = this.findCardByType('stronghold');
-    if (stronghold) {
-      const clan = stronghold.clan;
-      let influencePool = stronghold.influence_pool;
-      const role = this.findCardByType('role');
-      if (role && role.traits.includes('keeper')) {
-        influencePool += 3;
-      }
+    if (this.clan) {
+      let influencePool = this.getInfluencePool();
 
-      const offclans = DeckInspector.findSlotsOffClan(conflictDeck, clan);
+      const offclans = DeckInspector.findSlotsOffClan(conflictDeck, this.clan);
       for (const slot of offclans) {
         if (slot.card.influence_cost === undefined) {
           return 17;
@@ -181,6 +195,10 @@ class DeckInspector {
 
     return 0;
   }
+
+  /**
+   * static functions
+   */
 
   static findSlotsOffClan(slots, clan) {
     return slots.filter(slot => slot.card.clan !== clan && slot.card.clan !== 'neutral');
