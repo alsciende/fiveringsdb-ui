@@ -6,7 +6,6 @@ import BootstrapVue from 'bootstrap-vue';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 import Notifications from 'vue-notification';
 import moment from 'moment';
-import { default as Vuedals, Component as Vuedal } from 'vuedals';
 
 import './style.css';
 import './font.css';
@@ -21,6 +20,7 @@ import { load } from './service/storeService';
 
 import AppNavbar from './components/App/Navbar';
 import AppFooter from './components/App/Footer';
+import UtilsCardModale from './components/Utils/CardModale';
 
 Vue.config.productionTip = false;
 
@@ -33,7 +33,6 @@ Vue.use(VueAnalytics, {
 Vue.use(BootstrapVue);
 Vue.use(Notifications);
 Vue.filter('formatDate', value => value && moment(String(value)).format('DD MMM YYYY'));
-Vue.use(Vuedals);
 
 auth(store, rest);
 
@@ -47,7 +46,7 @@ load().then(() => {
     components: {
       AppNavbar,
       AppFooter,
-      Vuedal,
+      UtilsCardModale,
     },
     methods: {
       closeModal() {

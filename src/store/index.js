@@ -2,8 +2,9 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import createPersist from 'vuex-localstorage';
 
-import * as actions from './actions';
 import * as getters from './getters';
+import * as mutations from './mutations';
+
 import auth from './modules/auth';
 
 Vue.use(Vuex);
@@ -11,8 +12,11 @@ Vue.use(Vuex);
 const debug = process.env.NODE_ENV !== 'production';
 
 export default new Vuex.Store({
-  actions,
+  state: {
+    cardModale: null,
+  },
   getters,
+  mutations,
   modules: {
     auth,
   },

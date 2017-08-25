@@ -1,1 +1,1 @@
-export const cartProducts = state => null;
+export const cardModale = state => state.cardModale;

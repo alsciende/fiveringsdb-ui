@@ -13,14 +13,7 @@
     props: ['card'],
     methods: {
       showModal() {
-        this.$vuedals.open({
-          name: 'card-popup',
-          component: CardsCard,
-          props: {
-            card: this.card,
-            image: true,
-          },
-        });
+        this.$store.commit('openCardModale', this.card);
       },
     },
   };
