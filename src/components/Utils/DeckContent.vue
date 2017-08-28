@@ -3,7 +3,7 @@
         <div v-if="problem" class="row">
             <div class="col-md-12">
                 <div class="alert alert-warning">
-                    {{ $t('problem.'+problem) }}
+                    {{ $t('problem.' + problem) }}
                 </div>
             </div>
         </div>
@@ -38,7 +38,7 @@
                 <div v-for="(slots, type) in dynastyDeckByTypes" :key="type" v-if="count(slots) > 0" class="mb-2">
                     <h6>
                         <span :class="['fa fa-fw fa-'+typeIcon(type)]"></span>
-                        {{ $t('type.'+type) }}
+                        {{ $t('type.' + type) }}
                         ({{ count(slots) }})
                     </h6>
                     <div v-for="slot in slots" :key="slot.card.id">
@@ -56,14 +56,15 @@
                 <div v-for="(slots, type) in conflictDeckByTypes" :key="type" v-if="count(slots) > 0" class="mb-2">
                     <h6>
                         <span :class="['fa fa-fw fa-'+typeIcon(type)]"></span>
-                        {{ $t('type.'+type) }}
+                        {{ $t('type.' + type) }}
                         ({{ count(slots) }})
                     </h6>
                     <div v-for="slot in slots" :key="slot.card.id">
                         <span class="quantity">{{ slot.quantity }}x</span>
                         <utils-card-icon :card="slot.card"></utils-card-icon>
                         <utils-card-link :card="slot.card"></utils-card-link>
-                        <utils-influence-cost v-if="slot.card.clan !== clan" :card="slot.card" :quantity="slot.quantity"></utils-influence-cost>
+                        <utils-influence-cost v-if="slot.card.clan !== clan" :card="slot.card"
+                                              :quantity="slot.quantity"></utils-influence-cost>
                     </div>
                 </div>
             </div>

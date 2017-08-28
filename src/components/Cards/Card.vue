@@ -60,7 +60,8 @@
                 </span>
             </p>
             <p class="card-flavor-text my-2" v-html="flavor"></p>
-            <a v-for="slot in card.pack_cards" :key="slot.pack.id" href="#" @click.prevent="changeImage(slot.pack.id)" class="small card-link">{{ getPackName(slot.pack.id) }}
+            <a v-for="slot in card.pack_cards" :key="slot.pack.id" href="#" @click.prevent="changeImage(slot.pack.id)"
+               class="small card-link">{{ getPackName(slot.pack.id) }}
                 #{{ slot.position }}</a>
         </div>
     </div>
@@ -87,32 +88,32 @@
       textLines() {
         return this.card.text ? this.card.text.split('\n') : [];
       },
-        slot() {
-          return this.card.pack_cards.find(slot => slot.pack.id === this.$store.getters.preferredPack);
-        },
-        flavor() {
-            return this.slot.flavor;
-        },
-        illustrator() {
-          return this.slot.illustrator;
-        },
-    },
-      methods: {
-        getPack(id) {
-            return storeService.packs({id}).first();
-        },
-          getPackName(id) {
-            const pack = this.getPack(id);
-            if(pack === null) {
-                return '';
-            }
-
-            return pack.name;
-          },
-          changeImage(packId) {
-            this.$store.commit('changePreferredPack', packId);
-          },
+      slot() {
+        return this.card.pack_cards.find(slot => slot.pack.id === this.$store.getters.preferredPack);
       },
+      flavor() {
+        return this.slot.flavor;
+      },
+      illustrator() {
+        return this.slot.illustrator;
+      },
+    },
+    methods: {
+      getPack(id) {
+        return storeService.packs({ id }).first();
+      },
+      getPackName(id) {
+        const pack = this.getPack(id);
+        if (pack === null) {
+          return '';
+        }
+
+        return pack.name;
+      },
+      changeImage(packId) {
+        this.$store.commit('changePreferredPack', packId);
+      },
+    },
   };
 </script>
 

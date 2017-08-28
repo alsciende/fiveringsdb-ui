@@ -62,7 +62,10 @@
       return {
         coreCount: coreCounts[0],
         formatOptions: formats.map(format => ({ value: format, text: this.$t(`format.${format}`) })),
-        coreCountOptions: coreCounts.map(coreCount => ({ value: coreCount, text: `${coreCount} Core${coreCount > 1 ? 's' : ''}` })),
+        coreCountOptions: coreCounts.map(coreCount => ({
+          value: coreCount,
+          text: `${coreCount} Core${coreCount > 1 ? 's' : ''}`,
+        })),
         loading: false,
         saving: false,
         deck: null,
@@ -77,11 +80,11 @@
         this.error = null;
         this.deck = null;
 
-        if(this.$route.name === 'deck-new') {
+        if (this.$route.name === 'deck-new') {
           this.deck = {
             name: 'The deck with no name',
             cards: {},
-            format: 'single-core'
+            format: 'single-core',
           };
           return;
         }
