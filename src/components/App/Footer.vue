@@ -1,8 +1,8 @@
 <template>
     <footer class="bg-dark text-white">
         <div class="container">
-            Work in progress by <a href="https://twitter.com/alsciende">@alsciende</a>. Documentation at <a
-                href="https://alsciende.github.io/fiveringsdb/">https://alsciende.github.io/fiveringsdb/</a>.
+            Work in progress by <a href="https://twitter.com/alsciende">@alsciende</a>.
+            API Documentation at <a href="https://alsciende.github.io/fiveringsdb/">https://alsciende.github.io/fiveringsdb/</a>.
         </div>
     </footer>
 </template>
