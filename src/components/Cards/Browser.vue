@@ -92,16 +92,22 @@
   import CardsListTable from '@/components/Cards/ListTable';
 
   function parseRouteQuery(route) {
-    const query = queryRouter.getQuery(route);
+    const q = queryRouter.getQuery(route);
     const page = route.query.page ? parseInt(route.query.page, 10) : 1;
     const view = route.query.view || 'table';
     const sort = route.query.sort || 'name';
-    return { query, page, view, sort };
+    return { q, page, view, sort };
   }
 
   export default {
     name: 'cards-browser',
-    props: ['query'],
+    props: {
+      query: {
+        type: String,
+        required: false,
+        default: '',
+      },
+    },
     data() {
       return {
         cards: [],
@@ -112,6 +118,7 @@
         currentView: 'table', // text | image | full | table
         currentSort: 'name', // name | clan | type
         searchHelp: queryMapper.formatAsHtml(),
+        params: {},
       };
     },
     computed: {
@@ -129,31 +136,39 @@
     beforeRouteEnter(to, from, next) {
       const params = parseRouteQuery(to);
       next((vm) => {
-        vm.currentQuery = params.query;
+        vm.currentQuery = params.q;
         vm.currentPage = params.page;
         vm.currentView = params.view;
         vm.currentSort = params.sort;
+        vm.params = params;
         vm.filter();
       });
     },
     beforeRouteUpdate(to, from, next) {
       const params = parseRouteQuery(to);
-      this.currentQuery = params.query;
+      this.currentQuery = params.q;
       this.currentPage = params.page;
       this.currentView = params.view;
       this.currentSort = params.sort;
+      this.params = params;
       this.filter();
       next();
     },
     watch: {
-      currentPage() {
-        this.navigate();
+      currentPage(page) {
+        if (page !== null) {
+          this.navigate();
+        }
       },
-      currentView() {
-        this.navigate();
+      currentView(view) {
+        if (view !== null) {
+          this.navigate();
+        }
       },
-      currentSort() {
-        this.navigate();
+      currentSort(sort) {
+        if (sort !== null) {
+          this.navigate();
+        }
       },
     },
     methods: {
@@ -170,16 +185,23 @@
       navigate() {
         const route = queryRouter.getRoute(this.currentQuery);
         if (route.query === undefined) {
-          route.query = {};
+          route.query = { q: '' };
         }
-        if (this.currentPage > 1) {
-          route.query.page = this.currentPage;
+        route.query.page = this.currentPage;
+        route.query.view = this.currentView;
+        route.query.sort = this.currentSort;
+        if (JSON.stringify(route.query) === JSON.stringify(this.params)) {
+          return;
         }
-        if (this.currentView !== 'table') {
-          route.query.view = this.currentView;
+
+        if (route.query.page === 1) {
+          delete route.query.page;
         }
-        if (this.currentSort !== 'name') {
-          route.query.sort = this.currentSort;
+        if (route.query.view === 'table') {
+          delete route.query.view;
+        }
+        if (route.query.sort === 'name') {
+          delete route.query.sort;
         }
         this.$router.push(route);
       },
