@@ -1,5 +1,5 @@
 <template>
-    <a href="#" @click.prevent="showModal">{{ card.name }}</a>
+    <a :href="url" @click.prevent="showModal">{{ card.name }}</a>
 </template>
 
 <script>
@@ -11,6 +11,16 @@
       CardsCard,
     },
     props: ['card'],
+    computed: {
+      url() {
+        return this.$router.resolve({
+          name: 'cards-by-card-id',
+          params: {
+            id: this.card.id,
+          },
+        }).href;
+      },
+    },
     methods: {
       showModal() {
         this.$store.commit('openCardModale', this.card);
