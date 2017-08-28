@@ -1,9 +1,11 @@
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-vue/dist/bootstrap-vue.css';
+
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import { sync } from 'vuex-router-sync';
 import VueAnalytics from 'vue-analytics';
 import BootstrapVue from 'bootstrap-vue';
-import 'bootstrap-vue/dist/bootstrap-vue.css';
 import Notifications from 'vue-notification';
 import moment from 'moment';
 

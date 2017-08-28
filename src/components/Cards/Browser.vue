@@ -47,13 +47,14 @@
                     </label>
                 </div>
                 <div class="btn-group align-self-start">
-                    <button type="button" class="btn btn-outline-secondary" data-toggle="collapse" data-target="#searchHelp">
-                        <span class="fa fa-info-circle"></span></button>
+                    <b-btn v-b-toggle.searchHelp variant="outline-secondary">
+                        <span class="fa fa-info-circle"></span>
+                    </b-btn>
                 </div>
             </div>
-            <div class="collapse" id="searchHelp">
+            <b-collapse id="searchHelp">
                 <div class="card card-body" v-html="searchHelp"></div>
-            </div>
+            </b-collapse>
         </form>
         <b-pagination
                 v-bind:total-rows="totalRows"
