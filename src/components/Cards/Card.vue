@@ -60,9 +60,8 @@
                 </span>
             </p>
             <p class="card-flavor-text my-2" v-html="flavor"></p>
-            <a v-for="slot in card.pack_cards" :key="slot.pack.id" href="#" @click.prevent="changeImage(slot.pack.id)"
-               class="small card-link">{{ getPackName(slot.pack.id) }}
-                #{{ slot.position }}</a>
+            <b-form-select v-if="card.pack_cards.length > 1" v-model="packId" :options="packs" size="sm" class="pack-chooser"></b-form-select>
+            <div v-else v-html="optionText(slot)" class="small pack-chooser"></div>
         </div>
     </div>
 </template>
@@ -84,18 +83,26 @@
         required: true,
       },
     },
+    data() {
+      return {
+        packId: this.card.pack_cards[0].pack.id,
+      };
+    },
     computed: {
       textLines() {
         return this.card.text ? this.card.text.split('\n') : [];
       },
       slot() {
-        return this.card.pack_cards.find(slot => slot.pack.id === this.$store.getters.preferredPack);
+        return this.card.pack_cards.find(slot => slot.pack.id === this.packId);
       },
       flavor() {
         return this.slot.flavor;
       },
       illustrator() {
         return this.slot.illustrator;
+      },
+      packs() {
+        return this.card.pack_cards.map(slot => ({ value: slot.pack.id, text: this.optionText(slot) }));
       },
     },
     methods: {
@@ -110,10 +117,15 @@
 
         return pack.name;
       },
-      changeImage(packId) {
-        this.$store.commit('changePreferredPack', packId);
+      optionText(slot) {
+        return this.getPackName(slot.pack.id) + ' #' + slot.position + ' &mdash; ' + slot.illustrator;
       },
     },
+    watch: {
+      packId() {
+        this.$store.commit('changePreferredPack', this.packId);
+      }
+    }
   };
 </script>
 
@@ -209,5 +221,17 @@
         max-width: 300px;
         margin: auto;
         text-align: center;
+    }
+
+    select.pack-chooser {
+        background-color: transparent;
+        border-color: transparent;
+    }
+    div.pack-chooser {
+        border: 1px solid transparent;
+        -webkit-border-radius: 0.25rem;
+        -moz-border-radius: 0.25rem;
+        border-radius: 0.25rem;
+        padding: 0.375rem 0.75rem;
     }
 </style>
