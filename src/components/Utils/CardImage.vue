@@ -1,21 +1,30 @@
 <template>
-    <img v-bind:src="getCardImageURL(card)" v-bind:class="classObject">
+    <img v-bind:src="url" v-bind:class="classObject">
 </template>
 
 <script>
   export default {
     name: 'utils-card-image',
     props: ['card', 'classes'],
-    methods: {
-      getCardImageURL(card) {
-        return `/static/cards/${Object.keys(card.packs)[0]}/${card.id}.jpg`;
-      },
-    },
     data() {
       return {
         classObject: ['card-image', 'img-fluid'].concat(this.classes),
       };
     },
+      computed: {
+        url() {
+            return `/static/cards/${this.pack}/${this.card.id}.jpg`;
+        },
+        pack() {
+            const packs = this.card.pack_cards.map(slot => slot.pack.id);
+            const preferredPack = this.$store.getters.preferredPack;
+            if(packs.includes(preferredPack)) {
+                return preferredPack;
+            }
+            this.$store.commit('changePreferredPack', packs[0]);
+            return packs[0];
+        },
+      },
   };
 </script>
 

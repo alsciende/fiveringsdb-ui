@@ -59,6 +59,9 @@
                     &ndash; Influence Cost: 0
                 </span>
             </p>
+            <p class="card-flavor-text my-2" v-html="flavor"></p>
+            <a v-for="slot in card.pack_cards" :key="slot.pack.id" href="#" @click.prevent="changeImage(slot.pack.id)" class="small card-link">{{ getPackName(slot.pack.id) }}
+                #{{ slot.position }}</a>
         </div>
     </div>
 </template>
@@ -66,6 +69,7 @@
 <script>
   import UtilsCardText from '@/components/Utils/CardText';
   import UtilsCardTraits from '@/components/Utils/CardTraits';
+  import storeService from '@/service/storeService';
 
   export default {
     name: 'cards-card',
@@ -83,7 +87,32 @@
       textLines() {
         return this.card.text ? this.card.text.split('\n') : [];
       },
+        slot() {
+          return this.card.pack_cards.find(slot => slot.pack.id === this.$store.getters.preferredPack);
+        },
+        flavor() {
+            return this.slot.flavor;
+        },
+        illustrator() {
+          return this.slot.illustrator;
+        },
     },
+      methods: {
+        getPack(id) {
+            return storeService.packs({id}).first();
+        },
+          getPackName(id) {
+            const pack = this.getPack(id);
+            if(pack === null) {
+                return '';
+            }
+
+            return pack.name;
+          },
+          changeImage(packId) {
+            this.$store.commit('changePreferredPack', packId);
+          },
+      },
   };
 </script>
 
@@ -170,5 +199,14 @@
 
     .clan-neutral .card-text {
         border-color: rgb(160, 160, 160);
+    }
+
+    .card-flavor-text {
+        font-style: italic;
+        font-size: 90%;
+        color: #333;
+        max-width: 300px;
+        margin: auto;
+        text-align: center;
     }
 </style>

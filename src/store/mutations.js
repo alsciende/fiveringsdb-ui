@@ -5,3 +5,7 @@ export const openCardModale = (state, card) => {
 export const closeCardModale = (state) => {
   state.cardModale = null;
 };
+
+export const changePreferredPack = (state, packId) => {
+  state.preferredPack = packId;
+};
