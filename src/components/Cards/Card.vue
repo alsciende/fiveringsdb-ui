@@ -60,7 +60,8 @@
                 </span>
             </p>
             <p class="card-flavor-text my-2" v-html="card.main_slot.flavor"></p>
-            <b-form-select v-if="card.pack_cards.length > 1" v-model="packId" :options="packs" size="sm" class="pack-chooser"></b-form-select>
+            <b-form-select v-if="card.pack_cards.length > 1" v-model="packId" :options="packs" size="sm"
+                           class="pack-chooser"></b-form-select>
             <div v-else v-html="optionText(card.main_slot)" class="small pack-chooser"></div>
         </div>
     </div>
@@ -86,13 +87,13 @@
     data() {
       return {
         packId: this.card.main_slot.pack.id,
-          packs: this.card.pack_cards.map(slot => ({ value: slot.pack.id, text: this.optionText(slot) })),
-          textLines: this.card.text ? this.card.text.split('\n') : [],
+        packs: this.card.pack_cards.map(slot => ({ value: slot.pack.id, text: this.optionText(slot) })),
+        textLines: this.card.text ? this.card.text.split('\n') : [],
       };
     },
     methods: {
       optionText(slot) {
-        return slot.pack.name + ' #' + slot.position + ' &mdash; ' + slot.illustrator;
+        return `${slot.pack.name} #${slot.position} &mdash; ${slot.illustrator || ''}`;
       },
     },
     watch: {
@@ -201,6 +202,7 @@
         background-color: transparent;
         border-color: transparent;
     }
+
     div.pack-chooser {
         border: 1px solid transparent;
         -webkit-border-radius: 0.25rem;
