@@ -59,9 +59,9 @@
                     &ndash; Influence Cost: 0
                 </span>
             </p>
-            <p class="card-flavor-text my-2" v-html="flavor"></p>
+            <p class="card-flavor-text my-2" v-html="card.main_slot.flavor"></p>
             <b-form-select v-if="card.pack_cards.length > 1" v-model="packId" :options="packs" size="sm" class="pack-chooser"></b-form-select>
-            <div v-else v-html="optionText(slot)" class="small pack-chooser"></div>
+            <div v-else v-html="optionText(card.main_slot)" class="small pack-chooser"></div>
         </div>
     </div>
 </template>
@@ -85,47 +85,21 @@
     },
     data() {
       return {
-        packId: this.card.pack_cards[0].pack.id,
+        packId: this.card.main_slot.pack.id,
+          packs: this.card.pack_cards.map(slot => ({ value: slot.pack.id, text: this.optionText(slot) })),
+          textLines: this.card.text ? this.card.text.split('\n') : [],
       };
     },
-    computed: {
-      textLines() {
-        return this.card.text ? this.card.text.split('\n') : [];
-      },
-      slot() {
-        return this.card.pack_cards.find(slot => slot.pack.id === this.packId);
-      },
-      flavor() {
-        return this.slot.flavor;
-      },
-      illustrator() {
-        return this.slot.illustrator;
-      },
-      packs() {
-        return this.card.pack_cards.map(slot => ({ value: slot.pack.id, text: this.optionText(slot) }));
-      },
-    },
     methods: {
-      getPack(id) {
-        return storeService.packs({ id }).first();
-      },
-      getPackName(id) {
-        const pack = this.getPack(id);
-        if (pack === null) {
-          return '';
-        }
-
-        return pack.name;
-      },
       optionText(slot) {
-        return this.getPackName(slot.pack.id) + ' #' + slot.position + ' &mdash; ' + slot.illustrator;
+        return slot.pack.name + ' #' + slot.position + ' &mdash; ' + slot.illustrator;
       },
     },
     watch: {
       packId() {
-        this.$store.commit('changePreferredPack', this.packId);
-      }
-    }
+        this.card.main_slot = this.card.pack_cards.find(slot => slot.pack.id === this.packId);
+      },
+    },
   };
 </script>
 

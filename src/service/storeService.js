@@ -29,21 +29,42 @@ const cardNullableFields = [
  * with the ids of each pack and cycle containing the card
  */
 const denormalizeCards = () => {
+  const mapPacks = {};
+    const mapCycles = {};
+
+  stores.packs().each((record) => {
+      mapPacks[record.id] = record;
+  });
+
+  stores.cycles().each((record) => {
+    mapCycles[record.id] = record;
+    });
+
   stores.cards().each((record) => {
+    // replace the packs with the full pack records
+      record.pack_cards.forEach((packCard) => {
+        packCard.pack = mapPacks[packCard.pack.id];
+      });
+    // add the list of packs the card belongs to as packId => quantity
     record.packs = record.pack_cards.reduce((packs, packCard) => {
       packs[packCard.pack.id] = packCard.quantity;
       return packs;
     }, {});
+    // add the list of cycles the card belongs to as cycleId => quantity
     record.cycles = Object.keys(record.packs).reduce(
       (cycles, packId) => {
         cycles[stores.packs({ id: packId }).first().cycle.id] = 1;
         return cycles;
       }, {});
+    // recreate some keys when they have been removed by the serializer
     cardNullableFields.forEach((field) => {
       if (record[field] === undefined) {
         record[field] = null;
       }
     });
+    // select the default slot for the card
+    record.main_slot = record.pack_cards[0];
+    // merge
     stores.cards.merge(record, 'id', false);
   });
 };
