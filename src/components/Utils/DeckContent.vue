@@ -22,6 +22,7 @@
                 </div>
                 <div v-for="card in provinceDeck" :key="card.id">
                     <utils-card-icon :card="card"></utils-card-icon>
+                    <span class="province-element small text-secondary">{{ $t('element.'+card.element) }}</span>
                     <utils-card-link :card="card"></utils-card-link>
                 </div>
                 <div class="mt-4">
@@ -174,5 +175,9 @@
         display: inline-block;
         width: 1.25em;
         text-align: right;
+    }
+    span.province-element {
+        display: inline-block;
+        width: 40px;
     }
 </style>
