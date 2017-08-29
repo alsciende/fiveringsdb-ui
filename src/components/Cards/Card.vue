@@ -42,7 +42,7 @@
             <p v-if="card.type === 'event'">
                 <span>Cost: {{ card.cost }}.</span>
             </p>
-            <div class="card-text">
+            <div class="card-text mb-2">
                 <p v-for="(line, index) in textLines" :key="index" class="card-text">
                     <utils-card-text v-bind:text="line"></utils-card-text>
                 </p>
