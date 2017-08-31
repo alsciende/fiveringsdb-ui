@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-if="loading === false">
         <form>
             <div class="d-sm-flex">
                 <div class="form-group mr-2" style="flex:1">
@@ -10,12 +10,12 @@
                 <b-form-radio class="mb-4 mr-2"
                               button-variant="outline-secondary"
                               buttons
-                              v-model="view"
+                              v-model="currentView"
                               :options="viewOptions"></b-form-radio>
                 <b-form-radio class="mb-4 mr-2"
                               button-variant="outline-secondary"
                               buttons
-                              v-model="sort"
+                              v-model="currentSort"
                               :options="sortOptions"></b-form-radio>
                 <div class="btn-group align-self-start">
                     <b-btn v-b-toggle.searchHelp variant="outline-secondary">
@@ -30,20 +30,20 @@
         <b-pagination
                 v-bind:total-rows="totalRows"
                 v-bind:per-page="perPage"
-                v-model="page"
+                v-model="currentPage"
                 size="md"
                 class="my-3 justify-content-center"
         >
         </b-pagination>
-        <cards-list-full v-if="view === 'full' || totalRows === 1"
+        <cards-list-full v-if="realView === 'full' || totalRows === 1"
                          v-bind:cards="paginatedList"></cards-list-full>
-        <cards-list-text v-else-if="view === 'text'" v-bind:cards="paginatedList"></cards-list-text>
-        <cards-list-image v-else-if="view === 'image'" v-bind:cards="paginatedList"></cards-list-image>
-        <cards-list-table v-else-if="view === 'table'" v-bind:cards="paginatedList"></cards-list-table>
+        <cards-list-text v-else-if="realView === 'text'" v-bind:cards="paginatedList"></cards-list-text>
+        <cards-list-image v-else-if="realView === 'image'" v-bind:cards="paginatedList"></cards-list-image>
+        <cards-list-table v-else-if="realView === 'table'" v-bind:cards="paginatedList"></cards-list-table>
         <b-pagination
                 v-bind:total-rows="totalRows"
                 v-bind:per-page="perPage"
-                v-model="page"
+                v-model="currentPage"
                 size="md"
                 class="my-3 justify-content-center"
         >
@@ -71,6 +71,7 @@
     return { q, page, view, sort };
   }
 
+
   export default {
     name: 'cards-browser',
     props: {
@@ -81,13 +82,28 @@
       },
     },
     data() {
+      const query = this.query;
+      const page = parseInt(this.$route.query.page, 10) || 1;
+      const view = this.$route.query.view || 'table';
+      const sort = this.$route.query.sort || 'name';
+      /**
+       * 'real' data is what the computed properties use
+       * 'current' data is what the controls use
+       * Changing a 'current' data doesn't trigger a change of the list ;
+       * instead, it triggers a navigation with the new parameters
+       * which will in turn compute a new list
+       */
       return {
-        realQuery: this.query,
-        currentQuery: this.query,
+        loading: true,
+        realQuery: query,
+        currentQuery: query,
+        realPage: page,
+        currentPage: page,
+        currentView: view,
+        realView: view,
+        currentSort: sort,
+        realSort: sort,
         searchHelp: queryMapper.formatAsHtml(),
-        page: 1,
-        view: 'table',
-        sort: 'name',
         viewOptions: [
           {
             value: 'table',
@@ -127,58 +143,85 @@
         const clauses = queryParser.parse(this.realQuery);
         const queryInput = new QueryInput(clauses);
         const filters = queryBuilder.build(queryInput);
-        return stores.cards.apply(this, filters).order(this.sort).get();
+        return stores.cards.apply(this, filters);
       },
       totalRows() {
-        return this.filteredList.length;
+        return this.filteredList.count();
+      },
+      sortedList() {
+        return this.filteredList.order(this.realSort);
       },
       paginatedList() {
-        return this.filteredList.slice((this.page - 1) * this.perPage, this.page * this.perPage);
+        return this.sortedList.get().slice(
+          (this.realPage - 1) * this.perPage,
+          this.realPage * this.perPage,
+        );
       },
       perPage() {
-        switch (this.view) {
+        switch (this.realView) {
           case 'table':
-          case 'text':
             return 300;
+          case 'text':
+            return 30;
           default:
             return 20;
         }
       },
     },
     beforeRouteEnter(to, from, next) {
-      const params = parseRouteQuery(to);
       next((vm) => {
-        vm.currentQuery = params.q;
-        vm.realQuery = params.q;
-        vm.page = params.page;
-        vm.view = params.view;
-        vm.sort = params.sort;
+        vm.applyRouteParameters(to);
       });
     },
+    beforeRouteUpdate(to, from, next) {
+      this.applyRouteParameters(to);
+      next();
+    },
     watch: {
-      page() {
-        this.navigate();
+      currentPage() {
+        if (this.realPage !== this.currentPage) {
+          this.realPage = this.currentPage;
+          this.navigate();
+        }
       },
-      view() {
-        this.navigate();
+      currentView() {
+        if (this.realView !== this.currentView) {
+          this.realPage = this.currentPage = 1;
+          this.realView = this.currentView;
+          this.navigate();
+        }
       },
-      sort() {
-        this.navigate();
+      currentSort() {
+        if (this.realSort !== this.currentSort) {
+          this.realSort = this.currentSort;
+          this.navigate();
+        }
       },
     },
     methods: {
+      applyRouteParameters(route) {
+        const params = parseRouteQuery(route);
+        this.realQuery = this.currentQuery = params.q;
+        this.realPage = this.currentPage = params.page;
+        this.realView = this.currentView = params.view;
+        this.realSort = this.currentSort = params.sort;
+        this.loading = false;
+      },
       search() {
-        this.realQuery = this.currentQuery;
-        this.navigate();
+        if (this.realQuery !== this.currentQuery) {
+          this.realQuery = this.currentQuery;
+          this.realPage = this.currentPage = 1;
+          this.navigate();
+        }
       },
       navigate() {
         const route = queryRouter.getRoute(this.realQuery);
         if (route.query === undefined) {
           route.query = { q: '' };
         }
-        route.query.page = this.page;
-        route.query.view = this.view;
-        route.query.sort = this.sort;
+        route.query.page = this.realPage;
+        route.query.view = this.realView;
+        route.query.sort = this.realSort;
 
         if (route.query.q === '') {
           delete route.query.q;
@@ -192,6 +235,7 @@
         if (route.query.sort === 'name') {
           delete route.query.sort;
         }
+
         this.$router.push(route);
       },
     },
