@@ -138,6 +138,9 @@
     created() {
       this.fetchData();
     },
+    mounted() {
+      this.$store.commit('changeDocumentTitle', 'Deck Builder');
+    },
   };
 </script>
 

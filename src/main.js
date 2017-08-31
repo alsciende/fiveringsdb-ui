@@ -59,5 +59,12 @@ load().then(() => {
         }
       },
     },
+    computed: {
+      title() {
+        const title = this.$store.getters.documentTitle;
+        document.title = title ? `${title} • FiveRingsDB` : 'FiveRingsDB';
+        return document.title;
+      },
+    },
   });
 });

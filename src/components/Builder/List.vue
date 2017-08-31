@@ -111,6 +111,7 @@
       );
     },
     mounted() {
+      this.$store.commit('changeDocumentTitle', 'Deck Builder');
       rest.get('strains').then((result) => {
         this.strains = result.records;
       });

@@ -206,6 +206,20 @@
         this.realView = this.currentView = params.view;
         this.realSort = this.currentSort = params.sort;
         this.loading = false;
+        this.$store.commit('changeDocumentTitle', this.getDocumentTitle(route));
+      },
+      getDocumentTitle(route) {
+        const defaultTitle = 'Card Browser';
+        switch (route.name) {
+          case 'cards-by-card-id':
+            return stores.cards({ id: route.params.id }).first().name + ' • Card' || defaultTitle;
+          case 'cards-by-pack-id':
+            return stores.packs({ id: route.params.id }).first().name + ' • Pack' || defaultTitle;
+          case 'cards-by-clan-id':
+            return this.$t(`clan.${route.params.id}`) + ' • Clan' || defaultTitle;
+          default:
+            return defaultTitle;
+        }
       },
       search() {
         if (this.realQuery !== this.currentQuery) {
