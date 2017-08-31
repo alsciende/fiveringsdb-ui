@@ -1,7 +1,9 @@
 <template>
     <nav class="navbar navbar-expand-md mb-4">
-        <a class="navbar-brand" href="/"><img src="/static/favicon-32x32.png"
-                                              style="height:16px; vertical-align: baseline"> FiveRingsDB</a>
+        <a class="navbar-brand" href="/">
+            <img src="/static/favicon-32x32.png" style="height:16px; vertical-align: baseline">
+            FiveRingsDB
+        </a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -10,10 +12,13 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Cards <span class="sr-only">(current)</span></a>
+                    <router-link :to="{name:'cards-by-default'}" class="nav-link">Cards</router-link>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#/deckbuilder">Deckbuilder</a>
+                    <router-link :to="{name:'deckbuilder'}" class="nav-link">Deckbuilder</router-link>
+                </li>
+                <li class="nav-item">
+                    <router-link :to="{name:'rules-reference'}" class="nav-link">Rules</router-link>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#" v-on:click.prevent="login()">{{ username }}</a>

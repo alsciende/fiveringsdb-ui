@@ -98,7 +98,6 @@
           .then(() => {
             this.creating = false;
           });
-        ;
       },
       edit(deck) {
         this.$router.push({ name: 'deck-edit', params: { strainId: deck.strain, deckId: deck.id } });

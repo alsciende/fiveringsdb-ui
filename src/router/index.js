@@ -1,9 +1,11 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
+import AppNotFound from '@/components/App/NotFound';
 import Browser from '@/components/Cards/Browser';
 import BuilderList from '@/components/Builder/List';
 import BuilderEditor from '@/components/Builder/Editor';
+import RulesReference from '@/components/Rules/Reference';
 
 Vue.use(Router);
 
@@ -54,6 +56,16 @@ export default new Router({
       name: 'deck-new',
       component: BuilderEditor,
       props: true,
+    },
+    {
+      path: '/rules/reference',
+      name: 'rules-reference',
+      component: RulesReference,
+      props: false,
+    },
+    {
+      path: '*',
+      component: AppNotFound,
     },
   ],
 });
