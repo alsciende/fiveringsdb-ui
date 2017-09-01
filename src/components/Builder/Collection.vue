@@ -62,6 +62,7 @@
         const mainClanFilter = { clan: ['neutral', this.clan] };
         const conflictFilter = { side: 'conflict', influence_cost: { isUndefined: false } };
         const roleRestrictionFilter = [{ role_restriction: { isNull: true } }];
+        const packFilter = { packs: { has: 'core' } };
 
         const role = this.findDeckRole(this.deck);
         if (role && role.traits) {
@@ -70,7 +71,7 @@
           });
         }
 
-        return stores.cards([mainClanFilter, conflictFilter]).filter(roleRestrictionFilter).filter(this.filter);
+        return stores.cards([mainClanFilter, conflictFilter]).filter(roleRestrictionFilter).filter(packFilter).filter(this.filter);
       },
       cardslots() {
         return this.cards.map((record) => {
