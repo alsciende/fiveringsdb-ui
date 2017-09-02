@@ -4,7 +4,7 @@
             <div class="d-sm-flex">
                 <div class="form-group mr-2" style="flex:1">
                     <form v-on:submit.prevent="search">
-                        <input type="text" class="form-control" v-model="currentQuery" placeholder="Enter query">
+                        <input type="text" class="form-control" v-model="currentQuery" placeholder="Card filter (e.g. x:sincerity or k:bushi)">
                     </form>
                 </div>
                 <b-form-radio class="mb-4 mr-2"

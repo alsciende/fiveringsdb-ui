@@ -74,7 +74,7 @@
 </template>
 
 <script>
-  import _ from 'underscore';
+  import _ from 'lodash';
 
   import UtilsCardLink from '@/components/Utils/CardLink';
   import UtilsCardIcon from '@/components/Utils/CardIcon';
@@ -142,7 +142,7 @@
         return this.inspector.findCardByType('role');
       },
       provinceDeck() {
-        return _.sortBy(_.pluck(this.inspector.findSlotsBy('type', 'province'), 'card'), 'element');
+        return _.sortBy(_.map(this.inspector.findSlotsBy('type', 'province'), 'card'), 'element');
       },
       dynastyDeck() {
         return this.inspector.findSlotsBy('side', 'dynasty');

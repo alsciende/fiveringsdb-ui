@@ -1,4 +1,4 @@
-import _ from 'underscore';
+import _ from 'lodash';
 
 class DeckInspector {
   constructor(slots, format) {
@@ -207,7 +207,7 @@ class DeckInspector {
   }
 
   static count(slots) {
-    return _.pluck(slots, 'quantity').reduce((a, b) => a + b, 0);
+    return _.map(slots, 'quantity').reduce((a, b) => a + b, 0);
   }
 }
 

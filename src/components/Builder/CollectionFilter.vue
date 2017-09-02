@@ -1,21 +1,30 @@
 <template>
     <div>
-        <div class="btn-group btn-sm btn-clans d-flex" role="group" aria-label="Clan Filter">
+        <div class="d-sm-flex mb-2">
+            <input v-model="query" class="form-control form-control-sm mr-2" placeholder="Card filter (e.g. x:sincerity or k:bushi)">
+            <b-btn v-b-toggle.searchHelp variant="outline-secondary" size="sm">
+                <span class="fa fa-info-circle"></span>
+            </b-btn>
+        </div>
+        <b-collapse id="searchHelp">
+            <div class="card card-body" v-html="searchHelp"></div>
+        </b-collapse>
+        <div class="btn-group btn-clans d-flex my-2" role="group" aria-label="Clan Filter">
             <button
                     v-for="clan in clanOptions"
                     type="button"
-                    class="btn btn-outline-secondary col"
+                    class="btn btn-outline-secondary btn-sm col"
                     :class="['clan-'+clan.id, clans[clan.id] ? 'active' : '']"
                     :title="clan.name"
                     @click="changeClan(clan.id)"
             ><span :class="'icon icon-clan-'+clan.id"></span></button>
         </div>
 
-        <div class="btn-group btn-sm d-flex" role="group" aria-label="Type Filter">
+        <div class="btn-group d-flex my-2" role="group" aria-label="Type Filter">
             <button
                     v-for="type in typeOptions"
                     type="button"
-                    class="btn btn-outline-secondary col"
+                    class="btn btn-outline-secondary btn-sm col"
                     :class="['type-'+type.id, types[type.id] ? 'active' : '']"
                     :title="type.name"
                     @click="changeType(type.id)"
@@ -25,9 +34,15 @@
 </template>
 
 <script>
-  import _ from 'underscore';
+  import _ from 'lodash';
   import stores from '@/service/storeService';
   import typeIcons from '@/service/typeIcons';
+  import queryParser from '@/service/queryParser';
+  import QueryInput from '@/classes/QueryInput';
+  import queryMapper from '@/service/queryMapper';
+  import queryBuilder from '@/service/queryBuilder';
+
+  const INPUT_DEBOUNCE_TIMER_MS = 500;
 
   export default {
     name: 'builder-collection-filter',
@@ -50,6 +65,7 @@
       });
 
       return {
+        query: '',
         clans,
         types,
         clanOptions,
@@ -58,6 +74,7 @@
           clan: [],
           type: [],
         },
+        searchHelp: queryMapper.formatAsHtml(),
       };
     },
     methods: {
@@ -74,6 +91,15 @@
             this.filter.type.push(typeId);
           }
         });
+        this.$emit('change', this.filter);
+      },
+      updateQuery() {
+        const clauses = queryParser.parse(this.query);
+        const queryInput = new QueryInput(clauses);
+        this.filter.query = queryBuilder.build(queryInput);
+        if (this.filter.query.length === 0) {
+          delete this.filter.query;
+        }
         this.$emit('change', this.filter);
       },
       changeClan(clanId) {
@@ -104,6 +130,11 @@
         ;
         return _.sortBy(types, 'name');
       },
+    },
+    watch: {
+      query: _.debounce(function update() {
+        this.updateQuery();
+      }, INPUT_DEBOUNCE_TIMER_MS),
     },
     mounted() {
       this.updateFilter();

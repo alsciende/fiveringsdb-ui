@@ -27,10 +27,10 @@
             <div class="col-md-6">
                 <div class="deck-settings row">
                     <div class="col-6">
-                        <b-form-select v-model="deck.format" :options="formatOptions" class="mb-3"></b-form-select>
+                        <b-form-select v-model="deck.format" :options="formatOptions" class="mb-3" size="sm"></b-form-select>
                     </div>
                     <div class="col-6">
-                        <b-form-select v-model="coreCount" :options="coreCountOptions" class="mb-3"></b-form-select>
+                        <b-form-select v-model="coreCount" :options="coreCountOptions" class="mb-3" size="sm"></b-form-select>
                     </div>
                 </div>
                 <builder-collection

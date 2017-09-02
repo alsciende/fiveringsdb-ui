@@ -17,7 +17,10 @@ class QueryParser {
       this.state = STATE_INITIAL;
 
       const success = this.findClauses();
-      if (success && this.clause.hasArgs()) {
+      if (success === false) {
+        throw new Error(`Parsing failed for [${query}]`);
+      }
+      if (this.clause.hasArgs()) {
         this.saveClause();
       }
     }

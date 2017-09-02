@@ -32,7 +32,7 @@
 </template>
 
 <script>
-  import _ from 'underscore';
+  import _ from 'lodash';
   import stores from '@/service/storeService';
   import BuilderCollectionRow from './CollectionRow';
   import BuilderCollectionFilter from './CollectionFilter';
@@ -45,9 +45,8 @@
     },
     props: ['deck', 'coreCount'],
     data() {
-      const filter = {};
       return {
-        filter,
+        filter: {},
       };
     },
     computed: {
@@ -58,6 +57,10 @@
         if (this.clan === null) {
           return stores.cards(this.filter);
         }
+
+        const userFilter = this.filter;
+        const queryFilter = userFilter.query;
+        delete userFilter.query;
 
         const mainClanFilter = { clan: ['neutral', this.clan] };
         const conflictFilter = { side: 'conflict', influence_cost: { isUndefined: false } };
@@ -71,7 +74,13 @@
           });
         }
 
-        return stores.cards([mainClanFilter, conflictFilter]).filter(roleRestrictionFilter).filter(packFilter).filter(this.filter);
+        return stores
+          .cards([mainClanFilter, conflictFilter])
+          .filter(roleRestrictionFilter)
+          .filter(packFilter)
+          .filter(userFilter)
+          .filter(queryFilter)
+          ;
       },
       cardslots() {
         return this.cards.map((record) => {
@@ -110,6 +119,9 @@
         this.$emit('change', msg);
       },
       changeFilter(filter) {
+        Object.keys(this.filter).forEach((key) => {
+          this.$delete(this.filter, key);
+        });
         Object.keys(filter).forEach((key) => {
           this.$set(this.filter, key, filter[key]);
         });
