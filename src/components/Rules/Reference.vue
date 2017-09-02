@@ -106,7 +106,7 @@
                     If an attachment has skill modifiers, those modifiers apply to the skill of the attached character. Such modifiers apply to the character even while the attachment is bowed.
                 </li>
                 <li>
-                    If a character card is in play as an attachment, the skill values on that character-as-attachment are not treated as skill modifiers (as they lack the "+" or "&ndash;" symbol before the value) for the character to which the card is attached.
+                    If a character card is in play as an attachment, the skill values on that character-as-attachment are not treated as skill modifiers (as they lack the "+" or "-" symbol before the value) for the character to which the card is attached.
                 </li>
             </ul>
             <p>For attachment card anatomy, see "<a href="#appendix-ii-card-anatomy">Appendix II: Card Anatomy</a>" on page 24.
@@ -231,37 +231,37 @@
                 <tr>
                     <td>Crab Clan</td>
                     <td>[crab]</td>
-                    <td><span class="icon icon-crab"></span></td>
+                    <td><span class="icon icon-clan-crab"></span></td>
                 </tr>
                 <tr>
                     <td>Crane Clan</td>
                     <td>[crane]</td>
-                    <td><span class="icon icon-crane"></span></td>
+                    <td><span class="icon icon-clan-crane"></span></td>
                 </tr>
                 <tr>
                     <td>Dragon Clan</td>
                     <td>[dragon]</td>
-                    <td><span class="icon icon-dragon"></span></td>
+                    <td><span class="icon icon-clan-dragon"></span></td>
                 </tr>
                 <tr>
                     <td>Lion Clan</td>
                     <td>[lion]</td>
-                    <td><span class="icon icon-lion"></span></td>
+                    <td><span class="icon icon-clan-lion"></span></td>
                 </tr>
                 <tr>
                     <td>Phoenix Clan</td>
                     <td>[phoenix]</td>
-                    <td><span class="icon icon-phoenix"></span></td>
+                    <td><span class="icon icon-clan-phoenix"></span></td>
                 </tr>
                 <tr>
                     <td>Scorpion Clan</td>
                     <td>[scorpion]</td>
-                    <td><span class="icon icon-scorpion"></span></td>
+                    <td><span class="icon icon-clan-scorpion"></span></td>
                 </tr>
                 <tr>
                     <td>Unicorn Clan</td>
                     <td>[unicorn]</td>
-                    <td><span class="icon icon-unicorn"></span></td>
+                    <td><span class="icon icon-clan-unicorn"></span></td>
                 </tr>
                 </tbody>
             </table>
@@ -305,7 +305,7 @@
             <p>
                 A card's fate cost is the numerical value that must be paid to play the card from a player's hand or provinces.</p>
             <p>
-                Some triggered card abilities also have an ability cost. Any imperative instruction (other than "choose?," which denotes one or more targets must be chosen) that appears before the dash of a triggered ability is considered a part of that ability's cost. Some examples of ability cost instructions are: "Bow?," "Spend?," "Sacrifice?," "Lose?," "Dishonor?," and "Discard?."</p>
+                Some triggered card abilities also have an ability cost. Any imperative instruction (other than "choose...," which denotes one or more targets must be chosen) that appears before the dash of a triggered ability is considered a part of that ability's cost. Some examples of ability cost instructions are: "Bow...," "Spend...," "Sacrifice...," "Lose...," "Dishonor...," and "Discard...."</p>
             <ul>
                 <li>
                     When a player is paying a cost, the payment must be made with cards and/or game elements that player controls. The word "friendly" is used as a reminder of this in some costs.
@@ -1139,13 +1139,13 @@
             <p>
                 Rings, represented by double-sided tokens, are used to determine the type and element of conflicts. Each ring exists in one of three states, as follows:</p>
             <p><b>Unclaimed</b>
-                ? Each ring in the unclaimed ring pool is an unclaimed ring, and is eligible to be selected by a player as a part of the process of declaring a conflict.
+                &ndash; Each ring in the unclaimed ring pool is an unclaimed ring, and is eligible to be selected by a player as a part of the process of declaring a conflict.
             </p>
             <p><b>Contested</b>
-                ? While a conflict is resolving, the ring that has been selected by the attacker when the conflict was declared is placed on the attacked province. This ring is known as the contested ring.
+                &ndash; While a conflict is resolving, the ring that has been selected by the attacker when the conflict was declared is placed on the attacked province. This ring is known as the contested ring.
             </p>
             <p><b>Claimed</b>
-                ? When a player wins a conflict, that player claims the contested ring and places it into his or her claimed ring pool.
+                &ndash; When a player wins a conflict, that player claims the contested ring and places it into his or her claimed ring pool.
             </p>
             <ul>
                 <li>Each claimed ring adds 1 to the glory count of the player who controls it.</li>
@@ -1271,9 +1271,9 @@
             <anchored-heading :level="2">Skill</anchored-heading>
             <p>
                 A character's effectiveness in various endeavors is measured by its skill. There are two types of skill in the game, military skill and political skill.</p>
-            <p>Military skill (<span class="icon icon-military"></span>) is used to determine the victor during military conflicts.
+            <p>Military skill (<span class="icon icon-conflict-military"></span>) is used to determine the victor during military conflicts.
             </p>
-            <p>Political skill (<span class="icon icon-political"></span>) is used to determine the victor during political conflicts.
+            <p>Political skill (<span class="icon icon-conflict-political"></span>) is used to determine the victor during political conflicts.
             </p>
             <ul>
                 <li>
@@ -1326,9 +1326,9 @@
                 </li>
                 <li>
                     A card is not an eligible target for an ability if the resolution of that ability's effect could not affect the target at all. <em>(For example, a bowed character cannot be chosen as the target for an ability that reads "<b>Action:</b>
-                    Choose a character ? bow that character.")</em></li>
+                    Choose a character &ndash; bow that character.")</em></li>
                 <li>
-                    Some abilities require the choice of a target that is not directly affected by the ability ? the target is instead chosen as a reference point while resolving the ability. When choosing referential targets, a player is not bound by the rule that a target is ineligible if the resolution of the effect would not affect the chosen target.
+                    Some abilities require the choice of a target that is not directly affected by the ability &ndash; the target is instead chosen as a reference point while resolving the ability. When choosing referential targets, a player is not bound by the rule that a target is ineligible if the resolution of the effect would not affect the chosen target.
                 </li>
             </ul>
             <anchored-heading :level="2">The word "Then"</anchored-heading>
@@ -1420,8 +1420,7 @@
                 </li>
             </ol>
             <anchored-heading :level="2">Unique Cards</anchored-heading>
-            <p>A card with the <span class="icon icon-unique"></span>
-                symbol in front of its title is a unique card. Each player may only have a maximum of one instance of each unique card, by title, in play.
+            <p>A card with the ◦ symbol in front of its title is a unique card. Each player may only have a maximum of one instance of each unique card, by title, in play.
             </p>
             <ul>
                 <li>
@@ -1795,7 +1794,7 @@
             <p>If no player has a conflict opportunity remaining when this step is reached, advance to step 3.4.</p>
             <anchored-heading :level="3">3.2.1. Declare defenders</anchored-heading>
             <p>
-                The defending player declares which ? if any ? ready characters (under his or her control) are being committed as defenders. The defending player may declare any number of eligible characters under his or her control as defenders. Slide these characters toward the center of the play area, away from the defending player's home area. Declaring "no defenders" is also an option.</p>
+                The defending player declares which &ndash; if any &ndash; ready characters (under his or her control) are being committed as defenders. The defending player may declare any number of eligible characters under his or her control as defenders. Slide these characters toward the center of the play area, away from the defending player's home area. Declaring "no defenders" is also an option.</p>
             <anchored-heading :level="3">3.2.2. Conflict action window</anchored-heading>
             <p>
                 This is a special action window in which the defending player (rather than the first player) has the first action opportunity. These opportunities then alternate between the players until both players consecutively pass.</p>
