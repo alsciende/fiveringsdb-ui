@@ -5,7 +5,7 @@
                 <utils-card-image :card="card"></utils-card-image>
             </div>
             <div class="col-12 col-md-8">
-                <cards-card :card="card" :image="true"></cards-card>
+                <cards-card :card="card"></cards-card>
             </div>
         </div>
     </b-modal>

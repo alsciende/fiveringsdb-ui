@@ -14,6 +14,7 @@ const debug = process.env.NODE_ENV !== 'production';
 export default new Vuex.Store({
   state: {
     cardModale: null,
+    cardPopover: null,
     documentTitle: null,
   },
   getters,

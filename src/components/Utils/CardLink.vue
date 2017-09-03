@@ -1,5 +1,5 @@
 <template>
-    <a :href="url" @click.prevent="showModal">{{ card.name }}</a>
+    <a :href="url" @mouseover="changePopover" v-b-popover.hover.html.d100="popover" @click.prevent="showModal">{{ card.name }}</a>
 </template>
 
 <script>
@@ -11,6 +11,11 @@
       CardsCard,
     },
     props: ['card'],
+    data() {
+      return {
+        popover: () => document.getElementById('popover-card-container').innerHTML,
+      };
+    },
     computed: {
       url() {
         return this.$router.resolve({
@@ -22,6 +27,9 @@
       },
     },
     methods: {
+      changePopover() {
+        this.$store.commit('changeCardPopover', this.card);
+      },
       showModal() {
         this.$store.commit('openCardModale', this.card);
       },

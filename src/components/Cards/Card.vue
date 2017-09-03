@@ -59,7 +59,7 @@
                     &ndash; Influence Cost: 0
                 </span>
             </p>
-            <p class="card-flavor-text my-2" v-html="card.main_slot.flavor"></p>
+            <p class="card-flavor-text my-2" v-if="flavor" v-html="card.main_slot.flavor"></p>
             <b-form-select v-if="card.pack_cards.length > 1" v-model="packId" :options="packs" size="sm"
                            class="pack-chooser"></b-form-select>
             <div v-else v-html="optionText(card.main_slot)" class="small pack-chooser"></div>
@@ -83,13 +83,21 @@
         type: Object,
         required: true,
       },
+      flavor: {
+        type: Boolean,
+        default: true,
+      },
     },
     data() {
       return {
         packId: this.card.main_slot.pack.id,
         packs: this.card.pack_cards.map(slot => ({ value: slot.pack.id, text: this.optionText(slot) })),
-        textLines: this.card.text ? this.card.text.split('\n') : [],
       };
+    },
+    computed: {
+      textLines() {
+        return this.card.text ? this.card.text.split('\n') : [];
+      },
     },
     methods: {
       optionText(slot) {

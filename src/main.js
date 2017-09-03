@@ -23,6 +23,7 @@ import { load } from './service/storeService';
 import AppNavbar from './components/App/Navbar';
 import AppFooter from './components/App/Footer';
 import UtilsCardModale from './components/Utils/CardModale';
+import CardsCard from './components/Cards/Card';
 
 Vue.config.productionTip = false;
 
@@ -49,17 +50,12 @@ load().then(() => {
       AppNavbar,
       AppFooter,
       UtilsCardModale,
-    },
-    methods: {
-      closeModal() {
-        try {
-          this.$vuedals.close();
-        } catch (e) {
-
-        }
-      },
+      CardsCard,
     },
     computed: {
+      card() {
+        return this.$store.getters.cardPopover;
+      },
       title() {
         const title = this.$store.getters.documentTitle;
         document.title = title ? `${title} • FiveRingsDB` : 'FiveRingsDB';
