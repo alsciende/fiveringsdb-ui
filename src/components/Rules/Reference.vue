@@ -1139,13 +1139,16 @@
             <p>
                 Rings, represented by double-sided tokens, are used to determine the type and element of conflicts. Each ring exists in one of three states, as follows:</p>
             <p><b>Unclaimed</b>
-                &ndash; Each ring in the unclaimed ring pool is an unclaimed ring, and is eligible to be selected by a player as a part of the process of declaring a conflict.
+                &ndash;
+                Each ring in the unclaimed ring pool is an unclaimed ring, and is eligible to be selected by a player as a part of the process of declaring a conflict.
             </p>
             <p><b>Contested</b>
-                &ndash; While a conflict is resolving, the ring that has been selected by the attacker when the conflict was declared is placed on the attacked province. This ring is known as the contested ring.
+                &ndash;
+                While a conflict is resolving, the ring that has been selected by the attacker when the conflict was declared is placed on the attacked province. This ring is known as the contested ring.
             </p>
             <p><b>Claimed</b>
-                &ndash; When a player wins a conflict, that player claims the contested ring and places it into his or her claimed ring pool.
+                &ndash;
+                When a player wins a conflict, that player claims the contested ring and places it into his or her claimed ring pool.
             </p>
             <ul>
                 <li>Each claimed ring adds 1 to the glory count of the player who controls it.</li>
@@ -1420,7 +1423,8 @@
                 </li>
             </ol>
             <anchored-heading :level="2">Unique Cards</anchored-heading>
-            <p>A card with the ◦ symbol in front of its title is a unique card. Each player may only have a maximum of one instance of each unique card, by title, in play.
+            <p>
+                A card with the ◦ symbol in front of its title is a unique card. Each player may only have a maximum of one instance of each unique card, by title, in play.
             </p>
             <ul>
                 <li>
@@ -2069,7 +2073,9 @@
         return '#' + $(heading).attr('name');
       },
       scroll(hashbang) {
-        location.href = hashbang;
+        if (hashbang) {
+          location.href = hashbang;
+        }
       },
     },
     mounted() {
