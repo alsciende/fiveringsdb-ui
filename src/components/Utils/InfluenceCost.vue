@@ -22,11 +22,13 @@
         default: 1,
       },
     },
-    data() {
-      return {
-        div: Math.floor((this.quantity * this.card.influence_cost) / 5),
-        mod: (this.quantity * this.card.influence_cost) % 5,
-      };
+    computed: {
+      div() {
+        return Math.floor((this.quantity * this.card.influence_cost) / 5);
+      },
+      mod() {
+        return (this.quantity * this.card.influence_cost) % 5;
+      },
     },
   };
 </script>
