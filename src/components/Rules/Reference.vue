@@ -2008,6 +2008,7 @@
 
 <script>
   import $ from 'jquery';
+  import { defer } from 'lodash';
 
   const getChildrenTextContent = children => children.map(node => (node.children ? getChildrenTextContent(node.children) : node.text)).join('');
 
@@ -2067,10 +2068,14 @@
       href(heading) {
         return '#' + $(heading).attr('name');
       },
+      scroll(hashbang) {
+        location.href = hashbang;
+      },
     },
     mounted() {
       this.$store.commit('changeDocumentTitle', 'Rules Reference');
       this.headings = $('a[name]').toArray();
+      defer(this.scroll, this.$route.hash);
     },
   };
 </script>
