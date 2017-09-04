@@ -77,7 +77,7 @@ class QueryParser {
 
   findArgument() {
     // token 'any text in quotes' or 'allowed text without quotes'
-    const match = this.findToken('"([^"]*)"') || this.findToken('([\\w\\d\\-&]+)');
+    const match = this.findToken('"([^"]*)"') || this.findToken('([\\w\\d\\-&\']+)');
 
     if (!match) {
       return false;
