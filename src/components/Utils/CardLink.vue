@@ -1,5 +1,5 @@
 <template>
-    <a :href="url" @mouseover="changePopover" v-b-popover.hover.html.d100="popover" @click.prevent="showModal">{{ card.name }}</a>
+    <a :href="url" v-b-popover="popover" @mouseover="changePopover" @click.prevent="showModal">{{ card.name }}</a>
 </template>
 
 <script>
@@ -13,7 +13,13 @@
     props: ['card'],
     data() {
       return {
-        popover: () => document.getElementById('popover-card-container').innerHTML,
+        popover: {
+          content: () => document.getElementById('popover-card-container').innerHTML,
+          trigger: 'hover',
+          delay: { show: 600, hide: 100 },
+          html: true,
+          animation: false,
+        },
       };
     },
     computed: {

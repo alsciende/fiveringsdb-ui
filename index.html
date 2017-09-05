@@ -22,9 +22,7 @@
             <app-footer></app-footer>
             <notifications></notifications>
             <utils-card-modale></utils-card-modale>
-            <div id="popover-card-container" class="d-none">
-                <cards-card class="popover-card" v-if="card" :card="card" :flavor="false"></cards-card>
-            </div>
+            <utils-card-popover></utils-card-popover>
             <input type="hidden" v-model="title">
         </div>
     </body>
