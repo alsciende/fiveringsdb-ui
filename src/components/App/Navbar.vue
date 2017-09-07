@@ -48,10 +48,7 @@
     },
     methods: {
       login() {
-        this.$store.dispatch('login').then(
-          result => console.log('resolved', result),
-          reason => console.log('rejected', reason),
-        );
+        this.$store.dispatch('login');
       },
       logout() {
         this.$store.dispatch('logout');
