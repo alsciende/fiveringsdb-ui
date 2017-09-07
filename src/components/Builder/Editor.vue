@@ -60,7 +60,7 @@
       const formats = ['single-core', 'standard'];
       const coreCounts = [1, 2, 3];
       return {
-        coreCount: coreCounts[0],
+        coreCount: 3,
         formatOptions: formats.map(format => ({ value: format, text: this.$t(`format.${format}`) })),
         coreCountOptions: coreCounts.map(coreCount => ({
           value: coreCount,
@@ -84,7 +84,7 @@
           this.deck = {
             name: 'The deck with no name',
             cards: {},
-            format: 'single-core',
+            format: 'standard',
           };
           return;
         }
