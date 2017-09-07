@@ -10,7 +10,9 @@
 
         <div v-if="deck" class="row content">
             <div class="col-md-6">
-                <h2>
+                <input type="text" v-model="deck.name" @blur="nameEdition = false" v-if="nameEdition"
+                       class="form-control form-control mb-2">
+                <h2 @click="nameEdition = true" v-else>
                     {{ deck.name }}
                 </h2>
                 <utils-deck-content :deck="deck"></utils-deck-content>
@@ -70,6 +72,7 @@
         saving: false,
         deck: null,
         error: null,
+        nameEdition: false,
       };
     },
     watch: {
