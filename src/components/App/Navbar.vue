@@ -27,8 +27,8 @@
                     <a class="nav-link" href="#" v-on:click.prevent="logout()">Logout</a>
                 </li>
             </ul>
-            <form class="form-inline mt-2 mt-md-0" action="" method="GET">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" name="q">
+            <form @submit.prevent="submit" class="form-inline mt-2 mt-md-0" action="" method="GET">
+                <input v-model="q" class="form-control mr-sm-2" type="text" placeholder="Search" name="q">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
         </div>
@@ -39,12 +39,20 @@
   export default {
     name: 'app-navbar',
     props: [],
+    data() {
+      return {
+        q: null,
+      };
+    },
     computed: {
       username() {
         return this.$store.getters.username;
       },
     },
     methods: {
+      submit() {
+        this.$router.push({ name: 'cards-by-search-query', query: { q: this.q } });
+      },
       login() {
         this.$store.dispatch('login').then(
           result => console.log('resolved', result),
