@@ -62,7 +62,7 @@ const actions = {
 // getters
 const getters = {
   isLogged: state => state.token !== null,
-  username: state => (state.token ? state.token.user.username : 'Not logged in'),
+  username: state => (state.token ? state.token.user.username : null),
   accessToken: state => (state.token ? state.token.id : null),
 };
 

@@ -20,17 +20,16 @@
                 <li class="nav-item">
                     <router-link :to="{name:'rules-reference'}" class="nav-link">Rules</router-link>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#" v-on:click.prevent="login()">{{ username }}</a>
-                </li>
-                <li class="nav-item">
+            </ul>
+            <div v-if="isLogged" class="navbar-text">Signed in as {{ username }}</div>
+            <ul class="navbar-nav">
+                <li class="nav-item" v-if="isLogged">
                     <a class="nav-link" href="#" v-on:click.prevent="logout()">Logout</a>
                 </li>
+                <li class="nav-item" v-else>
+                    <a class="nav-link" href="#" v-on:click.prevent="login()">Login</a>
+                </li>
             </ul>
-            <form @submit.prevent="submit" class="form-inline mt-2 mt-md-0" action="" method="GET">
-                <input v-model="q" class="form-control mr-sm-2" type="text" placeholder="Search" name="q">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
         </div>
     </nav>
 </template>
@@ -39,20 +38,15 @@
   export default {
     name: 'app-navbar',
     props: [],
-    data() {
-      return {
-        q: null,
-      };
-    },
     computed: {
       username() {
         return this.$store.getters.username;
       },
+      isLogged() {
+        return this.$store.getters.isLogged;
+      },
     },
     methods: {
-      submit() {
-        this.$router.push({ name: 'cards-by-search-query', query: { q: this.q } });
-      },
       login() {
         this.$store.dispatch('login').then(
           result => console.log('resolved', result),
