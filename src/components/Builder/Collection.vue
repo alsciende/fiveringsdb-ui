@@ -70,7 +70,7 @@
           return stores.cards(this.filter);
         }
 
-        const userFilter = this.filter;
+        const userFilter = Object.assign({}, this.filter);
         const queryFilter = userFilter.query;
         delete userFilter.query;
 
