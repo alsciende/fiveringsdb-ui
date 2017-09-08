@@ -11,7 +11,7 @@
         <div v-if="card && editable" slot="modal-header" class="w-100 text-center">
             <button @click="hide" type="button" aria-label="Close" class="close float-right"><span
                     aria-hidden="true">×</span></button>
-            <quantity-selector :min="0" :max="3" :current="quantity" @change="onChange"></quantity-selector>
+            <quantity-selector :min="0" :max="max" :current="current" @change="onChange"></quantity-selector>
         </div>
     </b-modal>
 </template>
@@ -43,8 +43,11 @@
       editable() {
         return this.$route.name === 'deck-edit';
       },
-      quantity() {
+      current() {
         return this.card ? this.$store.getters.quantity(this.card.id) : 0;
+      },
+      max() {
+        return this.card ? this.$store.getters.available(this.card.id) : 3;
       },
     },
     methods: {

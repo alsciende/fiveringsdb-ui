@@ -44,12 +44,6 @@
       BuilderCollectionRow,
       BuilderCollectionFilter,
     },
-    props: {
-      coreCount: {
-        type: Number,
-        required: true,
-      },
-    },
     data() {
       return {
         filter: {},
@@ -104,24 +98,20 @@
           ;
       },
       cardslots() {
-        return this.cards.map((record) => {
-          let max = record.deck_limit;
-          const coreSlot = record.pack_cards.find(slot => slot.pack.id === 'core');
-          if (coreSlot) {
-            max = Math.min(max, this.coreCount * coreSlot.quantity);
-          }
-          return {
-            card: record,
-            min: 0,
-            max,
-            current: this.getQuantity(record) || 0,
-          };
-        });
+        return this.cards.map(record => ({
+          card: record,
+          min: 0,
+          max: this.getMaxQuantity(record) || 3,
+          current: this.getQuantity(record) || 0,
+        }));
       },
     },
     methods: {
       getQuantity(card) {
         return this.$store.getters.quantity(card.id);
+      },
+      getMaxQuantity(card) {
+        return this.$store.getters.available(card.id);
       },
       changeQuantity(msg) {
         this.$store.commit({ type: types.SET_SLOT_QUANTITY, cardId: msg.cardId, quantity: msg.quantity });

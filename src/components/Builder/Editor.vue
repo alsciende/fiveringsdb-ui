@@ -8,12 +8,12 @@
             {{ error }}
         </div>
 
-        <div v-if="deck" class="row content">
+        <div v-if="metadata" class="row content">
             <div class="col-md-6">
-                <input type="text" v-model="deck.name" @blur="nameEdition = false" v-if="nameEdition"
+                <input type="text" v-model="metadata.name" @blur="nameEdition = false" v-if="nameEdition"
                        class="form-control form-control mb-2">
                 <h2 @click="nameEdition = true" v-else>
-                    {{ deck.name }}
+                    {{ metadata.name }}
                 </h2>
                 <utils-deck-content :deck="deck" :editable="true"></utils-deck-content>
                 <div class="btn-group my-4" role="group" aria-label="Deck Controls">
@@ -29,15 +29,14 @@
             <div class="col-md-6">
                 <div class="deck-settings row">
                     <div class="col-6">
-                        <b-form-select v-model="deck.format" :options="formatOptions" class="mb-3"
+                        <b-form-select v-model="metadata.format" :options="formatOptions" class="mb-3"
                                        size="sm"></b-form-select>
                     </div>
                     <div class="col-6">
-                        <b-form-select v-model="coreCount" :options="coreCountOptions" class="mb-3"
-                                       size="sm"></b-form-select>
+                        <core-count-selector></core-count-selector>
                     </div>
                 </div>
-                <builder-collection :coreCount="coreCount"></builder-collection>
+                <builder-collection></builder-collection>
             </div>
         </div>
     </div>
@@ -49,6 +48,7 @@
   import * as types from '@/store/mutation-types';
   import BuilderCollection from './Collection';
   import BuilderBuilder from './List';
+  import CoreCountSelector from './CoreCountSelector';
 
   export default {
     name: 'builder-editor',
@@ -56,17 +56,12 @@
       BuilderBuilder,
       BuilderCollection,
       UtilsDeckContent,
+      CoreCountSelector,
     },
     data() {
       const formats = ['single-core', 'standard'];
-      const coreCounts = [1, 2, 3];
       return {
-        coreCount: 3,
         formatOptions: formats.map(format => ({ value: format, text: this.$t(`format.${format}`) })),
-        coreCountOptions: coreCounts.map(coreCount => ({
-          value: coreCount,
-          text: `${coreCount} Core${coreCount > 1 ? 's' : ''}`,
-        })),
         loading: false,
         saving: false,
         metadata: null,
@@ -91,11 +86,11 @@
         this.metadata = null;
 
         if (this.$route.name === 'deck-new') {
-          this.deck = {
+          this.metadata = {
             name: 'The deck with no name',
-            cards: {},
             format: 'standard',
           };
+          this.$store.commit({ type: types.SET_SLOTS, slots: {} });
           return;
         }
 
@@ -104,6 +99,8 @@
           .get(`strains/${this.$route.params.strainId}/decks/${this.$route.params.deckId}`)
           .then((result) => {
             this.$store.commit({ type: types.SET_SLOTS, slots: result.record.cards });
+            this.$store.commit({ type: types.UPDATE_COLLECTION });
+
             delete result.record.cards;
             this.metadata = result.record;
           })
