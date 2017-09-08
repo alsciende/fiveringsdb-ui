@@ -98,10 +98,12 @@
         rest
           .get(`strains/${this.$route.params.strainId}/decks/${this.$route.params.deckId}`)
           .then((result) => {
-            this.$store.commit({ type: types.SET_SLOTS, slots: result.record.cards });
+            const slots = Array.isArray(result.record.cards) ? {} : result.record.cards;
+            delete result.record.cards;
+
+            this.$store.commit({ type: types.SET_SLOTS, slots });
             this.$store.commit({ type: types.UPDATE_COLLECTION });
 
-            delete result.record.cards;
             this.metadata = result.record;
           })
           .catch((reason) => {
