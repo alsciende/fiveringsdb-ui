@@ -15,7 +15,7 @@
                 <h2 @click="nameEdition = true" v-else>
                     {{ deck.name }}
                 </h2>
-                <utils-deck-content :deck="deck"></utils-deck-content>
+                <utils-deck-content :deck="deck" :editable="true"></utils-deck-content>
                 <div class="btn-group my-4" role="group" aria-label="Deck Controls">
                     <a
                             href="#"
@@ -29,17 +29,15 @@
             <div class="col-md-6">
                 <div class="deck-settings row">
                     <div class="col-6">
-                        <b-form-select v-model="deck.format" :options="formatOptions" class="mb-3" size="sm"></b-form-select>
+                        <b-form-select v-model="deck.format" :options="formatOptions" class="mb-3"
+                                       size="sm"></b-form-select>
                     </div>
                     <div class="col-6">
-                        <b-form-select v-model="coreCount" :options="coreCountOptions" class="mb-3" size="sm"></b-form-select>
+                        <b-form-select v-model="coreCount" :options="coreCountOptions" class="mb-3"
+                                       size="sm"></b-form-select>
                     </div>
                 </div>
-                <builder-collection
-                        :deck="deck"
-                        :coreCount="coreCount"
-                        @change="changeQuantity"
-                ></builder-collection>
+                <builder-collection :coreCount="coreCount"></builder-collection>
             </div>
         </div>
     </div>
@@ -48,6 +46,7 @@
 <script>
   import UtilsDeckContent from '@/components/Utils/DeckContent';
   import rest from '@/rest';
+  import * as types from '@/store/mutation-types';
   import BuilderCollection from './Collection';
   import BuilderBuilder from './List';
 
@@ -70,7 +69,7 @@
         })),
         loading: false,
         saving: false,
-        deck: null,
+        metadata: null,
         error: null,
         nameEdition: false,
       };
@@ -78,10 +77,18 @@
     watch: {
       $route: 'fetchData',
     },
+    computed: {
+      content() {
+        return this.$store.getters.slots;
+      },
+      deck() {
+        return Object.assign({}, this.metadata, { cards: this.content });
+      },
+    },
     methods: {
       fetchData() {
         this.error = null;
-        this.deck = null;
+        this.metadata = null;
 
         if (this.$route.name === 'deck-new') {
           this.deck = {
@@ -96,7 +103,9 @@
         rest
           .get(`strains/${this.$route.params.strainId}/decks/${this.$route.params.deckId}`)
           .then((result) => {
-            this.deck = result.record;
+            this.$store.commit({ type: types.SET_SLOTS, slots: result.record.cards });
+            delete result.record.cards;
+            this.metadata = result.record;
           })
           .catch((reason) => {
             this.error = reason;
@@ -104,13 +113,6 @@
           .then(() => {
             this.loading = false;
           });
-      },
-      changeQuantity(msg) {
-        if (msg.quantity > 0) {
-          this.$set(this.deck.cards, msg.cardId, msg.quantity);
-        } else {
-          this.$delete(this.deck.cards, msg.cardId);
-        }
       },
       saveDeck() {
         this.saving = true;

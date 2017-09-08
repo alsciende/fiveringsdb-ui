@@ -34,6 +34,7 @@
 <script>
   import _ from 'lodash';
   import stores from '@/service/storeService';
+  import * as types from '@/store/mutation-types';
   import BuilderCollectionRow from './CollectionRow';
   import BuilderCollectionFilter from './CollectionFilter';
 
@@ -43,15 +44,36 @@
       BuilderCollectionRow,
       BuilderCollectionFilter,
     },
-    props: ['deck', 'coreCount'],
+    props: {
+      coreCount: {
+        type: Number,
+        required: true,
+      },
+    },
     data() {
       return {
         filter: {},
       };
     },
     computed: {
+      slots() {
+        return this.$store.getters.slots;
+      },
       clan() {
-        return this.findDeckClan(this.deck);
+        let stronghold = null;
+        _.find(Object.keys(this.slots), (cardId) => {
+          stronghold = stores.cards({ id: cardId, type: 'stronghold' }).first();
+          return stronghold !== false;
+        });
+        return stronghold ? stronghold.clan : null;
+      },
+      role() {
+        let role = null;
+        _.find(Object.keys(this.slots), (cardId) => {
+          role = stores.cards({ id: cardId, type: 'role' }).first();
+          return role !== false;
+        });
+        return role;
       },
       cards() {
         if (this.clan === null) {
@@ -67,9 +89,8 @@
         const roleRestrictionFilter = [{ role_restriction: { isNull: true } }];
         const packFilter = { packs: { has: 'core' } };
 
-        const role = this.findDeckRole(this.deck);
-        if (role && role.traits) {
-          role.traits.forEach((trait) => {
+        if (this.role && this.role.traits) {
+          this.role.traits.forEach((trait) => {
             roleRestrictionFilter.push({ role_restriction: trait });
           });
         }
@@ -93,30 +114,17 @@
             card: record,
             min: 0,
             max,
-            current: this.deck.cards[record.id] || 0,
+            current: this.getQuantity(record) || 0,
           };
         });
       },
     },
     methods: {
-      findDeckClan(deck) {
-        let stronghold = null;
-        _.find(Object.keys(deck.cards), (cardId) => {
-          stronghold = stores.cards({ id: cardId, type: 'stronghold' }).first();
-          return stronghold !== false;
-        });
-        return stronghold ? stronghold.clan : null;
-      },
-      findDeckRole(deck) {
-        let role = null;
-        _.find(Object.keys(deck.cards), (cardId) => {
-          role = stores.cards({ id: cardId, type: 'role' }).first();
-          return role !== false;
-        });
-        return role;
+      getQuantity(card) {
+        return this.$store.getters.quantity(card.id);
       },
       changeQuantity(msg) {
-        this.$emit('change', msg);
+        this.$store.commit({ type: types.SET_SLOT_QUANTITY, cardId: msg.cardId, quantity: msg.quantity });
       },
       changeFilter(filter) {
         Object.keys(this.filter).forEach((key) => {

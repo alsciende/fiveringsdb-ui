@@ -1,5 +1,5 @@
 <template>
-    <b-modal id="card_modale" v-model="visible" @hidden="hidden" size="lg" okTitle="Go to card page" @ok="goToCardPage">
+    <b-modal id="card_modale" v-model="visible" @hidden="hide" size="lg" okTitle="Go to card page" @ok="goToCardPage">
         <div v-if="card" class="row">
             <div class="col-4 d-none d-md-block">
                 <utils-card-image :card="card"></utils-card-image>
@@ -8,17 +8,25 @@
                 <cards-card :card="card"></cards-card>
             </div>
         </div>
+        <div v-if="card && editable" slot="modal-header" class="w-100 text-center">
+            <button @click="hide" type="button" aria-label="Close" class="close float-right"><span
+                    aria-hidden="true">×</span></button>
+            <quantity-selector :min="0" :max="3" :current="quantity" @change="onChange"></quantity-selector>
+        </div>
     </b-modal>
 </template>
 
 <script>
   import CardsCard from '@/components/Cards/Card';
   import UtilsCardImage from '@/components/Utils/CardImage';
+  import QuantitySelector from '@/components/Builder/QuantitySelector';
+  import * as types from '@/store/mutation-types';
 
   export default {
     components: {
       CardsCard,
       UtilsCardImage,
+      QuantitySelector,
     },
     name: 'utils-card-modale',
     data() {
@@ -32,9 +40,15 @@
         this.visible = card !== null;
         return card;
       },
+      editable() {
+        return this.$route.name === 'deck-edit';
+      },
+      quantity() {
+        return this.card ? this.$store.getters.quantity(this.card.id) : 0;
+      },
     },
     methods: {
-      hidden() {
+      hide() {
         this.$store.commit('closeCardModale');
       },
       goToCardPage() {
@@ -44,6 +58,10 @@
             id: this.card.id,
           },
         });
+      },
+      onChange(quantity) {
+        this.$store.commit({ type: types.SET_SLOT_QUANTITY, cardId: this.card.id, quantity });
+        this.hide();
       },
     },
   };

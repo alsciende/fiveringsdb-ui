@@ -31,6 +31,11 @@
         required: true,
       },
     },
+    watch: {
+      current() {
+        this.value = this.current;
+      },
+    },
     data() {
       return {
         value: this.current,

@@ -6,6 +6,8 @@ import * as getters from './getters';
 import * as mutations from './mutations';
 
 import auth from './modules/auth';
+import slots from './modules/slots';
+import collection from './modules/collection';
 
 Vue.use(Vuex);
 
@@ -21,6 +23,8 @@ export default new Vuex.Store({
   mutations,
   modules: {
     auth,
+    slots,
+    collection,
   },
   strict: debug,
   plugins: [

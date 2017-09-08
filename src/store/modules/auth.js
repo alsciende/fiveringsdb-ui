@@ -1,9 +1,11 @@
 import rest from '@/rest';
 import config from '@/config';
+import * as types from '../mutation-types';
 
 function buildStrWindowFeatures(obj) {
   return Object.keys(obj).map(key => `${key}=${obj[key]}`).join(',');
 }
+
 const childFeatures = buildStrWindowFeatures({
   dialog: 1,
   height: 400,
@@ -37,7 +39,7 @@ const actions = {
         // ask the server to create a token with this access token
         resolve(rest.post('tokens', { id: event.data.access_token }).then((response) => {
           commit({
-            type: 'saveToken',
+            type: types.SAVE_AUTH_TOKEN,
             token: response.record,
           });
           return response.record;
@@ -53,10 +55,10 @@ const actions = {
   },
   logout({ commit }) {
     commit({
-      type: 'saveToken',
+      type: types.SAVE_AUTH_TOKEN,
       token: null,
     });
-  }
+  },
 };
 
 // getters
@@ -68,7 +70,7 @@ const getters = {
 
 // mutations
 const mutations = {
-  saveToken(_state, { token }) {
+  [types.SAVE_AUTH_TOKEN](_state, { token }) {
     _state.token = token;
   },
 };

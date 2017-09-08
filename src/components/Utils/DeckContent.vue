@@ -97,7 +97,12 @@
       UtilsCardImage,
       UtilsInfluenceCost,
     },
-    props: ['deck', 'view'],
+    props: {
+      deck: {
+        type: Object,
+        required: true,
+      },
+    },
     data() {
       return {
         dynastyTypes: ['character', 'holding'],
