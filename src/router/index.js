@@ -4,6 +4,7 @@ import Router from 'vue-router';
 import AppNotFound from '@/components/App/NotFound';
 import Browser from '@/components/Cards/Browser';
 import BuilderList from '@/components/Builder/List';
+import DecksView from '@/components/Decks/View';
 import BuilderEditor from '@/components/Builder/Editor';
 import RulesReference from '@/components/Rules/Reference';
 
@@ -72,6 +73,13 @@ export default new Router({
       component: RulesReference,
       props: false,
       meta: { section: 'rules' },
+    },
+    {
+      path: '/decks/:strainId/view',
+      name: 'strain-view',
+      component: DecksView,
+      props: true,
+      meta: { section: 'decks' },
     },
     {
       path: '*',

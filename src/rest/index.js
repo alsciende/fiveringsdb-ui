@@ -44,4 +44,12 @@ export default {
       .catch(notifyObservers)
       ;
   },
+  delete(resourcePath) {
+    return Vue
+      .http
+      .delete(config.getApiURL(resourcePath))
+      .then(validateStatus)
+      .catch(notifyObservers)
+      ;
+  },
 };

@@ -106,12 +106,10 @@
             this.$store.commit({ type: types.UPDATE_COLLECTION });
 
             this.metadata = result.record;
+            this.loading = false;
           })
           .catch((reason) => {
             this.error = reason;
-          })
-          .then(() => {
-            this.loading = false;
           });
       },
       saveDeck() {

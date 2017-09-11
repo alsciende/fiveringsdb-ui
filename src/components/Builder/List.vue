@@ -35,11 +35,25 @@
             <div class="col-lg-6">
                 <div v-if="deck">
                     <h2>{{ deck.name }}</h2>
-                    <div class="btn-group mb-2">
+                    <div class="mb-2">
                         <button type="button" class="btn btn-outline-primary btn-sm"
                                 @click.prevent="edit(deck)">Edit
                         </button>
+                        <b-btn v-b-modal.modalDelete class="btn btn-outline-danger btn-sm">Delete</b-btn>
+                        <router-link :to="{ name: 'strain-view', params: { strainId: deck.strain } }"
+                                     class="btn btn-outline-info btn-sm" target="_blank">
+                            Permalink
+                        </router-link>
                     </div>
+                    <b-modal id="modalDelete"
+                             ref="modalDelete"
+                             title="Confirmation"
+                             @ok="delet(deck)"
+                             ok-title="Confirm deletion"
+                             close-title="Cancel">
+                        <p>This deletion is definitive and cannot be undone.</p>
+                        <p>Delete <b>{{ deck.name }}</b>?</p>
+                    </b-modal>
                     <utils-deck-content :deck="deck"></utils-deck-content>
                 </div>
             </div>
@@ -101,6 +115,21 @@
       },
       edit(deck) {
         this.$router.push({ name: 'deck-edit', params: { strainId: deck.strain, deckId: deck.id } });
+      },
+      delet(deck) {
+        this.$notify({
+          text: 'Deleting...',
+        });
+        const strainId = this.deck.strain;
+        rest.delete(`strains/${strainId}`).then((result) => {
+          this.$notify({
+            title: 'Success',
+            text: 'Deck deleted',
+            type: 'success',
+          });
+          this.deck = null;
+          this.strains = this.strains.filter(strain => strain.id !== strainId);
+        });
       },
     },
     beforeRouteEnter(to, from, next) {
