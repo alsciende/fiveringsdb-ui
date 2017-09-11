@@ -1,13 +1,13 @@
 <template>
     <div class="row">
-        <div class="table-of-contents order-2 col-4" style="float:right">
+        <div class="table-of-contents order-2 col-4 d-none d-sm-block f-right">
             <ul>
                 <li v-for="heading in headings" :class="['item-size-'+level(heading)]">
                     <a :href="href(heading)">{{ title(heading) }}</a>
                 </li>
             </ul>
         </div>
-        <div class="contents order-1 col-8">
+        <div class="contents order-1 col-sm-8">
             <h2>RULES REFERENCE</h2>
             <p>Version 1.01</p>
             <h3>SUMMARY OF CHANGES</h3>

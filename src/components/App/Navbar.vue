@@ -1,23 +1,22 @@
 <template>
-    <nav class="navbar navbar-expand-md mb-4">
+    <nav class="navbar navbar-dark bg-dark navbar-expand-md mb-4">
         <a class="navbar-brand" href="/">
             <img src="/static/favicon-32x32.png" style="height:16px; vertical-align: baseline">
             FiveRingsDB
         </a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-                data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
-                aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+        <button class="navbar-toggler navbar-toggler-right" type="button"
+                v-b-toggle.navbarCollapse aria-label="Toggle navigation">
+            <span class="fa fa-bars"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
+        <b-collapse :is-nav="true" class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <li class="nav-item" :class="{ active: section === 'cards' }">
                     <router-link :to="{name:'cards-by-default'}" class="nav-link">Cards</router-link>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" :class="{ active: section === 'deckbuilder' }">
                     <router-link :to="{name:'deckbuilder'}" class="nav-link">Deckbuilder</router-link>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" :class="{ active: section === 'rules' }">
                     <router-link :to="{name:'rules-reference'}" class="nav-link">Rules</router-link>
                 </li>
             </ul>
@@ -30,7 +29,7 @@
                     <a class="nav-link" href="#" v-on:click.prevent="login()">Login</a>
                 </li>
             </ul>
-        </div>
+        </b-collapse>
     </nav>
 </template>
 
@@ -39,6 +38,9 @@
     name: 'app-navbar',
     props: [],
     computed: {
+      section() {
+        return this.$route.meta.section;
+      },
       username() {
         return this.$store.getters.username;
       },
