@@ -8,7 +8,7 @@
                     @change="change"
             ></builder-quantity-selector>
         </td>
-        <td class="card-name" :style="{'font-style': (card.side === 'conflict') ? 'italic' : 'regular'}">
+        <td class="card-name">
             <utils-card-icon :card="card"></utils-card-icon>
             <utils-card-link
                     :card="card"

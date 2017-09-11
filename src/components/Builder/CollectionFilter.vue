@@ -1,7 +1,8 @@
 <template>
     <div>
         <div class="d-sm-flex mb-2">
-            <input v-model="query" class="form-control form-control-sm mr-2" placeholder="Card filter (e.g. x:sincerity or k:bushi)">
+            <input v-model="query" class="form-control form-control-sm mr-2"
+                   placeholder="Card filter (e.g. x:sincerity or k:bushi)">
             <b-btn v-b-toggle.searchHelp variant="outline-secondary" size="sm">
                 <span class="fa fa-info-circle"></span>
             </b-btn>
@@ -18,6 +19,18 @@
                     :title="clan.name"
                     @click="changeClan(clan.id)"
             ><span :class="'icon icon-clan-'+clan.id"></span></button>
+        </div>
+
+        <div class="btn-group d-flex my-2" role="group" aria-label="Deck Filter">
+            <button
+                    v-for="side in sideOptions"
+                    type="button"
+                    class="btn btn-outline-secondary btn-sm col"
+                    :class="['side-'+side.id, sides[side.id] ? 'active' : '']"
+                    :title="side.name"
+                    @click="changeSide(side.id)"
+            >{{ $t('side.' + side.id).substr(0, 1) }}
+            </button>
         </div>
 
         <div class="btn-group d-flex my-2" role="group" aria-label="Type Filter">
@@ -63,13 +76,22 @@
       typeOptions.forEach((type) => {
         types[type.id] = this.clan ? type.id !== 'stronghold' && type.id !== 'role' : type.id === 'stronghold';
       });
+      const sideOptions = this.getSideOptions();
+      const sides = {
+        dynasty: true,
+        conflict: true,
+        province: true,
+        role: true,
+      };
 
       return {
         query: '',
         clans,
         types,
+        sides,
         clanOptions,
         typeOptions,
+        sideOptions,
         filter: {
           clan: [],
           type: [],
@@ -79,17 +101,13 @@
     },
     methods: {
       updateFilter() {
-        this.filter.clan = [];
-        Object.keys(this.clans).forEach((clanId) => {
-          if (this.clans[clanId]) {
-            this.filter.clan.push(clanId);
-          }
-        });
-        this.filter.type = [];
-        Object.keys(this.types).forEach((typeId) => {
-          if (this.types[typeId]) {
-            this.filter.type.push(typeId);
-          }
+        ['clan', 'side', 'type'].forEach((filter) => {
+          this.filter[filter] = [];
+          Object.keys(this[`${filter}s`]).forEach((id) => {
+            if (this[`${filter}s`][id]) {
+              this.filter[filter].push(id);
+            }
+          });
         });
         this.$emit('change', this.filter);
       },
@@ -104,6 +122,10 @@
       },
       changeClan(clanId) {
         this.clans[clanId] = !this.clans[clanId];
+        this.updateFilter();
+      },
+      changeSide(sideId) {
+        this.sides[sideId] = !this.sides[sideId];
         this.updateFilter();
       },
       changeType(typeId) {
@@ -123,12 +145,14 @@
         return _.sortBy(partition[1], 'name').concat(partition[0]);
       },
       getTypeOptions() {
-        const types = stores
-          .cards()
-          .distinct('type')
+        return ['holding', 'character', 'attachment', 'event', 'province', 'stronghold', 'role']
           .map(typeId => ({ id: typeId, name: this.$t(`type.${typeId}`) }))
-        ;
-        return _.sortBy(types, 'name');
+          ;
+      },
+      getSideOptions() {
+        return ['dynasty', 'conflict', 'province', 'role']
+          .map(sideId => ({ id: sideId, name: this.$t(`side.${sideId}`) }))
+          ;
       },
     },
     watch: {

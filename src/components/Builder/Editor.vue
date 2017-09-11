@@ -91,6 +91,7 @@
             format: 'standard',
           };
           this.$store.commit({ type: types.SET_SLOTS, slots: {} });
+          this.$store.commit({ type: types.UPDATE_COLLECTION });
           return;
         }
 

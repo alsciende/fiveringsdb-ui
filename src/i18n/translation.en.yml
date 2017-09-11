@@ -1,6 +1,8 @@
 side:
     conflict: 'Conflict'
     dynasty: 'Dynasty'
+    province: 'Province'
+    role: 'Role'
     deck: '{side} Deck'
 
 type:
