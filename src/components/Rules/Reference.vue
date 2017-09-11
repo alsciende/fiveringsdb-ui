@@ -2038,6 +2038,7 @@
           return createElement(
             `h${this.level}`,
             [
+              this.$slots.default,
               createElement('a', {
                 attrs: {
                   name: headingId,
@@ -2049,8 +2050,6 @@
                   innerHTML: '&para;',
                 },
               }),
-              ' ',
-              this.$slots.default,
             ],
           );
         },
@@ -2148,11 +2147,12 @@
 </style>
 <style>
     .contents a[name] {
-        color: lightskyblue;
+        color: lightgrey;
+        padding-left: 5px;
     }
 
     .contents a[name]:hover {
-        color: deepskyblue;
+        color: #007bff;
         text-decoration: none;
     }
 
