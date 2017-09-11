@@ -61,8 +61,9 @@
     name: 'builder-collection-filter',
     components: {},
     props: {
-      clan: {
-        type: String,
+      startingClans: {
+        type: Array,
+        required: true,
       },
     },
     data() {
@@ -70,11 +71,11 @@
       const types = {};
       const clanOptions = this.getClanOptions();
       clanOptions.forEach((clan) => {
-        clans[clan.id] = this.clan ? clan.id === this.clan : true;
+        clans[clan.id] = this.startingClans.indexOf(clan.id) !== -1;
       });
       const typeOptions = this.getTypeOptions();
       typeOptions.forEach((type) => {
-        types[type.id] = this.clan ? type.id !== 'stronghold' && type.id !== 'role' : type.id === 'stronghold';
+        types[type.id] = this.startingClans.length ? type.id !== 'stronghold' && type.id !== 'role' : type.id === 'stronghold';
       });
       const sideOptions = this.getSideOptions();
       const sides = {

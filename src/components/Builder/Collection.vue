@@ -2,7 +2,7 @@
     <div class="collection">
 
         <builder-collection-filter
-                :clan="clan"
+                :startingClans="startingClans"
                 @change="changeFilter"
         ></builder-collection-filter>
 
@@ -21,7 +21,7 @@
                     :min="cardslot.min"
                     :max="cardslot.max"
                     :current="cardslot.current"
-                    :influence="cardslot.card.clan !== clan"
+                    :influence="cardslot.card.clan !== mainClan"
                     @change="changeQuantity"
             >
             </builder-collection-row>
@@ -53,21 +53,17 @@
       slots() {
         return this.$store.getters.slots;
       },
-      clan() {
-        let stronghold = null;
-        _.find(Object.keys(this.slots), (cardId) => {
-          stronghold = stores.cards({ id: cardId, type: 'stronghold' }).first();
-          return stronghold !== false;
-        });
-        return stronghold ? stronghold.clan : null;
+      startingClans() {
+        return stores.cards({ id: Object.keys(this.slots) }).distinct('clan');
+      },
+      stronghold() {
+        return stores.cards({ id: Object.keys(this.slots), type: 'stronghold' }).first();
       },
       role() {
-        let role = null;
-        _.find(Object.keys(this.slots), (cardId) => {
-          role = stores.cards({ id: cardId, type: 'role' }).first();
-          return role !== false;
-        });
-        return role;
+        return stores.cards({ id: Object.keys(this.slots), type: 'role' }).first();
+      },
+      mainClan() {
+        return this.stronghold ? this.stronghold.clan : null;
       },
       cards() {
         if (this.clan === null) {
@@ -78,7 +74,7 @@
         const queryFilter = userFilter.query;
         delete userFilter.query;
 
-        const mainClanFilter = { clan: ['neutral', this.clan] };
+        const mainClanFilter = { clan: ['neutral', this.mainClan] };
         const conflictFilter = { side: 'conflict', influence_cost: { isUndefined: false } };
         const roleRestrictionFilter = [{ role_restriction: { isNull: true } }];
         const packFilter = { packs: { has: 'core' } };
@@ -117,6 +113,7 @@
         this.$store.commit({ type: types.SET_SLOT_QUANTITY, cardId: msg.cardId, quantity: msg.quantity });
       },
       changeFilter(filter) {
+        console.log(JSON.stringify(filter));
         Object.keys(this.filter).forEach((key) => {
           this.$delete(this.filter, key);
         });

@@ -129,9 +129,9 @@
     },
     computed: {
       slots() {
-        return Object.keys(this.deck.cards).map(cardId => ({
-          quantity: this.deck.cards[cardId],
-          card: stores.cards({ id: cardId }).first(),
+        return stores.cards({ id: Object.keys(this.deck.cards) }).map(card => ({
+          quantity: this.deck.cards[card.id],
+          card,
         }));
       },
       inspector() {
