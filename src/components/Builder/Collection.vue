@@ -66,7 +66,7 @@
         return this.stronghold ? this.stronghold.clan : null;
       },
       cards() {
-        if (this.clan === null) {
+        if (this.mainClan === null) {
           return stores.cards(this.filter);
         }
 
@@ -113,7 +113,6 @@
         this.$store.commit({ type: types.SET_SLOT_QUANTITY, cardId: msg.cardId, quantity: msg.quantity });
       },
       changeFilter(filter) {
-        console.log(JSON.stringify(filter));
         Object.keys(this.filter).forEach((key) => {
           this.$delete(this.filter, key);
         });

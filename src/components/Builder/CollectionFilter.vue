@@ -71,7 +71,7 @@
       const types = {};
       const clanOptions = this.getClanOptions();
       clanOptions.forEach((clan) => {
-        clans[clan.id] = this.startingClans.indexOf(clan.id) !== -1;
+        clans[clan.id] = this.startingClans.length ? this.startingClans.indexOf(clan.id) !== -1 : true;
       });
       const typeOptions = this.getTypeOptions();
       typeOptions.forEach((type) => {
