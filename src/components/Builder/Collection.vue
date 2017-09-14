@@ -32,7 +32,6 @@
 </template>
 
 <script>
-  import _ from 'lodash';
   import stores from '@/service/storeService';
   import * as types from '@/store/mutation-types';
   import BuilderCollectionRow from './CollectionRow';
@@ -74,10 +73,19 @@
         const queryFilter = userFilter.query;
         delete userFilter.query;
 
-        const mainClanFilter = { clan: ['neutral', this.mainClan] };
-        const conflictFilter = { side: 'conflict', influence_cost: { isUndefined: false } };
-        const roleRestrictionFilter = [{ role_restriction: { isNull: true } }];
-        const packFilter = { packs: { has: 'core' } };
+        const mainClanFilter = {
+          clan: ['neutral', this.mainClan],
+        };
+        const conflictFilter = {
+          side: 'conflict',
+          influence_cost: { isUndefined: false },
+        };
+        const roleRestrictionFilter = [{
+          role_restriction: { isNull: true },
+        }];
+        const packFilter = {
+          packs: { has: 'core' },
+        };
 
         if (this.role && this.role.traits) {
           this.role.traits.forEach((trait) => {
@@ -110,7 +118,11 @@
         return this.$store.getters.available(card.id);
       },
       changeQuantity(msg) {
-        this.$store.commit({ type: types.SET_SLOT_QUANTITY, cardId: msg.cardId, quantity: msg.quantity });
+        this.$store.commit({
+          type: types.SET_SLOT_QUANTITY,
+          cardId: msg.cardId,
+          quantity: msg.quantity,
+        });
       },
       changeFilter(filter) {
         Object.keys(this.filter).forEach((key) => {

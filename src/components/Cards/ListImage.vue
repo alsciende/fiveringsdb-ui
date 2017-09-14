@@ -16,7 +16,7 @@
     components: {
       UtilsCardImage,
       CardsCard,
-    }
+    },
   }
   ;
 </script>

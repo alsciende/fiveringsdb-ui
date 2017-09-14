@@ -34,7 +34,7 @@ class QueryParser {
           this.findNameAndType();
           break;
         case STATE_ARGUMENT:
-          /* eslint-disable no-unused-expressions*/
+          /* eslint-disable no-unused-expressions */
           this.findArgument()
           || this.findDisjonction()
           || this.findConjonction()

@@ -71,11 +71,15 @@
       const types = {};
       const clanOptions = this.getClanOptions();
       clanOptions.forEach((clan) => {
-        clans[clan.id] = this.startingClans.length ? this.startingClans.indexOf(clan.id) !== -1 : true;
+        clans[clan.id] = this.startingClans.length
+          ? this.startingClans.indexOf(clan.id) !== -1
+          : true;
       });
       const typeOptions = this.getTypeOptions();
       typeOptions.forEach((type) => {
-        types[type.id] = this.startingClans.length ? type.id !== 'stronghold' && type.id !== 'role' : type.id === 'stronghold';
+        types[type.id] = this.startingClans.length
+          ? type.id !== 'stronghold' && type.id !== 'role'
+          : type.id === 'stronghold';
       });
       const sideOptions = this.getSideOptions();
       const sides = {
@@ -146,9 +150,15 @@
         return _.sortBy(partition[1], 'name').concat(partition[0]);
       },
       getTypeOptions() {
-        return ['holding', 'character', 'attachment', 'event', 'province', 'stronghold', 'role']
-          .map(typeId => ({ id: typeId, name: this.$t(`type.${typeId}`) }))
-          ;
+        return [
+          'holding',
+          'character',
+          'attachment',
+          'event',
+          'province',
+          'stronghold',
+          'role',
+        ].map(typeId => ({ id: typeId, name: this.$t(`type.${typeId}`) }));
       },
       getSideOptions() {
         return ['dynasty', 'conflict', 'province', 'role']

@@ -116,20 +116,21 @@
       edit(deck) {
         this.$router.push({ name: 'deck-edit', params: { strainId: deck.strain, deckId: deck.id } });
       },
-      delet(deck) {
+      delet() {
         this.$notify({
           text: 'Deleting...',
         });
         const strainId = this.deck.strain;
-        rest.delete(`strains/${strainId}`).then((result) => {
-          this.$notify({
-            title: 'Success',
-            text: 'Deck deleted',
-            type: 'success',
+        rest.delete(`strains/${strainId}`)
+          .then(() => {
+            this.$notify({
+              title: 'Success',
+              text: 'Deck deleted',
+              type: 'success',
+            });
+            this.deck = null;
+            this.strains = this.strains.filter(strain => strain.id !== strainId);
           });
-          this.deck = null;
-          this.strains = this.strains.filter(strain => strain.id !== strainId);
-        });
       },
     },
     beforeRouteEnter(to, from, next) {

@@ -4,21 +4,21 @@
 
 <script>
   export default {
-      name: 'utils-card-image',
-      props: ['card', 'classes'],
-      data() {
-          return {
-              classObject: ['card-image', 'img-fluid'].concat(this.classes),
-          };
+    name: 'utils-card-image',
+    props: ['card', 'classes'],
+    data() {
+      return {
+        classObject: ['card-image', 'img-fluid'].concat(this.classes),
+      };
+    },
+    computed: {
+      url() {
+        return `/static/cards/${this.pack}/${this.card.id}.jpg`;
       },
-      computed: {
-          url() {
-              return `/static/cards/${this.pack}/${this.card.id}.jpg`;
-          },
-          pack() {
-              return this.card.main_slot.pack.id;
-          },
+      pack() {
+        return this.card.main_slot.pack.id;
       },
+    },
   };
 </script>
 

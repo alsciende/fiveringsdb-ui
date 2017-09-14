@@ -30,21 +30,21 @@ const cardNullableFields = [
  */
 const denormalizeCards = () => {
   const mapPacks = {};
-    const mapCycles = {};
+  const mapCycles = {};
 
   stores.packs().each((record) => {
-      mapPacks[record.id] = record;
+    mapPacks[record.id] = record;
   });
 
   stores.cycles().each((record) => {
     mapCycles[record.id] = record;
-    });
+  });
 
   stores.cards().each((record) => {
     // replace the packs with the full pack records
-      record.pack_cards.forEach((packCard) => {
-        packCard.pack = mapPacks[packCard.pack.id];
-      });
+    record.pack_cards.forEach((packCard) => {
+      packCard.pack = mapPacks[packCard.pack.id];
+    });
     // add the list of packs the card belongs to as packId => quantity
     record.packs = record.pack_cards.reduce((packs, packCard) => {
       packs[packCard.pack.id] = packCard.quantity;

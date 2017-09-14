@@ -70,7 +70,6 @@
 <script>
   import UtilsCardText from '@/components/Utils/CardText';
   import UtilsCardTraits from '@/components/Utils/CardTraits';
-  import storeService from '@/service/storeService';
 
   export default {
     name: 'cards-card',
@@ -91,7 +90,10 @@
     data() {
       return {
         packId: this.card.main_slot.pack.id,
-        packs: this.card.pack_cards.map(slot => ({ value: slot.pack.id, text: this.optionText(slot) })),
+        packs: this.card.pack_cards.map(slot => ({
+          value: slot.pack.id,
+          text: this.optionText(slot),
+        })),
       };
     },
     computed: {

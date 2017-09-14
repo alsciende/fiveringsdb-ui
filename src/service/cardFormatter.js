@@ -1,5 +1,5 @@
 class CardFormatter {
-  replaceIcons(text) {
+  static replaceIcons(text) {
     return text.replace(/\[([\w-]+)\]/g, '<span class="icon icon-$1"></span>');
   }
 

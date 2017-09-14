@@ -41,7 +41,7 @@ module.exports = {
     'arrow-parens': ['warn', 'as-needed', {
       requireForBlockBody: true,
     }],
-    'no-plusplus': "off",
-    'no-multi-assign': "off",
+    'no-plusplus': 'off',
+    'no-multi-assign': 'off'
   },
 };

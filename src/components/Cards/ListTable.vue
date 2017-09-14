@@ -57,9 +57,9 @@
 
 <script>
   import CardsCard from '@/components/Cards/Card';
-  import UtilsCardIcon from "@/components/Utils/CardIcon";
-  import UtilsCardLink from "@/components/Utils/CardLink";
-  import UtilsCardTraits from "@/components/Utils/CardTraits";
+  import UtilsCardIcon from '@/components/Utils/CardIcon';
+  import UtilsCardLink from '@/components/Utils/CardLink';
+  import UtilsCardTraits from '@/components/Utils/CardTraits';
 
   export default {
     name: 'cards-list-table',

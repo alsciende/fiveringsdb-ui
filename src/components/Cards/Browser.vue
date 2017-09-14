@@ -212,11 +212,11 @@
         const defaultTitle = 'Card Browser';
         switch (route.name) {
           case 'cards-by-card-id':
-            return stores.cards({ id: route.params.id }).first().name + ' • Card' || defaultTitle;
+            return `${stores.cards({ id: route.params.id }).first().name} • Card` || defaultTitle;
           case 'cards-by-pack-id':
-            return stores.packs({ id: route.params.id }).first().name + ' • Pack' || defaultTitle;
+            return `${stores.packs({ id: route.params.id }).first().name} • Pack` || defaultTitle;
           case 'cards-by-clan-id':
-            return this.$t(`clan.${route.params.id}`) + ' • Clan' || defaultTitle;
+            return `${this.$t(`clan.${route.params.id}`)} • Clan` || defaultTitle;
           default:
             return defaultTitle;
         }

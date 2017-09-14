@@ -2032,7 +2032,7 @@
           const headingId = shorttext
             .toLowerCase()
             .replace(/\W+/g, '-')
-            .replace(/(^\-|\-$)/g, '')
+            .replace(/(^-|-$)/g, '')
           ;
 
           return createElement(
@@ -2069,7 +2069,7 @@
         return $(heading).data('level');
       },
       href(heading) {
-        return '#' + $(heading).attr('name');
+        return `#${$(heading).attr('name')}`;
       },
       scroll(hashbang) {
         if (hashbang) {

@@ -55,7 +55,7 @@ class DeckInspector {
   }
 
   checkCardCopies() {
-    if (_.find(this.slots, (slot) => slot.quantity > slot.card.deck_limit)) {
+    if (_.find(this.slots, slot => slot.quantity > slot.card.deck_limit)) {
       return 1;
     }
 
@@ -171,11 +171,18 @@ class DeckInspector {
       let influencePool = this.getInfluencePool();
 
       const offclans = DeckInspector.findSlotsOffClan(conflictDeck, this.clan);
-      for (const slot of offclans) {
+      let undefinedIncluenceCost = false;
+
+      offclans.forEach((slot) => {
         if (slot.card.influence_cost === undefined) {
-          return 17;
+          undefinedIncluenceCost = true;
+          return;
         }
         influencePool -= slot.quantity * slot.card.influence_cost;
+      });
+
+      if (undefinedIncluenceCost) {
+        return 17;
       }
 
       if (influencePool < 0) {

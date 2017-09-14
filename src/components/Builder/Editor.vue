@@ -119,7 +119,7 @@
         });
         rest
           .post(`strains/${this.$route.params.strainId}/decks`, this.deck)
-          .then((result) => {
+          .then(() => {
             this.$notify({
               title: 'Success',
               text: 'Saved successfully!',
