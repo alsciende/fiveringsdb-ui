@@ -16,6 +16,7 @@ const getResource = resource => rest.get(resource)
   .then((response) => {
     stores[resource] = taffy(response.records);
   }, (reason) => {
+  /* eslint-disable no-console */
     console.log(reason);
   })
 ;

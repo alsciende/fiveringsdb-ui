@@ -171,17 +171,17 @@ class DeckInspector {
       let influencePool = this.getInfluencePool();
 
       const offclans = DeckInspector.findSlotsOffClan(conflictDeck, this.clan);
-      let undefinedIncluenceCost = false;
+      let undefinedInfluenceCost = false;
 
       offclans.forEach((slot) => {
         if (slot.card.influence_cost === undefined) {
-          undefinedIncluenceCost = true;
+          undefinedInfluenceCost = true;
           return;
         }
         influencePool -= slot.quantity * slot.card.influence_cost;
       });
 
-      if (undefinedIncluenceCost) {
+      if (undefinedInfluenceCost) {
         return 17;
       }
 

@@ -3,13 +3,13 @@ class CardFormatter {
     return text.replace(/\[([\w-]+)\]/g, '<span class="icon icon-$1"></span>');
   }
 
-  format(text) {
+  static format(text) {
     if (text === undefined) {
       return '';
     }
 
-    return this.replaceIcons(text);
+    return CardFormatter.replaceIcons(text);
   }
 }
 
-export default new CardFormatter();
+export default CardFormatter;

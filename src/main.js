@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 

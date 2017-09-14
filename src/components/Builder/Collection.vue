@@ -98,8 +98,7 @@
           .filter(roleRestrictionFilter)
           .filter(packFilter)
           .filter(userFilter)
-          .filter(queryFilter)
-          ;
+          .filter(queryFilter);
       },
       cardslots() {
         return this.cards.map(record => ({
@@ -125,12 +124,14 @@
         });
       },
       changeFilter(filter) {
-        Object.keys(this.filter).forEach((key) => {
-          this.$delete(this.filter, key);
-        });
-        Object.keys(filter).forEach((key) => {
-          this.$set(this.filter, key, filter[key]);
-        });
+        Object.keys(this.filter)
+          .forEach((key) => {
+            this.$delete(this.filter, key);
+          });
+        Object.keys(filter)
+          .forEach((key) => {
+            this.$set(this.filter, key, filter[key]);
+          });
       },
     },
   };

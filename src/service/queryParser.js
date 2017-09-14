@@ -135,7 +135,6 @@ class QueryParser {
     }
     return false;
   }
-
 }
 
 export default new QueryParser();

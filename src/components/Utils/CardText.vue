@@ -3,14 +3,14 @@
 </template>
 
 <script>
-  import cardFormatter from '@/service/cardFormatter';
+  import CardFormatter from '@/classes/CardFormatter';
 
   export default {
     name: 'utils-card-text',
     props: ['text'],
     computed: {
       formattedText() {
-        return cardFormatter.format(this.text);
+        return CardFormatter.format(this.text);
       },
     },
   };

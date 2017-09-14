@@ -33,23 +33,20 @@ export default {
       .http
       .post(config.getApiURL(resourcePath), resource)
       .then(validateStatus)
-      .catch(notifyObservers)
-      ;
+      .catch(notifyObservers);
   },
   get(resourcePath) {
     return Vue
       .http
       .get(config.getApiURL(resourcePath))
       .then(validateStatus)
-      .catch(notifyObservers)
-      ;
+      .catch(notifyObservers);
   },
   delete(resourcePath) {
     return Vue
       .http
       .delete(config.getApiURL(resourcePath))
       .then(validateStatus)
-      .catch(notifyObservers)
-      ;
+      .catch(notifyObservers);
   },
 };

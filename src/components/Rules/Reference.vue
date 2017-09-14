@@ -2011,6 +2011,7 @@
 </template>
 
 <script>
+  /* eslint-disable import/no-extraneous-dependencies */
   import $ from 'jquery';
   import { defer } from 'lodash';
 

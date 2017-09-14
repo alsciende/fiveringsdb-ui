@@ -162,8 +162,7 @@
       },
       getSideOptions() {
         return ['dynasty', 'conflict', 'province', 'role']
-          .map(sideId => ({ id: sideId, name: this.$t(`side.${sideId}`) }))
-          ;
+          .map(sideId => ({ id: sideId, name: this.$t(`side.${sideId}`) }));
       },
     },
     watch: {
