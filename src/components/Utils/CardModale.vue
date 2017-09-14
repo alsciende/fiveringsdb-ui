@@ -41,7 +41,7 @@
         return card;
       },
       editable() {
-        return this.$route.name === 'deck-edit';
+        return this.$route.meta.deckEdition;
       },
       current() {
         return this.card ? this.$store.getters.quantity(this.card.id) : 0;

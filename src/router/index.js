@@ -58,14 +58,14 @@ export default new Router({
       name: 'deck-edit',
       component: BuilderEditor,
       props: true,
-      meta: { section: 'deckbuilder' },
+      meta: { section: 'deckbuilder', deckEdition: true },
     },
     {
       path: '/deckbuilder/:strainId/new',
       name: 'deck-new',
       component: BuilderEditor,
       props: true,
-      meta: { section: 'deckbuilder' },
+      meta: { section: 'deckbuilder', deckEdition: true },
     },
     {
       path: '/rules/reference',
