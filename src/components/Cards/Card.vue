@@ -1,5 +1,5 @@
 <template>
-    <div class="card">
+    <div class="card border-dark">
         <div class="card-body" v-bind:class="'bg-clan clan-'+card.clan">
             <h4 class="card-title">
                 <span v-if="card.unicity">&#9702;</span>

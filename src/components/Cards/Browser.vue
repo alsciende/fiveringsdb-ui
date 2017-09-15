@@ -4,23 +4,26 @@
             <div class="d-sm-flex">
                 <div class="form-group mr-2" style="flex:1">
                     <form v-on:submit.prevent="search">
-                        <input type="text" class="form-control" v-model="currentQuery" placeholder="Card filter (e.g. x:sincerity or k:bushi)">
+                        <input type="text" class="form-control" v-model="currentQuery"
+                               placeholder="Card filter (e.g. x:sincerity or k:bushi)">
                     </form>
                 </div>
-                <b-form-radio class="mb-4 mr-2"
-                              button-variant="outline-secondary"
-                              buttons
-                              v-model="currentView"
-                              :options="viewOptions"></b-form-radio>
-                <b-form-radio class="mb-4 mr-2"
-                              button-variant="outline-secondary"
-                              buttons
-                              v-model="currentSort"
-                              :options="sortOptions"></b-form-radio>
-                <div class="btn-group align-self-start">
-                    <b-btn v-b-toggle.searchHelp variant="outline-secondary">
-                        <span class="fa fa-info-circle"></span>
-                    </b-btn>
+                <div class="d-flex justify-content-between">
+                    <b-form-radio class="mb-4 mr-2"
+                                  button-variant="outline-secondary"
+                                  buttons
+                                  v-model="currentView"
+                                  :options="viewOptions"></b-form-radio>
+                    <b-form-radio class="mb-4 mr-2"
+                                  button-variant="outline-secondary"
+                                  buttons
+                                  v-model="currentSort"
+                                  :options="sortOptions"></b-form-radio>
+                    <div class="btn-group mb-4 mr-2">
+                        <b-btn v-b-toggle.searchHelp variant="outline-secondary">
+                            <span class="fa fa-info-circle"></span>
+                        </b-btn>
+                    </div>
                 </div>
             </div>
             <b-collapse id="searchHelp">
