@@ -6,9 +6,6 @@
                     <utils-card-link :card="card"></utils-card-link>
                 </cards-card>
                 <div v-for="ruling in rulings" class="card mt-2 card-ruling">
-                    <div class="card-header">
-                        Ruling
-                    </div>
                     <div class="card-body">
                         <blockquote class="blockquote mb-0">
                             <p>
@@ -18,11 +15,23 @@
                         </blockquote>
                     </div>
                     <div v-if="isGuru" class="card-footer">
-                        <a href="#" class="card-link">Edit ruling</a>
+                        <a @click.prevent="setRuling(ruling)" href="#" class="card-link">Edit ruling</a>
                         <a href="#" class="card-link text-danger">Delete ruling</a>
                     </div>
                 </div>
-                <button v-if="isGuru" type="button" class="btn btn-outline-primary mt-2">Add a ruling</button>
+                <button v-if="isGuru" @click.prevent="setRuling()" type="button"
+                        class="btn btn-outline-primary mt-2">Add a ruling
+                </button>
+                <b-modal id="rulingModal"
+                         ref="rulingModal"
+                         title="Ruling"
+                         v-model="modal"
+                         :no-close-on-backdrop="true"
+                         ok-title="Save"
+                         @ok="saveRuling"
+                >
+                    <rulings-editor v-if="ruling" v-model="ruling"></rulings-editor>
+                </b-modal>
             </div>
             <div class="col-md-5 mb-2 text-center">
                 <utils-card-image :card="card" class="card-image img-fluid"></utils-card-image>
@@ -32,9 +41,10 @@
 </template>
 
 <script>
-  import CardsCard from '../../components/Cards/Card';
-  import UtilsCardImage from '../../components/Utils/CardImage';
-  import UtilsCardLink from '../../components/Utils/CardLink';
+  import CardsCard from '../Cards/Card';
+  import UtilsCardImage from '../Utils/CardImage';
+  import UtilsCardLink from '../Utils/CardLink';
+  import RulingsEditor from '../Rulings/Editor';
 
   export default {
     name: 'cards-list-full',
@@ -43,9 +53,12 @@
       UtilsCardImage,
       UtilsCardLink,
       CardsCard,
+      RulingsEditor,
     },
     data() {
       return {
+        modal: false,
+        ruling: null,
         rulings: [
           {
             text: 'If Young Rumormonger redirects the dishonor, the cost is still considered to be paid, and the character that was originally selected for dishonor gets the attachment.',
@@ -58,6 +71,19 @@
             source: 'CardGameDB forums',
           },
         ],
+        toolbars: {
+          bold: true,
+          italic: true,
+          header: true,
+          underline: true,
+          strikethrough: true,
+          quote: true,
+          ol: true,
+          ul: true,
+          link: true,
+          help: true,
+          preview: true,
+        },
       };
     },
     computed: {
@@ -65,15 +91,35 @@
         return this.$store.getters.roles.indexOf('ROLE_GURU') !== -1;
       },
     },
+    methods: {
+      setRuling(ruling) {
+        if (ruling) {
+          this.ruling = ruling;
+        } else {
+          this.ruling = {
+            id: null,
+            text: '',
+            source: '',
+            href: '',
+          };
+        }
+
+        this.modal = true;
+      },
+      saveRuling() {
+
+      },
+    },
   }
   ;
 </script>
 
 <style>
-.card-ruling .blockquote {
-    font-size: 1rem;
-}
-.card-ruling .blockquote .blockquote-footer {
-    font-size: 1rem;
-}
+    .card-ruling .blockquote {
+        font-size: 1rem;
+    }
+
+    .card-ruling .blockquote .blockquote-footer {
+        font-size: 1rem;
+    }
 </style>
