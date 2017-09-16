@@ -17,6 +17,9 @@
         <button v-if="isGuru" @click.prevent="setRuling()" type="button"
                 class="btn btn-outline-primary mt-2">Add a ruling
         </button>
+        <button v-if="isGuru" @click.prevent="reload()" type="button"
+                class="btn btn-outline-secondary mt-2">Update rulings
+        </button>
         <b-modal id="rulingModal"
                  ref="rulingModal"
                  title="Ruling"
@@ -93,7 +96,7 @@
               text: 'Deleted successfully!',
               type: 'success',
             });
-            this.updateRulings();
+            this.reload();
           })
           .catch((reason) => {
             this.$notify({
@@ -107,30 +110,32 @@
           });
       },
       saveRuling() {
+        if(this.ruling.id) {
+          this.updateRuling(this.ruling);
+        } else {
+          this.createRuling(this.ruling);
+        }
+      },
+      createRuling(ruling) {
         this.$notify({
-          text: 'Saving...',
+          text: 'Creating...',
         });
 
-        let url = `cards/${this.card.id}/rulings`;
         const data = {
-          text: this.ruling.text,
-          source: this.ruling.source,
-          link: this.ruling.link,
+          text: ruling.text,
+          source: ruling.source,
+          link: ruling.link,
         };
 
-        if (this.ruling.id) {
-          url = `${url}/${this.ruling.id}`;
-        }
-
         rest
-          .post(url, data)
+          .post(`cards/${this.card.id}/rulings`, data)
           .then(() => {
             this.$notify({
               title: 'Success',
-              text: 'Saved successfully!',
+              text: 'Created successfully!',
               type: 'success',
             });
-            this.updateRulings();
+            this.reload();
           })
           .catch((reason) => {
             this.$notify({
@@ -143,7 +148,39 @@
             this.saving = false;
           });
       },
-      updateRulings() {
+      updateRuling(ruling) {
+        this.$notify({
+          text: 'Updating...',
+        });
+
+        const data = {
+          text: ruling.text,
+          source: ruling.source,
+          link: ruling.link,
+        };
+
+        rest
+          .patch(`cards/${this.card.id}/rulings/${ruling.id}`, data)
+          .then(() => {
+            this.$notify({
+              title: 'Success',
+              text: 'Updated successfully!',
+              type: 'success',
+            });
+            this.reload();
+          })
+          .catch((reason) => {
+            this.$notify({
+              title: 'Error',
+              text: reason,
+              type: 'error',
+            });
+          })
+          .then(() => {
+            this.saving = false;
+          });
+      },
+      reload() {
         this.$notify({
           text: 'Loading...',
         });
@@ -156,7 +193,7 @@
               text: 'Loaded successfully!',
               type: 'success',
             });
-            this.card.rulings = result.records;
+            this.$set(this.card, 'rulings', result.records);
           })
           .catch((reason) => {
             this.$notify({

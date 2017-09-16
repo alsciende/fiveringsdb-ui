@@ -44,6 +44,13 @@ export default {
       .then(validateStatus)
       .catch(notifyObservers);
   },
+  patch(resourcePath, resource) {
+    return Vue
+      .http
+      .patch(config.getApiURL(resourcePath), resource)
+      .then(validateStatus)
+      .catch(notifyObservers);
+  },
   get(resourcePath) {
     return Vue
       .http
