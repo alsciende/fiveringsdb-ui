@@ -14,12 +14,21 @@ function notifyObservers(reason) {
   });
 }
 
+function parseErrorResponse(error) {
+  if (error.message === 'validation_error') {
+    const validationError = error.description[0];
+    return `Validation Error for "${validationError.property_path}". ${validationError.error_message}`;
+  }
+
+  return error.description;
+}
+
 function validateStatus(response) {
   return new Promise((resolve, reject) => {
     if (response.body.success) {
       resolve(response.body);
     } else {
-      reject(response.body.description);
+      reject(parseErrorResponse(response.body));
     }
   });
 }

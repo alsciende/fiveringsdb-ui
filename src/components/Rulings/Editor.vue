@@ -16,7 +16,7 @@
         </div>
         <div class="form-group">
             <label>Source link (optional)</label>
-            <b-form-input v-model="value.href"></b-form-input>
+            <b-form-input v-model="value.link"></b-form-input>
         </div>
     </form>
 </template>
