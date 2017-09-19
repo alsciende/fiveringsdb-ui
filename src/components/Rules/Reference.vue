@@ -2045,10 +2045,21 @@
                   name: headingId,
                   href: `#${headingId}`,
                   title: text,
+                  'class': 'anchor',
                   'data-level': this.level,
                 },
                 domProps: {
                   innerHTML: '&para;',
+                },
+              }),
+              createElement('a', {
+                attrs: {
+                  href: `#top`,
+                  title: 'Back to Top',
+                  'class': 'back-to-top float-right',
+                },
+                domProps: {
+                  innerHTML: '&uarr;',
                 },
               }),
             ],
@@ -2147,12 +2158,12 @@
     }
 </style>
 <style>
-    .contents a[name] {
+    .contents a.anchor, .contents a.back-to-top {
         color: lightgrey;
         padding-left: 5px;
     }
 
-    .contents a[name]:hover {
+    .contents a.anchor:hover, .contents a.back-to-top:hover {
         color: #007bff;
         text-decoration: none;
     }
