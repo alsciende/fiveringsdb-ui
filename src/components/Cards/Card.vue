@@ -7,7 +7,7 @@
                     {{ card.name }}
                 </slot>
             </h4>
-            <h6 class="card-subtitle mb-2 text-muted">
+            <h6 class="card-subtitle mb-2 card-attributes">
                 <span v-if="card.clan !== 'neutral'" v-bind:class="'icon-clan-' + card.clan"></span>
                 {{ $t('clan.' + card.clan) }} {{ $t('type.' + card.type) }}.
                 <utils-card-traits :card="card"></utils-card-traits>
@@ -219,5 +219,10 @@
         -moz-border-radius: 0.25rem;
         border-radius: 0.25rem;
         padding: 0.375rem 0.75rem;
+    }
+
+    .card-attributes {
+        font-weight: 700;
+        font-style: italic;
     }
 </style>
