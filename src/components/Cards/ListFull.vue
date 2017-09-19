@@ -8,7 +8,7 @@
                 <rulings-list v-if="showRulings" :card="card"></rulings-list>
             </div>
             <div class="col-md-5 mb-2 text-center">
-                <utils-card-image :card="card" class="card-image img-fluid"></utils-card-image>
+                <utils-card-image :card="card"></utils-card-image>
             </div>
         </div>
     </div>
