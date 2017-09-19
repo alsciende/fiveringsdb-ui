@@ -5,7 +5,7 @@
                 <cards-card v-bind:card="card">
                     <utils-card-link :card="card"></utils-card-link>
                 </cards-card>
-                <rulings-list :card="card"></rulings-list>
+                <rulings-list v-if="showRulings" :card="card"></rulings-list>
             </div>
             <div class="col-md-5 mb-2 text-center">
                 <utils-card-image :card="card" class="card-image img-fluid"></utils-card-image>
@@ -28,6 +28,11 @@
       UtilsCardLink,
       CardsCard,
       RulingsList,
+    },
+    computed: {
+      showRulings() {
+        return this.$route.name === 'cards-by-card-id';
+      },
     },
   }
   ;

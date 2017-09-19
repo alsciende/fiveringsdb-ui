@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-for="ruling in card.rulings" :key="ruling.id" class="card mt-2 card-ruling">
+        <div v-for="ruling in rulings" :key="ruling.id" class="card mt-2 card-ruling">
             <div class="card-body">
                 <blockquote class="blockquote mb-0">
                     <p>
@@ -46,6 +46,7 @@
     data() {
       return {
         modal: false,
+        rulings: [],
         ruling: null,
         toolbars: {
           bold: true,
@@ -104,9 +105,6 @@
               text: reason,
               type: 'error',
             });
-          })
-          .then(() => {
-            this.saving = false;
           });
       },
       saveRuling() {
@@ -143,9 +141,6 @@
               text: reason,
               type: 'error',
             });
-          })
-          .then(() => {
-            this.saving = false;
           });
       },
       updateRuling(ruling) {
@@ -175,25 +170,13 @@
               text: reason,
               type: 'error',
             });
-          })
-          .then(() => {
-            this.saving = false;
           });
       },
       reload() {
-        this.$notify({
-          text: 'Loading...',
-        });
-
         rest
           .get(`cards/${this.card.id}/rulings`)
           .then((result) => {
-            this.$notify({
-              title: 'Success',
-              text: 'Loaded successfully!',
-              type: 'success',
-            });
-            this.$set(this.card, 'rulings', result.records);
+            this.rulings = result.records;
           })
           .catch((reason) => {
             this.$notify({
@@ -201,11 +184,11 @@
               text: reason,
               type: 'error',
             });
-          })
-          .then(() => {
-            this.saving = false;
           });
       },
+    },
+    mounted() {
+      this.reload();
     },
   }
   ;
