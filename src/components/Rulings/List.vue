@@ -3,9 +3,7 @@
         <div v-for="ruling in rulings" :key="ruling.id" class="card mt-2 card-ruling">
             <div class="card-body">
                 <blockquote class="blockquote mb-0">
-                    <p>
-                        {{ ruling.text }}
-                    </p>
+                    <p v-html="markdown(ruling.text)"></p>
                     <footer class="blockquote-footer"><a :href="ruling.link">{{ ruling.source }}</a></footer>
                 </blockquote>
             </div>
@@ -34,8 +32,11 @@
 </template>
 
 <script>
+  import MarkdownIt from 'markdown-it';
   import rest from '@/rest';
   import RulingsEditor from '../Rulings/Editor';
+
+  const md = new MarkdownIt();
 
   export default {
     name: 'rulings-list',
@@ -69,6 +70,9 @@
       },
     },
     methods: {
+      markdown(text) {
+        return md.render(text);
+      },
       setRuling(ruling) {
         if (ruling) {
           this.ruling = ruling;
