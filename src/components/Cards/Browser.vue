@@ -9,16 +9,16 @@
                     </form>
                 </div>
                 <div class="d-flex justify-content-between">
-                    <b-form-radio class="mb-4 mr-2"
+                    <b-form-radio-group class="mb-4 mr-2"
                                   button-variant="outline-secondary"
                                   buttons
                                   v-model="currentView"
-                                  :options="viewOptions"></b-form-radio>
-                    <b-form-radio class="mb-4 mr-2"
+                                  :options="viewOptions"></b-form-radio-group>
+                    <b-form-radio-group class="mb-4 mr-2"
                                   button-variant="outline-secondary"
                                   buttons
                                   v-model="currentSort"
-                                  :options="sortOptions"></b-form-radio>
+                                  :options="sortOptions"></b-form-radio-group>
                     <div class="btn-group mb-4 mr-2">
                         <b-btn v-b-toggle.searchHelp variant="outline-secondary">
                             <span class="fa fa-info-circle"></span>
