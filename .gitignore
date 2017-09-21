@@ -1,0 +1,9 @@
+/dist/
+/node_modules/
+/test/unit/coverage
+/test/e2e/reports
+/npm-debug.log*
+/yarn-debug.log*
+/yarn-error.log*
+/selenium-debug.log
+
