@@ -54,6 +54,7 @@
     "cross-env": "^4.0.0",
     "cross-spawn": "^5.0.1",
     "css-loader": "^0.28.7",
+    "dotenv-safe": "^4.0.4",
     "eslint": "^3.19.0",
     "eslint-config-airbnb-base": "^11.3.2",
     "eslint-config-standard": "^6.2.1",
