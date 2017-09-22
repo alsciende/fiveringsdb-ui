@@ -10,15 +10,25 @@
                 </div>
                 <div class="d-flex justify-content-between">
                     <b-form-radio-group class="mb-4 mr-2"
-                                  button-variant="outline-secondary"
-                                  buttons
-                                  v-model="currentView"
-                                  :options="viewOptions"></b-form-radio-group>
+                                        button-variant="outline-secondary"
+                                        buttons
+                                        v-model="currentView">
+                        <b-form-radio v-for="option in viewOptions" :key="option.value"
+                                      :value="option.value"
+                                      :title="option.title"
+                                      v-html="option.text"
+                        ></b-form-radio>
+                    </b-form-radio-group>
                     <b-form-radio-group class="mb-4 mr-2"
-                                  button-variant="outline-secondary"
-                                  buttons
-                                  v-model="currentSort"
-                                  :options="sortOptions"></b-form-radio-group>
+                                        button-variant="outline-secondary"
+                                        buttons
+                                        v-model="currentSort">
+                        <b-form-radio v-for="option in sortOptions" :key="option.value"
+                                      :value="option.value"
+                                      :title="option.title"
+                                      v-html="option.text"
+                        ></b-form-radio>
+                    </b-form-radio-group>
                     <div class="btn-group mb-4 mr-2">
                         <b-btn v-b-toggle.searchHelp variant="outline-secondary">
                             <span class="fa fa-info-circle"></span>
@@ -110,32 +120,39 @@
         viewOptions: [
           {
             value: 'table',
+            title: 'View as List',
             text: '<span class="fa fa-list"></span>',
           },
           {
             value: 'text',
+            title: 'View as Text',
             text: '<span class="fa fa-th"></span>',
           },
           {
             value: 'image',
+            title: 'View as Images',
             text: '<span class="fa fa-file-image-o"></span>',
           },
           {
             value: 'full',
+            title: 'View as Text+Images',
             text: '<span class="fa fa-file-text"></span>',
           },
         ],
         sortOptions: [
           {
             value: 'name',
+            title: 'Sort by Name',
             text: '<span class="fa fa-font"></span>',
           },
           {
             value: 'clan',
+            title: 'Sort by Clan',
             text: '<span class="fa fa-flag"></span>',
           },
           {
             value: 'type',
+            title: 'Sort by Type',
             text: '<span class="fa fa-cube"></span>',
           },
         ],
