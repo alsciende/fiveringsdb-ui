@@ -10,14 +10,15 @@
                 </div>
                 <div class="d-flex justify-content-between">
                     <b-form-radio-group class="mb-4 mr-2"
-                                        button-variant="outline-secondary"
                                         buttons
+                                        button-variant="outline-secondary"
+                                        id="view"
+                                        name="view"
                                         v-model="currentView">
-                        <b-form-radio v-for="option in viewOptions" :key="option.value"
+                        <b-radio v-for="option in viewOptions" :key="option.value"
                                       :value="option.value"
                                       :title="option.title"
-                                      v-html="option.text"
-                        ></b-form-radio>
+                        ><span v-html="option.text"></span></b-radio>
                     </b-form-radio-group>
                     <b-form-radio-group class="mb-4 mr-2"
                                         button-variant="outline-secondary"
