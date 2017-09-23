@@ -35,10 +35,14 @@ const denormalizeCards = () => {
 
   stores.packs().each((record) => {
     mapPacks[record.id] = record;
+    record.cycle_id = record.cycle.id;
+    stores.packs.merge(record, 'id', false);
   });
 
   stores.cycles().each((record) => {
     mapCycles[record.id] = record;
+    record.packs = stores.packs({ cycle_id: record.id }).get();
+    stores.cycles.merge(record, 'id', false);
   });
 
   stores.cards().each((record) => {
