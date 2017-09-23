@@ -17,7 +17,7 @@
                         <td class="selector" hidden>
                             <input type="checkbox"/>
                         </td>
-                        <td>
+                        <td class="bg-clan-icon" :class="[strain.head ? 'clan-'+strain.head.clan : '']">
                             {{ strain.head ? strain.head.name : $t('msg.empty_strain') }}
                             <div class="small text-secondary">{{ strain.created_at | formatDate }}</div>
                         </td>
@@ -149,5 +149,13 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
+<style scoped>
+
+.bg-clan-icon {
+    background-repeat: no-repeat;
+    background-size: 30px;
+    background-position-y: center;
+    background-position-x: 90%;
+}
+
 </style>

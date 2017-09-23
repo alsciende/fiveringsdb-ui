@@ -1,6 +1,6 @@
 <template>
     <div class="card border-dark">
-        <div class="card-body" v-bind:class="'bg-clan clan-'+card.clan">
+        <div class="card-body" v-bind:class="'bg-clan-icon clan-'+card.clan">
             <h4 class="card-title">
                 <span v-if="card.unicity">&#9702;</span>
                 <slot>
@@ -120,44 +120,12 @@
         text-decoration: line-through;
     }
 
-    div.card-body.bg-clan {
+    div.card-body.bg-clan-icon {
         background-repeat: no-repeat;
         background-size: 150px;
         background-position-y: center;
         background-position-x: 90%;
         min-height: 200px;
-    }
-
-    div.card-body.bg-clan.clan-crab {
-        background-image: url('/static/svg/clan/crab.svg');
-    }
-
-    div.card-body.bg-clan.clan-crane {
-        background-image: url('/static/svg/clan/crane.svg');
-    }
-
-    div.card-body.bg-clan.clan-dragon {
-        background-image: url('/static/svg/clan/dragon.svg');
-    }
-
-    div.card-body.bg-clan.clan-lion {
-        background-image: url('/static/svg/clan/lion.svg');
-    }
-
-    div.card-body.bg-clan.clan-neutral {
-        background-image: url('/static/svg/clan/neutral.svg');
-    }
-
-    div.card-body.bg-clan.clan-phoenix {
-        background-image: url('/static/svg/clan/phoenix.svg');
-    }
-
-    div.card-body.bg-clan.clan-scorpion {
-        background-image: url('/static/svg/clan/scorpion.svg');
-    }
-
-    div.card-body.bg-clan.clan-unicorn {
-        background-image: url('/static/svg/clan/unicorn.svg');
     }
 
     div.card-text {

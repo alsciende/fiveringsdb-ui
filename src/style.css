@@ -20,3 +20,35 @@ body {
 .popover-card {
     border: none;
 }
+
+.bg-clan-icon.clan-crab {
+    background-image: url('/static/svg/clan/crab.svg');
+}
+
+.bg-clan-icon.clan-crane {
+    background-image: url('/static/svg/clan/crane.svg');
+}
+
+.bg-clan-icon.clan-dragon {
+    background-image: url('/static/svg/clan/dragon.svg');
+}
+
+.bg-clan-icon.clan-lion {
+    background-image: url('/static/svg/clan/lion.svg');
+}
+
+.bg-clan-icon.clan-neutral {
+    background-image: url('/static/svg/clan/neutral.svg');
+}
+
+.bg-clan-icon.clan-phoenix {
+    background-image: url('/static/svg/clan/phoenix.svg');
+}
+
+.bg-clan-icon.clan-scorpion {
+    background-image: url('/static/svg/clan/scorpion.svg');
+}
+
+.bg-clan-icon.clan-unicorn {
+    background-image: url('/static/svg/clan/unicorn.svg');
+}
