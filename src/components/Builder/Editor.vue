@@ -39,6 +39,12 @@
                 <builder-collection></builder-collection>
             </div>
         </div>
+
+        <div v-else class="row justify-content-center">
+            <div class="col-6">
+                <builder-wizard v-model="bootstrap"></builder-wizard>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -49,6 +55,7 @@
   import BuilderCollection from './Collection';
   import BuilderBuilder from './List';
   import CoreCountSelector from './CoreCountSelector';
+  import BuilderWizard from './Wizard';
 
   export default {
     name: 'builder-editor',
@@ -57,6 +64,7 @@
       BuilderCollection,
       UtilsDeckContent,
       CoreCountSelector,
+      BuilderWizard,
     },
     data() {
       const formats = ['single-core', 'standard'];
@@ -67,10 +75,25 @@
         metadata: null,
         error: null,
         nameEdition: false,
+        bootstrap: {},
       };
     },
     watch: {
       $route: 'fetchData',
+      bootstrap() {
+        const slots = {};
+        if (this.bootstrap.role !== null) {
+          slots[this.bootstrap.role] = 1;
+        }
+        if (this.bootstrap.stronghold !== null) {
+          slots[this.bootstrap.stronghold] = 1;
+        }
+        this.$store.commit({ type: types.SET_SLOTS, slots });
+        this.metadata = {
+          name: `New ${this.$t(`clan.${this.bootstrap.clan}`)} deck`,
+          format: 'standard',
+        };
+      },
     },
     computed: {
       content() {
@@ -86,10 +109,6 @@
         this.metadata = null;
 
         if (this.$route.name === 'deck-new') {
-          this.metadata = {
-            name: 'The deck with no name',
-            format: 'standard',
-          };
           this.$store.commit({ type: types.SET_SLOTS, slots: {} });
           this.$store.commit({ type: types.UPDATE_COLLECTION });
           return;
