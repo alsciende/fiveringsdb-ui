@@ -13,3 +13,7 @@ export const changeCardPopover = (state, card) => {
 export const changeDocumentTitle = (state, title) => {
   state.documentTitle = title;
 };
+
+export const touchDevice = (state, isTouchDevice) => {
+  state.touchDevice = isTouchDevice;
+};

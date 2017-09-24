@@ -1,5 +1,6 @@
 <template>
-    <a :href="url" v-b-popover="popover" @mouseover="changePopover" @click.prevent="showModal">{{ card.name }}</a>
+    <a :href="url" v-b-popover="popover" @mouseover="changePopover" @touchstart="touchDevice"
+       @click.prevent="showModal">{{ card.name }}</a>
 </template>
 
 <script>
@@ -33,8 +34,15 @@
       },
     },
     methods: {
+      touchDevice() {
+        if (this.$store.getters.touchDevice === false) {
+          this.$store.commit('touchDevice', true);
+        }
+      },
       changePopover() {
-        this.$store.commit('changeCardPopover', this.card);
+        if (this.$store.getters.touchDevice === false) {
+          this.$store.commit('changeCardPopover', this.card);
+        }
       },
       showModal() {
         this.$store.commit('openCardModale', this.card);

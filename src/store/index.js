@@ -18,6 +18,7 @@ export default new Vuex.Store({
     cardModale: null,
     cardPopover: null,
     documentTitle: null,
+    touchDevice: false,
   },
   getters,
   mutations,
