@@ -31,7 +31,7 @@
     },
     computed: {
       showRulings() {
-        return this.$route.name === 'cards-by-card-id';
+        return this.cards.length === 1;
       },
     },
   }
