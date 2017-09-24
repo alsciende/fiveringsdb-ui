@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import createPersist from 'vuex-localstorage';
+import createPersistedState from 'vuex-persistedstate';
 
 import * as getters from './getters';
 import * as mutations from './mutations';
@@ -28,11 +28,12 @@ export default new Vuex.Store({
   },
   strict: debug,
   plugins: [
-    createPersist({
-      namespace: 'fiveringsdb',
-      initialState: {},
-      // ONE_WEEK
-      expires: 7 * 24 * 60 * 60 * 1e3,
+    createPersistedState({
+      paths: [
+        'auth',
+        'collection',
+        'slots',
+      ],
     }),
   ],
 });
