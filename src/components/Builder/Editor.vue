@@ -40,7 +40,7 @@
             </div>
         </div>
 
-        <div v-else class="row justify-content-center">
+        <div v-if="wizard" class="row justify-content-center">
             <div class="col-6">
                 <builder-wizard v-model="bootstrap"></builder-wizard>
             </div>
@@ -73,6 +73,7 @@
         loading: false,
         saving: false,
         metadata: null,
+        wizard: false,
         error: null,
         nameEdition: false,
         bootstrap: {},
@@ -93,6 +94,7 @@
           name: `New ${this.$t(`clan.${this.bootstrap.clan}`)} deck`,
           format: 'standard',
         };
+        this.wizard = false;
       },
     },
     computed: {
@@ -111,6 +113,7 @@
         if (this.$route.name === 'deck-new') {
           this.$store.commit({ type: types.SET_SLOTS, slots: {} });
           this.$store.commit({ type: types.UPDATE_COLLECTION });
+          this.wizard = true;
           return;
         }
 
