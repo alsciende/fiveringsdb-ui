@@ -10,39 +10,45 @@
         <b-collapse id="searchHelp">
             <div class="card card-body" v-html="searchHelp"></div>
         </b-collapse>
-        <div class="btn-group btn-clans d-flex my-2" role="group" aria-label="Clan Filter">
-            <button
-                    v-for="clan in clanOptions"
-                    type="button"
-                    class="btn btn-outline-secondary btn-sm col"
-                    :class="['clan-'+clan.id, clans[clan.id] ? 'active' : '']"
-                    :title="clan.name"
-                    @click="changeClan(clan.id)"
-            ><span :class="'icon icon-clan-'+clan.id"></span></button>
-        </div>
 
-        <div class="btn-group d-flex my-2" role="group" aria-label="Deck Filter">
-            <button
-                    v-for="side in sideOptions"
-                    type="button"
-                    class="btn btn-outline-secondary btn-sm col"
-                    :class="['side-'+side.id, sides[side.id] ? 'active' : '']"
-                    :title="side.name"
-                    @click="changeSide(side.id)"
-            >{{ $t('side.' + side.id).substr(0, 1) }}
-            </button>
-        </div>
+        <b-form-checkbox-group
+                v-model="filter.clan"
+                buttons
+                button-variant="outline-secondary"
+                class="btn-group btn-clans d-flex my-2" role="group" aria-label="Clan Filter"
+        >
+            <b-form-checkbox @click.native="onClick('clan', $event)" v-for="clan in options.clan" :key="clan.id"
+                             class="btn-sm col" :class="'clan-'+clan.id"
+                             :value="clan.id">
+                <span :class="['icon', 'icon-clan-'+clan.id]"></span>
+            </b-form-checkbox>
+        </b-form-checkbox-group>
 
-        <div class="btn-group d-flex my-2" role="group" aria-label="Type Filter">
-            <button
-                    v-for="type in typeOptions"
-                    type="button"
-                    class="btn btn-outline-secondary btn-sm col"
-                    :class="['type-'+type.id, types[type.id] ? 'active' : '']"
-                    :title="type.name"
-                    @click="changeType(type.id)"
-            ><span :class="'fa fa-'+typeIcon(type.id)"></span></button>
-        </div>
+        <b-form-checkbox-group
+                v-model="filter.side"
+                buttons
+                button-variant="outline-secondary"
+                class="btn-group d-flex my-2" role="group" aria-label="Deck Filter"
+        >
+            <b-form-checkbox @click.native="onClick('side', $event)" v-for="side in options.side" :key="side.id"
+                             class="btn-sm col"
+                             :value="side.id">
+                {{ $t('side.' + side.id).substr(0, 1) }}
+            </b-form-checkbox>
+        </b-form-checkbox-group>
+
+        <b-form-checkbox-group
+                v-model="filter.type"
+                buttons
+                button-variant="outline-secondary"
+                class="btn-group d-flex my-2" role="group" aria-label="Type Filter"
+        >
+            <b-form-checkbox @click.native="onClick('type', $event)" v-for="type in options.type" :key="type.id"
+                             class="btn-sm col"
+                             :value="type.id">
+                <span :class="'fa fa-'+typeIcon(type.id)"></span>
+            </b-form-checkbox>
+        </b-form-checkbox-group>
     </div>
 </template>
 
@@ -67,54 +73,28 @@
       },
     },
     data() {
-      const clans = {};
-      const types = {};
-      const clanOptions = this.getClanOptions();
-      clanOptions.forEach((clan) => {
-        clans[clan.id] = this.startingClans.length
-          ? this.startingClans.indexOf(clan.id) !== -1
-          : true;
-      });
-      const typeOptions = this.getTypeOptions();
-      typeOptions.forEach((type) => {
-        types[type.id] = this.startingClans.length
-          ? type.id !== 'stronghold' && type.id !== 'role'
-          : type.id === 'stronghold';
-      });
-      const sideOptions = this.getSideOptions();
-      const sides = {
-        dynasty: true,
-        conflict: true,
-        province: true,
-        role: true,
-      };
-
       return {
         query: '',
-        clans,
-        types,
-        sides,
-        clanOptions,
-        typeOptions,
-        sideOptions,
         filter: {
-          clan: [],
-          type: [],
+          clan: this.startingClans,
+          side: ['dynasty', 'conflict', 'province', 'role'],
+          type: ['attachment', 'character', 'event', 'holding', 'province'],
+        },
+        options: {
+          clan: this.getClanOptions(),
+          side: this.getSideOptions(),
+          type: this.getTypeOptions(),
         },
         searchHelp: queryMapper.formatAsHtml(),
       };
     },
     methods: {
-      updateFilter() {
-        ['clan', 'side', 'type'].forEach((filter) => {
-          this.filter[filter] = [];
-          Object.keys(this[`${filter}s`]).forEach((id) => {
-            if (this[`${filter}s`][id]) {
-              this.filter[filter].push(id);
-            }
-          });
-        });
-        this.$emit('change', this.filter);
+      onClick(option, evt) {
+        if (evt.shiftKey && evt.target.tagName === 'INPUT') {
+          if (evt.target.checked) {
+            this.filter[option] = [evt.target.value];
+          }
+        }
       },
       updateQuery() {
         const clauses = queryParser.parse(this.query);
@@ -124,18 +104,6 @@
           delete this.filter.query;
         }
         this.$emit('change', this.filter);
-      },
-      changeClan(clanId) {
-        this.clans[clanId] = !this.clans[clanId];
-        this.updateFilter();
-      },
-      changeSide(sideId) {
-        this.sides[sideId] = !this.sides[sideId];
-        this.updateFilter();
-      },
-      changeType(typeId) {
-        this.types[typeId] = !this.types[typeId];
-        this.updateFilter();
       },
       typeIcon(type) {
         return typeIcons.icon(type);
@@ -165,13 +133,18 @@
           .map(sideId => ({ id: sideId, name: this.$t(`side.${sideId}`) }));
       },
     },
+    computed: {
+      value() {
+        return Object.assign({}, this.filter);
+      },
+    },
     watch: {
+      value() {
+        this.$emit('change', this.value);
+      },
       query: _.debounce(function update() {
         this.updateQuery();
       }, INPUT_DEBOUNCE_TIMER_MS),
-    },
-    mounted() {
-      this.updateFilter();
     },
   };
 </script>
