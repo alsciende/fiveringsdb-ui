@@ -12,23 +12,20 @@
                     <b-form-radio-group class="mb-4 mr-2"
                                         buttons
                                         button-variant="outline-secondary"
-                                        id="view"
-                                        name="view"
                                         v-model="currentView">
-                        <b-radio v-for="option in viewOptions" :key="option.value"
+                        <b-form-radio v-for="option in viewOptions" :key="option.value"
                                       :value="option.value"
                                       :title="option.title"
-                        ><span v-html="option.text"></span></b-radio>
+                        ><span v-html="option.text"></span></b-form-radio>
                     </b-form-radio-group>
                     <b-form-radio-group class="mb-4 mr-2"
-                                        button-variant="outline-secondary"
                                         buttons
+                                        button-variant="outline-secondary"
                                         v-model="currentSort">
                         <b-form-radio v-for="option in sortOptions" :key="option.value"
                                       :value="option.value"
                                       :title="option.title"
-                                      v-html="option.text"
-                        ></b-form-radio>
+                        ><span v-html="option.text"></span></b-form-radio>
                     </b-form-radio-group>
                     <div class="btn-group mb-4 mr-2">
                         <b-btn v-b-toggle.searchHelp variant="outline-secondary">
