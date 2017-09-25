@@ -91,9 +91,7 @@
     methods: {
       onClick(option, evt) {
         if (evt.shiftKey && evt.target.tagName === 'INPUT') {
-          if (evt.target.checked) {
-            this.filter[option] = [evt.target.value];
-          }
+          this.filter[option] = [evt.target.value];
         }
       },
       updateQuery() {
