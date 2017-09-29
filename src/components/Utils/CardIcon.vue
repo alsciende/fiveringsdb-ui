@@ -10,22 +10,9 @@
     props: ['card'],
     computed: {
       title() {
-        if (this.card.type === 'province') {
-          return this.$t(`element.${this.card.element}`);
-        }
-
         return this.$t(`type.${this.card.type}`);
       },
       classObject() {
-        if (this.card.type === 'province') {
-          return [
-            'icon',
-            'icon-fw',
-            `icon-element-${this.card.element}`,
-            `fg-${this.card.clan}`,
-          ];
-        }
-
         return [
           'fa',
           'fa-fw',

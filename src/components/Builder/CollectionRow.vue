@@ -15,6 +15,9 @@
             ></utils-card-link>
         </td>
         <td>
+            <utils-card-traits-element :card="card"></utils-card-traits-element>
+        </td>
+        <td>
             <utils-influence-cost v-if="influence" :card="card"></utils-influence-cost>
         </td>
     </tr>
@@ -23,6 +26,7 @@
 <script>
   import UtilsCardLink from '@/components/Utils/CardLink';
   import UtilsCardIcon from '@/components/Utils/CardIcon';
+  import UtilsCardTraitsElement from '@/components/Utils/CardTraitsElement';
   import UtilsInfluenceCost from '@/components/Utils/InfluenceCost';
   import BuilderQuantitySelector from './QuantitySelector';
 
@@ -32,6 +36,7 @@
       BuilderQuantitySelector,
       UtilsCardLink,
       UtilsCardIcon,
+      UtilsCardTraitsElement,
       UtilsInfluenceCost,
     },
     props: ['card', 'min', 'max', 'current', 'influence'],

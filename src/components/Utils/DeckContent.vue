@@ -13,17 +13,14 @@
             </div>
             <div class="col-sm-8">
                 <div v-if="stronghold">
-                    <utils-card-icon :card="stronghold"></utils-card-icon>
                     <utils-card-link :card="stronghold"></utils-card-link>
                 </div>
                 <div v-if="role">
-                    <utils-card-icon :card="role"></utils-card-icon>
                     <utils-card-link :card="role"></utils-card-link>
                 </div>
                 <div v-for="card in provinceDeck" :key="card.id">
-                    <utils-card-icon :card="card"></utils-card-icon>
-                    <span class="province-element small text-secondary">{{ $t('element.'+card.element) }}</span>
                     <utils-card-link :card="card"></utils-card-link>
+                    <span class="text-secondary text-smallcaps">{{ $t('element.'+card.element) }}</span>
                 </div>
                 <div class="mt-4">
                     Influence: {{ influenceSpent }}/{{ influencePool }}, {{ influencePool - influenceSpent }} remaining
@@ -180,9 +177,5 @@
         display: inline-block;
         width: 1.25em;
         text-align: right;
-    }
-    span.province-element {
-        display: inline-block;
-        width: 40px;
     }
 </style>

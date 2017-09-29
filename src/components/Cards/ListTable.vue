@@ -19,9 +19,8 @@
                 </td>
                 <td>{{ $t('clan.'+card.clan) }}</td>
                 <td>{{ $t('type.'+card.type) }}</td>
-                <td><utils-card-traits :card="card"></utils-card-traits></td>
-                <td v-if="card.type === 'province'">{{ $t('element.'+card.element) }}</td>
-                <td v-else>{{ card.side ? $t('side.'+card.side) : '' }}</td>
+                <td><utils-card-traits-element :card="card"></utils-card-traits-element></td>
+                <td>{{ card.side ? $t('side.'+card.side) : '' }}</td>
                 <td>{{ card.cost }}</td>
                 <td v-if="card.type === 'attachment'">
                     {{ card.military_bonus }} / {{ card.political_bonus }}
@@ -59,7 +58,7 @@
   import CardsCard from '@/components/Cards/Card';
   import UtilsCardIcon from '@/components/Utils/CardIcon';
   import UtilsCardLink from '@/components/Utils/CardLink';
-  import UtilsCardTraits from '@/components/Utils/CardTraits';
+  import UtilsCardTraitsElement from '@/components/Utils/CardTraitsElement';
 
   export default {
     name: 'cards-list-table',
@@ -67,7 +66,7 @@
     components: {
       UtilsCardIcon,
       UtilsCardLink,
-      UtilsCardTraits,
+      UtilsCardTraitsElement,
       CardsCard,
     },
   }

@@ -27,7 +27,7 @@
             </p>
             <p v-if="card.type === 'province'">
                 <span v-bind:class="'icon-element-' + card.element"></span>
-                <span>{{ $t('element.' + card.element) }}.</span>
+                <span class="text-smallcaps">{{ $t('element.' + card.element) }}.</span>
                 <span>Strength: {{ card.strength }}.</span>
             </p>
             <p v-if="card.type === 'holding'">
