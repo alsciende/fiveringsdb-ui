@@ -9,7 +9,7 @@
             </div>
             <div v-if="isGuru" class="card-footer">
                 <a @click.prevent="setRuling(ruling)" href="#" class="card-link">Edit ruling</a>
-                <a @click.prevent="deleteRuling(ruling)" href="#" class="card-link text-danger">Delete ruling</a>
+                <a @click.prevent="askDeleteConfirmation(ruling)" href="#" class="card-link text-danger">Delete ruling</a>
             </div>
         </div>
         <button v-if="isGuru" @click.prevent="setRuling()" type="button"
@@ -18,15 +18,21 @@
         <button v-if="isGuru" @click.prevent="reload()" type="button"
                 class="btn btn-outline-secondary mt-2">Update rulings
         </button>
-        <b-modal id="rulingModal"
-                 ref="rulingModal"
+        <b-modal ref="saveModal"
                  title="Ruling"
-                 v-model="modal"
                  :no-close-on-backdrop="true"
                  ok-title="Save"
                  @ok="saveRuling"
         >
             <rulings-editor v-if="ruling" v-model="ruling"></rulings-editor>
+        </b-modal>
+        <b-modal ref="deleteModal"
+                 title="Confirmation"
+                 @ok="deleteRuling(ruling)"
+                 ok-title="Confirm deletion"
+                 close-title="Cancel">
+            <p>This deletion is definitive and cannot be undone.</p>
+            <p>Delete ruling?</p>
         </b-modal>
     </div>
 </template>
@@ -46,7 +52,6 @@
     },
     data() {
       return {
-        modal: false,
         rulings: [],
         ruling: null,
         toolbars: {
@@ -86,7 +91,14 @@
           };
         }
 
-        this.modal = true;
+        this.$refs.saveModal.show();
+      },
+      askDeleteConfirmation(ruling) {
+        if (ruling) {
+          this.ruling = ruling;
+        }
+
+        this.$refs.deleteModal.show();
       },
       deleteRuling(ruling) {
         this.$notify({
