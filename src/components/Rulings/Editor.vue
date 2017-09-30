@@ -2,13 +2,12 @@
     <form>
         <div class="form-group">
             <label>Text</label>
-            <mavon-editor
-                    v-model="value.text"
-                    :editable="true"
-                    :toolbars="toolbars"
-                    language="en"
-                    default_open="edit"
-            ></mavon-editor>
+            <b-form-textarea v-model="text"
+                             :rows="5">
+            </b-form-textarea>
+            <div class="card bg-light mt-1">
+                <div class="card-body" v-html="markdown"></div>
+            </div>
         </div>
         <div class="form-group">
             <label>Source</label>
@@ -22,8 +21,9 @@
 </template>
 
 <script>
-  import { mavonEditor } from 'mavon-editor';
-  import 'mavon-editor/dist/css/index.css';
+  import MarkdownIt from 'markdown-it';
+
+  const md = new MarkdownIt();
 
   export default {
     name: 'rulings-editor',
@@ -33,25 +33,15 @@
         required: true,
       },
     },
-    components: {
-      mavonEditor,
-    },
     data() {
       return {
-        toolbars: {
-          bold: true,
-          italic: true,
-          header: true,
-          underline: true,
-          strikethrough: true,
-          quote: true,
-          ol: true,
-          ul: true,
-          link: true,
-          help: true,
-          preview: true,
-        },
+        text: this.value.text,
       };
+    },
+    computed: {
+      markdown() {
+        return md.render(this.text);
+      },
     },
   }
   ;
