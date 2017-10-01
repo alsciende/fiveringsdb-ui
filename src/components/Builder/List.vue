@@ -36,14 +36,15 @@
                 <div v-if="deck">
                     <h2>{{ deck.name }}</h2>
                     <div class="mb-2">
-                        <button type="button" class="btn btn-outline-primary btn-sm"
-                                @click.prevent="edit(deck)">Edit
-                        </button>
+                        <router-link :to="{ name: 'deck-edit', params: { strainId: deck.strain, deckId: deck.id } }"
+                                     class="btn btn-outline-primary btn-sm">Edit</router-link>
                         <b-btn v-b-modal.modalDelete class="btn btn-outline-danger btn-sm">Delete</b-btn>
                         <router-link :to="{ name: 'strain-view', params: { strainId: deck.strain } }"
                                      class="btn btn-outline-info btn-sm" target="_blank">
                             Permalink
                         </router-link>
+                        <router-link :to="{ name: 'deck-publish', params: { strainId: deck.strain, deckId: deck.id } }"
+                                     class="btn btn-outline-warning btn-sm">Publish</router-link>
                     </div>
                     <b-modal id="modalDelete"
                              ref="modalDelete"
@@ -112,9 +113,6 @@
           .then(() => {
             this.creating = false;
           });
-      },
-      edit(deck) {
-        this.$router.push({ name: 'deck-edit', params: { strainId: deck.strain, deckId: deck.id } });
       },
       delet() {
         this.$notify({

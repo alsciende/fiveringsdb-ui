@@ -7,6 +7,7 @@ import BuilderList from '@/components/Builder/List';
 import DecksView from '@/components/Decks/View';
 import BuilderEditor from '@/components/Builder/Editor';
 import RulesReference from '@/components/Rules/Reference';
+import BuilderPublisher from '@/components/Builder/Publisher';
 
 Vue.use(Router);
 
@@ -66,6 +67,13 @@ export default new Router({
       component: BuilderEditor,
       props: true,
       meta: { section: 'deckbuilder', deckEdition: true },
+    },
+    {
+      path: '/deckbuilder/:strainId/deck/:deckId/publish',
+      name: 'deck-publish',
+      component: BuilderPublisher,
+      props: true,
+      meta: { section: 'deckbuilder' },
     },
     {
       path: '/rules/reference',
