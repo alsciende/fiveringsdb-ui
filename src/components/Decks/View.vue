@@ -4,7 +4,7 @@
             Loading...
         </div>
 
-        <div v-if="error" class="error">
+        <div v-if="error" class="alert alert-danger" role="alert">
             {{ error }}
         </div>
 
@@ -49,10 +49,11 @@
         rest
           .get(`strains/${this.$route.params.strainId}`)
           .then((result) => {
-            this.deck = result.record.head;
             this.loading = false;
+            this.deck = result.record.head;
           })
           .catch((reason) => {
+            this.loading = false;
             this.error = reason;
           });
       },

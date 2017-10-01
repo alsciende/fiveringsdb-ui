@@ -4,7 +4,7 @@
             Loading...
         </div>
 
-        <div v-if="error" class="error">
+        <div v-if="error" class="alert alert-danger" role="alert">
             {{ error }}
         </div>
 
@@ -119,13 +119,20 @@
         rest
           .get(`strains/${this.$route.params.strainId}/decks/${this.$route.params.deckId}`)
           .then((result) => {
+            this.loading = false;
+
+            if (result.record.published) {
+              this.error = 'This deck is already published';
+              return;
+            }
+
             this.deck = result.record;
             if (this.deck.description === '') {
               this.deck.description = example;
             }
-            this.loading = false;
           })
           .catch((reason) => {
+            this.loading = false;
             this.error = reason;
           });
       },

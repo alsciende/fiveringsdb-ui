@@ -4,7 +4,7 @@
             Loading...
         </div>
 
-        <div v-if="error" class="error">
+        <div v-if="error" class="alert alert-danger" role="alert">
             {{ error }}
         </div>
 
@@ -121,6 +121,7 @@
         rest
           .get(`strains/${this.$route.params.strainId}/decks/${this.$route.params.deckId}`)
           .then((result) => {
+            this.loading = false;
             const slots = Array.isArray(result.record.cards) ? {} : result.record.cards;
             delete result.record.cards;
 
@@ -128,9 +129,9 @@
             this.$store.commit({ type: types.UPDATE_COLLECTION });
 
             this.metadata = result.record;
-            this.loading = false;
           })
           .catch((reason) => {
+            this.loading = false;
             this.error = reason;
           });
       },
