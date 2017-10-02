@@ -7,7 +7,7 @@
                 {{ deck.name }}
             </h5>
         </div>
-        <div class="d-flex w-100 justify-content-between">
+        <div class="d-flex w-100 justify-content-between align-items-end">
             <span>
                 <span class="fa fa-user-circle-o"></span> {{ deck.user.username }}
             </span>

@@ -8,11 +8,11 @@
             {{ error }}
         </div>
 
-        <div v-if="deck" class="content">
+        <div v-if="deck" class="content" :class="['link-'+deck.primary_clan]">
             <div class="text-light p-2 mb-4" :class="['bg-dark-'+deck.primary_clan]">
-                <h2 class="text-center pt-4">{{ deck.name }}</h2>
+                <h1 class="text-center pt-4">{{ deck.name }}</h1>
                 <div class="small text-right">
-                    published: {{ fromNow }}
+                    published: {{ fromNow(deck.created_at) }}
                 </div>
             </div>
             <div class="row">
@@ -24,6 +24,26 @@
                         <span class="fa fa-user-circle-o"></span> {{ deck.user.username }}
                     </h3>
                     <div class="desc-description" v-html="description"></div>
+
+                    <h4 class="py-3 bt-30">
+                        <span class="fa fa-comments-o"></span>
+                        {{ deck.comments.length }} comments
+                    </h4>
+                    <div v-for="comment in deck.comments" :key="comment.id" class="bt-10 py-3">
+                        <h5 class="d-flex justify-content-between align-items-end">
+                            <span>{{ comment.user.username }}</span>
+                            <span class="small text-muted">{{ fromNow(comment.createdAt) }}</span>
+                        </h5>
+                        {{ comment.text }}
+                    </div>
+                    <div class="form-group bt-10 py-3">
+                        <label for="comment">Your comment</label>
+                        <b-form-textarea id="comment"
+                                         v-model="comment"
+                                         :rows="3">
+                        </b-form-textarea>
+                    </div>
+                    <button @click="postComment" class="btn btn-outline-success">Post comment</button>
                 </div>
             </div>
         </div>
@@ -48,23 +68,27 @@
         loading: false,
         deck: null,
         error: null,
+        comment: '',
       };
     },
     watch: {
       $route: 'fetchData',
     },
     computed: {
+      preview() {
+        return md.render(this.comment);
+      },
       description() {
         return md.render(this.deck.description);
-      },
-      fromNow() {
-        return moment(this.deck.created_at).fromNow();
       },
       content() {
         return this.$store.getters.slots;
       },
     },
     methods: {
+      fromNow(date) {
+        return moment(date).fromNow();
+      },
       fetchData() {
         this.error = null;
         this.deck = null;
@@ -78,6 +102,48 @@
           .catch((reason) => {
             this.loading = false;
             this.error = reason;
+          });
+      },
+      postComment() {
+        this.$notify({
+          text: 'Posting...',
+        });
+
+        const data = {
+          text: this.comment,
+        };
+
+        rest
+          .post(`decks/${this.deck.id}/comments`, data)
+          .then(() => {
+            this.$notify({
+              title: 'Success',
+              text: 'Posted successfully!',
+              type: 'success',
+            });
+            this.comment = '';
+            this.reloadComments();
+          })
+          .catch((reason) => {
+            this.$notify({
+              title: 'Error',
+              text: reason,
+              type: 'error',
+            });
+          });
+      },
+      reloadComments() {
+        rest
+          .get(`decks/${this.deck.id}/comments`)
+          .then((result) => {
+            this.deck.comments = result.records;
+          })
+          .catch((reason) => {
+            this.$notify({
+              title: 'Error',
+              text: reason,
+              type: 'error',
+            });
           });
       },
     },

@@ -27,7 +27,6 @@
       this.$store.commit('changeDocumentTitle', 'Deck Builder');
       rest.get('decks', { sort: 'recent' }).then((result) => {
         this.decks = result.records;
-        console.log(this.decks);
       });
     },
   };

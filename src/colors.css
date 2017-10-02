@@ -65,3 +65,35 @@
 .bg-light-crab {
     background-color: #E7E6EA;
 }
+
+.link-crab a {
+    color: rgb(0, 28, 148);
+}
+
+.link-crane a {
+    color: rgb(0, 137, 222);
+}
+
+.link-dragon a {
+    color: rgb(0, 164, 114);
+}
+
+.link-lion a {
+    color: rgb(203, 157, 0);
+}
+
+.link-phoenix a {
+    color: rgb(193, 100, 0);
+}
+
+.link-scorpion a {
+    color: rgb(166, 22, 0);
+}
+
+.link-unicorn a {
+    color: rgb(120, 0, 152);
+}
+
+.link-neutral a {
+    color: rgb(100, 100, 100);
+}
