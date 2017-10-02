@@ -22,7 +22,7 @@
                     <utils-card-link :card="card"></utils-card-link>
                     <span class="text-secondary text-smallcaps">{{ $t('element.'+card.element) }}</span>
                 </div>
-                <div class="mt-4">
+                <div v-if="influencePool !== influenceSpent" class="mt-4">
                     Influence: {{ influenceSpent }}/{{ influencePool }}, {{ influencePool - influenceSpent }} remaining
                 </div>
             </div>

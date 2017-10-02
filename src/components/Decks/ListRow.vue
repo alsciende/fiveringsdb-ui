@@ -1,9 +1,9 @@
 <template>
-    <a href="#"
+    <router-link :to="{ name: 'deck-view', params: { deckId: deck.id } }"
        class="list-group-item list-group-item-action flex-column align-items-start">
         <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-1">
-                <span v-for="clan in clans" :key="clan" class="mx-1" :class="['icon-clan-'+clan, 'fg-'+clan]"></span>
+                <span v-for="clan in clans" :key="clan" class="mx-1" :class="['icon-clan-'+clan, 'fg-dark-'+clan]"></span>
                 {{ deck.name }}
             </h5>
         </div>
@@ -20,7 +20,7 @@
             <span>{{ $t('format.'+deck.format) }}</span>
             <span>{{ fromNow }}</span>
         </div>
-    </a>
+    </router-link>
 </template>
 
 <script>

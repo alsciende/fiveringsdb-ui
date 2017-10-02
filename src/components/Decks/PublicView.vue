@@ -8,18 +8,35 @@
             {{ error }}
         </div>
 
-        <div v-if="deck" class="row content">
-            <div class="col-md-8 m-auto">
-                <h2>{{ deck.name }}</h2>
-                <utils-deck-content :deck="deck" :editable="false"></utils-deck-content>
+        <div v-if="deck" class="content">
+            <div class="text-light p-2 mb-4" :class="['bg-dark-'+deck.primary_clan]">
+                <h2 class="text-center pt-4">{{ deck.name }}</h2>
+                <div class="small text-right">
+                    published: {{ fromNow }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <utils-deck-content :deck="deck" :editable="false"></utils-deck-content>
+                </div>
+                <div class="col-lg-6">
+                    <h3>
+                        <span class="fa fa-user-circle-o"></span> {{ deck.user.username }}
+                    </h3>
+                    <div class="desc-description" v-html="description"></div>
+                </div>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+  import moment from 'moment';
+  import MarkdownIt from 'markdown-it';
   import UtilsDeckContent from '@/components/Utils/DeckContent';
   import rest from '@/rest';
+
+  const md = new MarkdownIt();
 
   export default {
     name: 'public-decks-view',
@@ -37,6 +54,12 @@
       $route: 'fetchData',
     },
     computed: {
+      description() {
+        return md.render(this.deck.description);
+      },
+      fromNow() {
+        return moment(this.deck.created_at).fromNow();
+      },
       content() {
         return this.$store.getters.slots;
       },

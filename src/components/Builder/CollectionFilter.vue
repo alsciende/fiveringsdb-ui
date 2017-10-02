@@ -181,10 +181,6 @@
         color: rgb(100, 100, 100);
     }
 
-    .btn-clans .btn.active.clan-dragon {
-        background: rgb(0, 164, 114);
-    }
-
     .btn-clans .btn.clan-crab:hover, .btn-clans .btn.active.clan-crab {
         background: rgb(0, 28, 148);
         color: white;

@@ -1,0 +1,67 @@
+.fg-dark-crab {
+    color: rgb(0, 28, 148);
+}
+
+.fg-dark-crane {
+    color: rgb(0, 137, 222);
+}
+
+.fg-dark-dragon {
+    color: rgb(0, 164, 114);
+}
+
+.fg-dark-lion {
+    color: rgb(203, 157, 0);
+}
+
+.fg-dark-phoenix {
+    color: rgb(193, 100, 0);
+}
+
+.fg-dark-scorpion {
+    color: rgb(166, 22, 0);
+}
+
+.fg-dark-unicorn {
+    color: rgb(120, 0, 152);
+}
+
+.fg-dark-neutral {
+    color: rgb(100, 100, 100);
+}
+
+.bg-dark-crab {
+    background-color: rgb(0, 28, 148);
+}
+
+.bg-dark-crane {
+    background-color: rgb(0, 137, 222);
+}
+
+.bg-dark-dragon {
+    background-color: rgb(0, 164, 114);
+}
+
+.bg-dark-lion {
+    background-color: rgb(203, 157, 0);
+}
+
+.bg-dark-phoenix {
+    background-color: rgb(193, 100, 0);
+}
+
+.bg-dark-scorpion {
+    background-color: rgb(166, 22, 0);
+}
+
+.bg-dark-unicorn {
+    background-color: rgb(120, 0, 152);
+}
+
+.bg-dark-neutral {
+    background-color: rgb(100, 100, 100);
+}
+
+.bg-light-crab {
+    background-color: #E7E6EA;
+}

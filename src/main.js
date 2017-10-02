@@ -11,6 +11,7 @@ import Notifications from 'vue-notification';
 import moment from 'moment';
 
 import './style.css';
+import './colors.css';
 import './font.css';
 
 import store from './store';

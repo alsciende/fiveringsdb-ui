@@ -1,5 +1,5 @@
 <template>
-    <span class="card-influence" :class="['fg-'+card.clan]">
+    <span class="card-influence" :class="['fg-dark-'+card.clan]">
         <span v-if="div">
             <b v-for="n in div" style="text-decoration: line-through">/////</b>
         </span>
