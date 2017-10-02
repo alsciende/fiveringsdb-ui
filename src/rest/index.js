@@ -51,10 +51,10 @@ export default {
       .then(validateStatus)
       .catch(notifyObservers);
   },
-  get(resourcePath) {
+  get(resourcePath, parameters) {
     return Vue
       .http
-      .get(config.getApiURL(resourcePath))
+      .get(config.getApiURL(resourcePath), { params: parameters })
       .then(validateStatus)
       .catch(notifyObservers);
   },

@@ -1,6 +1,6 @@
 <template>
     <footer class="bg-dark text-white">
-        <div class="container">
+        <div class="container text-center">
             Work in progress by <a href="https://twitter.com/alsciende">@alsciende</a>.
             API Documentation at <a href="https://alsciende.github.io/fiveringsdb-api/">https://alsciende.github.io/fiveringsdb-api/</a>.
         </div>

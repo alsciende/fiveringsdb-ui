@@ -23,39 +23,39 @@
                         </td>
                         <td class="actions">
                             <button type="button" class="btn btn-outline-secondary btn-sm"
-                                    @click.prevent="view(strain.head)" v-if="strain.head">View
+                                    @click.prevent="view(strain)" v-if="strain.head">View
                             </button>
                             <button type="button" class="btn btn-outline-primary btn-sm"
-                                    @click.prevent="start(strain.id)" v-else>Create
+                                    @click.prevent="start(strain)" v-else>Create
                             </button>
                         </td>
                     </tr>
                 </table>
             </div>
             <div class="col-lg-6">
-                <div v-if="deck">
-                    <h2>{{ deck.name }}</h2>
+                <div v-if="strain">
+                    <h2>{{ strain.head.name }}</h2>
                     <div class="mb-2">
-                        <router-link :to="{ name: 'deck-edit', params: { strainId: deck.strain, deckId: deck.id } }"
+                        <router-link :to="{ name: 'deck-edit', params: { strainId: strain.id, deckId: strain.head.id } }"
                                      class="btn btn-outline-primary btn-sm">Edit</router-link>
                         <b-btn v-b-modal.modalDelete class="btn btn-outline-danger btn-sm">Delete</b-btn>
-                        <router-link :to="{ name: 'strain-view', params: { strainId: deck.strain } }"
+                        <router-link :to="{ name: 'strain-view', params: { strainId: strain.id } }"
                                      class="btn btn-outline-info btn-sm" target="_blank">
                             Permalink
                         </router-link>
-                        <router-link :to="{ name: 'deck-publish', params: { strainId: deck.strain, deckId: deck.id } }"
+                        <router-link :to="{ name: 'deck-publish', params: { strainId: strain.id, deckId: strain.head.id } }"
                                      class="btn btn-outline-warning btn-sm">Publish</router-link>
                     </div>
                     <b-modal id="modalDelete"
                              ref="modalDelete"
                              title="Confirmation"
-                             @ok="delet(deck)"
+                             @ok="deleteConfirmed(strain)"
                              ok-title="Confirm deletion"
                              close-title="Cancel">
                         <p>This deletion is definitive and cannot be undone.</p>
-                        <p>Delete <b>{{ deck.name }}</b>?</p>
+                        <p>Delete <b>{{ strain.head.name }}</b>?</p>
                     </b-modal>
-                    <utils-deck-content :deck="deck"></utils-deck-content>
+                    <utils-deck-content :deck="strain.head"></utils-deck-content>
                 </div>
             </div>
         </div>
@@ -77,16 +77,16 @@
     data() {
       return {
         strains: [],
-        deck: null,
+        strain: null,
         creating: false,
       };
     },
     methods: {
-      view(deck) {
-        this.deck = deck;
+      view(strain) {
+        this.strain = strain;
       },
-      start(strainId) {
-        this.$router.push({ name: 'deck-new', params: { strainId } });
+      start(strain) {
+        this.$router.push({ name: 'deck-new', params: { strainId: strain.id } });
       },
       create() {
         this.creating = true;
@@ -101,7 +101,7 @@
               text: 'Creation accepted',
               type: 'success',
             });
-            this.start(result.record.id);
+            this.start(result.record);
           })
           .catch((reason) => {
             this.$notify({
@@ -114,19 +114,18 @@
             this.creating = false;
           });
       },
-      delet() {
+      deleteConfirmed() {
         this.$notify({
           text: 'Deleting...',
         });
-        const strainId = this.deck.strain;
-        rest.delete(`strains/${strainId}`)
+        rest.delete(`strains/${this.strain.id}`)
           .then(() => {
             this.$notify({
               title: 'Success',
               text: 'Deck deleted',
               type: 'success',
             });
-            this.deck = null;
+            this.strain = null;
             this.strains = this.strains.filter(strain => strain.id !== strainId);
           });
       },

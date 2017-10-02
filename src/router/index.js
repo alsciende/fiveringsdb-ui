@@ -4,7 +4,9 @@ import Router from 'vue-router';
 import AppNotFound from '@/components/App/NotFound';
 import Browser from '@/components/Cards/Browser';
 import BuilderList from '@/components/Builder/List';
-import DecksView from '@/components/Decks/View';
+import DecksPublicView from '@/components/Decks/PublicView';
+import DecksPrivateView from '@/components/Decks/PrivateView';
+import DecksList from '@/components/Decks/List';
 import BuilderEditor from '@/components/Builder/Editor';
 import RulesReference from '@/components/Rules/Reference';
 import BuilderPublisher from '@/components/Builder/Publisher';
@@ -83,9 +85,23 @@ export default new Router({
       meta: { section: 'rules' },
     },
     {
-      path: '/decks/:strainId/view',
+      path: '/decks',
+      name: 'decks-list',
+      component: DecksList,
+      props: false,
+      meta: { section: 'decks' },
+    },
+    {
+      path: '/decks/:deckId/view',
+      name: 'deck-view',
+      component: DecksPublicView,
+      props: true,
+      meta: { section: 'decks' },
+    },
+    {
+      path: '/strains/:strainId/view',
       name: 'strain-view',
-      component: DecksView,
+      component: DecksPrivateView,
       props: true,
       meta: { section: 'decks' },
     },

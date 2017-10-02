@@ -22,7 +22,7 @@
   import rest from '@/rest';
 
   export default {
-    name: 'decks-view',
+    name: 'public-decks-view',
     components: {
       UtilsDeckContent,
     },
@@ -47,10 +47,10 @@
         this.deck = null;
         this.loading = true;
         rest
-          .get(`strains/${this.$route.params.strainId}`)
+          .get(`decks/${this.$route.params.deckId}`)
           .then((result) => {
             this.loading = false;
-            this.deck = result.record.head;
+            this.deck = result.record;
           })
           .catch((reason) => {
             this.loading = false;
