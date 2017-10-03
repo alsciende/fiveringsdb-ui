@@ -16,7 +16,7 @@
                         {{ $t('format.'+deck.format) }}
                     </span>
                     <span>
-                        published {{ fromNow(deck.created_at) }}
+                        published {{ fromNow(deck.updated_at) }}
                     </span>
                 </div>
             </div>
