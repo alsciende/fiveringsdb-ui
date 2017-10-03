@@ -24,7 +24,25 @@
                  ok-title="Save"
                  @ok="saveRuling"
         >
-            <rulings-editor v-if="ruling" v-model="ruling"></rulings-editor>
+            <form v-if="ruling">
+                <div class="form-group">
+                    <label>Text</label>
+                    <b-form-textarea v-model="ruling.text"
+                                     :rows="5">
+                    </b-form-textarea>
+                    <div class="card bg-light mt-1">
+                        <div class="card-body" v-html="markdown(ruling.text)"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Source</label>
+                    <b-form-input v-model="ruling.source"></b-form-input>
+                </div>
+                <div class="form-group">
+                    <label>Source link (optional)</label>
+                    <b-form-input v-model="ruling.link"></b-form-input>
+                </div>
+            </form>
         </b-modal>
         <b-modal ref="deleteModal"
                  title="Confirmation"
@@ -40,16 +58,12 @@
 <script>
   import MarkdownIt from 'markdown-it';
   import rest from '@/rest';
-  import RulingsEditor from '../Rulings/Editor';
 
   const md = new MarkdownIt();
 
   export default {
     name: 'rulings-list',
     props: ['card'],
-    components: {
-      RulingsEditor,
-    },
     data() {
       return {
         rulings: [],
