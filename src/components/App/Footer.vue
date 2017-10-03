@@ -1,8 +1,17 @@
 <template>
     <footer class="bg-dark text-white">
-        <div class="container text-center">
-            Work in progress by <a href="https://twitter.com/alsciende">@alsciende</a>.
-            API Documentation at <a href="https://alsciende.github.io/fiveringsdb-api/">https://alsciende.github.io/fiveringsdb-api/</a>.
+        <div class="container text-center pt-3">
+            <p>
+                Work in progress by <a href="https://twitter.com/alsciende">@alsciende</a>.
+                API Documentation at <a href="https://alsciende.github.io/fiveringsdb-api/">https://alsciende.github.io/fiveringsdb-api/</a>.
+            </p>
+            <p class="small">
+                The source material, text and images, presented on this site, is copyrighted by Fantasy Flight Games.<br>
+                Legend of the Five Rings is a trademark of Fantasy Flight Games.
+            </p>
+            <p class="small">
+                This website is not produced, endorsed, supported, or affiliated with Fantasy Flight Games.
+            </p>
         </div>
     </footer>
 </template>
@@ -20,8 +29,6 @@
         position: absolute;
         bottom: 0;
         width: 100%;
-        /* Set the fixed height of the footer here */
-        height: 60px;
-        line-height: 60px; /* Vertically center the text there */
+        height: 130px;
     }
 </style>

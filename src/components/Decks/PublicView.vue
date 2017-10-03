@@ -11,8 +11,13 @@
         <div v-if="deck" class="content" :class="['link-'+deck.primary_clan]">
             <div class="text-light p-2 mb-4" :class="['bg-dark-'+deck.primary_clan]">
                 <h1 class="text-center pt-4">{{ deck.name }}</h1>
-                <div class="small text-right">
-                    published: {{ fromNow(deck.created_at) }}
+                <div class="small d-flex justify-content-between align-items-end">
+                    <span>
+                        {{ $t('format.'+deck.format) }}
+                    </span>
+                    <span>
+                        published {{ fromNow(deck.created_at) }}
+                    </span>
                 </div>
             </div>
             <div class="row">

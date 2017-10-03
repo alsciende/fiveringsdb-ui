@@ -93,12 +93,13 @@
             name: this.deck.name,
             description: this.deck.description,
           })
-          .then(() => {
+          .then((result) => {
             this.$notify({
               title: 'Success',
               text: 'Published successfully!',
               type: 'success',
             });
+            this.$router.push({ name: 'deck-view', params: { deckId: result.record.id } });
           })
           .catch((reason) => {
             this.$notify({

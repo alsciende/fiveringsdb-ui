@@ -20,9 +20,15 @@
                         </b-dropdown-item>
                     </template>
                 </b-nav-item-dropdown>
+                <!--
                 <b-nav-item-dropdown text="Decks" left :class="[ section === 'decks' ? 'active' : '']">
                     <b-dropdown-item :to="{name:'decks-list'}" exact>Recent</b-dropdown-item>
                 </b-nav-item-dropdown>
+                -->
+                <b-nav-item
+                        :to="{name:'decks-list'}">
+                    Decks
+                </b-nav-item>
                 <b-nav-item
                         :to="{name:'deckbuilder'}"
                 >
