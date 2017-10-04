@@ -37,7 +37,7 @@
                     <div v-for="comment in deck.comments" :key="comment.id" class="bt-10 py-3">
                         <h5 class="d-flex justify-content-between align-items-end">
                             <span>{{ comment.user.username }}</span>
-                            <span class="small text-muted">{{ fromNow(comment.createdAt) }}</span>
+                            <span class="small text-muted">{{ fromNow(comment.updated_at) }}</span>
                         </h5>
                         {{ comment.text }}
                     </div>
