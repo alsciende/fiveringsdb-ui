@@ -11,10 +11,10 @@
             <span>
                 <span class="fa fa-user-circle-o"></span> {{ deck.user.username }}
             </span>
-            <span><!--
-                <span class="fa fa-heart" style="color:red"></span> 43
-                <span class="fa fa-retweet" style="color:blue"></span> 7
-            --></span>
+            <span>
+                <span class="fa fa-heart-o"></span> {{ deck.nb_likes }}
+                <span class="fa fa-comments-o"></span> {{ deck.nb_comments }}
+            </span>
         </div>
         <div class="d-flex w-100 justify-content-between small">
             <span>{{ $t('format.'+deck.format) }}</span>
