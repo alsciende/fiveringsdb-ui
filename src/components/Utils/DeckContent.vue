@@ -12,7 +12,7 @@
                 <utils-card-image :card="stronghold"></utils-card-image>
             </div>
             <div class="col-sm-8">
-                <div v-if="stronghold">
+                <div v-if="stronghold" class="font-weight-bold">
                     <utils-card-link :card="stronghold"></utils-card-link>
                 </div>
                 <div v-if="role">

@@ -20,9 +20,22 @@
                     </span>
                 </div>
             </div>
+
             <div class="row">
                 <div class="col-lg-6">
                     <utils-deck-content :deck="deck" :editable="false"></utils-deck-content>
+
+                    <div class="pb-1 my-3 bb-10 bt-10 d-flex justify-content-around">
+                        <a href="#" @click.prevent="like" role="button" class="btn btn-link text-danger">
+                            <span class="fa fa-heart-o"></span>
+                            Like
+                        </a>
+                        <a href="#comments" class="btn btn-link text-success">
+                            <span class="fa fa-comment-o"></span>
+                            Comment
+                        </a>
+
+                    </div>
                 </div>
                 <div class="col-lg-6">
                     <h3>
@@ -30,7 +43,7 @@
                     </h3>
                     <div class="desc-description" v-html="description"></div>
 
-                    <h4 class="py-3 bt-30">
+                    <h4 class="py-3 bt-30" id="comments">
                         <span class="fa fa-comments-o"></span>
                         {{ deck.comments.length }} comments
                     </h4>
@@ -91,6 +104,23 @@
       },
     },
     methods: {
+      like() {
+        if(this.$store.getters.isLogged) {
+          rest
+            .post(`decks/${this.$route.params.deckId}/like`)
+            .then((result) => {
+              this.$notify({
+                title: 'Success',
+                text: 'Liked!',
+                type: 'success',
+              });
+              console.log(result);
+            })
+            .catch((reason) => {
+              this.error = reason;
+            });
+        }
+      },
       fromNow(date) {
         return moment(date).fromNow();
       },
