@@ -85,8 +85,15 @@ export default new Router({
       meta: { section: 'rules' },
     },
     {
-      path: '/decks',
+      path: '/decks/:sort',
       name: 'decks-list',
+      component: DecksList,
+      props: false,
+      meta: { section: 'decks' },
+    },
+    {
+      path: '/decks',
+      name: 'decks-list-fallback',
       component: DecksList,
       props: false,
       meta: { section: 'decks' },

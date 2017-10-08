@@ -20,15 +20,12 @@
                         </b-dropdown-item>
                     </template>
                 </b-nav-item-dropdown>
-                <!--
                 <b-nav-item-dropdown text="Decks" left :class="[ section === 'decks' ? 'active' : '']">
-                    <b-dropdown-item :to="{name:'decks-list'}" exact>Recent</b-dropdown-item>
+                    <b-dropdown-item v-for="(label, mode) in deckSortingModes"
+                                     :key="mode"
+                                     :to="{name:'decks-list', params: { sort: mode }}"
+                    >{{ label }}</b-dropdown-item>
                 </b-nav-item-dropdown>
-                -->
-                <b-nav-item
-                        :to="{name:'decks-list'}">
-                    Decks
-                </b-nav-item>
                 <b-nav-item
                         :to="{name:'deckbuilder'}"
                 >
@@ -59,6 +56,17 @@
   export default {
     name: 'app-navbar',
     props: [],
+    data() {
+      return {
+        deckSortingModes: {
+          recent: 'Recent',
+          week: 'Popular this week',
+          month: 'Popular this month',
+          year: 'Popular this year',
+          fame: 'Hall of fame',
+        },
+      };
+    },
     computed: {
       section() {
         return this.$route.meta.section;

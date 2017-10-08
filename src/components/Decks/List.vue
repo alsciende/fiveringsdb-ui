@@ -4,7 +4,7 @@
             {{ error }}
         </div>
 
-        <div v-if="decks" class="col-md-8">
+        <div v-if="decks" class="col-lg-8">
             <b-pagination class="my-3 justify-content-center"
                           :total-rows="totalRows"
                           v-model="currentPage"
@@ -41,10 +41,15 @@
         perPage: 1,
       };
     },
+    computed: {
+      sort() {
+        return this.$route.params.sort || 'week';
+      },
+    },
     methods: {
       loadDecks() {
         this.loading = true;
-        rest.get('decks', { sort: 'recent', page: this.currentPage }).then((result) => {
+        rest.get('decks', { sort: this.sort, page: this.currentPage }).then((result) => {
           this.loading = false;
           this.decks = result.records;
           this.totalRows = result.size;
@@ -58,6 +63,9 @@
     },
     watch: {
       currentPage() {
+        this.loadDecks();
+      },
+      $route() {
         this.loadDecks();
       },
     },
