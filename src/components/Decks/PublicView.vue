@@ -13,7 +13,7 @@
                 <h1 class="text-center pt-4">{{ deck.name }}</h1>
                 <div class="small d-flex justify-content-between align-items-end">
                     <span>
-                        {{ $t('format.'+deck.format) }}
+                        {{ $t('format.' + deck.format) }}
                     </span>
                     <span>
                         published {{ fromNow(deck.updated_at) }}
@@ -26,9 +26,23 @@
                     <utils-deck-content :deck="deck" :editable="false"></utils-deck-content>
 
                     <div class="pb-1 my-3 bb-10 bt-10 d-flex justify-content-around">
-                        <a href="#" @click.prevent="like" role="button" class="btn btn-link text-danger">
+                        <a v-if="liked === false"
+                           title="Like"
+                           href="#"
+                           @click.prevent="like"
+                           role="button"
+                           class="btn btn-link text-danger">
                             <span class="fa fa-heart-o"></span>
                             Like
+                        </a>
+                        <a v-if="liked === true"
+                           title="Cancel Like"
+                           href="#"
+                           @click.prevent="unlike"
+                           role="button"
+                           class="btn btn-link text-danger">
+                            <span class="fa fa-heart"></span>
+                            Liked
                         </a>
                         <a href="#comments" class="btn btn-link text-success">
                             <span class="fa fa-comment-o"></span>
@@ -87,6 +101,7 @@
         deck: null,
         error: null,
         comment: '',
+        liked: false,
       };
     },
     watch: {
@@ -105,15 +120,34 @@
     },
     methods: {
       like() {
-        if(this.$store.getters.isLogged) {
+        if (this.$store.getters.isLogged) {
           rest
-            .post(`decks/${this.$route.params.deckId}/like`)
+            .post(`decks/${this.$route.params.deckId}/likes`)
             .then((result) => {
               this.$notify({
                 title: 'Success',
                 text: 'Liked!',
                 type: 'success',
               });
+              this.liked = true;
+              console.log(result);
+            })
+            .catch((reason) => {
+              this.error = reason;
+            });
+        }
+      },
+      unlike() {
+        if (this.$store.getters.isLogged) {
+          rest
+            .delete(`decks/${this.$route.params.deckId}/likes`)
+            .then((result) => {
+              this.$notify({
+                title: 'Success',
+                text: 'Cancelled!',
+                type: 'success',
+              });
+              this.liked = false;
               console.log(result);
             })
             .catch((reason) => {
@@ -138,6 +172,16 @@
             this.loading = false;
             this.error = reason;
           });
+        if (this.$store.getters.isLogged) {
+          rest
+            .get(`decks/${this.$route.params.deckId}/likes/me`)
+            .then((result) => {
+              this.liked = result.hasOwnProperty('record');
+            })
+            .catch((reason) => {
+              this.error = reason;
+            });
+        }
       },
       postComment() {
         this.$notify({
