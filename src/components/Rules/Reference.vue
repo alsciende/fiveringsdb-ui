@@ -1,13 +1,16 @@
 <template>
     <div class="row">
-        <div class="table-of-contents order-2 col-4 d-none d-sm-block f-right">
+        <div class="table-of-contents order-sm-2 col-12 col-sm-4">
+            <b-btn v-b-toggle.toc variant="primary" class="d-sm-none">Table of Contents</b-btn>
+            <b-collapse id="toc" class="mt-2 d-sm-block">
             <ul>
                 <li v-for="heading in headings" :class="['item-size-'+level(heading)]">
                     <a :href="href(heading)">{{ title(heading) }}</a>
                 </li>
             </ul>
+            </b-collapse>
         </div>
-        <div class="contents order-1 col-sm-8">
+        <div class="contents order-sm-1 col-sm-8 mt-3">
             <h2>RULES REFERENCE</h2>
             <p>Version 1.01</p>
             <h3>SUMMARY OF CHANGES</h3>
