@@ -62,11 +62,31 @@
                         <a href="#"
                            @click.prevent="patch"
                            role="button"
+                           title="Edit the description or name of this deck"
                            class="btn btn-link text-primary">
                             <span class="fa fa-pencil"></span>
                             Edit
                         </a>
+                        <button
+                           v-b-modal.modalDelete
+                           role="button"
+                           :disabled="!removable"
+                           :title="removable ? 'Delete this deck' : 'This deck cannot be deleted because it has comments'"
+                           class="btn btn-link text-danger">
+                            <span class="fa fa-trash"></span>
+                            Delete
+                        </button>
                     </div>
+
+                    <b-modal id="modalDelete"
+                             ref="modalDelete"
+                             title="Confirmation"
+                             @ok="remove"
+                             ok-title="Confirm deletion"
+                             close-title="Cancel">
+                        <p>This deletion is definitive and cannot be undone.</p>
+                        <p>Delete <b>{{ deck.name }}</b>?</p>
+                    </b-modal>
 
                     <comments-list :deck="deck"></comments-list>
                 </div>
@@ -103,6 +123,9 @@
       $route: 'fetchData',
     },
     computed: {
+      removable() {
+        return this.deck.comments.length === 0;
+      },
       description() {
         return md.render(this.deck.description);
       },
@@ -127,7 +150,11 @@
               this.liked = true;
             })
             .catch((reason) => {
-              this.error = reason;
+              this.$notify({
+                title: 'Error',
+                text: reason,
+                type: 'error',
+              });
             });
         }
       },
@@ -144,7 +171,11 @@
               this.liked = false;
             })
             .catch((reason) => {
-              this.error = reason;
+              this.$notify({
+                title: 'Error',
+                text: reason,
+                type: 'error',
+              });
             });
         }
       },
@@ -172,12 +203,35 @@
               this.liked = result.hasOwnProperty('record');
             })
             .catch((reason) => {
-              this.error = reason;
+              this.$notify({
+                title: 'Error',
+                text: reason,
+                type: 'error',
+              });
             });
         }
       },
       patch() {
-        this.$router.push({ name: 'deck-patch', params: { deckId: this.deck.id } })
+        this.$router.push({ name: 'deck-patch', params: { deckId: this.deck.id } });
+      },
+      remove() {
+        rest
+          .delete(`decks/${this.$route.params.deckId}`)
+          .then(() => {
+            this.$router.push({ name: 'deckbuilder' });
+            this.$notify({
+              title: 'Success',
+              text: 'Deleted!',
+              type: 'success',
+            });
+          })
+          .catch((reason) => {
+            this.$notify({
+              title: 'Error',
+              text: reason,
+              type: 'error',
+            });
+          });
       },
     },
     created() {
