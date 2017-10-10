@@ -76,11 +76,6 @@
           .then((result) => {
             this.loading = false;
 
-            if (result.record.user.id !== this.$store.getters.userId) {
-              this.error = 'This deck is not yours';
-              return;
-            }
-
             if (result.record.published) {
               this.error = 'This deck is already published';
               return;
