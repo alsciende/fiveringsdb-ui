@@ -42,6 +42,9 @@
                         <b-tab title="Preview">
                             <div v-html="markdown"></div>
                         </b-tab>
+                        <b-tab title="Help">
+                            <div class="markdown-reference" v-html="markdownReference"></div>
+                        </b-tab>
                     </b-tabs>
                 </b-card>
             </div>
@@ -53,7 +56,7 @@
   import MarkdownIt from 'markdown-it';
   import UtilsDeckContent from '@/components/Utils/DeckContent';
   import rest from '@/rest';
-  import example from './description-example.txt';
+  import markdownReference from './markdown-reference.txt';
 
   const md = new MarkdownIt();
 
@@ -69,6 +72,7 @@
         metadata: null,
         error: null,
         deck: null,
+        markdownReference,
       };
     },
     watch: {
@@ -84,6 +88,7 @@
     },
     methods: {
       publish() {
+        return;
         this.publishing = true;
         this.$notify({
           text: 'Publishing...',
@@ -128,9 +133,6 @@
             }
 
             this.deck = result.record;
-            if (this.deck.description === '') {
-              this.deck.description = example;
-            }
           })
           .catch((reason) => {
             this.loading = false;
@@ -149,4 +151,7 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
+    .markdown-reference pre {
+        background-color: cornsilk;
+    }
 </style>

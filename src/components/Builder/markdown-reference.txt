@@ -1,0 +1,85 @@
+<h4>Phrase Emphasis</h4>
+
+<pre><code>*italic*   **bold**
+_italic_   __bold__
+</code></pre>
+
+<h4>Links</h4>
+
+<pre><code>An [example](http://url.com/ "Title")
+</code></pre>
+
+<h4>Images</h4>
+
+<pre><code>![alt text](/path/img.jpg "Title")
+</code></pre>
+
+<h4>Headers</h4>
+
+<pre><code># Header 1 #
+
+## Header 2 ##
+
+###### Header 6
+</code></pre>
+
+<h4>Lists</h4>
+
+<p>Ordered, without paragraphs:</p>
+
+<pre><code>1.  Foo
+2.  Bar
+</code></pre>
+
+<p>Unordered, with paragraphs:</p>
+
+<pre><code>*   A list item.
+
+    With multiple paragraphs.
+
+*   Bar
+</code></pre>
+
+<p>You can nest them:</p>
+
+<pre><code>*   Abacus
+    * answer
+*   Bubbles
+    1.  bunk
+    2.  bupkis
+        * BELITTLER
+    3. burper
+*   Cunning
+</code></pre>
+
+<h4>Blockquotes</h4>
+
+<pre><code>&gt; Email-style angle brackets
+&gt; are used for blockquotes.
+
+&gt; &gt; And, they can be nested.
+
+&gt; #### Headers in blockquotes
+&gt;
+&gt; * You can quote a list.
+&gt; * Etc.
+</code></pre>
+
+<h4>Horizontal Rules</h4>
+
+<p>Three or more dashes or asterisks:</p>
+
+<pre><code>---
+
+* * *
+
+- - - -
+</code></pre>
+
+<h4>Manual Line Breaks</h4>
+
+<p>End a line with two or more spaces:</p>
+
+<pre><code>Roses are red,
+Violets are blue.
+</code></pre>
