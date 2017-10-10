@@ -10,6 +10,7 @@ import DecksList from '@/components/Decks/List';
 import BuilderEditor from '@/components/Builder/Editor';
 import RulesReference from '@/components/Rules/Reference';
 import BuilderPublisher from '@/components/Builder/Publisher';
+import BuilderPatcher from '@/components/Builder/Patcher';
 
 Vue.use(Router);
 
@@ -104,6 +105,13 @@ export default new Router({
       component: DecksPublicView,
       props: true,
       meta: { section: 'decks' },
+    },
+    {
+      path: '/decks/:deckId/patch',
+      name: 'deck-patch',
+      component: BuilderPatcher,
+      props: true,
+      meta: { section: 'deckbuilder' },
     },
     {
       path: '/strains/:strainId/view',

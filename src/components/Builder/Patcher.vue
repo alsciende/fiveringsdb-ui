@@ -9,8 +9,8 @@
         </div>
 
         <utils-deck-description-editor v-if="deck" :deck="deck">
-            <button @click="publish" :class="{'disabled': publishing}" type="button"
-                    class="btn btn-block btn-success">Publish
+            <button @click="patch" :class="{'disabled': patching}" type="button"
+                    class="btn btn-block btn-success">Patch
             </button>
         </utils-deck-description-editor>
     </div>
@@ -21,14 +21,14 @@
   import UtilsDeckDescriptionEditor from '../Utils/DeckDescriptionEditor';
 
   export default {
-    name: 'builder-publisher',
+    name: 'builder-patcher',
     components: {
       UtilsDeckDescriptionEditor,
     },
     data() {
       return {
         loading: false,
-        publishing: false,
+        patching: false,
         error: null,
         deck: null,
       };
@@ -37,20 +37,20 @@
       $route: 'fetchData',
     },
     methods: {
-      publish() {
-        this.publishing = true;
+      patch() {
+        this.patching = true;
         this.$notify({
-          text: 'Publishing...',
+          text: 'Patching...',
         });
         rest
-          .patch(`strains/${this.$route.params.strainId}/publish`, {
+          .patch(`decks/${this.$route.params.deckId}`, {
             name: this.deck.name,
             description: this.deck.description,
           })
           .then((result) => {
             this.$notify({
               title: 'Success',
-              text: 'Published successfully!',
+              text: 'Patched successfully!',
               type: 'success',
             });
             this.$router.push({ name: 'deck-view', params: { deckId: result.record.id } });
@@ -63,7 +63,7 @@
             });
           })
           .then(() => {
-            this.publishing = false;
+            this.patching = false;
           });
       },
       fetchData() {
@@ -72,7 +72,7 @@
 
         this.loading = true;
         rest
-          .get(`strains/${this.$route.params.strainId}/decks/${this.$route.params.deckId}`)
+          .get(`decks/${this.$route.params.deckId}`)
           .then((result) => {
             this.loading = false;
 
@@ -81,8 +81,8 @@
               return;
             }
 
-            if (result.record.published) {
-              this.error = 'This deck is already published';
+            if (result.record.published === false) {
+              this.error = 'This deck is not published yet';
               return;
             }
 

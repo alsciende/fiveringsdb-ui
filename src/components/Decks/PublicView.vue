@@ -44,7 +44,7 @@
                             <span class="fa fa-heart"></span>
                             Liked
                         </a>
-                        <a href="#comments" class="btn btn-link text-success">
+                        <a href="#new-comment" class="btn btn-link text-success">
                             <span class="fa fa-comment-o"></span>
                             Comment
                         </a>
@@ -55,27 +55,20 @@
                     <h3>
                         <span class="fa fa-user-circle-o"></span> {{ deck.user.username }}
                     </h3>
+
                     <div class="desc-description" v-html="description"></div>
 
-                    <h4 class="py-3 bt-30" id="comments">
-                        <span class="fa fa-comments-o"></span>
-                        {{ deck.comments.length }} comments
-                    </h4>
-                    <div v-for="comment in deck.comments" :key="comment.id" class="bt-10 py-3">
-                        <h5 class="d-flex justify-content-between align-items-end">
-                            <span>{{ comment.user.username }}</span>
-                            <span class="small text-muted">{{ fromNow(comment.created_at) }}</span>
-                        </h5>
-                        {{ comment.text }}
+                    <div v-if="author" class="pb-1 mt-3 bt-10 d-flex justify-content-around">
+                        <a href="#"
+                           @click.prevent="patch"
+                           role="button"
+                           class="btn btn-link text-primary">
+                            <span class="fa fa-pencil"></span>
+                            Edit
+                        </a>
                     </div>
-                    <div class="form-group bt-10 py-3">
-                        <label for="comment">Your comment</label>
-                        <b-form-textarea id="comment"
-                                         v-model="comment"
-                                         :rows="3">
-                        </b-form-textarea>
-                    </div>
-                    <button @click="postComment" class="btn btn-outline-success">Post comment</button>
+
+                    <comments-list :deck="deck"></comments-list>
                 </div>
             </div>
         </div>
@@ -85,8 +78,9 @@
 <script>
   import moment from 'moment';
   import MarkdownIt from 'markdown-it';
-  import UtilsDeckContent from '@/components/Utils/DeckContent';
   import rest from '@/rest';
+  import UtilsDeckContent from '@/components/Utils/DeckContent';
+  import CommentsList from '../Comments/List';
 
   const md = new MarkdownIt();
 
@@ -94,6 +88,7 @@
     name: 'public-decks-view',
     components: {
       UtilsDeckContent,
+      CommentsList,
     },
     data() {
       return {
@@ -108,14 +103,14 @@
       $route: 'fetchData',
     },
     computed: {
-      preview() {
-        return md.render(this.comment);
-      },
       description() {
         return md.render(this.deck.description);
       },
       content() {
         return this.$store.getters.slots;
+      },
+      author() {
+        return this.deck && this.deck.user.id === this.$store.getters.userId;
       },
     },
     methods: {
@@ -123,14 +118,13 @@
         if (this.$store.getters.isLogged) {
           rest
             .post(`decks/${this.$route.params.deckId}/likes`)
-            .then((result) => {
+            .then(() => {
               this.$notify({
                 title: 'Success',
                 text: 'Liked!',
                 type: 'success',
               });
               this.liked = true;
-              console.log(result);
             })
             .catch((reason) => {
               this.error = reason;
@@ -141,14 +135,13 @@
         if (this.$store.getters.isLogged) {
           rest
             .delete(`decks/${this.$route.params.deckId}/likes`)
-            .then((result) => {
+            .then(() => {
               this.$notify({
                 title: 'Success',
                 text: 'Cancelled!',
                 type: 'success',
               });
               this.liked = false;
-              console.log(result);
             })
             .catch((reason) => {
               this.error = reason;
@@ -183,47 +176,8 @@
             });
         }
       },
-      postComment() {
-        this.$notify({
-          text: 'Posting...',
-        });
-
-        const data = {
-          text: this.comment,
-        };
-
-        rest
-          .post(`decks/${this.deck.id}/comments`, data)
-          .then(() => {
-            this.$notify({
-              title: 'Success',
-              text: 'Posted successfully!',
-              type: 'success',
-            });
-            this.comment = '';
-            this.reloadComments();
-          })
-          .catch((reason) => {
-            this.$notify({
-              title: 'Error',
-              text: reason,
-              type: 'error',
-            });
-          });
-      },
-      reloadComments() {
-        rest
-          .get(`decks/${this.deck.id}/comments`)
-          .then((result) => {
-            this.deck.comments = result.records;
-          })
-          .catch((reason) => {
-            this.$notify({
-              title: 'Error',
-              text: reason,
-              type: 'error',
-            });
-          });
+      patch() {
+        this.$router.push({ name: 'deck-patch', params: { deckId: this.deck.id } })
       },
     },
     created() {

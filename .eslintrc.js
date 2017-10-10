@@ -42,6 +42,7 @@ module.exports = {
       requireForBlockBody: true,
     }],
     'no-plusplus': 'off',
-    'no-multi-assign': 'off'
+    'no-multi-assign': 'off',
+    'no-prototype-builtins': 'off',
   },
 };
