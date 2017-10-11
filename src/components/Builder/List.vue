@@ -127,8 +127,8 @@
               text: 'Deck deleted',
               type: 'success',
             });
+            this.strains = this.strains.filter(strain => strain.id !== this.strain.id);
             this.strain = null;
-            this.strains = this.strains.filter(strain => strain.id !== strainId);
           });
       },
     },

@@ -66,7 +66,7 @@
                            class="btn btn-link text-primary">
                             <span class="fa fa-pencil"></span>
                             Edit
-                        </a><!--
+                        </a>
                         <button
                            v-b-modal.modalDelete
                            role="button"
@@ -75,7 +75,7 @@
                            class="btn btn-link text-danger">
                             <span class="fa fa-trash"></span>
                             Delete
-                        </button>-->
+                        </button>
                     </div>
 
                     <b-modal id="modalDelete"
