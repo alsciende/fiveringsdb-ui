@@ -1,5 +1,5 @@
 <template>
-    <img :src="card.main_slot.image_url" :class="classes" class="card-image img-fluid">
+    <img v-if="card.main_slot" :src="card.main_slot.image_url" :class="classes" class="card-image img-fluid">
 </template>
 
 <script>
