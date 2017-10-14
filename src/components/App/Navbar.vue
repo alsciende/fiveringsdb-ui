@@ -1,6 +1,6 @@
 <template>
     <b-navbar toggleable="md" type="dark" variant="dark" class="mb-4">
-        <b-navbar-brand href="/">
+        <b-navbar-brand :to="{ name: 'front-page' }">
             <img src="/static/favicon-32x32.png" style="height:16px; vertical-align: baseline">
             FiveRingsDB
         </b-navbar-brand>

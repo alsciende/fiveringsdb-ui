@@ -11,6 +11,7 @@ import BuilderEditor from '@/components/Builder/Editor';
 import RulesReference from '@/components/Rules/Reference';
 import BuilderPublisher from '@/components/Builder/Publisher';
 import BuilderPatcher from '@/components/Builder/Patcher';
+import AppFrontPage from '@/components/App/FrontPage';
 
 Vue.use(Router);
 
@@ -19,6 +20,11 @@ export default new Router({
   routes: [
     {
       path: '/',
+      name: 'front-page',
+      component: AppFrontPage,
+    },
+    {
+      path: '/cards',
       name: 'cards-by-default',
       component: Browser,
       meta: { section: 'cards' },
