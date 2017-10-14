@@ -14,6 +14,7 @@
                     :key="clan"
                     :title="$t('clan.'+clan)"
                     :class="['my-3', 'link-'+deck.primary_clan]"
+                    :active="clan === active"
             >
 
                 <h2>
@@ -21,26 +22,25 @@
                         {{ deck.name }}
                     </router-link>
                 </h2>
+
                 <p class="text-muted text-uppercase">
-                    {{ $t('clan.'+clan) }} deck of the week – {{ $t('format.'+deck.format) }}
+                    {{ $t('clan.' + clan) }} deck of the week – {{ $t('format.' + deck.format) }}
                 </p>
 
-                <utils-deck-content
-                        :deck="deck"
-                ></utils-deck-content>
+                <utils-deck-content :deck="deck"></utils-deck-content>
 
                 <h4 class="mt-3">
                     Description by the author: {{ deck.user.username }}
                 </h4>
 
                 <div class="desc-description" v-html="markdown(deck.description)"></div>
-
             </b-tab>
         </b-tabs>
     </div>
 </template>
 
 <script>
+  import { random } from 'lodash';
   import MarkdownIt from 'markdown-it';
   import rest from '@/rest';
   import UtilsDeckContent from '@/components/Utils/DeckContent';
@@ -60,7 +60,14 @@
         features: null,
       };
     },
-    computed: {},
+    computed: {
+      clans() {
+        return Object.keys(this.features);
+      },
+      active() {
+        return this.clans[random(0, this.clans.length - 1)];
+      },
+    },
     methods: {
       markdown(text) {
         return md.render(text);
