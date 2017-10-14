@@ -51,7 +51,7 @@
     },
     computed: {
       sort() {
-        return this.$route.params.sort || 'week';
+        return this.$route.params.sort || 'recent';
       },
     },
     methods: {
