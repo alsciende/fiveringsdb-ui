@@ -3,7 +3,7 @@
         <div class="row content justify-content-around">
             <decks-features class="col-lg-6"></decks-features>
             <div class="col-lg-4">
-                <decks-list-content :pagination="false"></decks-list-content>
+                <decks-list-content :pagination="false" :limit="10"></decks-list-content>
             </div>
         </div>
     </div>

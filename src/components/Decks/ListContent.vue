@@ -38,6 +38,10 @@
         type: Boolean,
         default: true,
       },
+      limit: {
+        type: Number,
+        default: 30,
+      },
     },
     data() {
       return {
@@ -57,7 +61,7 @@
     methods: {
       loadDecks() {
         this.loading = true;
-        rest.get('decks', { sort: this.sort, page: this.currentPage }).then((result) => {
+        rest.get('decks', { sort: this.sort, page: this.currentPage, limit: this.limit }).then((result) => {
           this.loading = false;
           this.decks = result.records;
           this.totalRows = result.size;
