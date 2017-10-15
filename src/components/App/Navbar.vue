@@ -64,6 +64,7 @@
           month: 'Popular this month',
           year: 'Popular this year',
           fame: 'Hall of fame',
+          features: 'Decks of the week',
         },
       };
     },
