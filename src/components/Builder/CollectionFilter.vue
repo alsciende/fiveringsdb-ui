@@ -144,6 +144,9 @@
         this.updateQuery();
       }, INPUT_DEBOUNCE_TIMER_MS),
     },
+    mounted() {
+      this.$emit('change', this.value);
+    },
   };
 </script>
 
