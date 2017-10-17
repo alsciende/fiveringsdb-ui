@@ -83,9 +83,6 @@
         const roleRestrictionFilter = [{
           role_restriction: { isNull: true },
         }];
-        const packFilter = {
-          packs: { has: 'core' },
-        };
 
         if (this.role && this.role.traits) {
           this.role.traits.forEach((trait) => {
@@ -96,7 +93,6 @@
         return stores
           .cards([mainClanFilter, conflictFilter])
           .filter(roleRestrictionFilter)
-          .filter(packFilter)
           .filter(userFilter)
           .filter(queryFilter);
       },

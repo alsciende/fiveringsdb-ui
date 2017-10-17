@@ -1,12 +1,27 @@
 <template>
     <div>
-        <div class="d-sm-flex mb-2">
-            <input v-model="query" class="form-control form-control-sm mr-2"
+        <div class="d-flex mb-2">
+            <input v-model="query" class="form-control form-control-sm mr-1"
                    placeholder="Card filter (e.g. x:sincerity or k:bushi)">
             <b-btn v-b-toggle.searchHelp variant="outline-secondary" size="sm">
                 <span class="fa fa-info-circle"></span>
             </b-btn>
+            <b-btn v-b-modal.modalPacks variant="outline-secondary" size="sm" class="ml-1">
+                Packs
+            </b-btn>
         </div>
+        <b-modal id="modalPacks" title="Pack Selection" :ok-only="true">
+            <core-count-selector></core-count-selector>
+            <div v-for="cycle in cycles" :key="cycle.id">
+                <h5>{{ cycle.name }}</h5>
+                <b-form-checkbox-group
+                        stacked
+                        v-model="packs"
+                        :name="cycle.id"
+                        :options="packOptions(cycle.packs)">
+                </b-form-checkbox-group>
+            </div>
+        </b-modal>
         <b-collapse id="searchHelp">
             <div class="card card-body" v-html="searchHelp"></div>
         </b-collapse>
@@ -19,7 +34,8 @@
         >
             <b-form-checkbox @click.native="onClick('clan', $event)" v-for="clan in options.clan" :key="clan.id"
                              class="btn-sm col" :class="'clan-'+clan.id"
-                             :value="clan.id">
+                             :value="clan.id"
+                             :title="$t('clan.' + clan.id)">
                 <span :class="['icon', 'icon-clan-'+clan.id]"></span>
             </b-form-checkbox>
         </b-form-checkbox-group>
@@ -32,7 +48,8 @@
         >
             <b-form-checkbox @click.native="onClick('side', $event)" v-for="side in options.side" :key="side.id"
                              class="btn-sm col"
-                             :value="side.id">
+                             :value="side.id"
+                             :title="$t('side.' + side.id)">
                 {{ $t('side.' + side.id).substr(0, 1) }}
             </b-form-checkbox>
         </b-form-checkbox-group>
@@ -45,7 +62,8 @@
         >
             <b-form-checkbox @click.native="onClick('type', $event)" v-for="type in options.type" :key="type.id"
                              class="btn-sm col"
-                             :value="type.id">
+                             :value="type.id"
+                             :title="$t('type.' + type.id)">
                 <span :class="'fa fa-'+typeIcon(type.id)"></span>
             </b-form-checkbox>
         </b-form-checkbox-group>
@@ -60,12 +78,15 @@
   import QueryInput from '@/classes/QueryInput';
   import queryMapper from '@/service/queryMapper';
   import queryBuilder from '@/service/queryBuilder';
+  import CoreCountSelector from './CoreCountSelector';
 
   const INPUT_DEBOUNCE_TIMER_MS = 500;
 
   export default {
     name: 'builder-collection-filter',
-    components: {},
+    components: {
+      CoreCountSelector,
+    },
     props: {
       startingClans: {
         type: Array,
@@ -74,6 +95,7 @@
     },
     data() {
       return {
+        packs: stores.packs({ released_at: { isNull: false } }).select('id'),
         query: '',
         filter: {
           clan: this.startingClans,
@@ -88,7 +110,18 @@
         searchHelp: queryMapper.formatAsHtml(),
       };
     },
+    computed: {
+      value() {
+        return Object.assign({ packs: { has: this.packs } }, this.filter);
+      },
+      cycles() {
+        return stores.cycles().get();
+      },
+    },
     methods: {
+      packOptions(packs) {
+        return packs.map(pack => ({ text: pack.name, value: pack.id }));
+      },
       onClick(option, evt) {
         if (evt.shiftKey && evt.target.tagName === 'INPUT') {
           this.filter[option] = [evt.target.value];
@@ -129,11 +162,6 @@
       getSideOptions() {
         return ['dynasty', 'conflict', 'province', 'role']
           .map(sideId => ({ id: sideId, name: this.$t(`side.${sideId}`) }));
-      },
-    },
-    computed: {
-      value() {
-        return Object.assign({}, this.filter);
       },
     },
     watch: {

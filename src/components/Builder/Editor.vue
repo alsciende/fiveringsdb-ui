@@ -16,26 +16,21 @@
                     {{ metadata.name }}
                 </h2>
                 <utils-deck-content :deck="deck" :editable="true"></utils-deck-content>
-                <div class="btn-group my-4" role="group" aria-label="Deck Controls">
-                    <a
-                            href="#"
-                            :class="{'btn btn-success': true, 'disabled': saving}"
-                            :aria-disabled="saving"
-                            @click.prevent="saveDeck"
-                    >Save
-                    </a>
+                <div class="form-row my-4">
+                    <div class="col-auto">
+                        <b-form-select v-model="metadata.format"
+                                       :options="formatOptions"></b-form-select>
+                    </div>
+                    <div class="col-auto">
+                        <b-button
+                                :class="{'btn btn-success': true, 'disabled': saving}"
+                                @click="saveDeck"
+                        >Save
+                        </b-button>
+                    </div>
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="deck-settings row">
-                    <div class="col-6">
-                        <b-form-select v-model="metadata.format" :options="formatOptions" class="mb-3"
-                                       size="sm"></b-form-select>
-                    </div>
-                    <div class="col-6">
-                        <core-count-selector></core-count-selector>
-                    </div>
-                </div>
                 <builder-collection></builder-collection>
             </div>
         </div>
@@ -54,7 +49,6 @@
   import * as types from '@/store/mutation-types';
   import BuilderCollection from './Collection';
   import BuilderBuilder from './List';
-  import CoreCountSelector from './CoreCountSelector';
   import BuilderWizard from './Wizard';
 
   export default {
@@ -63,7 +57,6 @@
       BuilderBuilder,
       BuilderCollection,
       UtilsDeckContent,
-      CoreCountSelector,
       BuilderWizard,
     },
     data() {
