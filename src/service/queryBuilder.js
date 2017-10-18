@@ -23,7 +23,7 @@ class QueryBuilder {
         filter[field.name] = { '==': clause.args };
         break;
       case 'boolean':
-        filter[field.name] = { is: !!clause.getArg() };
+        filter[field.name] = { is: '0' !== clause.getArg() };
         break;
       case 'id':
         filter[field.name] = { isnocase: clause.args };
