@@ -71,7 +71,7 @@
           this.error = reason;
         })
         ;
-      }
+      },
     },
     watch: {
       currentPage() {

@@ -31,6 +31,10 @@ clan:
     unicorn: 'Unicorn'
     neutral: 'Neutral'
 
+conflict:
+    military: 'Military'
+    political: 'Political'
+
 keyword:
     academy: 'Academy'
     air: 'Air'
