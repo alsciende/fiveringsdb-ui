@@ -4,12 +4,14 @@
             <div class="card-body">
                 <blockquote class="blockquote mb-0">
                     <p v-html="markdown(ruling.text)"></p>
-                    <footer class="blockquote-footer"><a :href="ruling.link" target="_blank">{{ ruling.source }}</a></footer>
+                    <footer class="blockquote-footer"><a :href="ruling.link" target="_blank">{{ ruling.source }}</a>
+                    </footer>
                 </blockquote>
             </div>
             <div v-if="isGuru" class="card-footer">
                 <a @click.prevent="setRuling(ruling)" href="#" class="card-link">Edit ruling</a>
-                <a @click.prevent="askDeleteConfirmation(ruling)" href="#" class="card-link text-danger">Delete ruling</a>
+                <a @click.prevent="askDeleteConfirmation(ruling)" href="#"
+                   class="card-link text-danger">Delete ruling</a>
             </div>
         </div>
         <button v-if="isGuru" @click.prevent="setRuling()" type="button"
@@ -138,7 +140,7 @@
           });
       },
       saveRuling() {
-        if(this.ruling.id) {
+        if (this.ruling.id) {
           this.updateRuling(this.ruling);
         } else {
           this.createRuling(this.ruling);

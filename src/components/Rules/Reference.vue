@@ -2048,7 +2048,7 @@
                   name: headingId,
                   href: `#${headingId}`,
                   title: text,
-                  'class': 'anchor',
+                  class: 'anchor',
                   'data-level': this.level,
                 },
                 domProps: {
@@ -2057,9 +2057,9 @@
               }),
               createElement('a', {
                 attrs: {
-                  href: `#top`,
+                  href: '#top',
                   title: 'Back to Top',
-                  'class': 'back-to-top float-right',
+                  class: 'back-to-top float-right',
                 },
                 domProps: {
                   innerHTML: '&uarr;',

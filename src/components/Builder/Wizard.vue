@@ -77,7 +77,7 @@
       roleOptions() {
         return stores.cards({ type: 'role' }).map(role => ({
           value: role.id,
-          text: role.name + (this.clanRole && this.clanRole.card.id === role.id  ? ' (Current Clan Role)' : ''),
+          text: role.name + (this.clanRole && this.clanRole.card.id === role.id ? ' (Current Clan Role)' : ''),
         }));
       },
     },
