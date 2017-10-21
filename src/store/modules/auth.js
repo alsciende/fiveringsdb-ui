@@ -26,24 +26,18 @@ const actions = {
 
       // called when the child window sends the access token
       const callback = (event) => {
-        if (event.origin !== config.getApiOrigin()) {
-          reject('wrong origin');
+        if (event.source === childWindow && event.origin === config.getApiOrigin()) {
+          window.removeEventListener('message', callback, false);
+
+          // ask the server to create a token with this access token
+          resolve(rest.post('tokens', { id: event.data.access_token }).then((response) => {
+            commit({
+              type: types.SAVE_AUTH_TOKEN,
+              token: response.record,
+            });
+            return response.record;
+          }));
         }
-
-        if (event.source !== childWindow) {
-          reject('wrong source');
-        }
-
-        window.removeEventListener('message', callback, false);
-
-        // ask the server to create a token with this access token
-        resolve(rest.post('tokens', { id: event.data.access_token }).then((response) => {
-          commit({
-            type: types.SAVE_AUTH_TOKEN,
-            token: response.record,
-          });
-          return response.record;
-        }));
       };
 
       window.addEventListener('message', callback, false);

@@ -2,12 +2,16 @@ import Vue from 'vue';
 import VueResource from 'vue-resource';
 
 import config from '@/config';
+import store from '@/store';
 
 Vue.use(VueResource);
 
 const observers = [];
 
 function notifyObservers(reason) {
+  if (reason.status === 403) {
+    store.dispatch('logout');
+  }
   return new Promise((resolve, reject) => {
     observers.forEach(observer => observer(reason));
     reject(reason);
