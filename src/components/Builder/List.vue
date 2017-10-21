@@ -133,10 +133,7 @@
       },
     },
     beforeRouteEnter(to, from, next) {
-      store.dispatch('login').then(
-        () => next(),
-        reason => next(new Error(reason)),
-      );
+      store.dispatch('login').then(next);
     },
     mounted() {
       this.$store.commit('changeDocumentTitle', 'Deck Builder');
