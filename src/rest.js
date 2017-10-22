@@ -35,44 +35,64 @@ function onFailure(reason) {
   });
 }
 
+function getAccessToken() {
+  return new Promise((resolve, reject) => {
+    if (store.getters.isLogged) {
+      resolve(store.getters.accessToken);
+    } else {
+      return store
+        .dispatch('login')
+        .then((token) => {
+          resolve(token.id);
+        })
+        .catch(reject);
+    }
+  });
+}
+
 class Rest {
   constructor(isPrivate) {
     this.options = {};
-    if(isPrivate) {
-      this.options.headers = { 'Authorization': `Bearer ${store.getters.accessToken}` };
-    }
+    this.isPrivate = isPrivate;
+  }
+
+  getHttp() {
+    return new Promise((resolve, reject) => {
+      if (this.isPrivate) {
+        return getAccessToken()
+          .then((accessToken) => {
+            this.options.headers = { 'Authorization': `Bearer ${accessToken}` };
+            resolve(Vue.http);
+          })
+          .catch(reject);
+      }
+
+      resolve(Vue.http);
+    });
+  }
+
+  getResponseBody(request) {
+    return this
+      .getHttp()
+      .then(request)
+      .then(onSuccess)
+      .catch(onFailure);
   }
 
   post(resourcePath, resource) {
-    return Vue
-      .http
-      .post(resourcePath, resource, this.options)
-      .then(onSuccess)
-      .catch(onFailure);
+    return this.getResponseBody(http => http.post(resourcePath, resource, this.options));
   }
 
   patch(resourcePath, resource) {
-    return Vue
-      .http
-      .patch(resourcePath, resource, this.options)
-      .then(onSuccess)
-      .catch(onFailure);
+    return this.getResponseBody(http => http.patch(resourcePath, resource, this.options));
   }
 
-  get(resourcePath, parameters) {
-    return Vue
-      .http
-      .get(resourcePath, Object.assign({ params: parameters }, this.options))
-      .then(onSuccess)
-      .catch(onFailure);
+  get (resourcePath, parameters) {
+    return this.getResponseBody(http => http.get(resourcePath, Object.assign({ params: parameters }, this.options)));
   }
 
   delete(resourcePath) {
-    return Vue
-      .http
-      .delete(resourcePath, this.options)
-      .then(onSuccess)
-      .catch(onFailure);
+    return this.getResponseBody(http => http.delete(resourcePath, this.options));
   }
 }
 
@@ -80,7 +100,7 @@ export default {
   public() {
     return new Rest(false);
   },
-  private () {
+  private() {
     return new Rest(true);
   },
 };
