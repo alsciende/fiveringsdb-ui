@@ -43,6 +43,7 @@
           text: 'Patching...',
         });
         rest
+          .private()
           .patch(`decks/${this.$route.params.deckId}`, {
             name: this.deck.name,
             description: this.deck.description,
@@ -72,6 +73,7 @@
 
         this.loading = true;
         rest
+          .private()
           .get(`decks/${this.$route.params.deckId}`)
           .then((result) => {
             this.loading = false;

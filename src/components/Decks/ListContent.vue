@@ -61,15 +61,19 @@
     methods: {
       loadDecks() {
         this.loading = true;
-        rest.get('decks', { sort: this.sort, page: this.currentPage, limit: this.limit }).then((result) => {
-          this.loading = false;
-          this.decks = result.records;
-          this.totalRows = result.size;
-          this.perPage = result.limit;
-        }).catch((reason) => {
-          this.loading = false;
-          this.error = reason;
-        })
+        rest
+          .public()
+          .get('decks', { sort: this.sort, page: this.currentPage, limit: this.limit })
+          .then((result) => {
+            this.loading = false;
+            this.decks = result.records;
+            this.totalRows = result.size;
+            this.perPage = result.limit;
+          })
+          .catch((reason) => {
+            this.loading = false;
+            this.error = reason;
+          })
         ;
       },
     },

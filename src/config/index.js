@@ -1,5 +1,5 @@
 export default {
-  getApiURL(path) {
+  getApiURL(path = '') {
     if (path && path[0] === '/') {
       throw new Error('Leading slash no allowed');
     }

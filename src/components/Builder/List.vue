@@ -15,9 +15,9 @@
                 <div class="list-group">
                     <a v-for="strain in strains"
                        :key="strain.id"
-                            href="#"
-                            @click.prevent="click(strain)"
-                            class="list-group-item list-group-item-action">
+                       href="#"
+                       @click.prevent="click(strain)"
+                       class="list-group-item list-group-item-action">
                         <h5>{{ strain.head ? strain.head.name : $t('msg.empty_strain') }}</h5>
                         <div class="small text-secondary">{{ strain.created_at | formatDate }}</div>
                     </a>
@@ -96,6 +96,7 @@
           text: 'Checking...',
         });
         rest
+          .private()
           .post('strains')
           .then((result) => {
             this.$notify({
@@ -120,7 +121,9 @@
         this.$notify({
           text: 'Deleting...',
         });
-        rest.delete(`strains/${this.strain.id}`)
+        rest
+          .private()
+          .delete(`strains/${this.strain.id}`)
           .then(() => {
             this.$notify({
               title: 'Success',
@@ -137,9 +140,12 @@
     },
     mounted() {
       this.$store.commit('changeDocumentTitle', 'Deck Builder');
-      rest.get('strains').then((result) => {
-        this.strains = result.records;
-      });
+      rest
+        .private()
+        .get('strains')
+        .then((result) => {
+          this.strains = result.records;
+        });
     },
   };
 </script>

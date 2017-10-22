@@ -18,7 +18,6 @@ import store from './store';
 import router from './router';
 import i18n from './i18n';
 import rest from './rest';
-import auth from './rest/auth';
 
 import { load } from './service/storeService';
 
@@ -38,8 +37,6 @@ Vue.use(VueAnalytics, {
 Vue.use(BootstrapVue);
 Vue.use(Notifications);
 Vue.filter('formatDate', value => value && moment(String(value)).format('DD MMM YYYY'));
-
-auth(store, rest);
 
 load().then(() => {
   /* eslint-disable no-new */

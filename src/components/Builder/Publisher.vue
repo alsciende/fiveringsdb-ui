@@ -43,6 +43,7 @@
           text: 'Publishing...',
         });
         rest
+          .private()
           .patch(`strains/${this.$route.params.strainId}/publish`, {
             name: this.deck.name,
             description: this.deck.description,
@@ -72,6 +73,7 @@
 
         this.loading = true;
         rest
+          .private()
           .get(`strains/${this.$route.params.strainId}/decks/${this.$route.params.deckId}`)
           .then((result) => {
             this.loading = false;

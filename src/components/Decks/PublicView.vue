@@ -140,6 +140,7 @@
       like() {
         if (this.$store.getters.isLogged) {
           rest
+            .private()
             .post(`decks/${this.$route.params.deckId}/likes`)
             .then(() => {
               this.$notify({
@@ -161,6 +162,7 @@
       unlike() {
         if (this.$store.getters.isLogged) {
           rest
+            .private()
             .delete(`decks/${this.$route.params.deckId}/likes`)
             .then(() => {
               this.$notify({
@@ -187,6 +189,7 @@
         this.deck = null;
         this.loading = true;
         rest
+          .public()
           .get(`decks/${this.$route.params.deckId}`)
           .then((result) => {
             this.loading = false;
@@ -198,6 +201,7 @@
           });
         if (this.$store.getters.isLogged) {
           rest
+            .private()
             .get(`decks/${this.$route.params.deckId}/likes/me`)
             .then((result) => {
               this.liked = result.hasOwnProperty('record');
@@ -216,6 +220,7 @@
       },
       remove() {
         rest
+          .private()
           .delete(`decks/${this.$route.params.deckId}`)
           .then(() => {
             this.$router.push({ name: 'deckbuilder' });

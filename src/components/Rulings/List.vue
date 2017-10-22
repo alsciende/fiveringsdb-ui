@@ -122,6 +122,7 @@
         });
 
         rest
+          .private()
           .delete(`cards/${this.card.id}/rulings/${ruling.id}`)
           .then(() => {
             this.$notify({
@@ -158,6 +159,7 @@
         };
 
         rest
+          .private()
           .post(`cards/${this.card.id}/rulings`, data)
           .then(() => {
             this.$notify({
@@ -187,6 +189,7 @@
         };
 
         rest
+          .private()
           .patch(`cards/${this.card.id}/rulings/${ruling.id}`, data)
           .then(() => {
             this.$notify({
@@ -206,6 +209,7 @@
       },
       reload() {
         rest
+          .public()
           .get(`cards/${this.card.id}/rulings`)
           .then((result) => {
             this.rulings = result.records;

@@ -78,6 +78,7 @@
         this.loading = true;
 
         rest
+          .public()
           .get('features')
           .then((result) => {
             this.loading = false;

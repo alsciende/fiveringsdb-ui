@@ -30,7 +30,7 @@ const actions = {
           window.removeEventListener('message', callback, false);
 
           // ask the server to create a token with this access token
-          resolve(rest.post('tokens', { id: event.data.access_token }).then((response) => {
+          resolve(rest.private().post('tokens', { id: event.data.access_token }).then((response) => {
             commit({
               type: types.SAVE_AUTH_TOKEN,
               token: response.record,
