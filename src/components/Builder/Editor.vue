@@ -112,6 +112,7 @@
 
         this.loading = true;
         rest
+          .private()
           .get(`strains/${this.$route.params.strainId}/decks/${this.$route.params.deckId}`)
           .then((result) => {
             this.loading = false;
@@ -134,6 +135,7 @@
           text: 'Saving...',
         });
         rest
+          .private()
           .post(`strains/${this.$route.params.strainId}/decks`, this.deck)
           .then(() => {
             this.$notify({

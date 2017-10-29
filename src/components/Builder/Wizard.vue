@@ -92,6 +92,7 @@
     },
     created() {
       rest
+        .public()
         .get('clan-roles')
         .then((result) => {
           this.clanRoles = result.records;

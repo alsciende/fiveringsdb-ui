@@ -16,6 +16,7 @@
 </template>
 
 <script>
+  import rest from '@/rest';
   import DecksFeatures from '@/components/Decks/Features';
   import DecksListContent from '@/components/Decks/ListContent';
 
@@ -32,9 +33,9 @@
     },
     methods: {
       search() {
-        this.$router.push({ name: 'cards-by-search-query', query: { q: this.query } })
+        this.$router.push({ name: 'cards-by-search-query', query: { q: this.query } });
       },
-    }
+    },
   };
 </script>
 

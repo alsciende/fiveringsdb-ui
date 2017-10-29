@@ -59,10 +59,10 @@
     data() {
       return {
         deckSortingModes: {
+          trending: 'Trending',
           recent: 'Recent',
           week: 'Popular this week',
           month: 'Popular this month',
-          year: 'Popular this year',
           fame: 'Hall of fame',
           features: 'Decks of the week',
         },

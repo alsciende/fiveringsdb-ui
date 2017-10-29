@@ -47,6 +47,7 @@
         this.deck = null;
         this.loading = true;
         rest
+          .public()
           .get(`strains/${this.$route.params.strainId}`)
           .then((result) => {
             this.loading = false;

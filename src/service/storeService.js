@@ -12,7 +12,7 @@ const resources = ['cards', 'cycles', 'packs'];
 /**
  * load a resource from the server and creates a TAFFY db with the records
  */
-const getResource = resource => rest.get(resource)
+const getResource = resource => rest.public().get(resource)
   .then((response) => {
     stores[resource] = taffy(response.records);
   }, (reason) => {

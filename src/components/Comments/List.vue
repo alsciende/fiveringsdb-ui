@@ -55,6 +55,7 @@
         };
 
         rest
+          .private()
           .post(`decks/${this.deck.id}/comments`, data)
           .then(() => {
             this.$notify({
@@ -75,6 +76,7 @@
       },
       reloadComments() {
         rest
+          .public()
           .get(`decks/${this.deck.id}/comments`)
           .then((result) => {
             this.deck.comments = result.records;
