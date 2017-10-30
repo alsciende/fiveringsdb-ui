@@ -37,7 +37,7 @@
     },
     computed: {
       fromNow() {
-        return moment(this.deck.updated_at).fromNow();
+        return moment(this.deck.published_at).fromNow();
       },
       clan() {
         return this.clans.map(clan => this.$t(`clan.${clan}`)).join('/');

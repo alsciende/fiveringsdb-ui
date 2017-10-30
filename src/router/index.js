@@ -12,6 +12,7 @@ import RulesReference from '@/components/Rules/Reference';
 import BuilderPublisher from '@/components/Builder/Publisher';
 import BuilderPatcher from '@/components/Builder/Patcher';
 import AppFrontPage from '@/components/App/FrontPage';
+import ActivityPage from '@/components/Activity/Page';
 
 Vue.use(Router);
 
@@ -125,6 +126,11 @@ export default new Router({
       component: DecksPrivateView,
       props: true,
       meta: { section: 'decks' },
+    },
+    {
+      path: '/activity',
+      name: 'activity',
+      component: ActivityPage,
     },
     {
       path: '*',
