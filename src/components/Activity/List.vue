@@ -1,5 +1,10 @@
 <template>
-    <div>
+    <div class="row">
+        <div class="col-3">
+            <div v-for="activity in activities">
+                {{ activity.deck.name }}
+            </div>
+        </div>
     </div>
 </template>
 
@@ -10,12 +15,16 @@
     name: 'activity-list',
     props: [],
     data() {
-      return {};
+      return {
+        activities: [],
+      };
     },
     computed: {},
     methods: {
       load() {
-        rest.private().get('activity').then(console.log);
+        rest.private().get('activity').then((result) => {
+          this.activities = result.records;
+        });
       },
     },
     mounted() {
