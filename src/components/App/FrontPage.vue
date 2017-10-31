@@ -1,10 +1,20 @@
 <template>
     <div>
-        <div class="row content justify-content-around">
-            <decks-features class="col-lg-6"></decks-features>
-            <div class="col-lg-6">
-                <h4>Recent Decks</h4>
+        <div class="row content">
+            <div class="col-2">
+                <b-nav vertical class="text-uppercase">
+                    <b-nav-item :to="{name:'cards-by-default'}">Cards</b-nav-item>
+                    <b-nav-item :to="{name:'decks-list', params: { sort: 'recent' }}">Decks</b-nav-item>
+                    <b-nav-item :to="{name:'deckbuilder'}">Builder</b-nav-item>
+                    <b-nav-item :to="{name:'rules-reference'}">Rules</b-nav-item>
+                </b-nav>
+            </div>
+            <div class="col-7">
                 <decks-list-content :pagination="false" :limit="10"></decks-list-content>
+            </div>
+            <div class="col-3">
+                <img src="http://via.placeholder.com/255x300">
+                <decks-features></decks-features>
             </div>
         </div>
     </div>

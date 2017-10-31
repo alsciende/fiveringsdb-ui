@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="mt-4">
         <div v-if="loading" class="loading">
             Loading...
         </div>
@@ -8,49 +8,32 @@
             {{ error }}
         </div>
 
-        <b-tabs v-if="features" pills class="justify-content-around">
-            <b-tab
-                    v-for="(deck, clan) in features"
-                    :key="clan"
-                    :title="$t('clan.'+clan)"
-                    :class="['my-3', 'link-'+deck.primary_clan]"
-                    :active="clan === active"
-            >
+        <h5>Decks of the week</h5>
+        <div
+                v-for="(deck, clan) in features"
+                :key="clan"
+                :class="['my-1', 'py-3', 'pr-2', 'link-'+deck.primary_clan, 'bd-dark-'+deck.primary_clan]"
+                style="border-width:1px 5px 0 0;border-style: solid"
+        >
+            <h6>
+                <router-link :to="{ 'name': 'deck-view', params: { 'deckId': deck.id } }">
+                    {{ deck.name }}
+                </router-link>
+            </h6>
+            <div class="text-muted">
+                <span class="fa fa-user-circle-o"></span> {{ deck.user.username }}
+            </div>
+        </div>
 
-                <h2>
-                    <router-link :to="{ 'name': 'deck-view', params: { 'deckId': deck.id } }">
-                        {{ deck.name }}
-                    </router-link>
-                </h2>
-
-                <p class="text-muted text-uppercase">
-                    {{ $t('clan.' + clan) }} deck of the week – {{ $t('format.' + deck.format) }}
-                </p>
-
-                <utils-deck-content :deck="deck"></utils-deck-content>
-
-                <h4 class="mt-3">
-                    Description by the author: {{ deck.user.username }}
-                </h4>
-
-                <div class="desc-description" v-html="markdown(deck.description)"></div>
-            </b-tab>
-        </b-tabs>
     </div>
 </template>
 
 <script>
-  import { random } from 'lodash';
-  import MarkdownIt from 'markdown-it';
   import rest from '@/rest';
-  import UtilsDeckContent from '@/components/Utils/DeckContent';
-
-  const md = new MarkdownIt();
 
   export default {
     name: 'decks-features',
     components: {
-      UtilsDeckContent,
     },
     props: [],
     data() {
@@ -60,18 +43,7 @@
         features: null,
       };
     },
-    computed: {
-      clans() {
-        return Object.keys(this.features);
-      },
-      active() {
-        return this.clans[random(0, this.clans.length - 1)];
-      },
-    },
     methods: {
-      markdown(text) {
-        return md.render(text);
-      },
       fetchData() {
         this.error = null;
         this.features = null;

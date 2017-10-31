@@ -62,6 +62,38 @@
     background-color: rgb(100, 100, 100);
 }
 
+.bd-dark-crab {
+    border-color: rgb(0, 28, 148);
+}
+
+.bd-dark-crane {
+    border-color: rgb(0, 137, 222);
+}
+
+.bd-dark-dragon {
+    border-color: rgb(0, 164, 114);
+}
+
+.bd-dark-lion {
+    border-color: rgb(203, 157, 0);
+}
+
+.bd-dark-phoenix {
+    border-color: rgb(193, 100, 0);
+}
+
+.bd-dark-scorpion {
+    border-color: rgb(166, 22, 0);
+}
+
+.bd-dark-unicorn {
+    border-color: rgb(120, 0, 152);
+}
+
+.bd-dark-neutral {
+    border-color: rgb(100, 100, 100);
+}
+
 .bg-light-crab {
     background-color: #E7E6EA;
 }
