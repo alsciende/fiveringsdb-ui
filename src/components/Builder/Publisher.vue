@@ -10,7 +10,9 @@
 
         <utils-deck-description-editor v-if="deck" :deck="deck">
             <button @click="publish" :class="{'disabled': publishing}" type="button"
-                    class="btn btn-block btn-success">Publish
+                    class="btn btn-block btn-success">
+                <span class="fa fa-share"></span>
+                Publish
             </button>
         </utils-deck-description-editor>
     </div>

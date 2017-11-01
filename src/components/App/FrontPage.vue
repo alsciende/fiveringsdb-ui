@@ -1,15 +1,34 @@
 <template>
     <div>
-        <div class="row content justify-content-around">
-            <decks-features class="col-lg-6"></decks-features>
-            <div class="col-lg-4">
-                <h4>Card Search</h4>
-                <form v-on:submit.prevent="search" class="mb-2">
-                    <input type="text" class="form-control" v-model="query"
-                           placeholder="Enter a card name or card query">
-                </form>
-                <h4>Recent Decks</h4>
-                <decks-list-content :pagination="false" :limit="10"></decks-list-content>
+        <div class="row content">
+            <div class="col-md-2">
+                <ul class="nav flex-sm-column justify-content-between mb-3 text-uppercase">
+                    <li class="nav-item">
+                        <router-link :to="{name:'cards-by-default'}" class="nav-link">Cards</router-link>
+                    </li>
+                    <li class="nav-item">
+                        <router-link :to="{name:'decks-list', params: { sort: 'recent' }}" class="nav-link">Decks</router-link>
+                    </li>
+                    <li class="nav-item">
+                        <router-link :to="{name:'deckbuilder'}" class="nav-link">Builder</router-link>
+                    </li>
+                    <li class="nav-item">
+                        <router-link :to="{name:'rules-reference'}" class="nav-link">Rules</router-link>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-7">
+                <b-list-group>
+                    <feed-item v-for="item in feedItems" :item="item"></feed-item>
+                </b-list-group>
+            </div>
+            <div class="col-md-3">
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-2254488884647695"
+                     data-ad-slot="3777512162"
+                     data-ad-format="auto"></ins>
+                <decks-features></decks-features>
             </div>
         </div>
     </div>
@@ -17,24 +36,30 @@
 
 <script>
   import rest from '@/rest';
-  import DecksFeatures from '@/components/Decks/Features';
-  import DecksListContent from '@/components/Decks/ListContent';
+  import DecksFeatures from '../Decks/Features';
+  import FeedItem from './FeedItem';
 
   export default {
     name: 'app-front-page',
     components: {
       DecksFeatures,
-      DecksListContent,
+      FeedItem,
     },
     data() {
       return {
-        query: '',
+        feedItems: [],
       };
     },
     methods: {
-      search() {
-        this.$router.push({ name: 'cards-by-search-query', query: { q: this.query } });
+      load() {
+        rest.private().get('feed').then((result) => {
+          this.feedItems = result.records;
+        });
       },
+    },
+    mounted() {
+      this.load();
+      (adsbygoogle = window.adsbygoogle || []).push({});
     },
   };
 </script>

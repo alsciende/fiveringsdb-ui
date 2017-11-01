@@ -71,6 +71,7 @@ keyword:
     mask: 'Mask'
     meishodo: 'Meishōdō'
     monk: 'Monk'
+    omen: 'Omen'
     outpost: 'Outpost'
     peasant: 'Peasant'
     philosophy: 'Philosophy'
@@ -92,6 +93,7 @@ keyword:
     void: 'Void'
     water: 'Water'
     weapon: 'Weapon'
+    wily-trader: 'Wily Trader'
     yojimbo: 'Yōjimbō'
 
 format:

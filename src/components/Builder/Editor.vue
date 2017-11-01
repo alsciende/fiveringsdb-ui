@@ -25,7 +25,9 @@
                         <b-button
                                 :class="{'btn btn-success': true, 'disabled': saving}"
                                 @click="saveDeck"
-                        >Save
+                        >
+                            <span class="fa fa-pencil"></span>
+                            Save
                         </b-button>
                     </div>
                 </div>

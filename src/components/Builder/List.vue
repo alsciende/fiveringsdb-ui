@@ -29,16 +29,24 @@
                     <div class="mb-2">
                         <router-link
                                 :to="{ name: 'deck-edit', params: { strainId: strain.id, deckId: strain.head.id } }"
-                                class="btn btn-outline-primary btn-sm">Edit
+                                class="btn btn-outline-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            Edit
                         </router-link>
-                        <b-btn v-b-modal.modalDelete class="btn btn-outline-danger btn-sm">Delete</b-btn>
+                        <b-btn v-b-modal.modalDelete class="btn btn-outline-danger btn-sm">
+                            <span class="fa fa-trash-o"></span>
+                            Delete
+                        </b-btn>
                         <router-link :to="{ name: 'strain-view', params: { strainId: strain.id } }"
                                      class="btn btn-outline-info btn-sm" target="_blank">
+                            <span class="fa fa-eye"></span>
                             Permalink
                         </router-link>
                         <router-link
                                 :to="{ name: 'deck-publish', params: { strainId: strain.id, deckId: strain.head.id } }"
-                                class="btn btn-outline-warning btn-sm">Publish
+                                class="btn btn-outline-warning btn-sm">
+                            <span class="fa fa-share"></span>
+                            Publish
                         </router-link>
                     </div>
                     <b-modal id="modalDelete"
