@@ -32,7 +32,7 @@
                     <b-nav-item
                             :to="{name:'deckbuilder'}"
                     >
-                        Deckbuilder
+                        Builder
                     </b-nav-item>
                     <b-nav-item
                             :to="{name:'rules-reference'}"

@@ -1,19 +1,33 @@
 <template>
     <div>
         <div class="row content">
-            <div class="col-2">
-                <b-nav vertical class="text-uppercase">
-                    <b-nav-item :to="{name:'cards-by-default'}">Cards</b-nav-item>
-                    <b-nav-item :to="{name:'decks-list', params: { sort: 'recent' }}">Decks</b-nav-item>
-                    <b-nav-item :to="{name:'deckbuilder'}">Builder</b-nav-item>
-                    <b-nav-item :to="{name:'rules-reference'}">Rules</b-nav-item>
-                </b-nav>
+            <div class="col-md-2">
+                <ul class="nav flex-sm-column justify-content-between mb-3 text-uppercase">
+                    <li class="nav-item">
+                        <router-link :to="{name:'cards-by-default'}" class="nav-link">Cards</router-link>
+                    </li>
+                    <li class="nav-item">
+                        <router-link :to="{name:'decks-list', params: { sort: 'recent' }}" class="nav-link">Decks</router-link>
+                    </li>
+                    <li class="nav-item">
+                        <router-link :to="{name:'deckbuilder'}" class="nav-link">Builder</router-link>
+                    </li>
+                    <li class="nav-item">
+                        <router-link :to="{name:'rules-reference'}" class="nav-link">Rules</router-link>
+                    </li>
+                </ul>
             </div>
-            <div class="col-7">
-                <decks-list-content :pagination="false" :limit="10"></decks-list-content>
+            <div class="col-md-7">
+                <b-list-group>
+                    <feed-item v-for="item in feedItems" :item="item"></feed-item>
+                </b-list-group>
             </div>
-            <div class="col-3">
-                <img src="http://via.placeholder.com/255x300">
+            <div class="col-md-3">
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-2254488884647695"
+                     data-ad-slot="3777512162"
+                     data-ad-format="auto"></ins>
                 <decks-features></decks-features>
             </div>
         </div>
@@ -22,20 +36,30 @@
 
 <script>
   import rest from '@/rest';
-  import DecksFeatures from '@/components/Decks/Features';
-  import DecksListContent from '../Decks/ListContent';
+  import DecksFeatures from '../Decks/Features';
+  import FeedItem from './FeedItem';
 
   export default {
     name: 'app-front-page',
     components: {
       DecksFeatures,
-      DecksListContent,
+      FeedItem,
     },
     data() {
       return {
+        feedItems: [],
       };
     },
     methods: {
+      load() {
+        rest.private().get('feed').then((result) => {
+          this.feedItems = result.records;
+        });
+      },
+    },
+    mounted() {
+      this.load();
+      (adsbygoogle = window.adsbygoogle || []).push({});
     },
   };
 </script>

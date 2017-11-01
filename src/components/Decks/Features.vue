@@ -20,7 +20,7 @@
                     {{ deck.name }}
                 </router-link>
             </h6>
-            <div class="text-muted">
+            <div>
                 <span class="fa fa-user-circle-o"></span> {{ deck.user.username }}
             </div>
         </div>
