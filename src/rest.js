@@ -35,11 +35,11 @@ function onFailure(reason) {
   });
 }
 
-function getAccessToken() {
+function getAccessToken(mandatory) {
   return new Promise((resolve, reject) => {
     if (store.getters.isLogged) {
       resolve(store.getters.accessToken);
-    } else {
+    } else if (mandatory) {
       return store
         .dispatch('login')
         .then((token) => {
@@ -47,6 +47,8 @@ function getAccessToken() {
         })
         .catch(reject);
     }
+
+    resolve(null);
   });
 }
 
@@ -58,16 +60,14 @@ class Rest {
 
   getHttp() {
     return new Promise((resolve, reject) => {
-      if (this.isPrivate) {
-        return getAccessToken()
-          .then((accessToken) => {
+      return getAccessToken(this.isPrivate)
+        .then((accessToken) => {
+          if (accessToken) {
             this.options.headers = { 'Authorization': `Bearer ${accessToken}` };
-            resolve(Vue.http);
-          })
-          .catch(reject);
-      }
-
-      resolve(Vue.http);
+          }
+          resolve(Vue.http);
+        })
+        .catch(reject);
     });
   }
 
@@ -87,7 +87,7 @@ class Rest {
     return this.getResponseBody(http => http.patch(resourcePath, resource, this.options));
   }
 
-  get (resourcePath, parameters) {
+  get(resourcePath, parameters) {
     return this.getResponseBody(http => http.get(resourcePath, Object.assign({ params: parameters }, this.options)));
   }
 

@@ -52,7 +52,7 @@
     },
     methods: {
       load() {
-        rest.private().get('feed').then((result) => {
+        rest.public().get('feed').then((result) => {
           this.feedItems = result.records;
         });
       },
