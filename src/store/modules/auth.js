@@ -40,10 +40,6 @@ const actions = {
     let childWindow = null;
 
     return new Promise((resolve, reject) => {
-      if (state.token !== null && state.token.expires_at !== null) {
-        return resolve(state.token);
-      }
-
       // called when the child window sends the access token
       const callback = (event) => {
         if (event.source === childWindow && event.origin === config.getApiOrigin()) {
