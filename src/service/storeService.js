@@ -46,6 +46,8 @@ const denormalizeCards = () => {
   });
 
   stores.cards().each((record) => {
+    // if no pack, then preview
+    record.preview = record.pack_cards.length === 0;
     // replace the packs with the full pack records
     record.pack_cards.forEach((packCard) => {
       packCard.pack = mapPacks[packCard.pack.id];

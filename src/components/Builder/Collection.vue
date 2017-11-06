@@ -3,7 +3,7 @@
 
         <builder-collection-filter
                 :startingClans="startingClans"
-                @change="changeFilter"
+                v-model="filters"
         ></builder-collection-filter>
 
         <table class="table table-sm">
@@ -45,7 +45,7 @@
     },
     data() {
       return {
-        filter: {},
+        filters: [],
       };
     },
     computed: {
@@ -64,22 +64,7 @@
       mainClan() {
         return this.stronghold ? this.stronghold.clan : null;
       },
-      cards() {
-        if (this.mainClan === null) {
-          return stores.cards(this.filter);
-        }
-
-        const userFilter = Object.assign({}, this.filter);
-        const queryFilter = userFilter.query;
-        delete userFilter.query;
-
-        const mainClanFilter = {
-          clan: ['neutral', this.mainClan],
-        };
-        const conflictFilter = {
-          side: 'conflict',
-          influence_cost: { isUndefined: false },
-        };
+      roleRestrictionFilter() {
         const roleRestrictionFilter = [{
           role_restriction: { isNull: true },
         }];
@@ -90,11 +75,21 @@
           });
         }
 
-        return stores
-          .cards([mainClanFilter, conflictFilter])
-          .filter(roleRestrictionFilter)
-          .filter(userFilter)
-          .filter(queryFilter);
+        return roleRestrictionFilter;
+      },
+      cards() {
+        const cards = this.mainClan === null
+          ? stores.cards()
+          : stores.cards([{
+            clan: ['neutral', this.mainClan],
+          }, {
+            side: 'conflict',
+            influence_cost: { isUndefined: false },
+          }]);
+
+        return this.filters.reduce(
+          (cards, filter) => cards.filter(filter),
+          cards.filter(this.roleRestrictionFilter));
       },
       cardslots() {
         return this.cards.map(record => ({
@@ -118,16 +113,6 @@
           cardId: msg.cardId,
           quantity: msg.quantity,
         });
-      },
-      changeFilter(filter) {
-        Object.keys(this.filter)
-          .forEach((key) => {
-            this.$delete(this.filter, key);
-          });
-        Object.keys(filter)
-          .forEach((key) => {
-            this.$set(this.filter, key, filter[key]);
-          });
       },
     },
   };
