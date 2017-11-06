@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="d-flex mb-2">
-            <input v-model="query" class="form-control form-control-sm mr-1"
+            <input v-model="queryString" class="form-control form-control-sm mr-1"
                    placeholder="Card filter (e.g. x:sincerity or k:bushi)">
             <b-btn v-b-toggle.searchHelp variant="outline-secondary" size="sm">
                 <span class="fa fa-info-circle"></span>
@@ -12,6 +12,7 @@
         </div>
         <b-modal id="modalPacks" title="Pack Selection" :ok-only="true">
             <core-count-selector></core-count-selector>
+            <b-form-checkbox v-model="previews">Previews</b-form-checkbox>
             <div v-for="cycle in cycles" :key="cycle.id">
                 <h5>{{ cycle.name }}</h5>
                 <b-form-checkbox-group
@@ -95,8 +96,10 @@
     },
     data() {
       return {
+        previews: false,
         packs: stores.packs({ released_at: { isNull: false } }).select('id'),
-        query: '',
+        queryString: '',
+        queryFilter: [],
         filter: {
           clan: this.startingClans,
           side: ['dynasty', 'conflict', 'province', 'role'],
@@ -112,7 +115,16 @@
     },
     computed: {
       value() {
-        return Object.assign({ packs: { has: this.packs } }, this.filter);
+        const filters = [this.filter];
+        if (this.queryFilter.length > 0) {
+          filters.push(this.queryFilter);
+        }
+        const packs = [{ packs: { has: this.packs } }];
+        if (this.previews) {
+          packs.push({ preview: true });
+        }
+        filters.push(packs);
+        return filters;
       },
       cycles() {
         return stores.cycles().get();
@@ -124,17 +136,13 @@
       },
       onClick(option, evt) {
         if (evt.shiftKey && evt.target.tagName === 'INPUT') {
-          this.filter[option] = [evt.target.value];
+          this.$set(this.filter, option, [evt.target.value]);
         }
       },
       updateQuery() {
-        const clauses = queryParser.parse(this.query);
+        const clauses = queryParser.parse(this.queryString);
         const queryInput = new QueryInput(clauses);
-        this.filter.query = queryBuilder.build(queryInput);
-        if (this.filter.query.length === 0) {
-          delete this.filter.query;
-        }
-        this.$emit('change', this.filter);
+        this.queryFilter = queryBuilder.build(queryInput);
       },
       typeIcon(type) {
         return typeIcons.icon(type);
@@ -166,14 +174,14 @@
     },
     watch: {
       value() {
-        this.$emit('change', this.value);
+        this.$emit('input', this.value);
       },
-      query: _.debounce(function update() {
+      queryString: _.debounce(function update() {
         this.updateQuery();
       }, INPUT_DEBOUNCE_TIMER_MS),
     },
     mounted() {
-      this.$emit('change', this.value);
+      this.$emit('input', this.value);
     },
   };
 </script>

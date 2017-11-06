@@ -71,6 +71,11 @@ class QueryMapper {
         type: 'integer',
         description: 'Glory',
       },
+      e: {
+        name: 'element',
+        type: 'id',
+        description: 'Element',
+      },
       mil: {
         name: 'military',
         type: 'integer',

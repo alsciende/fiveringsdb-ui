@@ -45,10 +45,10 @@
                             <input v-model="query" class="form-control bg-dark text-light" type="text" placeholder="Card Search">
                         </form>
                     </li>
-                    <li class="nav-item" v-if="isLogged">
+                    <li class="nav-item" v-if="hasUser">
                         <div class="navbar-text">Signed in as {{ username }}</div>
                     </li>
-                    <li class="nav-item" v-if="isLogged">
+                    <li class="nav-item" v-if="hasUser">
                         <a class="nav-link" href="#" v-on:click.prevent="logout()">Logout</a>
                     </li>
                     <li class="nav-item" v-else>
@@ -86,8 +86,8 @@
       username() {
         return this.$store.getters.username;
       },
-      isLogged() {
-        return this.$store.getters.isLogged;
+      hasUser() {
+        return this.$store.getters.hasUser;
       },
       cycles() {
         return stores.cycles().get();

@@ -35,39 +35,35 @@ function onFailure(reason) {
   });
 }
 
-function getAccessToken(mandatory) {
-  return new Promise((resolve, reject) => {
-    if (store.getters.isLogged) {
-      resolve(store.getters.accessToken);
-    } else if (mandatory) {
-      return store
-        .dispatch('login')
-        .then((token) => {
-          resolve(token.id);
-        })
-        .catch(reject);
-    }
+function getAccessToken(isMandatory) {
+  if (store.getters.hasToken || isMandatory) {
+    return store.dispatch('token').then(result => result.access_token);
+  }
 
-    resolve(null);
-  });
+  return null;
 }
 
 class Rest {
-  constructor(isPrivate) {
+  constructor(isPrivate, isMandatory) {
     this.options = {};
     this.isPrivate = isPrivate;
+    this.isMandatory = isMandatory;
   }
 
   getHttp() {
     return new Promise((resolve, reject) => {
-      return getAccessToken(this.isPrivate)
-        .then((accessToken) => {
-          if (accessToken) {
-            this.options.headers = { 'Authorization': `Bearer ${accessToken}` };
-          }
-          resolve(Vue.http);
-        })
-        .catch(reject);
+      if (this.isPrivate) {
+        return getAccessToken(this.isMandatory)
+          .then((accessToken) => {
+            if (accessToken) {
+              this.options.headers = { 'Authorization': `Bearer ${accessToken}` };
+            }
+            resolve(Vue.http);
+          })
+          .catch(reject);
+      }
+
+      resolve(Vue.http);
     });
   }
 
@@ -98,9 +94,9 @@ class Rest {
 
 export default {
   public() {
-    return new Rest(false);
+    return new Rest(false, false);
   },
-  private() {
-    return new Rest(true);
+  private(mandatory = true) {
+    return new Rest(true, mandatory);
   },
 };

@@ -138,7 +138,7 @@
     },
     methods: {
       like() {
-        if (this.$store.getters.isLogged) {
+        if (this.$store.getters.hasUser) {
           rest
             .private()
             .post(`decks/${this.$route.params.deckId}/likes`)
@@ -160,7 +160,7 @@
         }
       },
       unlike() {
-        if (this.$store.getters.isLogged) {
+        if (this.$store.getters.hasUser) {
           rest
             .private()
             .delete(`decks/${this.$route.params.deckId}/likes`)
@@ -199,7 +199,7 @@
             this.loading = false;
             this.error = reason;
           });
-        if (this.$store.getters.isLogged) {
+        if (this.$store.getters.hasUser) {
           rest
             .private()
             .get(`decks/${this.$route.params.deckId}/likes/me`)

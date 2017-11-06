@@ -143,9 +143,6 @@
           });
       },
     },
-    beforeRouteEnter(to, from, next) {
-      store.dispatch('login').then(next);
-    },
     mounted() {
       this.$store.commit('changeDocumentTitle', 'Deck Builder');
       rest
