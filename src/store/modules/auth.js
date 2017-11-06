@@ -1,9 +1,29 @@
+import Vue from 'vue';
+import VueResource from 'vue-resource';
 import rest from '@/rest';
 import config from '@/config';
 import * as types from '../mutation-types';
 
+Vue.use(VueResource);
+Vue.http.options.root = config.getApiURL();
+
 function buildStrWindowFeatures(obj) {
   return Object.keys(obj).map(key => `${key}=${obj[key]}`).join(',');
+}
+
+function postToken(commit, token) {
+  token.expires_at = new Date((new Date()).getTime() + 1000 * token.expires_in);
+  return rest
+    .public()
+    .post('tokens', { id: token.access_token })
+    .then((response) => {
+      commit({
+        type: types.SAVE_AUTH_TOKEN,
+        token: token,
+        user: response.record.user,
+      });
+      return token;
+    });
 }
 
 const childFeatures = buildStrWindowFeatures({
@@ -16,11 +36,11 @@ const childFeatures = buildStrWindowFeatures({
 
 // actions
 const actions = {
-  login({ commit, state, getters }) {
+  login({ commit, state }) {
     let childWindow = null;
 
     return new Promise((resolve, reject) => {
-      if (getters.isLogged) {
+      if (state.token !== null) {
         return resolve(state.token);
       }
 
@@ -28,15 +48,7 @@ const actions = {
       const callback = (event) => {
         if (event.source === childWindow && event.origin === config.getApiOrigin()) {
           window.removeEventListener('message', callback, false);
-
-          // ask the server to create a token with this access token
-          resolve(rest.public().post('tokens', { id: event.data.access_token }).then((response) => {
-            commit({
-              type: types.SAVE_AUTH_TOKEN,
-              token: response.record,
-            });
-            return response.record;
-          }));
+          resolve(postToken(commit, event.data));
         }
       };
 
@@ -51,29 +63,56 @@ const actions = {
     commit({
       type: types.SAVE_AUTH_TOKEN,
       token: null,
+      user: null,
     });
+  },
+  refresh({ commit, state }) {
+    return new Promise((resolve, reject) => {
+      Vue
+        .http
+        .post('auth/refresh', { refresh_token: state.token.refresh_token })
+        .then((response) => {
+          resolve(postToken(commit, response.body));
+        })
+        .catch((reason) => {
+          resolve(null);
+        });
+    });
+  },
+  token({ state, dispatch }) {
+    if (state.token === null) {
+      return dispatch('login');
+    }
+
+    if (new Date(state.token.expires_at) < new Date()) {
+      return dispatch('refresh');
+    }
+
+    return state.token;
   },
 };
 
 // getters
 const getters = {
-  isLogged: state => state.token !== null,
-  userId: state => (state.token ? state.token.user.id : null),
-  username: state => (state.token ? state.token.user.username : null),
-  roles: state => (state.token ? state.token.user.roles : []),
-  accessToken: state => (state.token ? state.token.id : null),
+  hasToken: state => state.token !== null,
+  hasUser: state => state.user !== null,
+  userId: state => (state.user ? state.user.id : null),
+  username: state => (state.user ? state.user.username : null),
+  roles: state => (state.user ? state.user.roles : []),
 };
 
 // mutations
 const mutations = {
-  [types.SAVE_AUTH_TOKEN](_state, { token }) {
+  [types.SAVE_AUTH_TOKEN](_state, { token, user }) {
     _state.token = token;
+    _state.user = user;
   },
 };
 
 export default {
   state: {
     token: null,
+    user: null,
   },
   getters,
   actions,
