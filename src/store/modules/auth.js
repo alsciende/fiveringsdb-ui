@@ -40,7 +40,7 @@ const actions = {
     let childWindow = null;
 
     return new Promise((resolve, reject) => {
-      if (state.token !== null) {
+      if (state.token !== null && state.token.expires_at !== null) {
         return resolve(state.token);
       }
 
@@ -80,7 +80,7 @@ const actions = {
     });
   },
   token({ state, dispatch }) {
-    if (state.token === null) {
+    if (state.token === null || state.token.expires_at === null) {
       return dispatch('login');
     }
 
