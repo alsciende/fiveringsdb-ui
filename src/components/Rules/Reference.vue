@@ -4,8 +4,8 @@
             <b-btn v-b-toggle.toc variant="primary" class="d-sm-none">Table of Contents</b-btn>
             <b-collapse id="toc" class="mt-2 d-sm-block">
             <ul>
-                <li v-for="heading in headings" :class="['item-size-'+level(heading)]">
-                    <a :href="href(heading)">{{ title(heading) }}</a>
+                <li v-for="heading in headings" :class="['item-size-'+heading.level]">
+                    <a :href="heading.href">{{ heading.text }}</a>
                 </li>
             </ul>
             </b-collapse>
@@ -18,22 +18,22 @@
                     class="new">red text</span>.</p>
             <p>"<a href="#stronghold">Stronghold</a>" on page 15</p>
             <hr>
-            <anchored-heading :level="1">Rules Reference</anchored-heading>
+            <anchored-heading @heading="add" :level="1">Rules Reference</anchored-heading>
             <p>
                 This document is intended as the definitive source for rules information, but does not teach players how to play the game. Players should first read the Learn to Play book in its entirety and use this Rules Reference as needed while playing the game.</p>
             <p>
                 The majority of this guide consists of the glossary, which provides an alphabetical listing of terms and situations a player might encounter during a game. This section should be the first destination for players who have a rules question.</p>
             <p>
                 The latter part of this guide contains two appendices. The first appendix provides detailed timing diagrams that illustrate the structure of an entire game round, as well as how to handle each game step presented in those diagrams. The second provides a detailed anatomy of each card type.</p>
-            <anchored-heading :level="1">The Jade Rule</anchored-heading>
+            <anchored-heading @heading="add" :level="1">The Jade Rule</anchored-heading>
             <p>
                 If the text of this Rules Reference directly contradicts the text of the Learn to Play book, the text of the Rules Reference takes precedence.</p>
             <p>
                 If the text of a card directly contradicts the text of either the Rules Reference or the Learn to play book, the text of the card takes precedence.</p>
-            <anchored-heading :level="1">Glossary</anchored-heading>
+            <anchored-heading @heading="add" :level="1">Glossary</anchored-heading>
             <p>
                 The following is an alphabetical list of entries for game rules, terms, and situations that may occur during play.</p>
-            <anchored-heading :level="2">Ability</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Ability</anchored-heading>
             <p>
                 An ability is the special game text that a card contributes to the game. Card abilities fall into one of the following types: actions, constant abilities, interrupts, keywords, and reactions. Some interrupt and reaction abilities are also forced.</p>
             <ul>
@@ -61,7 +61,7 @@
                 <a href="#forced">Forced</a>,
                 <a href="#target">Target</a>,
                 <a href="#triggered-abilities">Triggered Abilities</a></p>
-            <anchored-heading :level="2">Action, Action Ability</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Action, Action Ability</anchored-heading>
             <p>An action ability is a triggered card ability that contains the boldface "<b>Action:</b>" precursor. An action ability may be triggered by its controller during any action window (see <a
                     href="#appendix-i-timing-and-gameplay">"Appendix I: Timing and Gameplay"</a> on page 18).</p>
             <ul>
@@ -71,7 +71,7 @@
             </ul>
             <p><b>Related:</b> <a href="#ability">Ability</a>,
                 <a href="#triggered-abilities">Triggered Abilities</a></p>
-            <anchored-heading :level="2">Active Player</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Active Player</anchored-heading>
             <p>
                 In some phases, the game creates an active player, who is granted permission to perform a specified task.</p>
             <ul>
@@ -82,13 +82,13 @@
                     During the conflict phase, the active player is the player with the opportunity to initiate a conflict, or the player who is resolving a conflict he or she has initiated.
                 </li>
             </ul>
-            <anchored-heading :level="2">Against</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Against</anchored-heading>
             <p>
                 During a conflict, the attacking player and the defending player are considered to be taking part in the conflict against each other.</p>
-            <anchored-heading :level="2">Ancestral</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Ancestral</anchored-heading>
             <p>
                 Ancestral is a keyword ability that appears on attachments. If the card or game element to which an ancestral attachment is attached leaves play, the ancestral attachment is returned to its owner's hand instead of being discarded.</p>
-            <anchored-heading :level="2">Attachment Cards</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Attachment Cards</anchored-heading>
             <p>
                 Attachment cards represent weapons, armor, items, skills, spells, conditions, and titles. An attachment card enters play ready and attached to another card or game element, and remains in play unless it is removed by an ability, or unless the attached card leaves play.</p>
             <ul>
@@ -114,25 +114,25 @@
             </ul>
             <p>For attachment card anatomy, see "<a href="#appendix-ii-card-anatomy">Appendix II: Card Anatomy</a>" on page 24.
             </p>
-            <anchored-heading :level="2">Attacker, Attacking Character, Attacking Player</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Attacker, Attacking Character, Attacking Player</anchored-heading>
             <p>
                 The term "attacking character" refers to a character that is participating in a conflict on the side of the player who initiated the conflict. The term "attacker" is also used as shorthand for "attacking character."</p>
             <p>
                 The term "attacking player" refers to the player that initiated the conflict that is currently resolving.</p>
-            <anchored-heading :level="2">Base Value</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Base Value</anchored-heading>
             <p>
                 The value of a quantity before other modifiers are applied. For most quantities, it is also the printed value.</p>
-            <anchored-heading :level="2">Bid Value</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Bid Value</anchored-heading>
             <p>
                 If the value of an honor bid is modified, resolve that bid as if the modified value is that player's bid. The value of a bid may exceed five (the highest number on the honor dial), or may be reduced to zero.</p>
             <ul>
                 <li>When the value of an honor bid is modified, the setting on the dial is not itself adjusted.</li>
             </ul>
-            <anchored-heading :level="2">Blank</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Blank</anchored-heading>
             <p>
                 If an ability causes a card's printed text box to be considered "blank," that text box is treated as if it did not have any of its printed <i>Traits</i>
                 or card abilities. Text gained from another source is not blanked.</p>
-            <anchored-heading :level="2">Breaking a Province, Broken Province</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Breaking a Province, Broken Province</anchored-heading>
             <p>
                 If the attacking player wins a conflict with a total skill difference (between the attacking player and the defending player) equal to or greater than the defense strength of the attacked province, the province breaks.</p>
             <ul>
@@ -148,7 +148,7 @@
                     If three of a player's non-stronghold provinces are broken, attacks may be declared against that player's stronghold. If a player's stronghold province is broken, that player loses the game.
                 </li>
             </ul>
-            <anchored-heading :level="2">Bow, Bowed</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Bow, Bowed</anchored-heading>
             <p>
                 Cards often bow after participating in a conflict, to use card abilities, or as the result of card or game effects. When a card is bowed, it is rotated 90 degrees. A card in this latter state is considered bowed.</p>
             <ul>
@@ -161,7 +161,7 @@
                     A card ability on a bowed card is active and can still engage with the game state. However, if a bowed card must bow as part of its cost to trigger an ability, it cannot bow again until it is readied, so the ability could not be triggered.
                 </li>
             </ul>
-            <anchored-heading :level="2">Cancel</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Cancel</anchored-heading>
             <p>
                 Some card abilities can "cancel" other card or game effects. Cancel abilities interrupt the initiation of an effect, and prevent the effect from initiating. Because of this, cancel abilities have timing priority over <i>all</i>
                 other interrupts to the effect that is attempting to initiate.</p>
@@ -178,9 +178,9 @@
                 <li>If a ring effect that is resolving for winning a conflict is canceled, the ring is still claimed.
                 </li>
             </ul>
-            <anchored-heading :level="2">Cannot</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Cannot</anchored-heading>
             <p>The word "cannot" is absolute, and cannot be countermanded by other abilities or effects.</p>
-            <anchored-heading :level="2">Cardtypes</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Cardtypes</anchored-heading>
             <p>
                 The game's cardtypes are: character, attachment, holding, event, province, stronghold, and role. Each of these cardtypes, with a detailed card anatomy, is presented in "<a
                     href="#appendix-ii-card-anatomy">Appendix II: Card Anatomy</a>" on page 24.</p>
@@ -189,11 +189,11 @@
                     If an ability causes a card to change its cardtype, the card loses all other cardtypes it might possess and functions as would any card of the new cardtype.
                 </li>
             </ul>
-            <anchored-heading :level="2">Challenge</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Challenge</anchored-heading>
             <p>
                 Some card abilities use the word "challenge" to initiate a duel between two characters participating in a conflict. For the rules on how to resolve a duel, see "<a
                     href="#duel-timing">Duel timing</a>" on page 23.</p>
-            <anchored-heading :level="2">Character Cards</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Character Cards</anchored-heading>
             <p>
                 Character cards represent the bushi, courtiers, shugenja, monks, shinobi, armies, creatures, and other personalities and groups one might encounter in Rokugan.</p>
             <ul>
@@ -206,10 +206,10 @@
             </ul>
             <p>For character card anatomy, see "<a href="#appendix-ii-card-anatomy">Appendix II: Card Anatomy</a>" on page 24.
             </p>
-            <anchored-heading :level="2">Choose</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Choose</anchored-heading>
             <p>The word "choose" indicates that one or more targets must be chosen in order to resolve an ability.</p>
             <p><b>Related:</b> <a href="#target">Target</a></p>
-            <anchored-heading :level="2">Clan</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Clan</anchored-heading>
             <p>There are 7 clans in the core set, as depicted in the chart below.</p>
             <p>
                 A player's stronghold card signals which clan a player has chosen as the primary clan for his or her deck. The clans and their associated symbols are listed below.</p>
@@ -268,7 +268,7 @@
                 </tr>
                 </tbody>
             </table>
-            <anchored-heading :level="2">Constant Abilities</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Constant Abilities</anchored-heading>
             <p>
                 A constant ability is any non-keyword ability whose text contains no boldface timing trigger defining its ability type. A constant ability becomes active as soon as its card enters play and remains active while the card is in play.</p>
             <ul>
@@ -279,7 +279,7 @@
                     If multiple instances of the same constant ability are in play, each instance affects the game state independently.
                 </li>
             </ul>
-            <anchored-heading :level="2">Control and Ownership</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Control and Ownership</anchored-heading>
             <p>
                 A card's owner is the player who included the card as a part of his or her deck (i.e. dynasty deck, conflict deck, provinces, stronghold, role) at the beginning of the game.</p>
             <ul>
@@ -301,10 +301,10 @@
                 <li>Attachments on a card that changes control do not themselves change control.</li>
                 <li>Unless a duration is specified, a control change persists as long as the card remains in play.</li>
             </ul>
-            <anchored-heading :level="2">Copy (of a card)</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Copy (of a card)</anchored-heading>
             <p>
                 A copy of a card is defined by title: any other card that shares the same title is considered a copy, regardless of cardtype, text, deck of origin, artwork, or any other characteristic(s) of the card(s).</p>
-            <anchored-heading :level="2">Cost</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Cost</anchored-heading>
             <p>
                 A card's fate cost is the numerical value that must be paid to play the card from a player's hand or provinces.</p>
             <p>
@@ -326,13 +326,13 @@
                     An ability cannot initiate (and therefore its costs cannot be paid) if its effect on its own does not have the potential to change the game state.
                 </li>
             </ul>
-            <anchored-heading :level="2">Count</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Count</anchored-heading>
             <p>
                 When instructed to count a total of game values on a subset of characters, values on bowed characters are not counted.</p>
-            <anchored-heading :level="2">Courtesy</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Courtesy</anchored-heading>
             <p>
                 Courtesy is a keyword ability. When a card with the courtesy keyword leaves play, its controller gains 1 fate.</p>
-            <anchored-heading :level="2">Covert</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Covert</anchored-heading>
             <p>
                 Covert is a keyword ability. When a player initiates a conflict, for each character with the covert keyword he or she declares as an attacker, that player may choose one character without covert controlled by the defending player. Each chosen character is considered evaded by covert, and cannot be declared as a defender for that conflict.</p>
             <ul>
@@ -343,10 +343,10 @@
                     Covert may only be used when characters are declared as attackers. If a character with covert is moved into or played into a conflict after the point at which the conflict was declared, that character's covert ability does not resolve.
                 </li>
             </ul>
-            <anchored-heading :level="2">Current</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Current</anchored-heading>
             <p>
                 If an ability references a "current" skill or glory count, use the players' applicable specified totals at the time the ability resolves.</p>
-            <anchored-heading :level="2">Dash (&ndash;)</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Dash (&ndash;)</anchored-heading>
             <p>
                 In the text of a triggered ability, a dash (&ndash;) is used to separate the criteria that are necessary to use the ability from the effect of the ability. Any triggering conditions, play restrictions or permissions, costs, and targeting requirements are denoted before the dash. The ability's effect is denoted after the dash.</p>
             <p>
@@ -368,7 +368,7 @@
             </ul>
             <p><b>Related:</b> <a href="#participating-and-cannot-participate">Participating and Cannot Participate</a>
             </p>
-            <anchored-heading :level="2">Deckbuilding</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Deckbuilding</anchored-heading>
             <p>To build custom decks for sanctioned tournament play:</p>
             <ul>
                 <li>A player must choose exactly 1 stronghold.</li>
@@ -401,7 +401,7 @@
             <p><b>Note:</b>
                 When constructing a dynasty and conflict deck for out-of-the-box play from one core set, the minimum size for each deck is 30 cards. To construct decks for two players from a single core set, use all the cards and influence from the desired clan pairings and divide the neutrals as in the tutorial game.
             </p>
-            <anchored-heading :level="2">Deck Limits</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Deck Limits</anchored-heading>
             <p>
                 Up to 3 total copies of most cards (by title) may be included in a player's dynasty and/or conflict decks. Each copy of a card in either deck counts towards this limit.</p>
             <p>
@@ -412,12 +412,12 @@
                     If X is 4 or higher, this phrase acts as a permission that enables a player to include more than the standard 3 copies.
                 </li>
             </ul>
-            <anchored-heading :level="2">Defender, Defending Character, Defending Player</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Defender, Defending Character, Defending Player</anchored-heading>
             <p>
                 The term "defending character" refers to a character that is participating in a conflict on the side of the player who controls the province that is being attacked. The term "defender" is also used as shorthand for "defending character."</p>
             <p>
                 The term "defending player" refers to the opponent of the attacking player against whom (from the attacking player's perspective) a conflict is resolving.</p>
-            <anchored-heading :level="2">Delayed Effects</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Delayed Effects</anchored-heading>
             <p>
                 Some abilities contain delayed effects. Such abilities specify a future timing point, or indicate a future condition that may arise, and dictate an effect that is to happen at that time.</p>
             <ul>
@@ -431,7 +431,7 @@
                     When a delayed resolves, it is still considered to be an ability originating from the cardtype of the card that created the delayed effect.
                 </li>
             </ul>
-            <anchored-heading :level="2">Discard Piles</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Discard Piles</anchored-heading>
             <p>
                 The discard piles are out-of-play areas. Each player has a dynasty discard pile and a conflict discard pile.</p>
             <ul>
@@ -446,9 +446,9 @@
                     If multiple cards are discarded simultaneously, the owner of the cards chooses the order in which those cards are placed in the discard pile.
                 </li>
             </ul>
-            <anchored-heading :level="2">Dishonored, Dishonored Status Token</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Dishonored, Dishonored Status Token</anchored-heading>
             <p>See "<a href="#personal-honor-personal-dishonor">Personal Honor</a>" on page 12.</p>
-            <anchored-heading :level="2">Drawing cards</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Drawing cards</anchored-heading>
             <p>
                 When a player is instructed to draw one or more cards, those cards are drawn from the top of his or her conflict deck.</p>
             <ul>
@@ -460,11 +460,11 @@
                 <li>There is no maximum hand size.</li>
             </ul>
             <p><b>Related:</b> <a href="#running-out-of-cards">Running Out of Cards</a></p>
-            <anchored-heading :level="2">Duel</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Duel</anchored-heading>
             <p>
                 Some card abilities initiate a duel between two characters participating in a conflict. For the rules on how to resolve a duel, see "<a
                     href="#duel-timing">Duel timing</a>" on page 23.</p>
-            <anchored-heading :level="2">Duplicates</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Duplicates</anchored-heading>
             <p>
                 A duplicate is a copy (in a player's hand or provinces) of a unique character that is already in play and under the same player's control. A player may, as a player action during step 1.4 of the dynasty phase, discard a duplicate from his or her hand or provinces to place 1 fate on the copy of the character in play.</p>
             <ul>
@@ -474,7 +474,7 @@
                 </li>
             </ul>
             <p><b>Related:</b> <a href="#unique-cards">Unique</a></p>
-            <anchored-heading :level="2">Effects</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Effects</anchored-heading>
             <p>
                 A card effect is any effect that arises from the resolution of ability text printed on or gained by a card. A framework effect is any effect that arises from the resolution of a framework step.</p>
             <ul>
@@ -494,10 +494,10 @@
                     If an ability instructs a player to select among multiple effects, an effect that has the potential to change the game state must be selected.
                 </li>
             </ul>
-            <anchored-heading :level="2">Enters Play</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Enters Play</anchored-heading>
             <p>
                 The phrase "enters play" refers to any time a card makes a transition from an out-of-play area or state into play. Playing a card and putting a card into play by using a card ability are two means by which a card may enter play.</p>
-            <anchored-heading :level="2">Event Cards</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Event Cards</anchored-heading>
             <p>
                 Event cards represent tactical acts and maneuvers, court intrigues, spells, supernatural occurrences, and other unexpected developments that might occur during a game.</p>
             <ul>
@@ -519,7 +519,7 @@
             </ul>
             <p>For event card anatomy, see "<a href="#appendix-ii-card-anatomy">Appendix II: Card Anatomy</a>" on page 24.
             </p>
-            <anchored-heading :level="2">Facedown Province</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Facedown Province</anchored-heading>
             <p>
                 A facedown province has no inherent identity other than "facedown province." When a facedown province is turned faceup, that province card is considered to be revealed.</p>
             <ul>
@@ -531,7 +531,7 @@
                     If a facedown province becomes the attacked province in a manner other than the declaration of an attack, immediately turn the province faceup.
                 </li>
             </ul>
-            <anchored-heading :level="2">Fate</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Fate</anchored-heading>
             <p>
                 Fate is the game's basic resource, and is used to pay for cards and some card abilities. The amount of fate a player has available at any given time is represented (as open information) by fate tokens in his or her fate pool.</p>
             <ul>
@@ -551,7 +551,7 @@
                     During the fate phase, each character with no fate on it is discarded. Subsequently, 1 fate is removed from each character in play. Finally, 1 fate from the general token pool is placed on each unclaimed ring.
                 </li>
             </ul>
-            <anchored-heading :level="2">First Player, First Player Token</anchored-heading>
+            <anchored-heading @heading="add" :level="2">First Player, First Player Token</anchored-heading>
             <p>
                 A first player is chosen during setup, and the first player token is used to indicate that player's status as the first player. The chosen player remains first player until the first player token passes to the other player.</p>
             <ul>
@@ -571,7 +571,7 @@
                 <a href="#setup">Setup</a>,
                 <a href="#priority-of-simultaneous-resolution">Priority of Simultaneous Resolution</a>,
                 <a href="#appendix-i-timing-and-gameplay">Appendix I</a></p>
-            <anchored-heading :level="2">Forced (Forced Interrupts, Forced Reactions)</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Forced (Forced Interrupts, Forced Reactions)</anchored-heading>
             <p>
                 While most triggered abilities are optional, some interrupt and reaction abilities are preceded by the word "<b>Forced</b>." Such abilities must be resolved immediately whenever the triggering condition specified in the ability text occurs.
             </p>
@@ -588,11 +588,11 @@
             </ul>
             <p><b>Related:</b> <a href="#interrupts">Interrupts</a>,
                 <a href="#reactions">Reactions</a></p>
-            <anchored-heading :level="2">Framework Effects and Framework Steps</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Framework Effects and Framework Steps</anchored-heading>
             <p>
                 A framework step is a mandatory occurrence, dictated by the structure of the game. A framework effect is any effect that arises from the resolution of a framework step.</p>
             <p><b>Related:</b> <a href="#appendix-i-timing-and-gameplay">Appendix I</a></p>
-            <anchored-heading :level="2">Gains</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Gains</anchored-heading>
             <p>The word "gains" is used in multiple contexts.</p>
             <ul>
                 <li>
@@ -602,10 +602,10 @@
                 </li>
             </ul>
             <p><b>Related:</b> <a href="#printed">Printed</a></p>
-            <anchored-heading :level="2">Give</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Give</anchored-heading>
             <p>
                 If a player is instructed to give tokens to an opponent, those tokens are removed from the giving player's pool of tokens (or specified game area), and are added to that opponent's token pool.</p>
-            <anchored-heading :level="2">Glory</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Glory</anchored-heading>
             <p>
                 Glory is a character statistic that represents a character's reputation, and how much the character cares about their reputation.</p>
             <ul>
@@ -618,7 +618,7 @@
             </ul>
             <p><b>Related:</b> <a href="#personal-honor-personal-dishonor">Personal Honor and Dishonor</a>,
                 <a href="#glory-count">Glory Count</a></p>
-            <anchored-heading :level="2">Glory Count</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Glory Count</anchored-heading>
             <p>
                 When the players are asked to count glory, each player counts the total glory value among the ready characters he or she controls, and adds 1 to the total for each ring in his or her claimed ring pool. The player with the highest total wins the glory count.</p>
             <ul>
@@ -635,7 +635,7 @@
                 </li>
             </ul>
             <p><b>Related:</b> <a href="#imperial-favor-imperial-favor-contest">Imperial Favor</a></p>
-            <anchored-heading :level="2">Holding</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Holding</anchored-heading>
             <p>
                 When a holding is turned faceup in a player's province, its game text becomes active and that holding is considered to be "in play." As long as a holding remains faceup in a player's province, that player can use abilities or benefit from game text on that holding.</p>
             <ul>
@@ -649,7 +649,7 @@
             </ul>
             <p>For holding card anatomy, see "<a href="#appendix-ii-card-anatomy">Appendix II: Card Anatomy</a>" on page 24.
             </p>
-            <anchored-heading :level="2">Home, Move Home</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Home, Move Home</anchored-heading>
             <p>
                 Character cards that are in play but not currently participating in a conflict are considered to be in their controller's home area.</p>
             <ul>
@@ -657,7 +657,7 @@
                     If a character that is participating in a conflict is moved home, it is removed from the conflict and placed in its controller's home area. A character that is moved home maintains its status of bowed or readied.
                 </li>
             </ul>
-            <anchored-heading :level="2">Honor</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Honor</anchored-heading>
             <p>
                 Honor represents the behavior of a player's clan, and the outward perception of that behavior. It is bid during the draw phase (see framework step "<a
                     href="#2-2-honor-bid">2.2. Honor bid</a>" on page 20) and during duels. Honor also serves as a victory track to measure an honor win or an honor loss. The amount of honor a player has at any given time is represented (as open information) by honor tokens in his or her honor pool.
@@ -675,9 +675,9 @@
                 </li>
             </ul>
             <p><b>Related:</b> <a href="#winning-the-game">Winning the Game</a></p>
-            <anchored-heading :level="2">Honored, Honored Status Token</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Honored, Honored Status Token</anchored-heading>
             <p>See "<a href="#personal-honor-personal-dishonor">Personal Honor</a>" on page 12.</p>
-            <anchored-heading :level="2">Immune</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Immune</anchored-heading>
             <p>
                 If a card is immune to a specified set of effects (for example, "immune to ring effects" or "immune to event card effects"), it cannot be targeted or affected by effects that belong to that set.</p>
             <ul>
@@ -691,7 +691,7 @@
                     Immunity only protects a card from effects. It does not prevent a card from being used to pay costs.
                 </li>
             </ul>
-            <anchored-heading :level="2">Imperial Favor, Imperial Favor Contest</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Imperial Favor, Imperial Favor Contest</anchored-heading>
             <p>The Imperial Favor represents which player currently holds the favor of the Emperor. <a
                     href="#3-4-1-glory-count">Step 3.4.1</a>
                 of the conflict phase consists of a framework glory count. The winner of this count claims the Imperial Favor and may set it to either side.
@@ -719,7 +719,7 @@
                 </li>
             </ul>
             <p><b>Related:</b> <a href="#glory-count">Glory Count</a></p>
-            <anchored-heading :level="2">In Play and Out of Play</anchored-heading>
+            <anchored-heading @heading="add" :level="2">In Play and Out of Play</anchored-heading>
             <p>
                 The cards (generally characters and attachments) that a player controls in his or her play area (at home or participating in a conflict), a player's stronghold card, a player's faceup province cards, and all holdings on a player's provinces are considered "in play." A player's facedown provinces are considered in play only as "facedown provinces," and the ability text on such cards is not considered active until the card is revealed.</p>
             <p>
@@ -732,7 +732,7 @@
             <p><b>Related:</b> <a href="#enters-play">Enters Play</a>,
                 <a href="#leaves-play">Leaves Play</a>,
                 <a href="#play-and-put-into-play">Play and Put Into Play</a></p>
-            <anchored-heading :level="2">Influence, Influence Cost</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Influence, Influence Cost</anchored-heading>
             <p>
                 Influence is a deckbuilding resource that is indicated by a player's chosen stronghold for that deck. Many conflict deck cards have an influence cost, which makes them eligible for selection as an out-of-clan card.</p>
             <ul>
@@ -750,7 +750,7 @@
             <p><em><b>Example:</b>
                 Tom is building a Lion Clan deck, and has 10 influence to spend on out-of-clan cards, as indicated by the Lion stronghold, Shiro no Yojin. He must spend all of his influence on cards from a single clan. He chooses to select cards from the Crane Clan. Tom decides to include 3 copies of Admit Defeat (2 influence cost each), 3 copies of The Perfect Gift (1 influence cost each), and 1 copy of Duelist Training (1 influence cost). As this is all of Tom's influence, he cannot include any other Crane Clan cards in his conflict deck. All of the other cards in Tom's conflict deck must either be from the Lion Clan, or be neutral.</em>
             </p>
-            <anchored-heading :level="2">Initiating Abilities / Playing Cards</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Initiating Abilities / Playing Cards</anchored-heading>
             <p>
                 Whenever a player wishes to play a card or initiate a triggered ability, that player first declares his or her intent (and shows the card to be used, if necessary). There are two preliminary confirmations that must be made before the process may begin. These are:</p>
             <ol>
@@ -783,7 +783,7 @@
             <p><b>Related:</b> <a href="#ability">Ability</a>,
                 <a href="#cost">Cost</a>,
                 <a href="#target">Target</a></p>
-            <anchored-heading :level="2">In Player Order</anchored-heading>
+            <anchored-heading @heading="add" :level="2">In Player Order</anchored-heading>
             <p>
                 If the players are instructed to perform a sequence "in player order," the first player performs his or her part of the sequence first, followed by the other player.</p>
             <ul>
@@ -791,7 +791,7 @@
                     If a sequence performed in player order does not conclude after each player has performed his or her aspect of the sequence once, the sequence of opportunities continues to alternate back and forth between the players until it is complete.
                 </li>
             </ul>
-            <anchored-heading :level="2">Interrupts</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Interrupts</anchored-heading>
             <p>An interrupt is a triggered ability whose text is prefaced by a boldface "<b>Interrupt:</b>" precursor. An interrupt ability interrupts the resolution of its triggering condition, sometimes canceling or changing the resolution of that condition. Always resolve interrupts to a triggering condition before resolving the consequences of the triggering condition itself.
             </p>
             <p>
@@ -810,7 +810,7 @@
                     An interrupt with specified limit that enables it to be triggered more than once per round may only be initiated once each time its specified triggering condition occurs.
                 </li>
             </ul>
-            <anchored-heading :level="2">Keywords</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Keywords</anchored-heading>
             <p>A keyword is a card ability which conveys specific rules to its card. The keywords in the core set are:	<a
                     href="#ancestral">Ancestral</a>,
                 <a href="#courtesy">Courtesy</a>,
@@ -828,7 +828,7 @@
                     A card is considered to have a keyword or to not have that keyword. A single card that has and/or is gaining the same keyword from multiple sources functions as if it has one instance of that keyword.
                 </li>
             </ul>
-            <anchored-heading :level="2">Lasting Effects</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Lasting Effects</anchored-heading>
             <p>
                 Some abilities create conditions that affect the game state for a specified duration. Such effects are known as lasting effects.</p>
             <ul>
@@ -845,7 +845,7 @@
                     A lasting effect that expires at the end of a specified time period can only be initiated during that time period.
                 </li>
             </ul>
-            <anchored-heading :level="2">Leaves Play</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Leaves Play</anchored-heading>
             <p>
                 The phrase "leaves play" refers to any time a card makes a transition from an in-play state to an out-of-play destination.</p>
             <p>If a card leaves play, the following consequences occur simultaneously with the card leaving play:</p>
@@ -858,12 +858,12 @@
                     All lasting effects and/or delayed effects affecting the card while it was in play expire for that card.
                 </li>
             </ul>
-            <anchored-heading :level="2">Limited</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Limited</anchored-heading>
             <p>
                 Limited is a keyword ability. No more than one card in total with the limited keyword can be played by each player each round. Cards played from hand and played from a player's provinces are restricted by and count toward this limit.</p>
             <li>Limited cards that are "put into play" via card abilities ignore and are ignored by this restriction.
             </li>
-            <anchored-heading :level="2">Limit X per [period]</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Limit X per [period]</anchored-heading>
             <p>
                 This phrase specifies the number of times a triggered ability can be used during the designated period. This replaces the general restriction of using a triggered ability once per game round.</p>
             <ul>
@@ -879,7 +879,7 @@
                 </li>
             </ul>
             <p><b>Related:</b> <a href="#max-x-per-period">Max X per [period]</a></p>
-            <anchored-heading :level="2">Max X per [period]</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Max X per [period]</anchored-heading>
             <p>
                 This phrase imposes a maximum number of times that an ability may be initiated from all copies (by title) of cards bearing the ability (including itself), during the designated period. Initiating an ability on a card counts toward the maximum for all copies of that card.</p>
             <ul>
@@ -889,10 +889,10 @@
                 </li>
             </ul>
             <p><b>Related:</b> <a href="#limit-x-per-period">Limit X per [period]</a></p>
-            <anchored-heading :level="2">May</anchored-heading>
+            <anchored-heading @heading="add" :level="2">May</anchored-heading>
             <p>
                 The word "may" indicates that a specified player has the option to do that which follows. If no player is specified, the option is granted to the controller of the card with the ability in question.</p>
-            <anchored-heading :level="2">Modifiers</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Modifiers</anchored-heading>
             <p>
                 Some abilities may ask players to modify values. The game state constantly checks and (if necessary) updates the count of any variable quantity that is being modified.</p>
             <p>
@@ -909,7 +909,7 @@
                     A quantity cannot be reduced so that it functions with a value below zero: a card cannot have negative icons, political or military skill, glory, traits, cost, or keywords. Negative modifiers that would take a value below zero can be applied, but, after all active modifiers have been applied, any resultant value below zero is treated as zero.
                 </li>
             </ul>
-            <anchored-heading :level="2">Move</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Move</anchored-heading>
             <p>Some abilities allow players to move cards or tokens.</p>
             <ul>
                 <li>
@@ -919,7 +919,7 @@
                     When a character is moved into a conflict, that character is considered participating in the conflict on its controller's side.
                 </li>
             </ul>
-            <anchored-heading :level="2">Mulligan</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Mulligan</anchored-heading>
             <p>
                 During setup, each player has a single opportunity to mulligan any number of cards in his or her provinces, and a single opportunity to mulligan any number of cards in his or her hand. When a player decides to mulligan, the mulliganed cards are set aside, replaced with an equal number of cards from the top of the appropriate deck(s), and then shuffled back into the deck(s) from which they originated.</p>
             <ul>
@@ -927,7 +927,7 @@
                     Players mulligan (or pass the opportunity to do so) in player order. If the first player passes an opportunity to mulligan, that player cannot change his or her mind and then decide to mulligan during that step after seeing the opponent's decision.
                 </li>
             </ul>
-            <anchored-heading :level="2">Nested Ability Sequences</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Nested Ability Sequences</anchored-heading>
             <p>
                 Each time a triggering condition occurs, the following sequence is followed: (1) execute any interrupts to that triggering condition, (2) resolve the triggering condition itself, and then, (3) execute any reactions to that triggering condition.</p>
             <p>
@@ -936,13 +936,13 @@
                 It is possible that a nested sequence generates further triggering conditions (and hence more nested sequences). There is no limit to the number of nested sequences that may occur, but each nested sequence must complete before returning to the sequence that spawned it. In effect, these sequences are resolved in a Last In, First Out (LIFO) manner.</p>
             <p><b>Related:</b> <a href="#interrupts">Interrupts</a>,
                 <a href="#reactions">Reactions</a></p>
-            <anchored-heading :level="2">Neutral</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Neutral</anchored-heading>
             <p>
                 Some cards are not affiliated with any clan, these cards are neutral. Any deck may include neutral cards.</p>
             <ul>
                 <li>Neutral cards are not considered to be in-clan or out-of-clan.</li>
             </ul>
-            <anchored-heading :level="2">No Attachments</anchored-heading>
+            <anchored-heading @heading="add" :level="2">No Attachments</anchored-heading>
             <p>
                 No attachments is a keyword ability. A card with this keyword cannot have an attachment card attached.</p>
             <ul>
@@ -957,9 +957,9 @@
                     If a card has multiple variants of the "No attachments" keyword, any variant that would prevent a card from having a given attachment prevails.
                 </li>
             </ul>
-            <anchored-heading :level="2">Own, Ownership</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Own, Ownership</anchored-heading>
             <p>See "<a href="#control-and-ownership">Control and Ownership</a>" on page 4.</p>
-            <anchored-heading :level="2">Participating and Cannot Participate</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Participating and Cannot Participate</anchored-heading>
             <p>
                 Any character that has been declared as an attacker or defender for a conflict is considered participating in that conflict through its resolution, unless it is removed by an ability or game effect.</p>
             <ul>
@@ -983,7 +983,7 @@
                     If a character "cannot participate" in a conflict, that character cannot be declared as an attacker or defender for, move into, or be played into that conflict. If an already participating character gains "cannot participate" status during a conflict, move it home bowed.
                 </li>
             </ul>
-            <anchored-heading :level="2">Pass</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Pass</anchored-heading>
             <p>
                 There are times in the game at which a player has an option to perform an act (such as taking an action, triggering an ability, or executing a game step), or to pass. Passing in such a situation forfeits the player's right to perform that act in that moment.</p>
             <ul>
@@ -997,7 +997,7 @@
                     When passing an opportunity to declare a conflict, a player is not required to specify which type of conflict he or she is passing.
                 </li>
             </ul>
-            <anchored-heading :level="2">Personal Honor, Personal Dishonor</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Personal Honor, Personal Dishonor</anchored-heading>
             <p>
                 Personal honor is a means of tracking the honored or dishonored status of individual character cards. Each character exists in one of three states:</p>
             <ul>
@@ -1021,7 +1021,7 @@
                     A character with an honored status token cannot become honored. A character with a dishonored status token cannot become dishonored.
                 </li>
             </ul>
-            <anchored-heading :level="2">Play and Put into Play</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Play and Put into Play</anchored-heading>
             <p><b>Play</b>ing a character or attachment card involves paying the card's fate cost and placing the card in the play area. This causes the card to enter play. Cards are played from a player's hand or provinces. Any time a character card is played, its controller has the option of placing additional fate from his or her fate pool on the card.
             </p>
             <p>Some card abilities <b>put</b> cards <b>into play</b>. This bypasses the need to pay the card's cost, as well as the opportunity to place additional fate on the card. A card that is put into play bypasses any restrictions or prohibitions regarding the potential of playing that card. A card that is put into play enters play in its controller's play area.
@@ -1037,18 +1037,18 @@
                     When an event card is played, place it on the table, resolve its ability, and place the card in its owner's discard pile.
                 </li>
             </ul>
-            <anchored-heading :level="2">Play Restrictions and Permissions</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Play Restrictions and Permissions</anchored-heading>
             <p>
                 Many cards or abilities contain specific instructions pertaining to when or how they may or may not be used, or to specific conditions that must be true in order to use them. In order to use such an ability or to play such a card, all play restrictions must be observed.</p>
             <p>
                 A permission is a variant of a play restriction that provides a player with additional options as to how the card may be played or used, outside of the game's general specification regarding how the card or ability would normally be used.</p>
-            <anchored-heading :level="2">Pride</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Pride</anchored-heading>
             <p>
                 Pride is a keyword ability. After a character with the pride keyword wins a conflict, honor that character. After a character with the pride keyword loses a conflict, dishonor that character.</p>
-            <anchored-heading :level="2">Printed</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Printed</anchored-heading>
             <p>
                 The word printed refers to the text, characteristic, icon, or value that is physically printed on the card.</p>
-            <anchored-heading :level="2">Priority of Simultaneous Resolution</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Priority of Simultaneous Resolution</anchored-heading>
             <p>
                 If a single effect affects multiple players simultaneously, but the players must individually make choices to resolve the effect, the first player chooses first, followed by his or her opponent. Once all necessary choices have been made, the effect resolves simultaneously upon all affected entities.</p>
             <ul>
@@ -1059,7 +1059,7 @@
                     If two or more constant abilities and/or lasting effects can be applied simultaneously, they are. If two or more constant abilities and/or lasting effects cannot be applied simultaneously, the first player determines the order in which they are applied.
                 </li>
             </ul>
-            <anchored-heading :level="2">Provinces, Province Cards</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Provinces, Province Cards</anchored-heading>
             <p>
                 A player's provinces represent the lands surrounding his or her stronghold. When a province is under attack and turned faceup, the card represents what the enemy finds or encounters upon first entering that province.</p>
             <ul>
@@ -1069,10 +1069,10 @@
                 <li>A non-broken, faceup province is considered to be in play, and is engaged with the game state.</li>
                 <li>A broken province is considered to have a blank text box, and its ability cannot be used.</li>
             </ul>
-            <anchored-heading :level="2">Qualifiers</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Qualifiers</anchored-heading>
             <p>
                 If card text includes a qualifier followed by multiple terms, the qualifier applies to each item in the list, if it is applicable. For example, in the phrase "each unique character and attachment," the word "unique" applies both to "character" and to "attachment."</p>
-            <anchored-heading :level="2">Reactions</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Reactions</anchored-heading>
             <p>A reaction is a triggered ability whose text is prefaced by a boldface "<b>Reaction:</b>" precursor. Always resolve a triggering condition before initiating any reactions to that triggering condition.
             </p>
             <p>
@@ -1090,14 +1090,14 @@
                     A reaction with a specified limit that enables it to be triggered more than once per round may only be initiated once each time its specified triggering condition occurs.
                 </li>
             </ul>
-            <anchored-heading :level="2">Ready</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Ready</anchored-heading>
             <p>
                 A card that is in an upright state so that its controller can read its text from left to right is considered ready.</p>
             <ul>
                 <li>The default state in which cards enter play is ready.</li>
                 <li>A ready card is bowed by rotating it 90 degrees to the side.</li>
             </ul>
-            <anchored-heading :level="2">Refill a Province</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Refill a Province</anchored-heading>
             <p>
                 If a player is instructed to refill a province, that player takes the top card of his or her dynasty deck and places it facedown (without looking at it) on the province.</p>
             <ul>
@@ -1108,10 +1108,10 @@
                     If a player is instructed to refill a province faceup, the dynasty card is placed in the province faceup rather than facedown.
                 </li>
             </ul>
-            <anchored-heading :level="2">Removed from Game</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Removed from Game</anchored-heading>
             <p>
                 "Removed from the game" is an out-of-play state. A card that has been removed from the game is set aside and has no further interaction with the game in any manner for the duration of its removal. If there is no specified duration, a card that has been removed from the game is considered removed until the end of the game.</p>
-            <anchored-heading :level="2">Replacement Effects</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Replacement Effects</anchored-heading>
             <p>
                 A replacement effect is an effect (usually an interrupt) that replaces the resolution of a triggering condition with a different means of resolving the same triggering condition, but in such a manner that the triggering condition is still considered to occur. The word "instead" is frequently indicative of such an effect. After all interrupts to the triggering condition have resolved and it is time to resolve the triggering condition itself, the replacement effect resolves instead.</p>
             <ul>
@@ -1119,10 +1119,10 @@
                     If multiple replacement effects are initiated against the same triggering condition, the most recently initiated replacement effect is the one used for the resolution of the triggering condition.
                 </li>
             </ul>
-            <anchored-heading :level="2">"Resolve this ability twice"</anchored-heading>
+            <anchored-heading @heading="add" :level="2">"Resolve this ability twice"</anchored-heading>
             <p>See "<a href="#initiating-abilities-playing-cards">Initiating Abilities / Playing Cards</a>" on page 9.
             </p>
-            <anchored-heading :level="2">Restricted</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Restricted</anchored-heading>
             <p>
                 Restricted is a keyword ability. A character may not have more than two attachments with the restricted keyword attached to it at any time.</p>
             <ul>
@@ -1130,7 +1130,7 @@
                     If at any time a character has three or more restricted attachments, that character's controller must immediately choose and discard one of the restricted attachments on the character as soon as the illegal game state occurs.
                 </li>
             </ul>
-            <anchored-heading :level="2">Reveal</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Reveal</anchored-heading>
             <p>
                 When a player is instructed to reveal cards, that player is required to show those cards to his or her opponent to that opponent's satisfaction. If there is no specified duration for the reveal, the cards remain revealed until they reach a new destination (as specified by the ability), or through the ability's resolution.</p>
             <ul>
@@ -1138,7 +1138,7 @@
                     While a card is revealed, it is still considered to be located in the game area (such as a player's hand or deck) from which it is revealed.
                 </li>
             </ul>
-            <anchored-heading :level="2">Rings</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Rings</anchored-heading>
             <p>
                 Rings, represented by double-sided tokens, are used to determine the type and element of conflicts. Each ring exists in one of three states, as follows:</p>
             <p><b>Unclaimed</b>
@@ -1161,7 +1161,7 @@
                 </li>
             </ul>
             <p><b>Related:</b> <a href="#ring-effects">Ring Effects</a></p>
-            <anchored-heading :level="2">Ring Effects</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Ring Effects</anchored-heading>
             <p>
                 Each time a player wins a conflict as the attacking player, he or she may resolve the ring effect associated with the contested ring's element. The ring effects are as follows:</p>
             <p><b>Air</b>: The attacking player takes 1 honor from his or her opponent, or gains 2 honor from the general token pool.
@@ -1178,7 +1178,7 @@
                     Whenever a player resolves a ring effect for a ring that has multiple elements, that player may choose among those elements when the conflict's ring effect resolves.
                 </li>
             </ul>
-            <anchored-heading :level="2">Role Cards</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Role Cards</anchored-heading>
             <p>
                 A role card is placed alongside a player's stronghold, and provides specialized abilities and limitations for that player's deck. A player may use a single role card in conjunction with his or her stronghold while assembling a deck. The role card starts the game next to its owner's stronghold and is revealed along with the stronghold during setup.</p>
             <ul>
@@ -1190,17 +1190,17 @@
                     In sanctioned tournament play, role card eligibility for each clan is determined by the Emperor's Sanction list, which is established through player participation.
                 </li>
             </ul>
-            <anchored-heading :level="2">Running Out of Cards</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Running Out of Cards</anchored-heading>
             <p>
                 If a player attempts to replace a card on a province from his or her dynasty deck or draw a card from his or her conflict deck and no cards remain in the deck, that player loses 5 honor, then shuffles the corresponding discard pile and places it facedown to form a new dynasty or conflict deck. That player then continues to replace the dynasty card or draw the conflict card.</p>
-            <anchored-heading :level="2">Sacrifice</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Sacrifice</anchored-heading>
             <p>
                 When a player is instructed to sacrifice a card, that player must select a card in play that he or she controls and that matches the requirements of the sacrifice, and place it in his or her discard pile.</p>
             <ul>
                 <li>If the selected card does not leave play, the sacrifice is not considered to have been made.</li>
                 <li>Sacrificing a card does not satisfy other means (such as "discard") of a card leaving play.</li>
             </ul>
-            <anchored-heading :level="2">Search</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Search</anchored-heading>
             <p>
                 When a player is instructed to search for a card, that player is permitted to look at all of the cards in the searched area without revealing those cards to his or her opponent.</p>
             <ul>
@@ -1217,7 +1217,7 @@
                     While a game area (or a part of a game area) is being searched, the cards being searched are considered to still be in that game area.
                 </li>
             </ul>
-            <anchored-heading :level="2">Select</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Select</anchored-heading>
             <p>Some abilities instruct a player to select among multiple options.</p>
             <ul>
                 <li>
@@ -1234,10 +1234,10 @@
                 </li>
             </ul>
             <p><b>Related:</b> <a href="#initiating-abilities-playing-cards">Initiating Abilities</a></p>
-            <anchored-heading :level="2">Self-referential Text</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Self-referential Text</anchored-heading>
             <p>
                 When a card's ability text refers to itself ("this character," "this province," etc.), the text is referring to that copy only, and not to other copies (by title) of the card.</p>
-            <anchored-heading :level="2">Setup</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Setup</anchored-heading>
             <p>To set up a game, perform the following steps in order:</p>
             <ol>
                 <li><b>Select decks</b>. Each player selects a deck using the deckbuilding rules. See "<a
@@ -1263,7 +1263,7 @@
                 </li>
             </ol>
             <p>The game is now ready to begin.</p>
-            <anchored-heading :level="2">Shuffle</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Shuffle</anchored-heading>
             <p>
                 The word "shuffle" is used as a shorthand that instructs a player to shuffle a deck that was just searched. When a player is instructed to shuffle, only shuffle the deck or decks that were affected by the ability.</p>
             <ul>
@@ -1271,10 +1271,10 @@
                     Each time a deck is shuffled, it must be randomized to the satisfaction of the opponent, and upon completion of the shuffle presented to the opponent for additional shuffling and/or a final cut.
                 </li>
             </ul>
-            <anchored-heading :level="2">Sincerity</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Sincerity</anchored-heading>
             <p>
                 Sincerity is a keyword ability. When a card with the sincerity keyword leaves play, its controller draws 1 card.</p>
-            <anchored-heading :level="2">Skill</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Skill</anchored-heading>
             <p>
                 A character's effectiveness in various endeavors is measured by its skill. There are two types of skill in the game, military skill and political skill.</p>
             <p>Military skill (<span class="icon icon-conflict-military"></span>) is used to determine the victor during military conflicts.
@@ -1298,18 +1298,18 @@
             <p>
                 <em>A character's printed political skill can be found at the bottom of the banner beneath the cost, in blue.</em>
             </p>
-            <anchored-heading :level="2">Status Token</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Status Token</anchored-heading>
             <p>See <a href="#personal-honor-personal-dishonor">Personal Honor</a> on page 12.</p>
-            <anchored-heading :level="2">Stronghold</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Stronghold</anchored-heading>
             <p>A player's stronghold is considered in play. A stronghold card cannot leave play, <span class="new">move from the stronghold province, be turned facedown</span>, or change control.
             </p>
-            <anchored-heading :level="2">Switch</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Switch</anchored-heading>
             <p>
                 Some abilities use the word "switch." In order to use such an ability, switched items must exist on each side of the switch.</p>
-            <anchored-heading :level="2">Take</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Take</anchored-heading>
             <p>
                 If a player is instructed to take a token (such as honor or fate) from another player, that element is removed from the other player's token pool and added to the taking player's token pool.</p>
-            <anchored-heading :level="2">Target</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Target</anchored-heading>
             <p>
                 The word "choose" indicates that one or more targets must be chosen in order for an ability to resolve. The player resolving the effect must choose a game element (usually a card) that meets the targeting requirements of the ability.</p>
             <ul>
@@ -1337,7 +1337,7 @@
                     Some abilities require the choice of a target that is not directly affected by the ability &ndash; the target is instead chosen as a reference point while resolving the ability. When choosing referential targets, a player is not bound by the rule that a target is ineligible if the resolution of the effect would not affect the chosen target.
                 </li>
             </ul>
-            <anchored-heading :level="2">The word "Then"</anchored-heading>
+            <anchored-heading @heading="add" :level="2">The word "Then"</anchored-heading>
             <p>
                 If the effect text of a card ability includes the word "then," the text preceding the word then must be successfully resolved in full (i.e. the game state must change to reflect the intent of the pre-then aspect of the effect in its entirety) before the remainder of the effect described after the word "then" can be resolved.</p>
             <ul>
@@ -1348,7 +1348,7 @@
                     If the pre-then aspect of an effect does not successfully resolve in full, the post-then aspect does not attempt to resolve.
                 </li>
             </ul>
-            <anchored-heading :level="2">Token Pool, General Token Pool</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Token Pool, General Token Pool</anchored-heading>
             <p>
                 The token pool (also referred to as the general token pool) is created during setup and contains all of the tokens and counters not currently controlled by any player.</p>
             <ul>
@@ -1359,10 +1359,10 @@
                     When a card with any tokens or counters on it leaves play, those tokens and counters are returned to the token pool.
                 </li>
             </ul>
-            <anchored-heading :level="2">Tokens, Running Out of</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Tokens, Running Out of</anchored-heading>
             <p>
                 There is no limit to the number of fate, honor, and personal status tokens which can be in the game area at a given time. If players run out of the provided tokens, other tokens, counters, or coins may be used to track the game state.</p>
-            <anchored-heading :level="2">Traits</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Traits</anchored-heading>
             <p>Most cards have one or more traits listed at the top of the text box and printed in <i>Bold Italics</i>.
             </p>
             <ul>
@@ -1370,7 +1370,7 @@
                     have no inherent effect on the game. Instead, some card abilities reference cards that possess specific traits.
                 </li>
             </ul>
-            <anchored-heading :level="2">Triggered Abilities</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Triggered Abilities</anchored-heading>
             <p>
                 A boldface timing command followed by a colon indicates that an ability is a triggered ability. Triggered abilities fall into one of the following types: actions, interrupts, and reactions. Some interrupt and reaction abilities are also forced.</p>
             <ul>
@@ -1400,7 +1400,7 @@
                 <a href="#interrupts">Interrupts</a>,
                 <a href="#reactions">Reactions</a>,
                 <a href="#target">Target</a></p>
-            <anchored-heading :level="2">Triggering Condition</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Triggering Condition</anchored-heading>
             <p>
                 A triggering condition is a specific occurrence that takes place in the game. On card abilities, the triggering condition is the element of the ability that references such an occurrence, indicating the timing point at which the ability may be used. The description of an ability's triggering condition often follows the word "when" (for interrupt abilities) or the word "after" (for reaction abilities).</p>
             <p>
@@ -1425,7 +1425,7 @@
                     The reaction window to the triggering condition opens. It closes after all players consecutively pass.
                 </li>
             </ol>
-            <anchored-heading :level="2">Unique Cards</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Unique Cards</anchored-heading>
             <p>
                 A card with the ◦ symbol in front of its title is a unique card. Each player may only have a maximum of one instance of each unique card, by title, in play.
             </p>
@@ -1438,7 +1438,7 @@
                 </li>
             </ul>
             <p><b>Related:</b> <a href="#duplicates">Duplicates</a></p>
-            <anchored-heading :level="2">Unopposed, Unopposed Conflict</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Unopposed, Unopposed Conflict</anchored-heading>
             <p>
                 A conflict is unopposed if the attacking player wins the conflict and the defending player controls no participating characters at the time the conflict winner is determined.</p>
             <ul>
@@ -1447,7 +1447,7 @@
                         href="#3-2-4-apply-unopposed">step 3.2.4</a>.
                 </li>
             </ul>
-            <anchored-heading :level="2">Winning a Conflict</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Winning a Conflict</anchored-heading>
             <p>
                 Each conflict is won by the player who counts the highest total skill applicable for that conflict type for his or her side when the conflict result is determined.</p>
             <ul>
@@ -1470,7 +1470,7 @@
                     Some card abilities reference a character "losing" a conflict. In order for a character to be considered to have "lost" a conflict, that character must be participating in the conflict on the losing side at the time the ability resolves.
                 </li>
             </ul>
-            <anchored-heading :level="2">Winning the Game</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Winning the Game</anchored-heading>
             <p>
                 There are three primary paths to victory in the game. The game ends immediately if a player meets one (or more) of these victory conditions:</p>
             <ul>
@@ -1487,7 +1487,7 @@
                 </li>
                 <li>If both players would reach a victory condition simultaneously, the first player wins the game.</li>
             </ul>
-            <anchored-heading :level="2">Would</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Would</anchored-heading>
             <p>
                 The word "would" is used to define the triggering condition of some interrupt abilities, and establishes a higher priority for those abilities than interrupts to the same triggering condition that lack the word "would."</p>
             <p>
@@ -1497,34 +1497,34 @@
                     If an interrupt to a triggering condition that would occur changes the nature of that which is about to occur, no further interrupts to the original triggering condition may be used, as that triggering condition is no longer imminent.
                 </li>
             </ul>
-            <anchored-heading :level="2">The letter "X"</anchored-heading>
+            <anchored-heading @heading="add" :level="2">The letter "X"</anchored-heading>
             <p>Unless specified by a card ability or granted player choice, the letter X is always equal to 0.</p>
             <ul>
                 <li>
                     For costs involving the letter X, the value of X is defined by card ability or player choice, after which the amount paid may be modified by effects without altering the value of X.
                 </li>
             </ul>
-            <anchored-heading :level="1">Appendix I: Timing and Gameplay</anchored-heading>
+            <anchored-heading @heading="add" :level="1">Appendix I: Timing and Gameplay</anchored-heading>
             <p>
                 This section provides a detailed overview of the phases and framework steps of an entire game round. The "Phase Sequence Timing Chart" depicts each framework step and action window that occurs throughout a game round. The "Framework Details" section explains how to handle each framework step presented on the game's flow chart, in the order that the frameworks steps occur throughout the round.</p>
-            <anchored-heading :level="2">Framework Steps</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Framework Steps</anchored-heading>
             <p>Numbered (or lettered) items presented in the darker <i>grey</i>
                 boxes are known as framework steps. Framework steps are mandatory occurrences dictated by the structure of the game. <i>Purple</i>
                 windows are special framework steps that indicate the possibility of the game returning to an earlier framework step in the chart. These repetitive sequences can end in various ways, such as when all players have performed the steps in a sequence, or when a player makes a specific decision. Each purple window explains when and how the game either loops back or progresses to a later framework step.
             </p>
-            <anchored-heading :level="2">Action Windows</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Action Windows</anchored-heading>
             <p>An action ability may only be triggered during an action window. Action windows are presented in lighter <i>orange</i>
                 boxes on the chart. When most action windows open, the first player has the first opportunity to initiate an action, or pass. The one exception to this is the action window during the conflict phase, in which the defending player has the first opportunity to initiate an action, or pass. Opportunities to initiate actions alternate between the players in player order until all players consecutively pass, at which point the action window closes and the game advances to the next step on the timing chart. Note that if a player passes his or her opportunity to act, but the other opponent does not consecutively pass in sequence, the original player may still take an action when the alternation of action opportunities returns to the player who had passed.
             </p>
             <p>Resolve each action completely before the next action opportunity.</p>
             <p>
                 During each action window, players are permitted to play character and attachment cards from hand. The one exception to this is step 1.4, during which playing character and attachment cards from hand is prohibited.</p>
-            <anchored-heading :level="2">Reactions and Interrupts</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Reactions and Interrupts</anchored-heading>
             <p>
                 A reaction ability to a framework effect may be initiated immediately after the completion of any framework step.</p>
             <p>
                 An interrupt ability to a framework effect may be initiated during the resolution of that step, interrupting the process of that step.</p>
-            <anchored-heading :level="2">Phase Sequence Timing Chart</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Phase Sequence Timing Chart</anchored-heading>
             <table class="chart">
                 <tr>
                     <td class="top">I. Dynasty Phase</td>
@@ -1711,22 +1711,22 @@
                     <td class="bottom">Proceed to Dynasty Phase.</td>
                 </tr>
             </table>
-            <anchored-heading :level="1">Framework Details</anchored-heading>
+            <anchored-heading @heading="add" :level="1">Framework Details</anchored-heading>
             <p>
                 Each of the following entries corresponds to the framework step of the same number on the Phase Sequence Timing Chart.</p>
-            <anchored-heading :level="2">1. Dynasty Phase</anchored-heading>
-            <anchored-heading :level="3">1.1. Dynasty phase begins</anchored-heading>
+            <anchored-heading @heading="add" :level="2">1. Dynasty Phase</anchored-heading>
+            <anchored-heading @heading="add" :level="3">1.1. Dynasty phase begins</anchored-heading>
             <p>
                 This step formalizes the beginning of the dynasty phase. As this is the first framework step of the round, it also formalizes the beginning of a new game round.</p>
             <p>
                 The beginning of a phase is an important game milestone that may be referenced in card text, either as a point at which an ability may or must resolve, or as a point at which a lasting effect or constant ability begins or expires.</p>
-            <anchored-heading :level="3">1.2. Reveal facedown dynasty cards</anchored-heading>
+            <anchored-heading @heading="add" :level="3">1.2. Reveal facedown dynasty cards</anchored-heading>
             <p>
                 In player order, each player turns each facedown dynasty card in each of his or her provinces faceup. A player's cards are turned over one at a time, from the player's leftmost province to his or her rightmost province.</p>
-            <anchored-heading :level="3">1.3. Collect fate</anchored-heading>
+            <anchored-heading @heading="add" :level="3">1.3. Collect fate</anchored-heading>
             <p>
                 In player order, each player collects fate equal to the fate value on his or her stronghold card, incorporating all active fate modifiers. This fate is taken from the general token pool and added to the player's fate pool.</p>
-            <anchored-heading :level="3">1.4. Play cards from provinces</anchored-heading>
+            <anchored-heading @heading="add" :level="3">1.4. Play cards from provinces</anchored-heading>
             <p>
                 This is a special action window in which the opportunity to act alternates back and forth between the players, in player order.</p>
             <p>With his or her opportunity to act, a player may do one of the following:</p>
@@ -1744,32 +1744,32 @@
                 To play a character from a province, a player removes a number of fate equal to the character's fate cost from his or her fate pool, and returns that fate to the general token pool. The character enters play and is placed in the player's home area. The player then has the option to place any number of additional fate from his or her fate pool onto that character. Once this option to place additional fate has been completed or passed, the province from which the character was played is refilled facedown from the dynasty deck.</p>
             <p>
                 When a player passes, that player relinquishes all further opportunities to act during this phase. (A player who has passed may still trigger interrupts and reactions to any eligible occurrence.) The player to pass first gains 1 fate from the general token pool and adds it to his or her fate pool. After one player has passed, the other player may continue to use action opportunities until he or she also passes. Once both players have passed, this step is complete.</p>
-            <anchored-heading :level="3">1.5. Dynasty phase ends</anchored-heading>
+            <anchored-heading @heading="add" :level="3">1.5. Dynasty phase ends</anchored-heading>
             <p>This step formalizes the end of the dynasty phase.</p>
             <p>
                 The end of a phase is an important game milestone that may be referenced in card text, either as a point at which an ability may or must resolve, or as a point at which a lasting effect or constant ability expires or begins.</p>
-            <anchored-heading :level="2">2. Draw Phase</anchored-heading>
-            <anchored-heading :level="3">2.1. Draw phase begins</anchored-heading>
+            <anchored-heading @heading="add" :level="2">2. Draw Phase</anchored-heading>
+            <anchored-heading @heading="add" :level="3">2.1. Draw phase begins</anchored-heading>
             <p>This step formalizes the beginning of the draw phase.</p>
-            <anchored-heading :level="3">2.2. Honor bid</anchored-heading>
+            <anchored-heading @heading="add" :level="3">2.2. Honor bid</anchored-heading>
             <p>
                 Each player secretly selects a number from 1 to 5 on his or her honor dial as his or her honor bid for this round. Once both players have confirmed that they are ready, proceed to the next step.</p>
-            <anchored-heading :level="3">2.3. Reveal honor dials</anchored-heading>
+            <anchored-heading @heading="add" :level="3">2.3. Reveal honor dials</anchored-heading>
             <p>The players simultaneously reveal their bids.</p>
             <p>
                 Once a player reveals an honor bid, the dial is placed next to the player's stronghold and remains as a reference point until the next honor bid occurs.</p>
-            <anchored-heading :level="3">2.4. Transfer honor</anchored-heading>
+            <anchored-heading @heading="add" :level="3">2.4. Transfer honor</anchored-heading>
             <p>
                 The player with the higher honor bid must give an amount of honor to the player with the lower honor bid that is equal to the difference between the two bids. If the bids are equal, no honor is transferred during this step.</p>
-            <anchored-heading :level="3">2.5. Draw cards</anchored-heading>
+            <anchored-heading @heading="add" :level="3">2.5. Draw cards</anchored-heading>
             <p>
                 Each player simultaneously draws X cards from his or her conflict deck. For each player, X is equal to his or her honor bid.</p>
-            <anchored-heading :level="3">2.6. Draw phase ends</anchored-heading>
+            <anchored-heading @heading="add" :level="3">2.6. Draw phase ends</anchored-heading>
             <p>This step formalizes the end of the draw phase.</p>
-            <anchored-heading :level="2">3. Conflict Phase</anchored-heading>
-            <anchored-heading :level="3">3.1. Conflict phase begins</anchored-heading>
+            <anchored-heading @heading="add" :level="2">3. Conflict Phase</anchored-heading>
+            <anchored-heading @heading="add" :level="3">3.1. Conflict phase begins</anchored-heading>
             <p>This step formalizes the beginning of the conflict phase.</p>
-            <anchored-heading :level="3">3.2. Declare conflict</anchored-heading>
+            <anchored-heading @heading="add" :level="3">3.2. Declare conflict</anchored-heading>
             <p>(Shares 3.2 with conflict resolution chart.)</p>
             <p>
                 During the conflict phase, each player is granted one opportunity to declare a military conflict and one opportunity to declare a political conflict. These conflict opportunities alternate between players with remaining conflict opportunities in player order until each player has declared a conflict or passed on each of his or her conflict opportunities. A player's military and political conflicts may be declared in either order during the round.</p>
@@ -1799,10 +1799,10 @@
                 If the province being attacked is facedown, turn it faceup as soon as a conflict is successfully declared against it. This occurs before any reactions to the process of conflict declaration may be triggered.</p>
             <p>Once a conflict has been declared, resolve that conflict before the next conflict is declared.</p>
             <p>If no player has a conflict opportunity remaining when this step is reached, advance to step 3.4.</p>
-            <anchored-heading :level="3">3.2.1. Declare defenders</anchored-heading>
+            <anchored-heading @heading="add" :level="3">3.2.1. Declare defenders</anchored-heading>
             <p>
                 The defending player declares which &ndash; if any &ndash; ready characters (under his or her control) are being committed as defenders. The defending player may declare any number of eligible characters under his or her control as defenders. Slide these characters toward the center of the play area, away from the defending player's home area. Declaring "no defenders" is also an option.</p>
-            <anchored-heading :level="3">3.2.2. Conflict action window</anchored-heading>
+            <anchored-heading @heading="add" :level="3">3.2.2. Conflict action window</anchored-heading>
             <p>
                 This is a special action window in which the defending player (rather than the first player) has the first action opportunity. These opportunities then alternate between the players until both players consecutively pass.</p>
             <p>With an action opportunity, a player may:</p>
@@ -1821,24 +1821,24 @@
             <p>
                 After using an action opportunity, a player must announce the total relevant skill present on both sides of the conflict that would be counted if the conflict were to resolve with no further actions.</p>
             <p>Once both players consecutively pass their action opportunities, proceed to the next step.</p>
-            <anchored-heading :level="3">3.2.3. Compare skill values</anchored-heading>
+            <anchored-heading @heading="add" :level="3">3.2.3. Compare skill values</anchored-heading>
             <p>
                 The conflict type indicates which skill value is used to resolve the conflict. During a military conflict use military skill. During a political conflict use political skill.</p>
             <p>
                 First, determine the attacking player's total skill in the conflict by adding together the skill (that matches the conflict type) of each ready attacking character and factor in all active modifiers. Then determine the defending player's total skill in the conflict by adding together the skill (that matches the conflict type) of each ready defending character and factor in all active modifiers.</p>
             <p>
                 The player whose side has the higher total skill wins the conflict. In order to win a conflict, a player must count a total skill of 1 or higher. In the case of a tie, the conflict is won by the attacking player. If both players count 0 skill, the conflict resolves with no winner, and the ring is returned to the pool of unclaimed rings.</p>
-            <anchored-heading :level="3">3.2.4. Apply unopposed</anchored-heading>
+            <anchored-heading @heading="add" :level="3">3.2.4. Apply unopposed</anchored-heading>
             <p>
                 If the attacking player won the conflict and the defending player controls no participating characters (in step 3.2.3), the conflict is considered "unopposed." The defending player loses 1 honor and returns it to the general token pool.</p>
             <p>If the defending player or no player won the conflict, nothing happens during this step.</p>
-            <anchored-heading :level="3">3.2.5. Break province</anchored-heading>
+            <anchored-heading @heading="add" :level="3">3.2.5. Break province</anchored-heading>
             <p>
                 If the attacking player won the conflict by an amount equal to or greater than the strength of the attacked province (in step 3.2.3), the province is broken. Rotate the province 180 degrees to indicate this.</p>
             <p>
                 If the attacking player wins a conflict and breaks a province, he or she may immediately discard any dynasty card on that province. The card is replaced facedown from its controller's dynasty deck.</p>
             <p>If the defending player or no player won the conflict, nothing happens during this step.</p>
-            <anchored-heading :level="3">3.2.6. Resolve ring effects</anchored-heading>
+            <anchored-heading @heading="add" :level="3">3.2.6. Resolve ring effects</anchored-heading>
             <p>
                 If the attacking player won the conflict (in step 3.2.3), that player may resolve the ring effect of the contested ring. The ring effects are as follows:</p>
             <p><b>Air</b>: The attacking player takes 1 honor from his or her opponent, or gains 2 honor from the general token pool.
@@ -1851,64 +1851,64 @@
             </p>
             <p><b>Void</b>: The attacking player chooses a character and removes 1 fate from that character.</p>
             <p>If the defending player or no player won the conflict, nothing happens during this step.</p>
-            <anchored-heading :level="3">3.2.7. Claim ring</anchored-heading>
+            <anchored-heading @heading="add" :level="3">3.2.7. Claim ring</anchored-heading>
             <p>
                 The player who won the conflict (in step 3.2.3) claims the contested ring and adds it to his or her claimed ring pool.</p>
             <p>If no player won the conflict (in step 3.2.3), the ring is returned to the unclaimed ring pool.</p>
-            <anchored-heading :level="3">3.2.8. Return home</anchored-heading>
+            <anchored-heading @heading="add" :level="3">3.2.8. Return home</anchored-heading>
             <p>
                 Simultaneously bow each ready participating character in the conflict. Return each participating character to its controller's home area. These characters are no longer participating in the conflict.</p>
-            <anchored-heading :level="3">3.3. Conflict ends / Conflict was passed</anchored-heading>
+            <anchored-heading @heading="add" :level="3">3.3. Conflict ends / Conflict was passed</anchored-heading>
             <p>
                 This step formalizes the end of a conflict, or that a conflict opportunity has been passed. Return to the action window following step 3.1.</p>
-            <anchored-heading :level="3">3.4. Determine Imperial Favor</anchored-heading>
+            <anchored-heading @heading="add" :level="3">3.4. Determine Imperial Favor</anchored-heading>
             <p>This step marks the beginning of the contest for the Imperial Favor.</p>
-            <anchored-heading :level="3">3.4.1. Glory count</anchored-heading>
+            <anchored-heading @heading="add" :level="3">3.4.1. Glory count</anchored-heading>
             <p>
                 Each player counts the total glory value of all ready characters he or she controls, factors in all active modifiers, and adds 1 to this count for each ring in his or her claimed ring pool.</p>
             <p>
                 The players then compare their totals. The player with the higher total wins the glory count. If the totals are tied, neither player wins the glory count.</p>
-            <anchored-heading :level="3">3.4.2. Claim Imperial favor</anchored-heading>
+            <anchored-heading @heading="add" :level="3">3.4.2. Claim Imperial favor</anchored-heading>
             <p>
                 The player who won the glory count (in step 3.4.1) claims the Imperial Favor by taking the Imperial Favor card, setting it to its military side or to its political side, and placing it next to his or her stronghold. That player is said to "have the Imperial Favor," and the card may influence the following game round. If a player who already has the Imperial Favor claims it again, the player may set it to either side.</p>
             <p>
                 If players have the same total, the Imperial Favor remains in its current state (either unclaimed or under the possession of the player who currently has it, remaining set on its current side).</p>
             <p>This step also marks the end of the contest for the Imperial Favor.</p>
-            <anchored-heading :level="3">3.5. Conflict phase ends</anchored-heading>
+            <anchored-heading @heading="add" :level="3">3.5. Conflict phase ends</anchored-heading>
             <p>This step formalizes the end of the conflict phase.</p>
-            <anchored-heading :level="2">4. Fate Phase</anchored-heading>
-            <anchored-heading :level="3">4.1. Fate phase begins</anchored-heading>
+            <anchored-heading @heading="add" :level="2">4. Fate Phase</anchored-heading>
+            <anchored-heading @heading="add" :level="3">4.1. Fate phase begins</anchored-heading>
             <p>This step formalizes the beginning of the fate phase.</p>
-            <anchored-heading :level="3">4.2. Discard characters with no fate</anchored-heading>
+            <anchored-heading @heading="add" :level="3">4.2. Discard characters with no fate</anchored-heading>
             <p>
                 In player order, each player discards each character he or she controls with no fate on it. These characters are discarded one at a time, in the order of the discarding player's choosing.</p>
-            <anchored-heading :level="3">4.3. Remove fate from characters</anchored-heading>
+            <anchored-heading @heading="add" :level="3">4.3. Remove fate from characters</anchored-heading>
             <p>Simultaneously remove 1 fate from each character in play.</p>
-            <anchored-heading :level="3">4.4. Place fate on unclaimed rings</anchored-heading>
+            <anchored-heading @heading="add" :level="3">4.4. Place fate on unclaimed rings</anchored-heading>
             <p>Simultaneously place 1 fate from the general token pool on each unclaimed ring.</p>
-            <anchored-heading :level="3">4.5. Fate phase ends</anchored-heading>
+            <anchored-heading @heading="add" :level="3">4.5. Fate phase ends</anchored-heading>
             <p>This step formalizes the end of the fate phase.</p>
-            <anchored-heading :level="2">5. Regroup Phase</anchored-heading>
-            <anchored-heading :level="3">5.1. Regroup phase begins</anchored-heading>
+            <anchored-heading @heading="add" :level="2">5. Regroup Phase</anchored-heading>
+            <anchored-heading @heading="add" :level="3">5.1. Regroup phase begins</anchored-heading>
             <p>This step formalizes the beginning of the regroup phase.</p>
-            <anchored-heading :level="3">5.2. Ready cards</anchored-heading>
+            <anchored-heading @heading="add" :level="3">5.2. Ready cards</anchored-heading>
             <p>Simultaneously ready each bowed card in play.</p>
-            <anchored-heading :level="3">5.3. Discard from provinces</anchored-heading>
+            <anchored-heading @heading="add" :level="3">5.3. Discard from provinces</anchored-heading>
             <p>
                 In player order, each player must discard each faceup card from each his or her broken provinces, and also has the opportunity to choose and discard any number of faceup dynasty cards from his or her unbroken provinces.</p>
             <p>Each card discarded in this manner is replaced facedown from its owner's dynasty deck.</p>
-            <anchored-heading :level="3">5.4. Return rings</anchored-heading>
+            <anchored-heading @heading="add" :level="3">5.4. Return rings</anchored-heading>
             <p>Simultaneously return each claimed ring to the unclaimed ring pool.</p>
-            <anchored-heading :level="3">5.5. Pass first player token</anchored-heading>
+            <anchored-heading @heading="add" :level="3">5.5. Pass first player token</anchored-heading>
             <p>
                 The player with the first player token passes it to his or her opponent. That player becomes the first player.</p>
-            <anchored-heading :level="3">5.6. Regroup phase ends</anchored-heading>
+            <anchored-heading @heading="add" :level="3">5.6. Regroup phase ends</anchored-heading>
             <p>This step formalizes the end of the regroup phase.</p>
             <p>
                 As the regroup phase is the final phase in the round, this step also formalizes the end of the round. Any active "until the end of the round" lasting effects expire at this time.</p>
             <p>
                 After this step is complete, play proceeds to the beginning of the dynasty phase of the next game round.</p>
-            <anchored-heading :level="2">Duel Timing</anchored-heading>
+            <anchored-heading @heading="add" :level="2">Duel Timing</anchored-heading>
             <table class="chart">
                 <tr>
                     <td id="Duel_Timing" class="top">D. Duel Timing</td>
@@ -1941,31 +1941,31 @@
                     <td><b>D.9</b> Duel ends.</td>
                 </tr>
             </table>
-            <anchored-heading :level="3">D.1. Duel begins</anchored-heading>
+            <anchored-heading @heading="add" :level="3">D.1. Duel begins</anchored-heading>
             <p>
                 A duel is initiated by the successful resolution of any action ability that challenges another character to a duel. When such an ability resolves, this timing window opens.</p>
             <p>This step formalizes the beginning of the duel.</p>
-            <anchored-heading :level="3">D.2. Establish challenger and challengee</anchored-heading>
+            <anchored-heading @heading="add" :level="3">D.2. Establish challenger and challengee</anchored-heading>
             <p>
                 The ability that initiated the duel (in step D.1) will have identified two characters that are involved in the duel. The character controlled by the player who initiated the ability is the challenger. The character controlled by his or her opponent is the challengee.</p>
-            <anchored-heading :level="3">D.3. Duel honor bid</anchored-heading>
+            <anchored-heading @heading="add" :level="3">D.3. Duel honor bid</anchored-heading>
             <p>
                 Each player secretly selects a number from 1 to 5 on his or her honor dial as his or her honor bid for this duel. Once both players have confirmed that they are ready, proceed to the next step.</p>
-            <anchored-heading :level="3">D.4. Reveal honor dials</anchored-heading>
+            <anchored-heading @heading="add" :level="3">D.4. Reveal honor dials</anchored-heading>
             <p>The players simultaneously reveal their bids.</p>
             <p>
                 Once a player reveals an honor bid, the dial is placed next to the player's stronghold and remains as a reference point until the next honor bid occurs.</p>
-            <anchored-heading :level="3">D.5. Transfer honor</anchored-heading>
+            <anchored-heading @heading="add" :level="3">D.5. Transfer honor</anchored-heading>
             <p>
                 The player with the higher honor bid must give an amount of honor to the player with the lower honor bid that is equal to the difference between the two bids. If the bids are equal, no honor is transferred during this step.</p>
-            <anchored-heading :level="3">D.6. Modify dueling skill</anchored-heading>
+            <anchored-heading @heading="add" :level="3">D.6. Modify dueling skill</anchored-heading>
             <p>
                 The ability that initiated the duel (in step D.1) established which type of skill (military or political) is being used to determine the results of the duel. Each player adds his or her honor bid to the specified skill of his or her character that is involved in the duel. This modification persists until the end of the duel.</p>
             <ul>
                 <li><b>NOTE</b>: Any skill modifiers that were active at the time the duel was initiated are still applicable during the duel.
                 </li>
             </ul>
-            <anchored-heading :level="3">D.7. Compare skill values and determine result</anchored-heading>
+            <anchored-heading @heading="add" :level="3">D.7. Compare skill values and determine result</anchored-heading>
             <p>Compare the modified skill values of each character involved in the duel to determine the results.</p>
             <ul>
                 <li>The player controlling the character with the higher skill value wins the duel.</li>
@@ -1973,18 +1973,18 @@
                 <li>If the skill values are the same, neither player wins the duel, and neither player loses the duel.
                 </li>
             </ul>
-            <anchored-heading :level="3">D.8. Apply duel results</anchored-heading>
+            <anchored-heading @heading="add" :level="3">D.8. Apply duel results</anchored-heading>
             <p>
                 The ability that initiated the duel (in step D.1) specified the consequences of this duel for the winning and/or losing characters, or for the player(s) controlling those characters. Apply those consequences during this step.</p>
-            <anchored-heading :level="3">D.9. Duel ends</anchored-heading>
+            <anchored-heading @heading="add" :level="3">D.9. Duel ends</anchored-heading>
             <p>
                 This step formalizes the end of the duel. Return to the action window in which the duel was initiated, with the next player in the sequence of actions having the next opportunity to act.</p>
             <p><b>NOTE</b>: There are no action windows during a duel, so players are not able to initiate actions or play characters and attachments from their hands during the resolution of a duel. Applicable interrupt and/or reaction abilities may be triggered during a duel.
             </p>
-            <anchored-heading :level="1">Appendix II: Card Anatomy</anchored-heading>
+            <anchored-heading @heading="add" :level="1">Appendix II: Card Anatomy</anchored-heading>
             <p>
                 This section presents a detailed anatomy of each cardtype. Definitions of each element can be found in the glossary.</p>
-            <anchored-heading :level="3">Card Anatomy Key</anchored-heading>
+            <anchored-heading @heading="add" :level="3">Card Anatomy Key</anchored-heading>
             <ol>
                 <li><b>Title</b>: The name of the card.</li>
                 <li><b>Cost</b>: The fate cost to play the card.</li>
@@ -2014,9 +2014,7 @@
 </template>
 
 <script>
-  /* eslint-disable import/no-extraneous-dependencies */
-  import jquery from 'jquery';
-  import { defer } from 'lodash/defer';
+  import defer from 'lodash/defer';
 
   const getChildrenTextContent = children => children.map(node => (node.children ? getChildrenTextContent(node.children) : node.text)).join('');
 
@@ -2030,7 +2028,13 @@
     },
     components: {
       AnchoredHeading: {
-        render(createElement) {
+        props: {
+          level: {
+            type: Number,
+            required: true,
+          },
+        },
+        data() {
           const text = getChildrenTextContent(this.$slots.default);
           const shorttext = text.indexOf('(') > -1 ? text.substring(0, text.indexOf('(')).trim() : text;
           const headingId = shorttext
@@ -2038,16 +2042,21 @@
             .replace(/\W+/g, '-')
             .replace(/(^-|-$)/g, '')
           ;
-
+          return {
+            text,
+            headingId,
+          };
+        },
+        render(createElement) {
           return createElement(
             `h${this.level}`,
             [
               this.$slots.default,
               createElement('a', {
                 attrs: {
-                  name: headingId,
-                  href: `#${headingId}`,
-                  title: text,
+                  name: this.headingId,
+                  href: `#${this.headingId}`,
+                  title: this.text,
                   class: 'anchor',
                   'data-level': this.level,
                 },
@@ -2068,23 +2077,18 @@
             ],
           );
         },
-        props: {
-          level: {
-            type: Number,
-            required: true,
-          },
+        mounted() {
+          this.$emit('heading', {
+            level: this.level,
+            text: this.text,
+            href: `#${this.headingId}`,
+          });
         },
       },
     },
     methods: {
-      title(heading) {
-        return jquery(heading).attr('title');
-      },
-      level(heading) {
-        return jquery(heading).data('level');
-      },
-      href(heading) {
-        return `#${jquery(heading).attr('name')}`;
+      add(heading) {
+        this.headings.push(heading);
       },
       scroll(hashbang) {
         if (hashbang) {
@@ -2094,7 +2098,6 @@
     },
     mounted() {
       this.$store.commit('changeDocumentTitle', 'Rules Reference');
-      this.headings = jquery('a[name]').toArray();
       defer(this.scroll, this.$route.hash);
     },
   };
