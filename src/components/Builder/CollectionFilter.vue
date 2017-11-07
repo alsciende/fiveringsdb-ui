@@ -155,8 +155,8 @@
           .distinct('clan')
           .map(clanId => ({ id: clanId, name: this.$t(`clan.${clanId}`) }))
         ;
-        const partition = partition(clans, item => item.id === 'neutral');
-        return sortBy(partition[1], 'name').concat(partition[0]);
+        const part = partition(clans, item => item.id === 'neutral');
+        return sortBy(part[1], 'name').concat(part[0]);
       },
       getTypeOptions() {
         return [
