@@ -71,7 +71,8 @@
 </template>
 
 <script>
-  import _ from 'lodash';
+  import sortBy from 'lodash/sortBy';
+  import map from 'lodash/map';
 
   import UtilsCardLink from '@/components/Utils/CardLink';
   import UtilsCardIcon from '@/components/Utils/CardIcon';
@@ -144,7 +145,7 @@
         return this.inspector.findCardByType('role');
       },
       provinceDeck() {
-        return _.sortBy(_.map(this.inspector.findSlotsBy('type', 'province'), 'card'), 'element');
+        return sortBy(map(this.inspector.findSlotsBy('type', 'province'), 'card'), 'element');
       },
       dynastyDeck() {
         return this.inspector.findSlotsBy('side', 'dynasty');

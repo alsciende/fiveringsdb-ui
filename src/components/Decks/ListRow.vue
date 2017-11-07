@@ -25,7 +25,7 @@
 
 <script>
   import moment from 'moment';
-  import { filter } from 'lodash';
+  import filter from 'lodash/filter';
 
   export default {
     name: 'decks-list-row',

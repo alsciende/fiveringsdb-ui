@@ -72,7 +72,9 @@
 </template>
 
 <script>
-  import _ from 'lodash';
+  import partition from 'lodash/partition';
+  import sortBy from 'lodash/sortBy';
+  import debounce from 'lodash/debounce';
   import stores from '@/service/storeService';
   import typeIcons from '@/service/typeIcons';
   import queryParser from '@/service/queryParser';
@@ -153,8 +155,8 @@
           .distinct('clan')
           .map(clanId => ({ id: clanId, name: this.$t(`clan.${clanId}`) }))
         ;
-        const partition = _.partition(clans, item => item.id === 'neutral');
-        return _.sortBy(partition[1], 'name').concat(partition[0]);
+        const partition = partition(clans, item => item.id === 'neutral');
+        return sortBy(partition[1], 'name').concat(partition[0]);
       },
       getTypeOptions() {
         return [
@@ -176,7 +178,7 @@
       value() {
         this.$emit('input', this.value);
       },
-      queryString: _.debounce(function update() {
+      queryString: debounce(function update() {
         this.updateQuery();
       }, INPUT_DEBOUNCE_TIMER_MS),
     },

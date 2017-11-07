@@ -13,7 +13,7 @@
 </template>
 
 <script>
-  import _ from 'lodash';
+  import range from 'lodash/range';
 
   export default {
     name: 'builder-quantity-selector',
@@ -43,7 +43,7 @@
     },
     computed: {
       range() {
-        return _.range(this.min, this.max + 1);
+        return range(this.min, this.max + 1);
       },
     },
     methods: {
