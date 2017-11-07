@@ -36,14 +36,10 @@ const childFeatures = buildStrWindowFeatures({
 
 // actions
 const actions = {
-  login({ commit, state }) {
+  login({ commit }) {
     let childWindow = null;
 
     return new Promise((resolve, reject) => {
-      if (state.token !== null && state.token.expires_at !== null) {
-        return resolve(state.token);
-      }
-
       // called when the child window sends the access token
       const callback = (event) => {
         if (event.source === childWindow && event.origin === config.getApiOrigin()) {
@@ -66,7 +62,7 @@ const actions = {
       user: null,
     });
   },
-  refresh({ commit, state }) {
+  refresh({ commit, state, dispatch }) {
     return new Promise((resolve, reject) => {
       Vue
         .http
@@ -75,7 +71,7 @@ const actions = {
           resolve(postToken(commit, response.body));
         })
         .catch((reason) => {
-          resolve(null);
+          return dispatch('logout');
         });
     });
   },
@@ -94,7 +90,7 @@ const actions = {
 
 // getters
 const getters = {
-  hasToken: state => state.token !== null,
+  hasToken: state => state.token !== null && state.token.expires_at !== null,
   hasUser: state => state.user !== null,
   userId: state => (state.user ? state.user.id : null),
   username: state => (state.user ? state.user.username : null),

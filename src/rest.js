@@ -29,9 +29,10 @@ function onSuccess(response) {
 function onFailure(reason) {
   return new Promise((resolve, reject) => {
     if (reason.status === 403) {
-      store.dispatch('logout');
+      return store.dispatch('logout');
     }
-    reject(reason);
+
+    resolve(reason);
   });
 }
 
