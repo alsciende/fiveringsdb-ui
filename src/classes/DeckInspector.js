@@ -1,4 +1,7 @@
-import _ from 'lodash';
+import find from 'lodash/find';
+import map from 'lodash/map';
+import uniq from 'lodash/uniq';
+import difference from 'lodash/difference';
 
 class DeckInspector {
   constructor(slots, format) {
@@ -55,7 +58,7 @@ class DeckInspector {
   }
 
   checkCardCopies() {
-    if (_.find(this.slots, slot => slot.quantity > slot.card.deck_limit)) {
+    if (find(this.slots, slot => slot.quantity > slot.card.deck_limit)) {
       return 1;
     }
 
@@ -100,11 +103,11 @@ class DeckInspector {
       return 14;
     }
 
-    const provinceElements = _.map(provinceDeck, slot => slot.card.element);
-    if (_.uniq(provinceElements).length < 5) {
+    const provinceElements = map(provinceDeck, slot => slot.card.element);
+    if (uniq(provinceElements).length < 5) {
       let seekerException = false;
       if (this.role && this.role.traits.includes('seeker')) {
-        if (_.difference(provinceElements, this.role.traits).length === 3) {
+        if (difference(provinceElements, this.role.traits).length === 3) {
           seekerException = true;
         }
       }
@@ -189,7 +192,7 @@ class DeckInspector {
         return 10;
       }
 
-      if (_.uniq(offclans.map(slot => slot.card.clan)).length > 1) {
+      if (uniq(offclans.map(slot => slot.card.clan)).length > 1) {
         return 11;
       }
     }
@@ -214,7 +217,7 @@ class DeckInspector {
   }
 
   static count(slots) {
-    return _.map(slots, 'quantity').reduce((a, b) => a + b, 0);
+    return map(slots, 'quantity').reduce((a, b) => a + b, 0);
   }
 }
 

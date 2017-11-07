@@ -2015,8 +2015,8 @@
 
 <script>
   /* eslint-disable import/no-extraneous-dependencies */
-  import $ from 'jquery';
-  import { defer } from 'lodash';
+  import jquery from 'jquery';
+  import { defer } from 'lodash/defer';
 
   const getChildrenTextContent = children => children.map(node => (node.children ? getChildrenTextContent(node.children) : node.text)).join('');
 
@@ -2078,13 +2078,13 @@
     },
     methods: {
       title(heading) {
-        return $(heading).attr('title');
+        return jquery(heading).attr('title');
       },
       level(heading) {
-        return $(heading).data('level');
+        return jquery(heading).data('level');
       },
       href(heading) {
-        return `#${$(heading).attr('name')}`;
+        return `#${jquery(heading).attr('name')}`;
       },
       scroll(hashbang) {
         if (hashbang) {
@@ -2094,7 +2094,7 @@
     },
     mounted() {
       this.$store.commit('changeDocumentTitle', 'Rules Reference');
-      this.headings = $('a[name]').toArray();
+      this.headings = jquery('a[name]').toArray();
       defer(this.scroll, this.$route.hash);
     },
   };
