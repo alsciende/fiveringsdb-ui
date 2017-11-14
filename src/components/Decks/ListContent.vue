@@ -55,7 +55,7 @@
     },
     computed: {
       sort() {
-        return this.$route.params.sort || 'recent';
+        return this.$route.params.sort || 'date';
       },
     },
     methods: {
