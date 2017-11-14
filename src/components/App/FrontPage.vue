@@ -7,7 +7,7 @@
                         <router-link :to="{name:'cards-by-default'}" class="nav-link">Cards</router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link :to="{name:'decks-list', params: { sort: 'trending' }}" class="nav-link">Decks</router-link>
+                        <router-link :to="{name:'decks-list', params: { sort: 'search' }}" class="nav-link">Decks</router-link>
                     </li>
                     <li class="nav-item">
                         <router-link :to="{name:'deckbuilder'}" class="nav-link">Builder</router-link>
