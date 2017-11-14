@@ -2,7 +2,7 @@
     <div>
         <div class="row content">
             <div class="col-md-2">
-                <ul class="nav flex-sm-column justify-content-between mb-3 text-uppercase">
+                <ul class="nav flex-sm-column justify-content-around mb-3 text-uppercase">
                     <li class="nav-item">
                         <router-link :to="{name:'cards-by-default'}" class="nav-link">Cards</router-link>
                     </li>

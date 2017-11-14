@@ -42,6 +42,10 @@
         type: Number,
         default: 30,
       },
+      search: {
+        type: Object,
+        required: true,
+      },
     },
     data() {
       return {
@@ -53,17 +57,13 @@
         perPage: 1,
       };
     },
-    computed: {
-      sort() {
-        return this.$route.params.sort || 'date';
-      },
-    },
     methods: {
       loadDecks() {
         this.loading = true;
+        const params = Object.assign({ page: this.currentPage, limit: this.limit }, this.search);
         rest
           .public()
-          .get('decks', { sort: this.sort, page: this.currentPage, limit: this.limit })
+          .get('decks', params)
           .then((result) => {
             this.loading = false;
             this.decks = result.records;
@@ -78,10 +78,10 @@
       },
     },
     watch: {
-      currentPage() {
+      search() {
         this.loadDecks();
       },
-      $route() {
+      currentPage() {
         this.loadDecks();
       },
     },
