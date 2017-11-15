@@ -49,11 +49,13 @@
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-8">
-                                    <label for="cardInput">Card included</label>
-                                    <b-form-select id="cardInput"
-                                                   :options="cardOptions"
-                                                   v-model="form.card"
-                                    ></b-form-select>
+                                    <label for="cardInput">Cards included</label>
+                                    <multiselect
+                                            v-model="form.cards"
+                                            label="text"
+                                            :multiple="true"
+                                            :options="cardOptions">
+                                    </multiselect>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label>Submit</label>
@@ -77,6 +79,7 @@
 </template>
 
 <script>
+  import Multiselect from 'vue-multiselect';
   import uniq from 'lodash/uniq';
   import moment from 'moment';
   import DecksListContent from './ListContent';
@@ -86,6 +89,7 @@
     name: 'decks-list',
     components: {
       DecksListContent,
+      Multiselect,
     },
     data() {
       const clanOptions = [{ text: '', value: null }]
@@ -108,7 +112,7 @@
           sort: 'date',
           since: null,
           clan: null,
-          card: null,
+          cards: [],
         },
         sortOptions: [
           { text: 'Recent first', value: 'date' },
@@ -139,8 +143,8 @@
         if (this.form.clan !== null) {
           form.clan = this.form.clan;
         }
-        if (this.form.card !== null) {
-          form.card = this.form.card;
+        if (this.form.cards.length > 0) {
+          form.cards = this.form.cards.map(item => item.value);
         }
         this.search = form;
       },
@@ -153,5 +157,6 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 <style scoped>
 </style>
