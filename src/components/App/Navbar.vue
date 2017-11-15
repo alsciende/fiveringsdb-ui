@@ -69,12 +69,8 @@
     data() {
       return {
         deckSortingModes: {
+          search: 'Recent',
           trending: 'Trending',
-          recent: 'Recent',
-          week: 'Popular this week',
-          month: 'Popular this month',
-          fame: 'Hall of fame',
-          features: 'Decks of the week',
         },
         query: '',
       };

@@ -2,12 +2,12 @@
     <div>
         <div class="row content">
             <div class="col-md-2">
-                <ul class="nav flex-sm-column justify-content-between mb-3 text-uppercase">
+                <ul class="nav flex-sm-column justify-content-around mb-3 text-uppercase">
                     <li class="nav-item">
                         <router-link :to="{name:'cards-by-default'}" class="nav-link">Cards</router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link :to="{name:'decks-list', params: { sort: 'trending' }}" class="nav-link">Decks</router-link>
+                        <router-link :to="{name:'decks-list', params: { sort: 'search' }}" class="nav-link">Decks</router-link>
                     </li>
                     <li class="nav-item">
                         <router-link :to="{name:'deckbuilder'}" class="nav-link">Builder</router-link>
