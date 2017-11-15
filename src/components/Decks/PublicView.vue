@@ -25,7 +25,7 @@
                 <div class="col-lg-6">
                     <utils-deck-content :deck="deck" :editable="false"></utils-deck-content>
 
-                    <div class="pb-1 my-3 bb-10 bt-10 d-flex justify-content-around">
+                    <div class="pb-1 my-3 bb-10 bt-10 d-flex justify-content-around d-print-none">
                         <a v-if="liked === false"
                            title="Like"
                            href="#"
@@ -58,7 +58,7 @@
 
                     <div class="desc-description" v-html="description"></div>
 
-                    <div v-if="author" class="pb-1 mt-3 bt-10 d-flex justify-content-around">
+                    <div v-if="author" class="pb-1 mt-3 bt-10 d-flex justify-content-around d-print-none">
                         <a href="#"
                            @click.prevent="patch"
                            role="button"

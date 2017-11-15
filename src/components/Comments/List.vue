@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="d-print-none">
         <h4 class="py-3 bt-30">
             <span class="fa fa-comments-o"></span>
             {{ deck.comments.length }} comments
@@ -28,8 +28,7 @@
 
   export default {
     name: 'comments-list',
-    components: {
-    },
+    components: {},
     props: {
       deck: {
         type: Object,

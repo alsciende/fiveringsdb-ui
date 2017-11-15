@@ -1,5 +1,5 @@
 <template>
-    <footer class="bg-dark text-white">
+    <footer class="bg-dark text-white d-print-none">
         <div class="container text-center pt-3">
             <p>
                 Work in progress by <a href="https://twitter.com/alsciende">@alsciende</a>.
