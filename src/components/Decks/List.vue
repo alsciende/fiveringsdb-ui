@@ -158,5 +158,8 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
-<style scoped>
+<style>
+    .page-item.active .page-link {
+        z-index: auto;
+    }
 </style>
