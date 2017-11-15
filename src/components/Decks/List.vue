@@ -26,24 +26,24 @@
                         <form @submit.prevent="submit">
                             <div class="row">
                                 <div class="form-group col-md-4">
+                                    <label for="primaryClanInput">Primary Clan</label>
+                                    <b-form-select id="primaryClanInput"
+                                                   :options="clanOptions"
+                                                   v-model="form.primaryClan"
+                                    ></b-form-select>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="secondaryClanInput">Secondary Clan</label>
+                                    <b-form-select id="secondaryClanInput"
+                                                   :options="clanOptions"
+                                                   v-model="form.secondaryClan"
+                                    ></b-form-select>
+                                </div>
+                                <div class="form-group col-md-4">
                                     <label for="sortInput">Sort</label>
                                     <b-form-select id="sortInput"
                                                    :options="sortOptions" required
                                                    v-model="form.sort"
-                                    ></b-form-select>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <label for="sinceInput">Period</label>
-                                    <b-form-select id="sinceInput"
-                                                   :options="sinceOptions"
-                                                   v-model="form.since"
-                                    ></b-form-select>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <label for="clanInput">Clan</label>
-                                    <b-form-select id="clanInput"
-                                                   :options="clanOptions"
-                                                   v-model="form.clan"
                                     ></b-form-select>
                                 </div>
                             </div>
@@ -58,10 +58,20 @@
                                     </multiselect>
                                 </div>
                                 <div class="form-group col-md-4">
+                                    <label for="sinceInput">Period</label>
+                                    <b-form-select id="sinceInput"
+                                                   :options="sinceOptions"
+                                                   v-model="form.since"
+                                    ></b-form-select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-4">
                                     <label>Submit</label>
                                     <b-button type="submit" variant="primary" :block="true">Submit</b-button>
                                 </div>
                             </div>
+
                         </form>
                     </b-card>
                 </b-collapse>
@@ -111,7 +121,8 @@
         form: {
           sort: 'date',
           since: null,
-          clan: null,
+          primaryClan: null,
+          secondaryClan: null,
           cards: [],
         },
         sortOptions: [
@@ -140,8 +151,11 @@
         if (this.form.since !== null) {
           form.since = moment().subtract(this.form.since, 'days').format('YYYY-MM-DD');
         }
-        if (this.form.clan !== null) {
-          form.clan = this.form.clan;
+        if (this.form.primaryClan !== null) {
+          form.primaryClan = this.form.primaryClan;
+        }
+        if (this.form.secondaryClan !== null) {
+          form.secondaryClan = this.form.secondaryClan;
         }
         if (this.form.cards.length > 0) {
           form.cards = this.form.cards.map(item => item.value);
