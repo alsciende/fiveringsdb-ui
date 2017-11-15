@@ -26,11 +26,36 @@
                         <form @submit.prevent="submit">
                             <div class="row">
                                 <div class="form-group col-md-4">
+                                    <label for="primaryClanInput">Primary Clan</label>
+                                    <b-form-select id="primaryClanInput"
+                                                   :options="clanOptions"
+                                                   v-model="form.primaryClan"
+                                    ></b-form-select>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="secondaryClanInput">Secondary Clan</label>
+                                    <b-form-select id="secondaryClanInput"
+                                                   :options="clanOptions"
+                                                   v-model="form.secondaryClan"
+                                    ></b-form-select>
+                                </div>
+                                <div class="form-group col-md-4">
                                     <label for="sortInput">Sort</label>
                                     <b-form-select id="sortInput"
                                                    :options="sortOptions" required
                                                    v-model="form.sort"
                                     ></b-form-select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-8">
+                                    <label for="cardInput">Cards included</label>
+                                    <multiselect
+                                            v-model="form.cards"
+                                            label="text"
+                                            :multiple="true"
+                                            :options="cardOptions">
+                                    </multiselect>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="sinceInput">Period</label>
@@ -39,27 +64,14 @@
                                                    v-model="form.since"
                                     ></b-form-select>
                                 </div>
-                                <div class="form-group col-md-4">
-                                    <label for="clanInput">Clan</label>
-                                    <b-form-select id="clanInput"
-                                                   :options="clanOptions"
-                                                   v-model="form.clan"
-                                    ></b-form-select>
-                                </div>
                             </div>
                             <div class="row">
-                                <div class="form-group col-md-8">
-                                    <label for="cardInput">Card included</label>
-                                    <b-form-select id="cardInput"
-                                                   :options="cardOptions"
-                                                   v-model="form.card"
-                                    ></b-form-select>
-                                </div>
                                 <div class="form-group col-md-4">
                                     <label>Submit</label>
                                     <b-button type="submit" variant="primary" :block="true">Submit</b-button>
                                 </div>
                             </div>
+
                         </form>
                     </b-card>
                 </b-collapse>
@@ -77,6 +89,7 @@
 </template>
 
 <script>
+  import Multiselect from 'vue-multiselect';
   import uniq from 'lodash/uniq';
   import moment from 'moment';
   import DecksListContent from './ListContent';
@@ -86,6 +99,7 @@
     name: 'decks-list',
     components: {
       DecksListContent,
+      Multiselect,
     },
     data() {
       const clanOptions = [{ text: '', value: null }]
@@ -107,8 +121,9 @@
         form: {
           sort: 'date',
           since: null,
-          clan: null,
-          card: null,
+          primaryClan: null,
+          secondaryClan: null,
+          cards: [],
         },
         sortOptions: [
           { text: 'Recent first', value: 'date' },
@@ -136,11 +151,14 @@
         if (this.form.since !== null) {
           form.since = moment().subtract(this.form.since, 'days').format('YYYY-MM-DD');
         }
-        if (this.form.clan !== null) {
-          form.clan = this.form.clan;
+        if (this.form.primaryClan !== null) {
+          form.primaryClan = this.form.primaryClan;
         }
-        if (this.form.card !== null) {
-          form.card = this.form.card;
+        if (this.form.secondaryClan !== null) {
+          form.secondaryClan = this.form.secondaryClan;
+        }
+        if (this.form.cards.length > 0) {
+          form.cards = this.form.cards.map(item => item.value);
         }
         this.search = form;
       },
@@ -153,5 +171,9 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
+<style>
+    .page-item.active .page-link {
+        z-index: auto;
+    }
 </style>

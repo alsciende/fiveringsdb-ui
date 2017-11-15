@@ -22,13 +22,11 @@
                             </b-dropdown-item>
                         </template>
                     </b-nav-item-dropdown>
-                    <b-nav-item-dropdown text="Decks" left :class="[ section === 'decks' ? 'active' : '']">
-                        <b-dropdown-item v-for="(label, mode) in deckSortingModes"
-                                         :key="mode"
-                                         :to="{name:'decks-list', params: { sort: mode }}"
-                        >{{ label }}
-                        </b-dropdown-item>
-                    </b-nav-item-dropdown>
+                    <b-nav-item
+                            :to="{name:'decks-list', params: { sort: 'search' }}"
+                    >
+                        Decks
+                    </b-nav-item>
                     <b-nav-item
                             :to="{name:'deckbuilder'}"
                     >
@@ -42,7 +40,8 @@
 
                     <li class="nav-item col-sm">
                         <form v-on:submit.prevent="search" class="d-inline">
-                            <input v-model="query" class="form-control bg-dark text-light" type="text" placeholder="Card Search">
+                            <input v-model="query" class="form-control bg-dark text-light" type="text"
+                                   placeholder="Card Search">
                         </form>
                     </li>
                     <li class="nav-item" v-if="hasUser">
@@ -68,10 +67,6 @@
     props: [],
     data() {
       return {
-        deckSortingModes: {
-          search: 'Recent',
-          trending: 'Trending',
-        },
         query: '',
       };
     },
