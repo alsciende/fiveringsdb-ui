@@ -37,6 +37,7 @@ conflict:
 
 keyword:
     academy: 'Academy'
+    actor: 'Actor'
     air: 'Air'
     army: 'Army'
     banner: 'Banner'

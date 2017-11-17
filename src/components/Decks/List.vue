@@ -15,7 +15,7 @@
             </ul>
         </div>
         <div class="col-md-8">
-            <b-form-group v-if="sort !== 'trending'">
+            <b-form-group v-if="form">
                 <div class="text-center">
                     <b-btn v-b-toggle.form variant="outline-primary" size="sm"><span class="fa fa-cogs"></span>
                         Sort and Filter
@@ -76,7 +76,7 @@
                     </b-card>
                 </b-collapse>
             </b-form-group>
-            <decks-list-content :search="search"></decks-list-content>
+            <decks-list-content v-if="search" :search="search"></decks-list-content>
         </div>
         <div class="col-md-2">
             <ins class="adsbygoogle"
@@ -115,16 +115,8 @@
             ),
         );
       return {
-        search: {
-          sort: 'date',
-        },
-        form: {
-          sort: 'date',
-          since: null,
-          primaryClan: null,
-          secondaryClan: null,
-          cards: [],
-        },
+        search: null,
+        form: null,
         sortOptions: [
           { text: 'Recent first', value: 'date' },
           { text: 'Popular first', value: 'popularity' },
@@ -144,28 +136,56 @@
       },
     },
     methods: {
+      init() {
+        if (this.sort === 'search') {
+          this.form = {
+            sort: 'date',
+            since: null,
+            primaryClan: null,
+            secondaryClan: null,
+            cards: [],
+          };
+        } else {
+          this.form = null;
+        }
+      },
       submit() {
-        const form = {
-          sort: this.form.sort,
-        };
-        if (this.form.since !== null) {
-          form.since = moment().subtract(this.form.since, 'days').format('YYYY-MM-DD');
+        const search = {};
+
+        if (this.form) {
+          search.sort = this.form.sort;
+          if (this.form.since !== null) {
+            search.since = moment().subtract(this.form.since, 'days').format('YYYY-MM-DD');
+          }
+          if (this.form.primaryClan !== null) {
+            search.primaryClan = this.form.primaryClan;
+          }
+          if (this.form.secondaryClan !== null) {
+            search.secondaryClan = this.form.secondaryClan;
+          }
+          if (this.form.cards.length > 0) {
+            search.cards = this.form.cards.map(item => item.value);
+          }
+        } else {
+          search.sort = this.sort;
         }
-        if (this.form.primaryClan !== null) {
-          form.primaryClan = this.form.primaryClan;
-        }
-        if (this.form.secondaryClan !== null) {
-          form.secondaryClan = this.form.secondaryClan;
-        }
-        if (this.form.cards.length > 0) {
-          form.cards = this.form.cards.map(item => item.value);
-        }
-        this.search = form;
+
+        this.search = search;
       },
     },
     mounted() {
       this.$store.commit('changeDocumentTitle', 'Deck Builder');
       (adsbygoogle = window.adsbygoogle || []).push({});
+    },
+    watch: {
+      $route() {
+        this.init();
+        this.submit();
+      },
+    },
+    mounted() {
+      this.init();
+      this.submit();
     },
   };
 </script>
