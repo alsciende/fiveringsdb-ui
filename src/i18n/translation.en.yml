@@ -1,6 +1,3 @@
-side:
-    deck: '{side} Deck'
-
 format:
     standard: 'Standard Format'
     single-core: 'Single-Core Format'
@@ -27,3 +24,4 @@ problem:
 
 msg:
     empty_strain: Empty deck
+    deck_side: '{side} Deck'
