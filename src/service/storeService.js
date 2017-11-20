@@ -1,4 +1,5 @@
 import { taffy } from 'taffydb';
+import set from 'lodash/set';
 
 import rest from '@/rest';
 
@@ -7,7 +8,7 @@ const stores = {
   cycles: taffy([]),
   packs: taffy([]),
 };
-const resources = ['cards', 'cycles', 'packs'];
+const resources = ['cards', 'cycles', 'packs', 'labels'];
 
 /**
  * load a resource from the server and creates a TAFFY db with the records
@@ -24,6 +25,14 @@ const getResource = resource => rest.public().get(resource)
 const cardNullableFields = [
   'role_restriction',
 ];
+
+const applyLabels = (i18n) => {
+  const message = {};
+  stores.labels().each((label) => {
+    set(message, label.id, label.value);
+  });
+  i18n.mergeLocaleMessage('en', message);
+};
 
 /**
  * add to each Card record 2 properties, packs and cycles,
@@ -76,8 +85,9 @@ const denormalizeCards = () => {
   });
 };
 
-export const load = () => Promise
+export const load = (i18n) => Promise
   .all(resources.map(getResource))
+  .then(applyLabels.bind(this, i18n))
   .then(denormalizeCards)
 ;
 

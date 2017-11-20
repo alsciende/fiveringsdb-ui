@@ -1,5 +1,5 @@
 <template>
-    <span class="card-traits"><span class="card-keyword" v-for="keyword in card.traits">{{ $t('keyword.' + keyword)
+    <span class="card-traits"><span class="card-trait" v-for="trait in card.traits">{{ $t('trait.' + trait)
         }}. </span></span>
 </template>
 

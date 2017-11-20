@@ -3,8 +3,8 @@
         <span v-if="card.element" class="text-smallcaps">
             {{ $t('element.' + card.element) }}.
         </span>
-        <span v-for="keyword in card.traits" class="card-keyword">
-            {{ $t('keyword.' + keyword) }}.
+        <span v-for="trait in card.traits" class="card-trait">
+            {{ $t('trait.' + trait) }}.
         </span>
     </span>
 </template>
