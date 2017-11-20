@@ -38,7 +38,7 @@ Vue.use(BootstrapVue);
 Vue.use(Notifications);
 Vue.filter('formatDate', value => value && moment(String(value)).format('DD MMM YYYY'));
 
-load().then(() => {
+load(i18n).then(() => {
   /* eslint-disable no-new */
   new Vue({
     el: '#app',

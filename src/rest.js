@@ -41,11 +41,11 @@ function getAccessToken(isMandatory) {
     return store.dispatch('token').then(result => result.access_token);
   }
 
-  return null;
+  return Promise.resolve(null);
 }
 
 class Rest {
-  constructor(isPrivate, isMandatory) {
+  constructor(isPrivate = false, isMandatory = false) {
     this.options = {};
     this.isPrivate = isPrivate;
     this.isMandatory = isMandatory;
@@ -95,7 +95,7 @@ class Rest {
 
 export default {
   public() {
-    return new Rest(false, false);
+    return new Rest();
   },
   private(mandatory = true) {
     return new Rest(true, mandatory);

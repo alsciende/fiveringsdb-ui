@@ -48,7 +48,7 @@
                 </p>
             </div>
             <p v-if="card.side" class="text-right">
-                {{ $t('side.deck', { side: $t('side.' + card.side) }) }}
+                {{ $t('msg.deck_side', { side: $t('side.' + card.side) }) }}
                 <span v-if="card.side === 'conflict' && card.influence_cost">
                     &ndash; Influence Cost: {{ card.influence_cost }}
                 </span>
