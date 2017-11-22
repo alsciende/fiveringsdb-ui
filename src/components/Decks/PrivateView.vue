@@ -12,6 +12,19 @@
             <div class="col-md-8 m-auto">
                 <h2>{{ deck.name }}</h2>
                 <utils-deck-content :deck="deck" :editable="false"></utils-deck-content>
+
+                <div class="pb-1 my-3 bb-10 bt-10 d-flex justify-content-around d-print-none">
+                    <a v-if="hasUser"
+                       title="Copy in your Builder"
+                       href="#"
+                       @click.prevent="copy"
+                       role="button"
+                       class="btn btn-link text-info">
+                        <span class="fa fa-clone"></span>
+                        Copy
+                    </a>
+
+                </div>
             </div>
         </div>
     </div>
@@ -40,8 +53,34 @@
       content() {
         return this.$store.getters.slots;
       },
+      hasUser() {
+        return this.$store.getters.hasUser;
+      },
     },
     methods: {
+      copy() {
+        if (!this.$store.getters.hasUser) {
+          return;
+        }
+
+        rest
+          .private()
+          .post(`strains`, { origin: this.deck.id })
+          .then(() => {
+            this.$notify({
+              title: 'Success',
+              text: 'Copied!',
+              type: 'success',
+            });
+          })
+          .catch((reason) => {
+            this.$notify({
+              title: 'Error',
+              text: reason,
+              type: 'error',
+            });
+          });
+      },
       fetchData() {
         this.error = null;
         this.deck = null;

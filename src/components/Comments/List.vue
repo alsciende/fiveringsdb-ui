@@ -11,14 +11,16 @@
             </h5>
             {{ comment.text }}
         </div>
-        <div class="form-group bt-10 py-3" id="new-comment">
-            <label for="comment">Your comment</label>
-            <b-form-textarea id="comment"
-                             v-model="comment"
-                             :rows="3">
-            </b-form-textarea>
+        <div v-if="hasUser">
+            <div class="form-group bt-10 py-3" id="new-comment">
+                <label for="comment">Your comment</label>
+                <b-form-textarea id="comment"
+                                 v-model="comment"
+                                 :rows="3">
+                </b-form-textarea>
+            </div>
+            <button @click="postComment" class="btn btn-outline-success">Post comment</button>
         </div>
-        <button @click="postComment" class="btn btn-outline-success">Post comment</button>
     </div>
 </template>
 
@@ -39,6 +41,11 @@
       return {
         comment: '',
       };
+    },
+    computed: {
+      hasUser() {
+        return this.$store.getters.hasUser;
+      },
     },
     methods: {
       fromNow(date) {
