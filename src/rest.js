@@ -17,23 +17,19 @@ function parseErrorResponse(error) {
 }
 
 function onSuccess(response) {
-  return new Promise((resolve, reject) => {
-    if (response.body.success) {
-      resolve(response.body);
-    } else {
-      reject(parseErrorResponse(response.body));
-    }
-  });
+  if (response.body.success === false) {
+    return Promise.reject(parseErrorResponse(response.body));
+  }
+
+  return Promise.resolve(response.body);
 }
 
 function onFailure(reason) {
-  return new Promise((resolve, reject) => {
-    if (reason.status === 403) {
-      return store.dispatch('logout');
-    }
+  if (reason.status === 403) {
+    return store.dispatch('logout');
+  }
 
-    resolve(reason);
-  });
+  return Promise.reject(reason);
 }
 
 function getAccessToken(isMandatory) {

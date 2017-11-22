@@ -26,29 +26,49 @@
                     <utils-deck-content :deck="deck" :editable="false"></utils-deck-content>
 
                     <div class="pb-1 my-3 bb-10 bt-10 d-flex justify-content-around d-print-none">
-                        <a v-if="liked === false"
-                           title="Like"
+                        <a v-if="hasUser && liked === false"
+                           title="Like this Deck"
                            href="#"
                            @click.prevent="like"
                            role="button"
                            class="btn btn-link text-danger">
                             <span class="fa fa-heart-o"></span>
-                            Like
+                            {{ nbLikes }} Like{{ nbLikes === 1 ? '' : 's' }}
                         </a>
-                        <a v-if="liked === true"
+                        <a v-if="hasUser && liked === true"
                            title="Cancel Like"
                            href="#"
                            @click.prevent="unlike"
                            role="button"
                            class="btn btn-link text-danger">
                             <span class="fa fa-heart"></span>
-                            Liked
+                            {{ nbLikes }} Like{{ nbLikes === 1 ? '' : 's' }}
                         </a>
-                        <a href="#new-comment" class="btn btn-link text-success">
+                        <span v-if="!hasUser"
+                           class="btn btn-link text-danger">
+                            <span class="fa fa-heart"></span>
+                            {{ nbLikes }} Like{{ nbLikes === 1 ? '' : 's' }}
+                        </span>
+                        <a v-if="hasUser"
+                           href="#new-comment"
+                           class="btn btn-link text-success">
                             <span class="fa fa-comment-o"></span>
                             Comment
                         </a>
-
+                        <span v-if="!hasUser"
+                           class="btn btn-link text-success">
+                            <span class="fa fa-comment-o"></span>
+                            Comment
+                        </span>
+                        <a v-if="hasUser"
+                           title="Copy in your Builder"
+                           href="#"
+                           @click.prevent="copy"
+                           role="button"
+                           class="btn btn-link text-info">
+                            <span class="fa fa-clone"></span>
+                            Copy
+                        </a>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -68,11 +88,11 @@
                             Edit
                         </a>
                         <button
-                           v-b-modal.modalDelete
-                           role="button"
-                           :disabled="!removable"
-                           :title="removable ? 'Delete this deck' : 'This deck cannot be deleted because it has comments'"
-                           class="btn btn-link text-danger">
+                                v-b-modal.modalDelete
+                                role="button"
+                                :disabled="!removable"
+                                :title="removable ? 'Delete this deck' : 'This deck cannot be deleted because it has comments'"
+                                class="btn btn-link text-danger">
                             <span class="fa fa-trash"></span>
                             Delete
                         </button>
@@ -96,6 +116,7 @@
 </template>
 
 <script>
+  import some from 'lodash/some';
   import moment from 'moment';
   import MarkdownIt from 'markdown-it';
   import rest from '@/rest';
@@ -117,6 +138,7 @@
         error: null,
         comment: '',
         liked: false,
+        nbLikes: 0,
       };
     },
     watch: {
@@ -133,31 +155,60 @@
         return this.$store.getters.slots;
       },
       author() {
-        return this.deck && this.deck.user.id === this.$store.getters.userId;
+        return this.hasUser && this.deck && this.deck.user.id === this.$store.getters.userId;
+      },
+      hasUser() {
+        return this.$store.getters.hasUser;
       },
     },
     methods: {
-      like() {
-        if (this.$store.getters.hasUser) {
-          rest
-            .private()
-            .post(`decks/${this.$route.params.deckId}/likes`)
-            .then(() => {
-              this.$notify({
-                title: 'Success',
-                text: 'Liked!',
-                type: 'success',
-              });
-              this.liked = true;
-            })
-            .catch((reason) => {
-              this.$notify({
-                title: 'Error',
-                text: reason,
-                type: 'error',
-              });
-            });
+      copy() {
+        if (!this.$store.getters.hasUser) {
+          return;
         }
+
+        rest
+          .private()
+          .post(`strains`, { origin: this.deck.id })
+          .then(() => {
+            this.$notify({
+              title: 'Success',
+              text: 'Copied!',
+              type: 'success',
+            });
+          })
+          .catch((reason) => {
+            this.$notify({
+              title: 'Error',
+              text: reason,
+              type: 'error',
+            });
+          });
+      },
+      like() {
+        if (!this.$store.getters.hasUser) {
+          return;
+        }
+
+        rest
+          .private()
+          .post(`decks/${this.$route.params.deckId}/likes`)
+          .then(() => {
+            this.$notify({
+              title: 'Success',
+              text: 'Liked!',
+              type: 'success',
+            });
+            this.liked = true;
+            this.nbLikes++;
+          })
+          .catch((reason) => {
+            this.$notify({
+              title: 'Error',
+              text: reason,
+              type: 'error',
+            });
+          });
       },
       unlike() {
         if (this.$store.getters.hasUser) {
@@ -171,6 +222,7 @@
                 type: 'success',
               });
               this.liked = false;
+              this.nbLikes--;
             })
             .catch((reason) => {
               this.$notify({
@@ -199,21 +251,24 @@
             this.loading = false;
             this.error = reason;
           });
-        if (this.$store.getters.hasUser) {
-          rest
-            .private()
-            .get(`decks/${this.$route.params.deckId}/likes/me`)
-            .then((result) => {
-              this.liked = result.hasOwnProperty('record');
-            })
-            .catch((reason) => {
-              this.$notify({
-                title: 'Error',
-                text: reason,
-                type: 'error',
-              });
+        rest
+          .private()
+          .get(`decks/${this.$route.params.deckId}/likes`)
+          .then((result) => {
+            console.log(result.records);
+            this.nbLikes = result.records.length;
+            if (this.$store.getters.hasUser) {
+              const userId = this.$store.getters.userId;
+              this.liked = some(result.records, record => record.user.id === userId);
+            }
+          })
+          .catch((reason) => {
+            this.$notify({
+              title: 'Error',
+              text: reason,
+              type: 'error',
             });
-        }
+          });
       },
       patch() {
         this.$router.push({ name: 'deck-patch', params: { deckId: this.deck.id } });
