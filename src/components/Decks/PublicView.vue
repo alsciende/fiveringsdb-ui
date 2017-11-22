@@ -33,7 +33,7 @@
                            role="button"
                            class="btn btn-link text-danger">
                             <span class="fa fa-heart-o"></span>
-                            Like
+                            {{ nbLikes }} Like{{ nbLikes === 1 ? '' : 's' }}
                         </a>
                         <a v-if="liked === true"
                            title="Cancel Like"
@@ -42,7 +42,7 @@
                            role="button"
                            class="btn btn-link text-danger">
                             <span class="fa fa-heart"></span>
-                            Liked
+                            {{ nbLikes }} Like{{ nbLikes === 1 ? '' : 's' }}
                         </a>
                         <a href="#new-comment" class="btn btn-link text-success">
                             <span class="fa fa-comment-o"></span>
@@ -68,11 +68,11 @@
                             Edit
                         </a>
                         <button
-                           v-b-modal.modalDelete
-                           role="button"
-                           :disabled="!removable"
-                           :title="removable ? 'Delete this deck' : 'This deck cannot be deleted because it has comments'"
-                           class="btn btn-link text-danger">
+                                v-b-modal.modalDelete
+                                role="button"
+                                :disabled="!removable"
+                                :title="removable ? 'Delete this deck' : 'This deck cannot be deleted because it has comments'"
+                                class="btn btn-link text-danger">
                             <span class="fa fa-trash"></span>
                             Delete
                         </button>
@@ -96,6 +96,7 @@
 </template>
 
 <script>
+  import some from 'lodash/some';
   import moment from 'moment';
   import MarkdownIt from 'markdown-it';
   import rest from '@/rest';
@@ -117,6 +118,7 @@
         error: null,
         comment: '',
         liked: false,
+        nbLikes: 0,
       };
     },
     watch: {
@@ -149,6 +151,7 @@
                 type: 'success',
               });
               this.liked = true;
+              this.nbLikes++;
             })
             .catch((reason) => {
               this.$notify({
@@ -171,6 +174,7 @@
                 type: 'success',
               });
               this.liked = false;
+              this.nbLikes--;
             })
             .catch((reason) => {
               this.$notify({
@@ -199,21 +203,24 @@
             this.loading = false;
             this.error = reason;
           });
-        if (this.$store.getters.hasUser) {
-          rest
-            .private()
-            .get(`decks/${this.$route.params.deckId}/likes/me`)
-            .then((result) => {
-              this.liked = result.hasOwnProperty('record');
-            })
-            .catch((reason) => {
-              this.$notify({
-                title: 'Error',
-                text: reason,
-                type: 'error',
-              });
+        rest
+          .private()
+          .get(`decks/${this.$route.params.deckId}/likes`)
+          .then((result) => {
+            console.log(result.records);
+            this.nbLikes = result.records.length;
+            if (this.$store.getters.hasUser) {
+              const userId = this.$store.getters.userId;
+              this.liked = some(result.records, record => record.user.id === userId);
+            }
+          })
+          .catch((reason) => {
+            this.$notify({
+              title: 'Error',
+              text: reason,
+              type: 'error',
             });
-        }
+          });
       },
       patch() {
         this.$router.push({ name: 'deck-patch', params: { deckId: this.deck.id } });
