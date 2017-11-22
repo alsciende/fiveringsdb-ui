@@ -29,6 +29,14 @@
                             <span class="fa fa-pencil"></span>
                             Save
                         </b-button>
+                        <b-button
+                                :class="{'btn btn-info': true, 'disabled': saving}"
+                                @click="copyDeck"
+                                title="Create a Copy of this Deck"
+                        >
+                            <span class="fa fa-clone"></span>
+                            Copy
+                        </b-button>
                     </div>
                 </div>
             </div>
@@ -129,6 +137,29 @@
           .catch((reason) => {
             this.loading = false;
             this.error = reason;
+          });
+      },
+      copyDeck() {
+        if (!this.$store.getters.hasUser) {
+          return;
+        }
+
+        rest
+          .private()
+          .post(`strains`, { origin: this.deck.id })
+          .then(() => {
+            this.$notify({
+              title: 'Success',
+              text: 'Copied!',
+              type: 'success',
+            });
+          })
+          .catch((reason) => {
+            this.$notify({
+              title: 'Error',
+              text: reason,
+              type: 'error',
+            });
           });
       },
       saveDeck() {
