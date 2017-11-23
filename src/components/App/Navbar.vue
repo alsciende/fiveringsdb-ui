@@ -40,8 +40,7 @@
 
                     <li class="nav-item col-sm">
                         <form v-on:submit.prevent="search" class="d-inline">
-                            <input v-model="query" class="form-control bg-dark text-light" type="text"
-                                   placeholder="Card Search">
+                            <input v-model="query" class="form-control" type="text" placeholder="Card Search">
                         </form>
                     </li>
                     <li class="nav-item" v-if="hasUser">

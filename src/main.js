@@ -17,7 +17,6 @@ import './font.css';
 import store from './store';
 import router from './router';
 import i18n from './i18n';
-import rest from './rest';
 
 import { load } from './service/storeService';
 
