@@ -94,10 +94,6 @@
     border-color: rgb(100, 100, 100);
 }
 
-.bg-light-crab {
-    background-color: #E7E6EA;
-}
-
 .link-crab a:not(.btn) {
     color: rgb(0, 28, 148);
 }
@@ -128,4 +124,100 @@
 
 .link-neutral a:not(.btn) {
     color: rgb(100, 100, 100);
+}
+
+.fg-medium-crab {
+    color: #7f8dc9;
+}
+
+.fg-medium-crane {
+    color: #7fc3ee;
+}
+
+.fg-medium-dragon {
+    color: #7fd1b8;
+}
+
+.fg-medium-lion {
+    color: #e4cd7f;
+}
+
+.fg-medium-phoenix {
+    color: #dfb17f;
+}
+
+.fg-medium-scorpion {
+    color: #d28a7f;
+}
+
+.fg-medium-unicorn {
+    color: #bb7fcb;
+}
+
+.fg-medium-neutral {
+    color: #b1b1b1;
+}
+
+.bg-medium-crab {
+    background-color: #7f8dc9;
+}
+
+.bg-medium-crane {
+    background-color: #7fc3ee;
+}
+
+.bg-medium-dragon {
+    background-color: #7fd1b8;
+}
+
+.bg-medium-lion {
+    background-color: #e4cd7f;
+}
+
+.bg-medium-phoenix {
+    background-color: #dfb17f;
+}
+
+.bg-medium-scorpion {
+    background-color: #d28a7f;
+}
+
+.bg-medium-unicorn {
+    background-color: #bb7fcb;
+}
+
+.bg-medium-neutral {
+    background-color: #b1b1b1;
+}
+
+.bd-medium-crab {
+    border-color: #7f8dc9;
+}
+
+.bd-medium-crane {
+    border-color: #7fc3ee;
+}
+
+.bd-medium-dragon {
+    border-color: #7fd1b8;
+}
+
+.bd-medium-lion {
+    border-color: #e4cd7f;
+}
+
+.bd-medium-phoenix {
+    border-color: #dfb17f;
+}
+
+.bd-medium-scorpion {
+    border-color: #d28a7f;
+}
+
+.bd-medium-unicorn {
+    border-color: #bb7fcb;
+}
+
+.bd-medium-neutral {
+    border-color: #b1b1b1;
 }

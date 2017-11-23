@@ -1,17 +1,24 @@
 <template>
     <div class="card border-dark">
-        <div class="card-body" v-bind:class="'bg-clan-icon clan-'+card.clan">
-            <h4 class="card-title">
-                <span v-if="card.unicity">&#9702;</span>
-                <slot>
-                    {{ card.name }}
-                </slot>
-            </h4>
-            <h6 class="card-subtitle mb-2 card-attributes">
-                <span v-if="card.clan !== 'neutral'" v-bind:class="'icon-clan-' + card.clan"></span>
-                {{ $t('clan.' + card.clan) }} {{ $t('type.' + card.type) }}.
-                <utils-card-traits :card="card"></utils-card-traits>
-            </h6>
+        <div class="card-body" v-bind:class="'clan-'+card.clan">
+            <div class="d-flex row no-gutters">
+                <div class="col">
+                    <h4 class="card-title">
+                        <span v-if="card.unicity" class="icon icon-clan-neutral small"></span>
+                        <slot>
+                            {{ card.name }}
+                        </slot>
+                    </h4>
+                    <h6 class="card-subtitle mb-2 card-attributes">
+                        {{ $t('clan.' + card.clan) }} {{ $t('type.' + card.type) }}.
+                        <utils-card-traits :card="card"></utils-card-traits>
+                    </h6>
+                </div>
+                <div class="col-auto">
+                    <img :src="'/static/svg/clan/' + card.clan + '.svg'"
+                         style="max-height:7ex">
+                </div>
+            </div>
             <p v-if="card.type === 'character'">
                 <span>Cost: {{ card.cost }}.</span>
                 <span v-if="card.military === undefined"><span class="strike-through">Military</span>.</span>
@@ -118,14 +125,6 @@
 <style>
     span.strike-through {
         text-decoration: line-through;
-    }
-
-    div.card-body.bg-clan-icon {
-        background-repeat: no-repeat;
-        background-size: 150px;
-        background-position-y: center;
-        background-position-x: 90%;
-        min-height: 200px;
     }
 
     div.card-text {
