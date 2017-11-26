@@ -1251,7 +1251,7 @@
                 </li>
                 <li><b>Place provinces and stronghold</b>. In player order, each player secretly selects one of their provinces, places it facedown above their dynasty deck, and places their stronghold card on top of it. If a player is using a role card, it is placed next to his or her stronghold during this step. Each player then places their other four provinces facedown between their dynasty and conflict decks, in any order.
                 </li>
-                <li><b>Fill provinces</b>. Each player places a card from the top of their dynasty deck facedown onto each of their empty nonstronghold provinces. In player order, each player has one opportunity to look at each of his or her cards placed in this manner and mulligan any number of them.
+                <li><b>Fill provinces</b>. Each player places a card from the top of their dynasty deck facedown onto each of their empty non-stronghold provinces. In player order, each player has one opportunity to look at each of his or her cards placed in this manner and mulligan any number of them.
                 </li>
                 <ul>
                     <li><b>Note:</b> After this step, a player may not look at facedown cards in his or her provinces.
