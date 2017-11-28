@@ -25,7 +25,7 @@
             </div>
             <div class="col-lg-6">
                 <div v-if="strain">
-                    <h2>{{ strain.head.name }}</h2>
+                    <h2>{{ strain.head.name }} <span class="badge badge-light">{{ strain.head.version }}</span></h2>
                     <div class="mb-2">
                         <router-link
                                 :to="{ name: 'deck-edit', params: { strainId: strain.id, deckId: strain.head.id } }"

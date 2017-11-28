@@ -10,7 +10,10 @@
 
         <div v-if="deck" class="content" :class="['link-'+deck.primary_clan]">
             <div class="text-light p-2 mb-4" :class="['bg-dark-'+deck.primary_clan]">
-                <h1 class="text-center pt-4">{{ deck.name }}</h1>
+                <h1 class="text-center pt-4">
+                    {{ deck.name }}
+                    <a href="#" title="Show all versions" v-b-modal.modalVersions class="col-auto badge badge-light">{{ deck.version }}</a>
+                </h1>
                 <div class="small d-flex justify-content-between align-items-end">
                     <span>
                         {{ $t('format.' + deck.format) }}
@@ -108,6 +111,8 @@
                         <p>Delete <b>{{ deck.name }}</b>?</p>
                     </b-modal>
 
+                    <utils-version-history :id="deck.id" :published="true"></utils-version-history>
+
                     <comments-list :deck="deck"></comments-list>
                 </div>
             </div>
@@ -121,6 +126,7 @@
   import MarkdownIt from 'markdown-it';
   import rest from '@/rest';
   import UtilsDeckContent from '@/components/Utils/DeckContent';
+  import UtilsVersionHistory from '../Utils/VersionHistory';
   import CommentsList from '../Comments/List';
 
   const md = new MarkdownIt();
@@ -129,6 +135,7 @@
     name: 'public-decks-view',
     components: {
       UtilsDeckContent,
+      UtilsVersionHistory,
       CommentsList,
     },
     data() {

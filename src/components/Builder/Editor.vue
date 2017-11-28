@@ -12,8 +12,9 @@
             <div class="col-md-6">
                 <input type="text" v-model="metadata.name" @blur="nameEdition = false" v-if="nameEdition"
                        class="form-control form-control mb-2">
-                <h2 @click="nameEdition = true" v-else>
-                    {{ metadata.name }}
+                <h2 v-else class="d-flex row">
+                    <span @click="nameEdition = true" class="col">{{ metadata.name }}</span>
+                    <a href="#" title="Show all versions" v-b-modal.modalVersions class="col-auto badge badge-light">{{ metadata.version }}</a>
                 </h2>
                 <utils-deck-content :deck="deck" :editable="true"></utils-deck-content>
                 <div class="form-row my-4">
@@ -43,6 +44,8 @@
             <div class="col-md-6">
                 <builder-collection></builder-collection>
             </div>
+
+            <utils-version-history :id="$route.params.strainId"></utils-version-history>
         </div>
 
         <div v-if="wizard" class="row justify-content-center">
@@ -54,12 +57,13 @@
 </template>
 
 <script>
-  import UtilsDeckContent from '@/components/Utils/DeckContent';
   import rest from '@/rest';
   import * as types from '@/store/mutation-types';
   import BuilderCollection from './Collection';
   import BuilderBuilder from './List';
   import BuilderWizard from './Wizard';
+  import UtilsDeckContent from '@/components/Utils/DeckContent';
+  import UtilsVersionHistory from '../Utils/VersionHistory';
 
   export default {
     name: 'builder-editor',
@@ -68,6 +72,7 @@
       BuilderCollection,
       UtilsDeckContent,
       BuilderWizard,
+      UtilsVersionHistory,
     },
     data() {
       const formats = ['single-core', 'standard'];
@@ -80,6 +85,7 @@
         error: null,
         nameEdition: false,
         bootstrap: {},
+        showHistory: false,
       };
     },
     watch: {
