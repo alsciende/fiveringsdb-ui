@@ -45,7 +45,7 @@
                 <builder-collection></builder-collection>
             </div>
 
-            <utils-version-history :id="$route.params.strainId"></utils-version-history>
+            <utils-version-history :id="$route.params.strainId" :published="false"></utils-version-history>
         </div>
 
         <div v-if="wizard" class="row justify-content-center">

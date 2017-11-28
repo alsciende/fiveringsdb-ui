@@ -25,7 +25,10 @@
             </div>
             <div class="col-lg-6">
                 <div v-if="strain">
-                    <h2>{{ strain.head.name }} <span class="badge badge-light">{{ strain.head.version }}</span></h2>
+                    <h2>
+                        {{ strain.head.name }}
+                        <a href="#" title="Show all versions" v-b-modal.modalVersions class="col-auto badge badge-light">{{ strain.head.version }}</a>
+                    </h2>
                     <div class="mb-2">
                         <router-link
                                 :to="{ name: 'deck-edit', params: { strainId: strain.id, deckId: strain.head.id } }"
@@ -59,6 +62,7 @@
                         <p>Delete <b>{{ strain.head.name }}</b>?</p>
                     </b-modal>
                     <utils-deck-content :deck="strain.head"></utils-deck-content>
+                    <utils-version-history :id="strain.id" :published="false"></utils-version-history>
                 </div>
             </div>
         </div>
@@ -70,12 +74,14 @@
   import rest from '@/rest';
   import UtilsDeckContent from '@/components/Utils/DeckContent';
   import BuilderEditor from './Editor';
+  import UtilsVersionHistory from '../Utils/VersionHistory';
 
   export default {
     name: 'builder-list',
     components: {
       BuilderEditor,
       UtilsDeckContent,
+      UtilsVersionHistory,
     },
     data() {
       return {
