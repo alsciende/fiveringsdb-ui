@@ -94,7 +94,7 @@ const getters = {
   hasUser: state => state.user !== null,
   userId: state => (state.user ? state.user.id : null),
   username: state => (state.user ? state.user.username : null),
-  roles: state => (state.user && state.user.roles ? state.user.roles : []),
+  roles: state => (state.user && state.user.roles instanceof Array ? state.user.roles : []),
 };
 
 // mutations
