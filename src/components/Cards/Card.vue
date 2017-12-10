@@ -4,7 +4,7 @@
             <div class="d-flex row no-gutters">
                 <div class="col">
                     <h4 class="card-title">
-                        <span v-if="card.unicity" class="icon icon-clan-neutral small"></span>
+                        <span v-if="card.unicity" class="icon icon-unique small"></span>
                         <slot>
                             {{ card.name }}
                         </slot>
