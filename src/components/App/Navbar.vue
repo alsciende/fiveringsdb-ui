@@ -80,7 +80,7 @@
         return this.$store.getters.hasUser;
       },
       cycles() {
-        return stores.cycles().get();
+        return stores.cycles().order('position').get();
       },
     },
     methods: {
