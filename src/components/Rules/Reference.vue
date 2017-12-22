@@ -2122,13 +2122,13 @@
 			<p>This section contains the official errata that have been made on individual cards in Legend of the Five Rings: The Card Game. Errata overrides the originally printed information on the card it applies to. Unless errata for a card appears below, the original English printing of that card and all of its information is considered accurate, and overrides all other printings. This includes translated cards, promotional cards, and printings which may appear in alternate products.
 			<p><b><a href="https://fiveringsdb.com/card/kaiu-inventor" target="_blank">Kaiu Inventor</a></b> (Imperial Cycle, 63)</p>
 			<p>Should read: "...an additional time this round (or specified period)."</p>
-			<p><em>(Changed "each" to "this")<em></p>
+			<p><em>(Changed "each" to "this")</em></p>
 			<p><b><a href="https://fiveringsdb.com/card/pit-trap" target="_blank">Pit Trap</a></b> (Imperial Cycle, 73)</p>
 			<p>Should read: "Attach to a character. Play only on a character that is attacking."</p>
-			<p><em>(Replaces "Attach to an attacking character.")<em></p>
+			<p><em>(Replaces "Attach to an attacking character.")</em></p>
 			<p><b><a href="https://fiveringsdb.com/card/ride-them-down" target="_blank">Ride Them Down</a></b> (Imperial Cycle, 99)</p>
 			<p>Should read: "...set the base strength of the attacked province to 1 until the end of the conflict."</p>
-			<p><em>(Added "until the end of the conflict.")<em></p>
+			<p><em>(Added "until the end of the conflict.")</em></p>
 			</span>
         </div>
     </div>
