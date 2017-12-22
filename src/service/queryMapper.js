@@ -91,20 +91,25 @@ class QueryMapper {
         type: 'integer',
         description: 'Province Strength',
       },
+      art: {
+        name: 'illustrators',
+        type: 'join',
+        description: 'Illustrator Name',
+      },
     };
   }
 
   getField(clause) {
-    if (this.map[clause.name] === null) {
-      return false;
+    if (clause.name in this.map) {
+      let data = this.map[clause.name];
+      if (typeof data === 'function') {
+        data = data(clause);
+      }
+
+      return Object.assign({}, this.default, data);
     }
 
-    let data = this.map[clause.name];
-    if (typeof data === 'function') {
-      data = data(clause);
-    }
-
-    return Object.assign({}, this.default, data);
+    return false;
   }
 
   formatAsHtml() {

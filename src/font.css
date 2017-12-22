@@ -30,6 +30,9 @@
   text-align: center;
 }
 
+.icon-unique:before {
+  content: "\e90e";
+}
 .icon-conflict-military:before {
   content: "\e900";
 }
@@ -52,7 +55,7 @@
   content: "\e906";
 }
 .icon-clan-neutral:before {
-  content: "\e90e";
+  content: "\e90f";
 }
 .icon-clan-crab:before {
   content: "\e907";

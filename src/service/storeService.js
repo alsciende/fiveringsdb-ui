@@ -17,7 +17,7 @@ const getResource = resource => rest.public().get(resource)
   .then((response) => {
     stores[resource] = taffy(response.records);
   }, (reason) => {
-  /* eslint-disable no-console */
+    /* eslint-disable no-console */
     console.log(reason);
   })
 ;
@@ -78,6 +78,8 @@ const denormalizeCards = () => {
         record[field] = null;
       }
     });
+    // add the list of illustrators
+    record.illustrators = record.pack_cards.map(packCard => packCard.illustrator);
     // select the default slot for the card
     record.main_slot = record.pack_cards[0];
     // merge

@@ -11,6 +11,7 @@
             <tr>
                 <th>Quantity</th>
                 <th>Name</th>
+                <th>Traits</th>
             </tr>
             </thead>
             <tbody>
