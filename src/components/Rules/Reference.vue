@@ -633,7 +633,7 @@
                 <li>
                     If a player gains fate or honor, that player takes the specified amount of fate or honor from the general token pool and adds it to his or her fate pool or honor pool.
                 </li>
-                <li>If a card gains a characteristic (such as a <em>Trait<em>, a keyword, or ability text), the card functions as if it possesses the gained characteristic. Gained characteristics are not considered to be printed on the card.
+                <li>If a card gains a characteristic (such as a <i>Trait</i>, a keyword, or ability text), the card functions as if it possesses the gained characteristic. Gained characteristics are not considered to be printed on the card.
                 </li>
             </ul>
             <p><b>Related:</b> <a href="#printed">Printed</a></p>
@@ -988,7 +988,7 @@
                 No attachments is a keyword ability. A card with this keyword cannot have an attachment card attached.</p>
             <ul>
                 <li>If one or more traits precedes the word "attachments" (for example, "No <i>Weapon</i>
-                    or <em>Armor<em>
+                    or <i>Armor</i>
                     attachments"), the card cannot have an attachment that possess one or more of the specified traits, but it can have attachments possessing none of those traits.
                 </li>
                 <li>
