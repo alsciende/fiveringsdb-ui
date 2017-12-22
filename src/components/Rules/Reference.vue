@@ -12,11 +12,35 @@
         </div>
         <div class="contents order-sm-1 col-sm-8 mt-3">
             <h2>RULES REFERENCE</h2>
-            <p>Version 1.01</p>
+            <p>Version 1.1</p>
             <h3>SUMMARY OF CHANGES</h3>
             <p>New entries and changes from previous editions will be noted in this space. Changes noted in <span
                     class="new">red text</span>.</p>
-            <p>"<a href="#stronghold">Stronghold</a>" on page 15</p>
+            <p><a href="#breaking-a-province-broken-province">Breaking a Province</a>, 
+			<a href="#current">Current</a>, 
+			<a href="#dash">Dash</a>, 
+			<a href="#deck_limits">Deck Limits</a>, 
+			<a href="#facedown_province">Facedown Provinces</a>, 
+			<a href="#initiating-abilities-playing-cards">Initiating Abilities / Playing Cards</a>, 
+			<a href="#max-x-per-period">Max X per [period]</a>, 
+			<a href="#mulligan">Mulligan</a>, 
+			<a href="#participating-and-cannot-participate">Participating and Cannot Participate</a>, 
+			<a href="#personal-honor-personal-dishonor">Personal Honor, Personal Dishonor</a>, 
+			<a href="#provinces-province-cards">Provinces, Province Cards</a>, 
+			<a href="#restricted">Restricted</a>, 
+			<a href="#rings">Rings</a>, 
+			<a href="#ring-effects">Ring Effects</a>, 
+			<a href="#role-cards">Role Cards</a>, 
+			<a href="#sacrifice">Sacrifice</a>, 
+			<a href="#set">Set</a>, 
+			<a href="#setup">Setup</a>, 
+			<a href="#stronghold">Stronghold</a>, 
+			<a href="#triggered-abilities">Triggered Abilities</a>, 
+			<a href="#unique-cards">Unique Cards</a>, 
+			<a href="#winning-the-game">Winning the Game</a>, 
+			<a href="#3-2-declare-conflict">3.2. Declare conflict</a>, 
+			<a href="#appendix-iii-faq">Appendix III: FAQ</a>, 
+			<a href="#appendix-iv-errata">Appendix IV: Errata</a></p>
             <hr>
             <anchored-heading @heading="add" :level="1">Rules Reference</anchored-heading>
             <p>
@@ -145,8 +169,11 @@
                     Dynasty cards may still be played from broken provinces, and broken provinces still refill following the standard game rules.
                 </li>
                 <li>
-                    If three of a player's non-stronghold provinces are broken, attacks may be declared against that player's stronghold. If a player's stronghold province is broken, that player loses the game.
+                    If three of a player's non-stronghold provinces are broken, <span class="new">that player's stronghold becomes an eligible province against which attacks may be made</span>. If a player's stronghold province is broken, that player loses the game.
                 </li>
+				<li>
+					<span class="new">If a province breaks for any reason other than through standard conflict resolution, the opponent of the player who controls that province is considered to have broken the province.</span>
+				</li>
             </ul>
             <anchored-heading @heading="add" :level="2">Bow, Bowed</anchored-heading>
             <p>
@@ -346,11 +373,16 @@
             <anchored-heading @heading="add" :level="2">Current</anchored-heading>
             <p>
                 If an ability references a "current" skill or glory count, use the players' applicable specified totals at the time the ability resolves.</p>
+			<ul>
+				<li>
+				<span class="new">When resolving an ability that references a "current" skill or glory count during a conflict, count the skill or glory values that would be used if the conflict were currently resolving.</span>
+				</li>
+			</ul>
             <anchored-heading @heading="add" :level="2">Dash (&ndash;)</anchored-heading>
             <p>
                 In the text of a triggered ability, a dash (&ndash;) is used to separate the criteria that are necessary to use the ability from the effect of the ability. Any triggering conditions, play restrictions or permissions, costs, and targeting requirements are denoted before the dash. The ability's effect is denoted after the dash.</p>
             <p>
-                If a character has a dash (&ndash;) for a skill value, that character cannot participate in conflicts of that type.</p>
+                If a character has a dash (&ndash;) for a skill value, that character cannot participate in, <span class="new">be played into, or be put into play in</span> conflicts of that type.</p>
             <ul>
                 <li>
                     Should a character with a dash skill value somehow end up participating in a conflict of the corresponding type, that character is immediately removed from the conflict, and placed in its controller's home area in a bowed state.
@@ -405,7 +437,7 @@
             <p>
                 Up to 3 total copies of most cards (by title) may be included in a player's dynasty and/or conflict decks. Each copy of a card in either deck counts towards this limit.</p>
             <p>
-                If a card has the text "Deck limit X" no more than X copies of that card may be included in that player's dynasty and/or conflict decks.</p>
+                If a card has the text "<span class="new">Limit X per deck</span>" no more than X copies of that card may be included in that player's dynasty and/or conflict decks.</p>
             <ul>
                 <li>If X is 2 or lower, this phrase acts as a deckbuilding restriction.</li>
                 <li>
@@ -428,7 +460,7 @@
                     When a delayed effect resolves, it is not treated as a new triggered ability, even if the delayed effect was originally created by a triggered ability.
                 </li>
                 <li>
-                    When a delayed resolves, it is still considered to be an ability originating from the cardtype of the card that created the delayed effect.
+                    When a delayed <span class="new">effect</span> resolves, it is still considered to be an ability originating from the cardtype of the card that created the delayed effect.
                 </li>
             </ul>
             <anchored-heading @heading="add" :level="2">Discard Piles</anchored-heading>
@@ -530,6 +562,9 @@
                 <li>
                     If a facedown province becomes the attacked province in a manner other than the declaration of an attack, immediately turn the province faceup.
                 </li>
+				<li>
+					<span class="new">A facedown province is considered to be a different entity than its faceup side. While a province is facedown, its faceup side is considered to be out of play. When a province is turned faceup, the "faceup province" and "facedown province" simultaneously exchange positions, such that the facedown province is now out of play and the faceup province is now in play. The opposite is true when a province is turned facedown.</span>
+				</li>
             </ul>
             <anchored-heading @heading="add" :level="2">Fate</anchored-heading>
             <p>
@@ -769,7 +804,7 @@
                     Choose target(s), if applicable. Any pre-effect instructions to "select" among multiple options in the ability are made at this time as well.
                 </li>
                 <li>
-                    The card attempts to enter play, or the effects of the ability attempt to initiate. An interrupt ability that cancels this initiation may be used at this time.
+                    The card attempts to enter play, or the effects of the ability attempt to initiate. An interrupt ability that cancels this initiation may be used at this time. <span class="new">At this time the card is considered "played" or the ability "triggered."</span>
                 </li>
                 <li>The effects of the ability (if not canceled in step 6) complete their initiation, and resolve.</li>
             </ol>
@@ -811,8 +846,8 @@
                 </li>
             </ul>
             <anchored-heading @heading="add" :level="2">Keywords</anchored-heading>
-            <p>A keyword is a card ability which conveys specific rules to its card. The keywords in the core set are:	<a
-                    href="#ancestral">Ancestral</a>,
+            <p>A keyword is a card ability which conveys specific rules to its card. The keywords in the core set are:	
+				<a href="#ancestral">Ancestral</a>,
                 <a href="#courtesy">Courtesy</a>,
                 <a href="#covert">Covert</a>,
                 <a href="#limited">Limited</a>,
@@ -887,6 +922,9 @@
                 <li>
                     If the effects of a card or ability with a maximum are canceled, the use of the card or ability is still counted against the maximum.
                 </li>
+				<li>
+					<span class="new">An ability's maximum value cannot be modified.<span>
+				</li>
             </ul>
             <p><b>Related:</b> <a href="#limit-x-per-period">Limit X per [period]</a></p>
             <anchored-heading @heading="add" :level="2">May</anchored-heading>
@@ -926,6 +964,9 @@
                 <li>
                     Players mulligan (or pass the opportunity to do so) in player order. If the first player passes an opportunity to mulligan, that player cannot change his or her mind and then decide to mulligan during that step after seeing the opponent's decision.
                 </li>
+				<li>
+					<span class="new">After a player mulligans the cards in their provinces, they may look at the new cards before drawing their conflict hand.</span>
+				</li>
             </ul>
             <anchored-heading @heading="add" :level="2">Nested Ability Sequences</anchored-heading>
             <p>
@@ -980,7 +1021,7 @@
                     A character played directly into a conflict from a player's hand is participating in the conflict. The controller of the character must indicate that this is the case when the character is played.
                 </li>
                 <li>
-                    If a character "cannot participate" in a conflict, that character cannot be declared as an attacker or defender for, move into, or be played into that conflict. If an already participating character gains "cannot participate" status during a conflict, move it home bowed.
+                    If a character "cannot participate" in a conflict, that character cannot be declared as an attacker or defender for, move into, be played into, <span class="new">or put into play in</span> that conflict. If an already participating character gains "cannot participate" status during a conflict, move it home bowed.
                 </li>
             </ul>
             <anchored-heading @heading="add" :level="2">Pass</anchored-heading>
@@ -1020,6 +1061,9 @@
                 <li>
                     A character with an honored status token cannot become honored. A character with a dishonored status token cannot become dishonored.
                 </li>
+				<li>
+					<span class="new">Should a character have both an honored status token and a dishonored status token at the same time, discard both tokens. The character returns to the ordinary state.</span>
+				</li>
             </ul>
             <anchored-heading @heading="add" :level="2">Play and Put into Play</anchored-heading>
             <p><b>Play</b>ing a character or attachment card involves paying the card's fate cost and placing the card in the play area. This causes the card to enter play. Cards are played from a player's hand or provinces. Any time a character card is played, its controller has the option of placing additional fate from his or her fate pool on the card.
@@ -1063,11 +1107,10 @@
             <p>
                 A player's provinces represent the lands surrounding his or her stronghold. When a province is under attack and turned faceup, the card represents what the enemy finds or encounters upon first entering that province.</p>
             <ul>
-                <li>
-                    A face-down province card is considered to be in play only as a face down province, and its faceup side is unable to engage with the game state until the province is revealed.
-                </li>
+                <li>A face-down province card is considered to be in play only as a face down province, and its faceup side is unable to engage with the game state until the province is revealed.                </li>
                 <li>A non-broken, faceup province is considered to be in play, and is engaged with the game state.</li>
                 <li>A broken province is considered to have a blank text box, and its ability cannot be used.</li>
+				<li><span class="new">If a province has more than one card in it, those cards are considered to all be in the same province. Characters can be played and holdings provide their bonuses. Do not refill a province until it is empty.</span></li>
             </ul>
             <anchored-heading @heading="add" :level="2">Qualifiers</anchored-heading>
             <p>
@@ -1129,6 +1172,9 @@
                 <li>
                     If at any time a character has three or more restricted attachments, that character's controller must immediately choose and discard one of the restricted attachments on the character as soon as the illegal game state occurs.
                 </li>
+				<li>
+					<span class="new">A player may choose to play a third restricted attachment onto a character, but must immediately choose and discard one of the other restricted attachments as the new attachment enters play.</span>
+				</li>
             </ul>
             <anchored-heading @heading="add" :level="2">Reveal</anchored-heading>
             <p>
@@ -1156,9 +1202,8 @@
             <ul>
                 <li>Each claimed ring adds 1 to the glory count of the player who controls it.</li>
                 <li>During the fate phase, place 1 fate on each unclaimed ring.</li>
-                <li>
-                    When a ring becomes the contested ring in a conflict, move all fate on that ring to the attacking player's fate pool.
-                </li>
+                <li>When a ring becomes the contested ring in a conflict, move all fate on that ring to the attacking player's fate pool.</li>
+				<li><span class="new">When a ring is claimed, it is still considered to be contested until all reactions to its claiming have resolved.</span></li>
             </ul>
             <p><b>Related:</b> <a href="#ring-effects">Ring Effects</a></p>
             <anchored-heading @heading="add" :level="2">Ring Effects</anchored-heading>
@@ -1177,6 +1222,9 @@
                 <li>
                     Whenever a player resolves a ring effect for a ring that has multiple elements, that player may choose among those elements when the conflict's ring effect resolves.
                 </li>
+				<li>
+					<span class="new">When a player is instructed to resolve multiple ring effects, they resolve each effect (or pass on that effect) in its entirety before resolving the next ring effect.</span>
+				</li>
             </ul>
             <anchored-heading @heading="add" :level="2">Role Cards</anchored-heading>
             <p>
@@ -1185,10 +1233,13 @@
                 <li>
                     Role cards are not considered in play. Their text affects the game state from the out-of-play area while they are active beside a player's stronghold.
                 </li>
-                <li>Cards with the printed role cardtype cannot be removed from the game by other card abilities.</li>
+                <li>Cards <span class="new">that are printed as the</span> role card type cannot be removed from the game by other card abilities.</li>
                 <li>
-                    In sanctioned tournament play, role card eligibility for each clan is determined by the Emperor's Sanction list, which is established through player participation.
+                    In sanctioned tournament play, role card eligibility for each clan is determined by the <span class="new"> Clan Roles webpage found at: https://www.fantasyflightgames.com/en/op/l5r-lcg/roles/</span>
                 </li>
+				<li>
+					<span class="new">Some cards have the text, "___ role only." This is a deckbuilding restriction, and is not active during gameplay.</span>
+				</li>
             </ul>
             <anchored-heading @heading="add" :level="2">Running Out of Cards</anchored-heading>
             <p>
@@ -1197,7 +1248,7 @@
             <p>
                 When a player is instructed to sacrifice a card, that player must select a card in play that he or she controls and that matches the requirements of the sacrifice, and place it in his or her discard pile.</p>
             <ul>
-                <li>If the selected card does not leave play, the sacrifice is not considered to have been made.</li>
+                <li>If the selected card does not leave play, the sacrifice is <span class="new">considered to have been prevented</span>.</li>
                 <li>Sacrificing a card does not satisfy other means (such as "discard") of a card leaving play.</li>
             </ul>
             <anchored-heading @heading="add" :level="2">Search</anchored-heading>
@@ -1237,6 +1288,9 @@
             <anchored-heading @heading="add" :level="2">Self-referential Text</anchored-heading>
             <p>
                 When a card's ability text refers to itself ("this character," "this province," etc.), the text is referring to that copy only, and not to other copies (by title) of the card.</p>
+            <anchored-heading @heading="add" :level="2">Set</anchored-heading>
+            <p>
+                <span class="new">See "<a href="#modifiers">Modifiers</a>" on page 11.</span></p>
             <anchored-heading @heading="add" :level="2">Setup</anchored-heading>
             <p>To set up a game, perform the following steps in order:</p>
             <ol>
@@ -1251,7 +1305,7 @@
                 </li>
                 <li><b>Place provinces and stronghold</b>. In player order, each player secretly selects one of their provinces, places it facedown above their dynasty deck, and places their stronghold card on top of it. If a player is using a role card, it is placed next to his or her stronghold during this step. Each player then places their other four provinces facedown between their dynasty and conflict decks, in any order.
                 </li>
-                <li><b>Fill provinces</b>. Each player places a card from the top of their dynasty deck facedown onto each of their empty nonstronghold provinces. In player order, each player has one opportunity to look at each of his or her cards placed in this manner and mulligan any number of them.
+                <li><b>Fill provinces</b>. Each player places a card from the top of their dynasty deck facedown onto each of their empty non-stronghold provinces. In player order, each player <span class="new">looks at each of his or her cards placed in this manner and has one opportunity to</span> mulligan any number of them.
                 </li>
                 <ul>
                     <li><b>Note:</b> After this step, a player may not look at facedown cards in his or her provinces.
@@ -1387,7 +1441,7 @@
                     If a triggered ability has no dash, the ability has no pre-dash content, and the entirety of the ability is considered an effect.
                 </li>
                 <li>
-                    A triggered ability can only be initiated if its effect has the potential to change the game state on its own. This potential is assessed without taking into account the consequences of the cost payment or any other ability interactions.
+                    A triggered ability can only be initiated if its effect has the potential to change the game state on its own. This potential is assessed without taking into account the consequences of the cost payment or <span class="new">the consequences of</span> any other ability interactions.
                 </li>
                 <li>
                     A triggered ability can only be initiated if its cost (after modifiers) has the potential to be paid in full.
@@ -1433,6 +1487,9 @@
                 <li>
                     A player cannot take control of or bring into play a unique card if he or she already controls or owns an in-play copy of that card.
                 </li>
+				<li>
+					<span class="new">A player cannot bring into play a unique card owned by his or her opponent if that opponent controls an in-play copy of that card.</span>
+				</li>
                 <li>
                     As a player action during the dynasty phase, a player may discard a copy (by title) of a unique character from his or her hand or provinces to place 1 fate on an in-play copy of that unique character he or she controls.
                 </li>
@@ -1476,6 +1533,9 @@
             <ul>
                 <li>The first player to break the province protecting his or her opponent's stronghold wins the game.
                 </li>
+				<li>
+					<span class="new">If a player's stronghold province is broken, that player loses the game.</span>
+				</li>
                 <li>
                     The first player to meet the condition of having 25 or more honor in his or her honor pool wins the game.
                 </li>
@@ -1774,13 +1834,15 @@
             <p>
                 During the conflict phase, each player is granted one opportunity to declare a military conflict and one opportunity to declare a political conflict. These conflict opportunities alternate between players with remaining conflict opportunities in player order until each player has declared a conflict or passed on each of his or her conflict opportunities. A player's military and political conflicts may be declared in either order during the round.</p>
             <p>When a player has an opportunity to declare a conflict, that player may:</p>
-            <ul>
-                <li>Declare a military conflict, or pass the opportunity to do so.</li>
-                <li>Declare a political conflict, or pass the opportunity to do so.</li>
+            <span class="new">
+			<ul>
+                <li>Declare a military conflict.</li>
+                <li>Declare a political conflict.</li>
+				<li>Pass.</li>
             </ul>
-            <p>
-                If a specific conflict opportunity is passed, the player forfeits his or her right to use that opportunity this phase.</p>
-            <p>In order to declare a conflict, the attacking player must:</p>
+			<p>If a conflict opportunity is passed, the player forfeits his or her right to use that opportunity this phase.</p>
+            </span>
+			<p>In order to declare a conflict, the attacking player must:</p>
             <ul>
                 <li>
                     Declare the type and element of the conflict to be initiated. This is indicated by selecting a ring from the unclaimed ring pool (this ring is known as the contested ring, and defines the element of the conflict), and placing it on an opponent's eligible unbroken province (this indicates which province is being attacked) with either the military side or the political side faceup (the faceup side of the contested ring defines the type of the conflict).
@@ -2009,6 +2071,65 @@
                 <li><b>Influence Cost</b>: The influence cost required to include this card in a conflict deck.</li>
                 <li><b>Product Set Information</b>: Indicates this card's product of origin.</li>
             </ol>
+			<span class="new">
+			<anchored-heading @heading="add" :level="1">Appendix III: Questions and Answers</anchored-heading>
+			<p>This section provides answers to a number of common questions that are asked about the game. The entries are presented in a "question and answer" format, with the newest questions at the end of the list.</p>
+			<ul>
+			<li><i>Can I trigger <a href="https://fiveringsdb.com/card/shameful-display" target="_blank">Shameful Display</a> (Core, 24) if only one of the two chosen characters would change their honored status?</i></li>
+			</ul>
+			<p>Yes. The rules state that you cannot trigger an ability if its effect would fail to change the game state, but one of the chosen characters is changing their status so a game state change occurs. Neither the honoring nor the dishonoring aspect of Shameful Display is dependent upon the other.</p>
+			<ul>
+			<li><i>Can I trigger the ability of <a href="https://fiveringsdb.com/card/akodo-toturi" target="_blank">Akodo Toturi</a> (Core, 79) or <a href="https://fiveringsdb.com/card/doji-hotaru" target="_blank">Doji Hotaru</a> (Core, 52) when I win a corresponding challenge as the defender?</i></li>
+			</ul>
+			<p>You can trigger the ability as the defender, but per <a href="#ring-effects">RRG "Ring Effects"</a>, resolving the ring's effect instructs the attacking player to choose a target, draw cards, or gain honor. Your opponent would resolve the ring's effect, not you.</p>
+			<ul>
+			<li><i>If I play <a href="https://fiveringsdb.com/card/let-go" target="_blank">Let Go</a> (Core, 155) targeting my opponent's <a href="https://fiveringsdb.com/card/watch-commander" target="_blank">Watch Commander</a> (Core, 133), does my opponent get to trigger their Watch Commander before it goes to the discard pile?</i></li>
+			</ul>
+			<p>Yes. A card is considered to have been played when it reaches step 6 of the process of initiating abilities (see <a href="#initiating-abilities-playing-cards">RRG "Initiating Abilities / Playing Cards"</a>). The effects of an event resolve at step 7. Therefore, when you play Let Go targeting your opponent's Watch Commander, they will react to you playing Let Go before you resolve its effects.</p>
+			<ul>
+			<li><i>Can I use <a href="https://fiveringsdb.com/card/reprieve" target="_blank">Reprieve</a> (Core, 132) to prevent a character from being sacrificed for a cost, such as that of <a href="https://fiveringsdb.com/card/shosuro-actress" target="_blank">Shosuro Actress</a> (Core, 103) or <a href="https://fiveringsdb.com/card/steadfast-witch-hunter" target="_blank">Steadfast Witch Hunter</a> (Core, 35)? What about <a href="https://fiveringsdb.com/card/way-of-the-crab" target="_blank">Way of the Crab</a> (Core, 137)?</i></li>
+			</ul>
+			<p>Reprieve will prevent a character from being sacrificed. If that occurs during the payment of a cost (Actress, Witch Hunter, Way of the Crab, etc.) then that cost is not considered to have been paid as the sacrifice was prevented (see <a href="#sacrifice">RRG "Sacrifice"</a>). However, this occurs during step 4 of the process of initiating abilities (<a href="#initiating-abilities-playing-cards">RRG "Initiating Abilities / Playing Cards"</a>), which is before step 6 when the game determines whether an ability has been triggered. Therefore, because the ability is not considered to have been used, it could be triggered again in the next available action window. If an event is canceled in this way, it will remain unplayed in its owner's hand (<a href="#cost">RRG "Cost"</a>).</p>
+			<p>This is different from using Reprieve to prevent a character from being sacrificed to Way of the Crab's effect. Because nothing is dependent upon whether or not the effect of Way of the Crab resolved successfully, it does not matter that the sacrifice was prevented by Reprieve. In the same way that an event whose effects were canceled by <a href="https://fiveringsdb.com/card/voice-of-honor" target="_blank">Voice of Honor</a> (Core, 145) is still considered to have been played, Way of the Crab is still considered to have "resolved" (albeit unsuccessfully) even if its effect is prevented by Reprieve.</p>
+			<ul>
+			<li><i>If my opponent plays <a href="https://fiveringsdb.com/card/banzai" target="_blank">Banzai!</a> (Core, 204) and I wish to cancel it with <a href="https://fiveringsdb.com/card/voice-of-honor" target="_blank">Voice of Honor</a> (Core, 145), can I cancel the whole effect, or just half of it?</i></li>
+			</ul>
+			<p>When your opponent plays Banzai!, they will select a target to receive +2<span class="icon icon-conflict-military"></span>. You may interrupt to cancel this effect, which would also cancel the option to repeat the ability. If you do not, and they choose to pay 1 honor to resolve the ability again, then you have another opportunity to interrupt to cancel the (new) set of effects that give +2<span class="icon icon-conflict-military"></span> to a character. Thus, you can choose to cancel either the entire card effect, just the second part of the card effect, or none of the card effect.</p>
+			<ul>
+			<li><i>Can I play <a href="https://fiveringsdb.com/card/way-of-the-crab" target="_blank">Way of the Crab</a> (Core, 137) during the Dynasty Phase?</i></li>
+			</ul>
+			<p>Yes. During the Dynasty Phase, you may play a character from a province or take an action, which includes playing events from your hand.</p>
+			<ul>
+			<li><i>How does <a href="https://fiveringsdb.com/card/display-of-power" target="_blank">Display of Power</a> (Core, 179) interact with cards such as <a href="https://fiveringsdb.com/card/seeker-of-knowledge" target="_blank">Seeker of Knowledge</a> (Core, 171) and <a href="https://fiveringsdb.com/card/pilgrimage" target="_blank">Pilgrimage</a> (Core, 22)?</i></li>
+			</ul>
+			<p>Display of Power is played during step 3.2.3 of conflict resolution, when the defending player loses the conflict (see <a href="https://fiveringsdb.com/rules/reference#3-2-3-compare-skill-values" target="_blank">RRG "3.2.3. Compare skill values"</a>). It produces a delayed effect that takes place during step 3.2.6, "Resolve Ring Effects" that cancels the normal effects of ring resolution and replaces it with "resolve the ring effect as if you had won the conflict as the attacking player." Losing honor for unopposed and breaking the province will occur before resolving Display of Power's effect.</p>
+			<p>Should the Pilgrimage province not be broken when Display of Power resolves, the delayed effect of Display takes precedence over Pilgrimage, canceling the normal resolution of Resolve Ring Effects and replacing it with the adjusted means of resolution. However, the Pilgrimage effect ("cancel all ring effects") still cancels the Display of Power's attempt to resolve the ring for the defender. The defender claims the ring.</p>
+			<p>Because Display of Power interacts with the Resolve Ring Effects step rather than the specific effect chosen by the attacker, the attacker does not have the option to choose a specific ring effect to resolve when Seeker of Knowledge is attacking (or whether they would like to resolve a ring effect at all). When Display of Power resolves the ring effect, the defender has the opportunity to choose which ring effect they would like to resolve instead.</p>
+			<ul>
+			<li><i>If <a href="https://fiveringsdb.com/card/steward-of-law" target="_blank">Steward of Law</a> (Core, 139) is in a conflict, can an honored character be dishonored?</i></li>
+			</ul>
+			<p>Yes. Steward of Law prevents characters from "becoming dishonored," which means "gaining the dishonored status token." Most of the time this occurs through the act of dishonoring, but it would also prevent the use of an ability that moved or placed a dishonored status token. If a character could be dishonored without gaining a dishonored token (such as an honored character being dishonored and returning to ordinary state), they will still do so.</p>
+			<ul>
+			<li><i>If I play <a href="https://fiveringsdb.com/card/way-of-the-lion" target="_blank">Way of the Lion</a> (Core, 167) to double my character's base <span class="icon icon-conflict-military"></span> skill, and then play a second Way of the Lion, what is my character's new base <span class="icon icon-conflict-military"></span> skill?</i></li>
+			</ul>
+			<p>Way of the Lion doubles a character's base <span class="icon icon-conflict-military"></span> skill and sets it to the new value. When you play a second copy of Way of the Lion, the new value will be doubled (to now be quadruple the original skill value).</p>
+			<ul>
+			<li><i>If I use <a href="https://fiveringsdb.com/card/origami-master" target="_blank">Origami Master</a>'s ability (Imperial Cycle, 84) to move an honored status token to another character, is that character being honored? Does it allow <a href="https://fiveringsdb.com/card/savvy-politician" target="_blank">Savvy Politician</a>'s ability (Core, 45) to trigger?</i></li>
+			</ul>
+			<p>If a character gains an honored status token through a card effect, it is "becoming honored," (gaining the honored status) which is different from "being honored" (going through the process of honoring). This will not trigger effects such as that of Savvy Politician or <a href="https://fiveringsdb.com/card/young-rumormonger" target="_blank">Young Rumormonger</a> (Core Set, 101).</p>
+			<p>Note: If a character has both an honored status token and a dishonored status token, both are discarded and the character is returned to an ordinary state. See <a href="https://fiveringsdb.com/rules/reference#personal-honor-personal-dishonor" target="_blank">RRG "Personal Honor, Personal Dishonor"</a>.</p>
+			<anchored-heading @heading="add" :level="1">Appendix IV: Card Errata</anchored-heading>
+			<p>This section contains the official errata that have been made on individual cards in Legend of the Five Rings: The Card Game. Errata overrides the originally printed information on the card it applies to. Unless errata for a card appears below, the original English printing of that card and all of its information is considered accurate, and overrides all other printings. This includes translated cards, promotional cards, and printings which may appear in alternate products.
+			<p><b><a href="https://fiveringsdb.com/card/kaiu-inventor" target="_blank">Kaiu Inventor</a> (Imperial Cycle, 63)</b></p>
+			<p>Should read: "...an additional time this round (or specified period)."</p>
+			<p><i>(Changed "each" to "this")</i></p>
+			<p><b><a href="https://fiveringsdb.com/card/pit-trap" target="_blank">Pit Trap</a> (Imperial Cycle, 73)</b></p>
+			<p>Should read: "Attach to a character. Play only on a character that is attacking."</p>
+			<p><i>(Replaces "Attach to an attacking character.")</i></p>
+			<p><b><a href="https://fiveringsdb.com/card/ride-them-down" target="_blank">Ride Them Down</a> (Imperial Cycle, 99)</b></p>
+			<p>Should read: "...set the base strength of the attacked province to 1 until the end of the conflict."</p>
+			<p><i>(Added "until the end of the conflict.")</i></p>
+			</span>
         </div>
     </div>
 </template>
