@@ -40,7 +40,7 @@
                         </b-button>
                     </div>
                 </div>
-                <charts :deck="deck"></charts>
+                <cost-chart :deck="deck"></cost-chart>
             </div>
             <div class="col-md-6">
                 <builder-collection></builder-collection>
@@ -65,12 +65,12 @@
   import BuilderWizard from './Wizard';
   import UtilsDeckContent from '../Utils/DeckContent';
   import UtilsVersionHistory from '../Utils/VersionHistory';
-  import Charts from './Charts';
+  import CostChart from './CostChart';
 
   export default {
     name: 'builder-editor',
     components: {
-      Charts,
+      CostChart,
       BuilderBuilder,
       BuilderCollection,
       UtilsDeckContent,

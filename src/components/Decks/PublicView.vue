@@ -74,7 +74,7 @@
                         </a>
                     </div>
 
-                    <charts :deck="deck"></charts>
+                    <cost-chart :deck="deck"></cost-chart>
                 </div>
                 <div class="col-lg-6">
                     <h3>
@@ -130,14 +130,14 @@
   import UtilsDeckContent from '@/components/Utils/DeckContent';
   import UtilsVersionHistory from '../Utils/VersionHistory';
   import CommentsList from '../Comments/List';
-  import Charts from '../Builder/Charts';
+  import CostChart from '../Builder/CostChart';
 
   const md = new MarkdownIt();
 
   export default {
     name: 'public-decks-view',
     components: {
-      Charts,
+      CostChart,
       UtilsDeckContent,
       UtilsVersionHistory,
       CommentsList,

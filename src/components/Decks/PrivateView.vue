@@ -25,7 +25,7 @@
                     </a>
                 </div>
 
-                <charts :deck="deck"></charts>
+                <cost-chart :deck="deck"></cost-chart>
             </div>
         </div>
     </div>
@@ -34,12 +34,12 @@
 <script>
   import UtilsDeckContent from '@/components/Utils/DeckContent';
   import rest from '@/rest';
-  import Charts from '../Builder/Charts';
+  import CostChart from '../Builder/CostChart';
 
   export default {
     name: 'private-decks-view',
     components: {
-      Charts,
+      CostChart,
       UtilsDeckContent,
     },
     data() {
