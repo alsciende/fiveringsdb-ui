@@ -73,6 +73,8 @@
                             Copy
                         </a>
                     </div>
+
+                    <charts :deck="deck"></charts>
                 </div>
                 <div class="col-lg-6">
                     <h3>
@@ -128,12 +130,14 @@
   import UtilsDeckContent from '@/components/Utils/DeckContent';
   import UtilsVersionHistory from '../Utils/VersionHistory';
   import CommentsList from '../Comments/List';
+  import Charts from '../Builder/Charts';
 
   const md = new MarkdownIt();
 
   export default {
     name: 'public-decks-view',
     components: {
+      Charts,
       UtilsDeckContent,
       UtilsVersionHistory,
       CommentsList,
@@ -262,7 +266,6 @@
           .private()
           .get(`decks/${this.$route.params.deckId}/likes`)
           .then((result) => {
-            console.log(result.records);
             this.nbLikes = result.records.length;
             if (this.$store.getters.hasUser) {
               const userId = this.$store.getters.userId;

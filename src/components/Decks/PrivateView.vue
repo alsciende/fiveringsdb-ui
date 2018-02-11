@@ -23,8 +23,9 @@
                         <span class="fa fa-clone"></span>
                         Copy
                     </a>
-
                 </div>
+
+                <charts :deck="deck"></charts>
             </div>
         </div>
     </div>
@@ -33,10 +34,12 @@
 <script>
   import UtilsDeckContent from '@/components/Utils/DeckContent';
   import rest from '@/rest';
+  import Charts from '../Builder/Charts';
 
   export default {
     name: 'private-decks-view',
     components: {
+      Charts,
       UtilsDeckContent,
     },
     data() {

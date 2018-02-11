@@ -40,6 +40,7 @@
                         </b-button>
                     </div>
                 </div>
+                <charts :deck="deck"></charts>
             </div>
             <div class="col-md-6">
                 <builder-collection></builder-collection>
@@ -62,12 +63,14 @@
   import BuilderCollection from './Collection';
   import BuilderBuilder from './List';
   import BuilderWizard from './Wizard';
-  import UtilsDeckContent from '@/components/Utils/DeckContent';
+  import UtilsDeckContent from '../Utils/DeckContent';
   import UtilsVersionHistory from '../Utils/VersionHistory';
+  import Charts from './Charts';
 
   export default {
     name: 'builder-editor',
     components: {
+      Charts,
       BuilderBuilder,
       BuilderCollection,
       UtilsDeckContent,
