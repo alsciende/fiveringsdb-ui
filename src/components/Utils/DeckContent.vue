@@ -101,12 +101,6 @@
         required: true,
       },
     },
-    data() {
-      return {
-        dynastyTypes: ['character', 'holding'],
-        conflictTypes: ['event', 'attachment', 'character'],
-      };
-    },
     methods: {
       filterByType(slots, type) {
         return DeckInspector.findSlotsBy(slots, 'type', type);

@@ -70,7 +70,6 @@
 </template>
 
 <script>
-  import store from '@/store';
   import rest from '@/rest';
   import UtilsDeckContent from '@/components/Utils/DeckContent';
   import BuilderEditor from './Editor';
