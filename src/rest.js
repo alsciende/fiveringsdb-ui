@@ -32,9 +32,9 @@ function onFailure(reason) {
   return Promise.reject(reason);
 }
 
-function getAccessToken(isMandatory) {
+function getTokenHeader(isMandatory) {
   if (store.getters.hasToken || isMandatory) {
-    return store.dispatch('token').then(result => result.access_token);
+    return store.dispatch('token').then(result => `${result.token_type} ${result.access_token}`);
   }
 
   return Promise.resolve(null);
@@ -50,10 +50,10 @@ class Rest {
   getHttp() {
     return new Promise((resolve, reject) => {
       if (this.isPrivate) {
-        return getAccessToken(this.isMandatory)
+        return getTokenHeader(this.isMandatory)
           .then((accessToken) => {
             if (accessToken) {
-              this.options.headers = { 'Authorization': `Bearer ${accessToken}` };
+              this.options.headers = { Authorization: accessToken };
             }
             resolve(Vue.http);
           })

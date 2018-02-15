@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import VueResource from 'vue-resource';
-import rest from '@/rest';
 import config from '@/config';
 import * as types from '../mutation-types';
 
@@ -9,21 +8,6 @@ Vue.http.options.root = config.getApiURL();
 
 function buildStrWindowFeatures(obj) {
   return Object.keys(obj).map(key => `${key}=${obj[key]}`).join(',');
-}
-
-function postToken(commit, token) {
-  token.expires_at = new Date((new Date()).getTime() + 1000 * token.expires_in);
-  return rest
-    .public()
-    .post('tokens', { id: token.access_token })
-    .then((response) => {
-      commit({
-        type: types.SAVE_AUTH_TOKEN,
-        token: token,
-        user: response.record.user,
-      });
-      return token;
-    });
 }
 
 const childFeatures = buildStrWindowFeatures({
@@ -44,7 +28,11 @@ const actions = {
       const callback = (event) => {
         if (event.source === childWindow && event.origin === config.getApiOrigin()) {
           window.removeEventListener('message', callback, false);
-          resolve(postToken(commit, event.data));
+          commit({
+            type: types.SAVE_AUTH_TOKEN,
+            token: event.data.token,
+            user: event.data.user,
+          });
         }
       };
 
@@ -76,7 +64,7 @@ const actions = {
     });
   },
   token({ state, dispatch }) {
-    if (state.token === null || state.token.expires_at === null) {
+    if (state.token === null) {
       return dispatch('login');
     }
 
@@ -90,7 +78,7 @@ const actions = {
 
 // getters
 const getters = {
-  hasToken: state => state.token !== null && state.token.expires_at !== null,
+  hasToken: state => state.token !== null,
   hasUser: state => state.user !== null,
   userId: state => (state.user ? state.user.id : null),
   username: state => (state.user ? state.user.username : null),
