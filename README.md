@@ -5,6 +5,9 @@
 ## Build Setup
 
 ``` bash
+# environment
+cp .env.example .env
+
 # install dependencies
 npm install
 
