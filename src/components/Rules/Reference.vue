@@ -2049,7 +2049,7 @@
                         removal. If there is no specified duration, a card that has been removed from the game is
                         considered removed until the end of the game.
 						<li>
-							<span class="new">Cards that have been removed from the game are faceup, open information that is available to both players, unless otherwise specified.<span>
+							<span class="new">Cards that have been removed from the game are faceup, open information that is available to both players, unless otherwise specified.</span>
 						</li>
                     </p>
                 </article>
@@ -3850,7 +3850,7 @@ If a conflict opportunity is passed, the player forfeits his or her right to use
                     <a href="https://fiveringsdb.com/card/pit-trap" target="_blank">Pit Trap</a> (Imperial Cycle, 73)
                 </h5>
                 <p>
-                    Should read: "Attach to a character. Play only on <span class="new">an attacking<span> character." <br> <i>(Replaces
+                    Should read: "Attach to a character. Play only on <span class="new">an attacking</span> character." <br> <i>(Replaces
                     "Attach to an attacking character.")</i>
                 </p>
                 <h5>
