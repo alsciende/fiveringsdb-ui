@@ -66,8 +66,8 @@
                     &ndash; Influence Cost: 0
                 </span>
             </p>
-            <p class="card-flavor-text my-2" v-if="flavor && card.main_slot" v-html="card.main_slot.flavor"></p>
-            <b-form-select v-if="card.pack_cards.length > 1" v-model="packId" :options="packs" size="sm"
+            <p class="card-flavor-text my-2" v-if="displayFlavor && card.main_slot" v-html="card.main_slot.flavor"></p>
+            <b-form-select v-if="allowPackSelection && card.pack_cards.length > 1" v-model="packId" :options="packs" size="sm"
                            class="pack-chooser"></b-form-select>
             <div v-else-if="card.pack_cards.length" v-html="optionText(card.main_slot)" class="small pack-chooser"></div>
         </div>
@@ -89,10 +89,14 @@
         type: Object,
         required: true,
       },
-      flavor: {
+      displayFlavor: {
         type: Boolean,
         default: true,
       },
+      allowPackSelection: {
+        type: Boolean,
+        default: true,
+      }
     },
     data() {
       return {
