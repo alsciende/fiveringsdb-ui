@@ -26,7 +26,7 @@ function onSuccess(response) {
 
 function onFailure(reason) {
   if (reason.status === 403) {
-    return store.dispatch('logout');
+    return store.dispatch('login');
   }
 
   return Promise.reject(reason);
@@ -34,7 +34,7 @@ function onFailure(reason) {
 
 function getTokenHeader(isMandatory) {
   if (store.getters.hasToken || isMandatory) {
-    return store.dispatch('token').then(result => `${result.token_type} ${result.access_token}`);
+    return store.dispatch('token').then(result => `Bearer ${result.access_token}`);
   }
 
   return Promise.resolve(null);
