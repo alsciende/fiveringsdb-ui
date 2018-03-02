@@ -13,7 +13,7 @@
         <div class="contents order-sm-1 col-sm-8 mt-3">
             <h2>RULES REFERENCE</h2>
             <p>
-                Version 1.1
+                Version 1.2 with correction
             </p>
             <h3>SUMMARY OF CHANGES</h3>
             <p>
