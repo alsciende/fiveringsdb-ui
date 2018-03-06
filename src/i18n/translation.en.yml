@@ -21,6 +21,7 @@ problem:
     15: The Province deck has too many cards with the same Element.
     16: The Province deck has cards from too many clans.
     17: The Conflict deck uses an off-clan card with no influence.
+    18: The Conflict deck uses a forbidden secondary clan.
 
 msg:
     empty_strain: Empty deck

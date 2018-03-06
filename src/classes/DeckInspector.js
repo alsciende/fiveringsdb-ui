@@ -10,6 +10,7 @@ class DeckInspector {
     this.stronghold = this.findCardByType('stronghold');
     this.clan = this.stronghold ? this.stronghold.clan : null;
     this.role = this.findCardByType('role');
+    this.supportingClan = null;
   }
 
   findCardByType(type) {
@@ -27,8 +28,13 @@ class DeckInspector {
       influencePool = this.stronghold.influence_pool;
     }
 
-    if (this.role && this.role.traits.includes('keeper')) {
-      influencePool += 3;
+    if (this.role) {
+      if (this.role.traits.includes('keeper')) {
+        influencePool += 3;
+      } else if (this.role.id.indexOf('support-of-the-') === 0) {
+        influencePool += 8;
+        this.supportingClan = this.role.traits[0];
+      }
     }
 
     return influencePool;
@@ -174,11 +180,15 @@ class DeckInspector {
       let influencePool = this.getInfluencePool();
 
       const offclans = DeckInspector.findSlotsOffClan(conflictDeck, this.clan);
-      let undefinedInfluenceCost = false;
+      let undefinedInfluenceCost = false, unsupportedClan = false;
 
       offclans.forEach((slot) => {
         if (slot.card.influence_cost === undefined) {
           undefinedInfluenceCost = true;
+          return;
+        }
+        if (this.supportingClan !== null && slot.card.clan !== this.supportingClan) {
+          unsupportedClan = true;
           return;
         }
         influencePool -= slot.quantity * slot.card.influence_cost;
@@ -186,6 +196,10 @@ class DeckInspector {
 
       if (undefinedInfluenceCost) {
         return 17;
+      }
+
+      if (unsupportedClan) {
+        return 18;
       }
 
       if (influencePool < 0) {

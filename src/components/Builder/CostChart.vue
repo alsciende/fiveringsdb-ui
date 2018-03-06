@@ -1,6 +1,6 @@
 <template>
     <div id="cost-chart" class="d-print-none">
-        <bar-chart :chart-data="data" :chart-options="options"></bar-chart>
+        <bar-chart v-if="data" :chart-data="data" :chart-options="options"></bar-chart>
     </div>
 </template>
 
@@ -81,7 +81,7 @@
         const maxCost = max(this.slots.map(slot => slot.card.cost));
 
         if(isNaN(maxCost)) {
-          return {};
+          return null;
         }
 
         const datasets = configs.map((config) => {
