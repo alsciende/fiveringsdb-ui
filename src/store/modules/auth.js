@@ -24,7 +24,7 @@ const actions = {
   login({ commit, rootState }) {
     const parameters = {
       client_id: process.env.CLIENT_ID,
-      redirect_uri: 'http://localhost:8081/login',
+      redirect_uri: process.env.REDIRECT_URI,
       response_type: 'token',
       state: crypto(10)
     };
