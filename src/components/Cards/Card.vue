@@ -69,7 +69,7 @@
             <p class="card-flavor-text my-2" v-if="displayFlavor && card.main_slot" v-html="card.main_slot.flavor"></p>
             <b-form-select v-if="allowPackSelection && card.pack_cards.length > 1" v-model="packId" :options="packs" size="sm"
                            class="pack-chooser"></b-form-select>
-            <div v-else-if="card.pack_cards.length" v-html="optionText(card.main_slot)" class="small pack-chooser"></div>
+            <div v-else-if="card.main_slot" v-html="optionText(card.main_slot)" class="small pack-chooser"></div>
         </div>
     </div>
 </template>
