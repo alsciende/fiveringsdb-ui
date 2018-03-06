@@ -19,7 +19,7 @@
             </div>
             <div class="col-md-7">
                 <b-list-group>
-                    <feed-item v-for="item in feedItems" :item="item"></feed-item>
+                    <feed-item v-for="item in feedItems" :key="item.id" :item="item"></feed-item>
                 </b-list-group>
             </div>
             <div class="col-md-3">
@@ -59,7 +59,10 @@
     },
     mounted() {
       this.load();
-      (adsbygoogle = window.adsbygoogle || []).push({});
+      if ('adsbygoogle' in window === false) {
+        window.adsbygoogle = [];
+      }
+      window.adsbygoogle.push({});
     },
   };
 </script>

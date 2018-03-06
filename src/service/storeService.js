@@ -81,7 +81,7 @@ const denormalizeCards = () => {
     // add the list of illustrators
     record.illustrators = record.pack_cards.map(packCard => packCard.illustrator);
     // select the default slot for the card
-    record.main_slot = record.pack_cards[0];
+    record.main_slot = record.pack_cards.filter(packCard => packCard.image_url)[0];
     // merge
     stores.cards.merge(record, 'id', false);
   });

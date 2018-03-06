@@ -1,6 +1,8 @@
+import queryString from 'query-string';
 import Vue from 'vue';
 import Router from 'vue-router';
 
+import store from './store';
 import AppNotFound from '@/components/App/NotFound';
 import Browser from '@/components/Cards/Browser';
 import BuilderList from '@/components/Builder/List';
@@ -22,6 +24,15 @@ export default new Router({
       path: '/',
       name: 'front-page',
       component: AppFrontPage,
+    },
+    {
+      path: '/login',
+      name: 'login',
+      beforeEnter(to, from, next) {
+        store.dispatch('auth', queryString.parse(to.hash)).then((route) => {
+          next(route);
+        });
+      }
     },
     {
       path: '/cards',

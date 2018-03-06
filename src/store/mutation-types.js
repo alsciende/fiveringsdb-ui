@@ -1,4 +1,7 @@
 export const SAVE_AUTH_TOKEN = 'SAVE_AUTH_TOKEN';
+export const SAVE_USER = 'SAVE_USER';
+export const CLEAR_AUTH = 'CLEAR_AUTH';
+export const BEFORE_OAUTH_REDIRECT = 'BEFORE_OAUTH_REDIRECT';
 export const SET_SLOTS = 'SET_SLOTS';
 export const DROP_SLOTS = 'DROP_SLOTS';
 export const SET_SLOT_QUANTITY = 'SET_SLOT_QUANTITY';

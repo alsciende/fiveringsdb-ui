@@ -78,11 +78,11 @@
     },
     computed: {
       data() {
-        if (this.slots.length === 0) {
+        const maxCost = max(this.slots.map(slot => slot.card.cost));
+
+        if(isNaN(maxCost)) {
           return {};
         }
-
-        const maxCost = max(this.slots.map(slot => slot.card.cost));
 
         const datasets = configs.map((config) => {
           const costs = this
