@@ -3,7 +3,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 
 import Vue from 'vue';
-import VueRouter from 'vue-router';
 import { sync } from 'vuex-router-sync';
 import VueAnalytics from 'vue-analytics';
 import BootstrapVue from 'bootstrap-vue';
@@ -27,7 +26,6 @@ import UtilsCardPopover from './components/Utils/CardPopover';
 
 Vue.config.productionTip = false;
 
-Vue.use(VueRouter);
 sync(store, router);
 Vue.use(VueAnalytics, {
   id: process.env.GA_TRACKING_ID,

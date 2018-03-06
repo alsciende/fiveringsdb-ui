@@ -5,7 +5,7 @@
                 <utils-card-image :card="card"></utils-card-image>
             </div>
             <div class="col-12 col-md-8">
-                <cards-card :card="card"></cards-card>
+                <cards-card :card="card" :allow-pack-selection="false"></cards-card>
             </div>
         </div>
         <div v-if="card && editable" slot="modal-header" class="w-100 text-center">
