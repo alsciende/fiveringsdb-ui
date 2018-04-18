@@ -13,22 +13,18 @@
         <div class="contents order-sm-1 col-sm-8 mt-3">
             <h2>RULES REFERENCE</h2>
             <p>
-                Version 1.2
+                Version 1.3
             </p>
             <h3>SUMMARY OF CHANGES</h3>
             <p>
                 New entries and changes from previous editions will be noted in this space. Changes are noted in <span class="new">red text</span>.
             </p>
             <p>
-				<a href="#attachments-cards">Attachment Cards</a>, 
-				<a href="#effects">Effects</a>, 
-				<a href="#fate">Fate</a>, 
-				<a href="#in-play-and-out-of-play">In Play and Out of Play</a>, 
-				<a href="#play-and-put-into-play">Play and Put Into Play</a>, 
-				<a href="#remove-from-game">Remove from Game</a>, 
-				<a href="#restricted">Restricted</a>, 
-				<a href="#appendix-I-timing-and-gameplay">Appendix I: Timing and Gameplay</a>,
-				<a href="#appendix-iii-questions-and-answers">Appendix III: FAQ</a>, 
+				<a href="#cost">Cost</a>, 
+				<a href="#forced">Forced</a>, 
+				<a href="#glory-count">Glory Count</a>, 
+				<a href="#role-cards">Role Cards</a>, 
+				<a href="#duel-timing">Framework Details: Duel Timing</a>,
 				<a href="#appendix-iv-card-errata">Appendix IV: Card Errata</a>
             </p>
             <hr>
@@ -181,7 +177,7 @@
                             attach.
                         </li>
                         <li>
-                            An attachment can only attach to a character <span class="new">in play</span>, unless otherwise specified by the attachment's
+                            An attachment can only attach to a character in play, unless otherwise specified by the attachment's
                             text.
                         </li>
                         <li>
@@ -544,11 +540,7 @@
                         hand or provinces.
                     </p>
                     <p>
-                        Some triggered card abilities also have an ability cost. Any imperative instruction (other than
-                        "choose...," which denotes one or more targets must be chosen) that appears before the dash of a
-                        triggered ability is considered a part of that ability's cost. Some examples of ability cost
-                        instructions are: "Bow...," "Spend...," "Sacrifice...," "Lose...," "Dishonor...," and
-                        "Discard...."
+                        Some triggered card abilities also have an ability cost. Any imperative instruction (other than "choose...," which denotes one or more targets must be chosen<span class="new">, or "select...," which denotes that one or more of a number of effects must be selected</span>) that appears before the dash of a triggered ability is considered a part of that ability's cost. Some examples of ability cost instructions are: "Bow...," "Spend...," "Sacrifice...," "Lose...," "Dishonor...," and "Discard...." 
                     </p>
                     <ul>
                         <li>
@@ -879,8 +871,8 @@
                             considered to be generating a game state change by a card effect.
                         </li>
                         <li>
-                            If an ability instructs a player to <span class="new">pick</span> among multiple effects, an effect that has the
-                            potential to change the game state must be <span class="new">picked</span>.
+                            If an ability instructs a player to pick among multiple effects, an effect that has the
+                            potential to change the game state must be picked.
                         </li>
                     </ul>
                 </article>
@@ -976,7 +968,7 @@
                             spent to a ring, it is placed on that ring.
                         </li>
                         <li>
-                            Whenever a player plays a character from his or her hand or provinces, <span class="new">after that character enters play</span>, that player has the option of placing any number of fate from his or her
+                            Whenever a player plays a character from his or her hand or provinces, after that character enters play, that player has the option of placing any number of fate from his or her
                             fate pool onto that character.
                         </li>
                         <li>
@@ -1034,7 +1026,7 @@
                             reactions.
                         </li>
                         <li>
-                            If two or more forced abilities would initiate at the same moment, the first player
+                            If two or more forced <span class="new">and/or mandatory</span> abilities <span class="new">(such as keywords)</span> would initiate at the same moment, the first player
                             determines the order in which the abilities initiate, regardless of who controls the cards
                             bearing those abilities.
                         </li>
@@ -1109,7 +1101,7 @@
                 <article>
                     <anchored-heading @heading="add" :level="2">Glory Count</anchored-heading>
                     <p>
-                        When the players are asked to count glory, each player counts the total glory value among the
+                        When the players are asked to <span class="new">perform a glory count</span>, each player counts the total glory value among the
                         ready characters he or she controls, and adds 1 to the total for each ring in his or her claimed
                         ring pool. The player with the highest total wins the glory count.
                     </p>
@@ -1127,14 +1119,18 @@
                             </li>
                         </ul>
                         <li>
-                            Some card abilities may require the players to count glory. Glory counts required by card
+                            Some card abilities may require the players to <span class="new">perform a glory count</span>. Glory counts required by card
                             abilities are made in the same manner, and the ability will detail how to process the
                             result. Such counts do not affect the status of the Imperial Favor, unless the ability text
                             causes the Imperial Favor status to change.
                         </li>
+						<li>
+							<span class="new">Other card abilities may require players to count current glory among their characters, or a subset of their characters. This is different from a glory count, and rings in a player's claimed ring pool are not added. For such card abilities, players count current glory among their specified characters in the same way they would count current <span class="icon icon-conflict-military"></span> or <span class="icon icon-conflict-political"></span> skill.</span>
+						</li>
+						
                     </ul>
                     <p>
-                        <b>Related:</b> <a href="#imperial-favor-imperial-favor-contest">Imperial Favor</a>
+                        <b>Related:</b> <a href="#imperial-favor-imperial-favor-contest">Imperial Favor</a><span class="new">, <a href="#current">Current</a></span>
                     </p>
                 </article>
                 <article>
@@ -1308,7 +1304,7 @@
                             A player's stronghold cannot leave play.
                         </li>
 						<li>
-							<span class="new">If a card enters or leaves play, any lasting effects, delayed effects, or pending effects that are currently or about to interact with that card no longer do so. This is also true if a card transitions from one out-of-play area to another (such as going from hand to discard pile).</span>
+							If a card enters or leaves play, any lasting effects, delayed effects, or pending effects that are currently or about to interact with that card no longer do so. This is also true if a card transitions from one out-of-play area to another (such as going from hand to discard pile).
 						</li>
                     </ul>
                     <p>
@@ -1882,7 +1878,7 @@
                             When a card is <b>put into play</b>, its fate cost is ignored.
                         </li>
                         <li>
-                            Unless otherwise instructed by the put into play effect, <span class="new">characters that enter play in this manner do so ready and at home. Non-character</span> cards that enter play in this
+                            Unless otherwise instructed by the put into play effect, characters that enter play in this manner do so ready and at home. Non-character cards that enter play in this
                             manner must do so in a play area or state that matches the rules of playing the card.
                         </li>
                         <li>
@@ -2049,7 +2045,7 @@
                         removal. If there is no specified duration, a card that has been removed from the game is
                         considered removed until the end of the game.
 						<li>
-							<span class="new">Cards that have been removed from the game are faceup, open information that is available to both players, unless otherwise specified.</span>
+							Cards that have been removed from the game are faceup, open information that is available to both players, unless otherwise specified.
 						</li>
                     </p>
                 </article>
@@ -2091,7 +2087,7 @@
                             character as soon as the illegal game state occurs.
                         </li>
                         <li>
-                            A player may choose to play a third restricted attachment onto a character, but <span class="new">that character's controller</span> must immediately choose and discard one of <span class="new">its</span> restricted attachments <span class="new">when</span> the new attachment enters play.
+                            A player may choose to play a third restricted attachment onto a character, but that character's controller must immediately choose and discard one of its restricted attachments when the new attachment enters play.
                         </li>
                     </ul>
                 </article>
@@ -2206,10 +2202,11 @@
                             the game by other card abilities.
                         </li>
                         <li>
-                            In sanctioned tournament play, role card eligibility for each clan is determined by the
-                             Clan Roles webpage found at <a
-                                    href="https://www.fantasyflightgames.com/en/op/l5r-lcg/roles/" target="_blank">https://www.fantasyflightgames.com/en/op/l5r-lcg/roles/</a>
+                            In sanctioned tournament play, eligibility <span class="new">for Keeper and Seeker roles</span> for each clan is determined by the Clan Roles webpage found at <a href="https://www.fantasyflightgames.com/en/op/l5r-lcg/roles/" target="_blank">https://www.fantasyflightgames.com/en/op/l5r-lcg/roles/</a>
                         </li>
+						<li>
+							<span class="new">Each non-Keeper, non-Seeker role is available to all clans regardless of the clan role eligibility. This is in addition to any Keeper or Seeker role(s) available to that clan.</span>
+						</li>
                         <li>
                             Some cards have the text, "___ role only." This is a deckbuilding restriction, and is not active during gameplay.
                         </li>
@@ -3343,7 +3340,7 @@ If a conflict opportunity is passed, the player forfeits his or her right to use
                     If no player won the conflict (in step 3.2.3), the ring is returned to the unclaimed ring pool.
                 </p>
 				<p>
-					<span class="new">The ring continues to define the conflict type and element(s) until the end of the conflict even after it ceases to be contested.</span>
+					The ring continues to define the conflict type and element(s) until the end of the conflict even after it ceases to be contested.
 				</p>
                 <anchored-heading @heading="add" :level="3">3.2.8. Return home</anchored-heading>
                 <p>
@@ -3541,8 +3538,7 @@ If a conflict opportunity is passed, the player forfeits his or her right to use
                         The player controlling the character with the lower skill value loses the duel.
                     </li>
                     <li>
-                        If the skill values are the same, neither player wins the duel, and neither player loses the
-                        duel.
+                        If the skill values are the same, neither <span class="new">character</span> wins the duel, and neither <span class="new">character</span> loses the duel.
                     </li>
                 </ul>
                 <anchored-heading @heading="add" :level="3">D.8. Apply duel results</anchored-heading>
@@ -3800,7 +3796,7 @@ If a conflict opportunity is passed, the player forfeits his or her right to use
                     discarded and the character is returned to an ordinary state. See <a
                         href="#personal-honor-personal-dishonor">RRG "Personal Honor, Personal Dishonor"</a>.
                 </p>
-				<span class="new">
+				
 				<p class="question">
 					If I use <a href="https://fiveringsdb.com/card/artisan-academy" target="_blank">Artisan Academy</a> (Core Set, 53) or <a href="https://fiveringsdb.com/card/pillow-book" target="_blank">Pillow Book</a> (Imperial Cycle, 113) to reveal <a href="https://fiveringsdb.com/card/test-of-skill" target="_blank">Test of Skill</a> (Imperial Cycle, 93) and then play it, what happens?
 				</p>
@@ -3827,7 +3823,7 @@ If a conflict opportunity is passed, the player forfeits his or her right to use
 					will take up one of the "revealed card slots" in its cost, but be
 					ineligible to be put into your hand by its effect.
 				</p>
-				</span>
+				
             </section>
             <section>
                 <anchored-heading @heading="add" :level="1" class="new">Appendix IV: Card Errata</anchored-heading>
@@ -3850,7 +3846,7 @@ If a conflict opportunity is passed, the player forfeits his or her right to use
                     <a href="https://fiveringsdb.com/card/pit-trap" target="_blank">Pit Trap</a> (Imperial Cycle, 73)
                 </h5>
                 <p>
-                    Should read: "Attach to a character. Play only on <span class="new">an attacking</span> character." <br> <i>(Replaces
+                    Should read: "Attach to a character. Play only on an attacking character." <br> <i>(Replaces
                     "Attach to an attacking character.")</i>
                 </p>
                 <h5>
@@ -3861,6 +3857,22 @@ If a conflict opportunity is passed, the player forfeits his or her right to use
                     Should read: "...set the base strength of the attacked province to 1 until the end of the conflict."
                     <br> <i>(Added "until the end of the conflict.")</i>
                 </p>
+				<span class="new">
+				<h5>
+                    <a href="https://fiveringsdb.com/card/kaito-kosori" target="_blank">Kaito Kosori</a> (Disciples of the Void, 18)
+                </h5>
+                <p>
+                    Should read: "During each <span class="icon icon-element-air"></span> conflict, if you control at least 1 participating character and if this character is in your home area and ready, it contributes its skill to your side."
+                    <br> <i>(Added "and ready.")</i>
+                </p>
+				<h5>
+                    <a href="https://fiveringsdb.com/card/yogo-kikuyo" target="_blank">Yogo Kikuyo</a> (Disciples of the Void, 25)
+                </h5>
+                <p>
+                    Should read: "When the effects of a <em>Spell</em> event your opponent plays during a conflict would initiate, put this character into play from your hand – cancel its effects."
+                    <br> <i>(Added "from your hand.")</i>
+                </p>
+				</span>
             </section>
         </div>
     </div>
