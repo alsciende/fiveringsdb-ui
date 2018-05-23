@@ -114,7 +114,7 @@
                     <p>
                         An action ability is a triggered card ability that contains the boldface "<b>Action:</b>"
                         precursor. An action ability may be triggered by its controller during any action window (see <a
-                            href="#appendix-i-timing-and-gameplay">"Appendix I: Timing and Gameplay"</a> on page 18).
+                            href="#appendix-i-timing-and-gameplay">"Appendix I: Timing and Gameplay"</a>).
                     </p>
                     <ul>
                         <li>
@@ -211,7 +211,7 @@
                     </ul>
                     <p>
                         For attachment card anatomy, see "<a href="#appendix-ii-card-anatomy">Appendix II: Card
-                        Anatomy</a>" on page 24.
+                        Anatomy</a>".
                     </p>
                 </article>
                 <article>
@@ -349,7 +349,7 @@
                     <p>
                         The game's cardtypes are: character, attachment, holding, event, province, stronghold, and role.
                         Each of these cardtypes, with a detailed card anatomy, is presented in "<a
-                            href="#appendix-ii-card-anatomy">Appendix II: Card Anatomy</a>" on page 24.
+                            href="#appendix-ii-card-anatomy">Appendix II: Card Anatomy</a>".
                     </p>
                     <ul>
                         <li>
@@ -363,7 +363,7 @@
                     <p>
                         Some card abilities use the word "challenge" to initiate a duel between two characters
                         participating in a conflict. For the rules on how to resolve a duel, see "<a
-                            href="#duel-timing">Duel timing</a>" on page 23.
+                            href="#duel-timing">Duel timing</a>".
                     </p>
                 </article>
                 <article>
@@ -384,7 +384,7 @@
                     </ul>
                     <p>
                         For character card anatomy, see "<a href="#appendix-ii-card-anatomy">Appendix II: Card
-                        Anatomy</a>" on page 24.
+                        Anatomy</a>".
                     </p>
                 </article>
                 <article>
@@ -641,7 +641,7 @@
                             If a <span class="new">character has a dash for a</span> skill value <span class="new">and a card ability</span> require<span class="new">s a numerical value for that skill</span>, treat the card as if it had an unmodifiable skill value of 0.
                         </li>
                         <li>
-                            A character with a dash skill value cannot be <span class="new">involved</span> in a duel of that skill type. (see <a href="#duel-timing">D.2</a> on page 23).
+                            A character with a dash skill value cannot be <span class="new">involved</span> in a duel of that skill type. (see <a href="#duel-timing">D.2</a>).
                         </li>
                     </ul>
                     <p>
@@ -685,7 +685,7 @@
                         </li>
 						<li>
 							<span class="new">A player cannot include more than 1 card (by card title) from
-							the Restricted List on page 29 in their decks and set of
+							the <a href="#appendix-v-restricted-list">Restricted List</a> in their decks and set of
 							provinces. A player may include a number of copies of that
 							card in their decks based on that card's normal deck limit.</span>
 						</li>
@@ -797,7 +797,7 @@
                 <article>
                     <anchored-heading @heading="add" :level="2">Dishonored, Dishonored Status Token</anchored-heading>
                     <p>
-                        See "<a href="#personal-honor-personal-dishonor">Personal Honor</a>" on page 12.
+                        See "<a href="#personal-honor-personal-dishonor">Personal Honor</a>".
                     </p>
                 </article>
                 <article>
@@ -829,8 +829,7 @@
                     <anchored-heading @heading="add" :level="2">Duel</anchored-heading>
                     <p>
                         Some card abilities initiate a duel between two characters participating in a conflict. For the
-                        rules on how to resolve a duel, see "<a
-                            href="#duel-timing">Duel timing</a>" on page 23.
+                        rules on how to resolve a duel, see "<a href="#duel-timing">Duel timing</a>".
                     </p>
                 </article>
                 <article>
@@ -927,8 +926,7 @@
                         </li>
                     </ul>
                     <p>
-                        For event card anatomy, see "<a href="#appendix-ii-card-anatomy">Appendix II: Card Anatomy</a>"
-                        on page 24.
+                        For event card anatomy, see "<a href="#appendix-ii-card-anatomy">Appendix II: Card Anatomy</a>".
                     </p>
                 </article>
                 <article>
@@ -1163,8 +1161,7 @@
                         </li>
                     </ul>
                     <p>
-                        For holding card anatomy, see "<a href="#appendix-ii-card-anatomy">Appendix II: Card Anatomy</a>"
-                        on page 24.
+                        For holding card anatomy, see "<a href="#appendix-ii-card-anatomy">Appendix II: Card Anatomy</a>".
                     </p>
                 </article>
                 <article>
@@ -1186,7 +1183,7 @@
                     <p>
                         Honor represents the behavior of a player's clan, and the outward perception of that behavior.
                         It is bid during the draw phase (see framework step "<a
-                            href="#2-2-honor-bid">2.2. Honor bid</a>" on page 20) and during duels. Honor also serves as
+                            href="#2-2-honor-bid">2.2. Honor bid</a>") and during duels. Honor also serves as
                         a victory track to measure an honor win or an honor loss. The amount of honor a player has at
                         any given time is represented (as open information) by honor tokens in his or her honor pool.
                     </p>
@@ -1216,7 +1213,7 @@
                 <article>
                     <anchored-heading @heading="add" :level="2">Honored, Honored Status Token</anchored-heading>
                     <p>
-                        See "<a href="#personal-honor-personal-dishonor">Personal Honor</a>" on page 12.
+                        See "<a href="#personal-honor-personal-dishonor">Personal Honor</a>".
                     </p>
                 </article>
                 <article>
@@ -1752,7 +1749,7 @@
                 <article>
                     <anchored-heading @heading="add" :level="2">Own, Ownership</anchored-heading>
                     <p>
-                        See "<a href="#control-and-ownership">Control and Ownership</a>" on page 4.
+                        See "<a href="#control-and-ownership">Control and Ownership</a>".
                     </p>
                 </article>
                 <article>
@@ -2086,8 +2083,7 @@
                 <article>
                     <anchored-heading @heading="add" :level="2">"Resolve this ability twice"</anchored-heading>
                     <p>
-                        See "<a href="#initiating-abilities-playing-cards">Initiating Abilities / Playing Cards</a>" on
-                        page 9.
+                        See "<a href="#initiating-abilities-playing-cards">Initiating Abilities / Playing Cards</a>".
                     </p>
                 </article>
                 <article>
@@ -2315,7 +2311,7 @@
                 <article>
                     <anchored-heading @heading="add" :level="2">Set</anchored-heading>
                     <p>
-                        See "<a href="#modifiers">Modifiers</a>" on page 11.
+                        See "<a href="#modifiers">Modifiers</a>".
                     </p>
                 </article>
                 <article>
@@ -2326,7 +2322,7 @@
                     <ol>
                         <li>
                             <b>Select decks</b>. Each player selects a deck using the deckbuilding rules. See "<a
-                                href="#deckbuilding">Deckbuilding</a>" on page 5.
+                                href="#deckbuilding">Deckbuilding</a>".
                         </li>
                         <li>
                             <b>Create token bank and unclaimed ring pool</b>. Place all fate tokens, honor tokens,
@@ -2439,7 +2435,7 @@
                 <article>
                     <anchored-heading @heading="add" :level="2">Status Token</anchored-heading>
                     <p>
-                        See <a href="#personal-honor-personal-dishonor">Personal Honor</a> on page 12.
+                        See <a href="#personal-honor-personal-dishonor">Personal Honor</a>.
                     </p>
                 </article>
                 <article>
@@ -3830,8 +3826,7 @@ If a conflict opportunity is passed, the player forfeits his or her right to use
 					it leaves the top of your deck (prior to resolving its effect in step
 					7 — see '<a href="#initiating-abilities-playing-cards">Initiating Abilities</a>'), it no longer becomes
 					"one of the revealed cards" and cannot be put back into your
-					hand. For more information, see 'In Play and Out of Play' on
-					page 9.
+					hand. For more information, see '<a href="#in-play-and-out-of-play">In Play and Out of Play</a>'.
 				</p>
 				<p>
 					Therefore, if you play Test of Skill from the top of your deck, it
