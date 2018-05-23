@@ -466,6 +466,7 @@
                         </tr>
                         </tbody>
                     </table>
+					<br>
                 </article>
                 <article>
                     <anchored-heading @heading="add" :level="2">Constant Abilities</anchored-heading>
@@ -1340,14 +1341,14 @@
                         </li>
                     </ul>
                     <p>
-                        <em><b>Example:</b> Tom is building a Lion Clan deck, and has 10 influence to spend on
+                        <i><b>Example:</b> Tom is building a Lion Clan deck, and has 10 influence to spend on
                             out-of-clan cards, as indicated by the Lion stronghold, Shiro no Yojin. He must spend all of
                             his influence on cards from a single clan. He chooses to select cards from the Crane Clan.
                             Tom decides to include 3 copies of Admit Defeat (2 influence cost each), 3 copies of The
                             Perfect Gift (1 influence cost each), and 1 copy of Duelist Training (1 influence cost). As
                             this is all of Tom's influence, he cannot include any other Crane Clan cards in his conflict
                             deck. All of the other cards in Tom's conflict deck must either be from the Lion Clan, or be
-                            neutral.</em>
+                            neutral.</i>
                     </p>
                     <anchored-heading @heading="add" :level="2">Initiating Abilities / Playing Cards</anchored-heading>
                     <p>
@@ -1731,7 +1732,7 @@
                     <ul>
                         <li>
                             If one or more traits precedes the word "attachments" (for example, "No <em>Weapon</em> or
-                            <i>Armor</i> attachments"), the card cannot have an attachment that possess one or more of
+                            <em>Armor</em> attachments"), the card cannot have an attachment that possess one or more of
                             the specified traits, but it can have attachments possessing none of those traits.
                         </li>
                         <li>
@@ -2424,12 +2425,12 @@
                         </li>
                     </ul>
                     <p>
-                        <em>A character's printed military skill can be found at the top of the banner beneath the cost,
-                            in red.</em>
+                        <i>A character's printed military skill can be found at the top of the banner beneath the cost,
+                            in red.</i>
                     </p>
                     <p>
-                        <em>A character's printed political skill can be found at the bottom of the banner beneath the
-                            cost, in blue.</em>
+                        <i>A character's printed political skill can be found at the bottom of the banner beneath the
+                            cost, in blue.</i>
                     </p>
                 </article>
                 <article>
@@ -2498,9 +2499,9 @@
                         </li>
                         <li>
                             A card is not an eligible target for an ability if the resolution of that ability's effect
-                            could not affect the target at all. <em>(For example, a bowed character cannot be chosen as
+                            could not affect the target at all. <i>(For example, a bowed character cannot be chosen as
                             the target for an ability that reads "<b>Action:</b> Choose a character &ndash; bow that
-                            character.")</em>
+                            character.")</i>
                         </li>
                         <li>
                             Some abilities require the choice of a target that is not directly affected by the ability
@@ -2588,8 +2589,8 @@
                             once per round.
                         </li>
                         <li>
-                            Triggered abilities are written in a <em>"triggering condition (and/or) cost (and/or)
-                            targeting requirements &ndash; effect"</em> template. Ability text before the dash consists
+                            Triggered abilities are written in a <i>"triggering condition (and/or) cost (and/or)
+                            targeting requirements &ndash; effect"</i> template. Ability text before the dash consists
                             of triggering conditions (and/or) costs (and/or) targeting requirements. Ability text after
                             the dash consists of effects. and may sometimes include targeting requirements that come
                             into play as the effect is being resolved.
@@ -2924,7 +2925,7 @@
                         <td><b>3.1</b> Conflict phase begins.</td>
                     </tr>
                     <tr>
-                        <td class="action"><b>&diamond; ACTION WINDOW</b><br><br> <b>NOTE</b>: <em>After</em> this
+                        <td class="action"><b>&diamond; ACTION WINDOW</b><br><br> <b>NOTE</b>: <i>After</i> this
                             action window, if no conflict opportunities remain, proceed to (<b>3.4</b>).
                         </td>
                     </tr>
