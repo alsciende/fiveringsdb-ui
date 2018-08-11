@@ -20,12 +20,10 @@
                 New entries and changes from previous editions will be noted in this space. Changes are noted in <span class="new">red text</span>.
             </p>
             <p>
-				<a href="#cost">Cost</a>, 
-				<a href="#dash">Dash</a>, 
-				<a href="#deckbuilding">Deckbuilding</a>, 
-				<a href="#limit">Limit</a>, 
-				<a href="#rings">Rings</a>,
-				<a href="#appendix-v-restricted-list">Appendix V: Restricted List</a>
+				<a href="#event-cards">Event Cards</a>, 
+				<a href="#ordinary">Ordinary</a>, 
+				<a href="#triggering-condition">Triggering Condition</a>, 
+				<a href="#appendix-iii-questions-and-answers">Appendix III: Questions and Answers</a>
             </p>
             <hr>
             <section>
@@ -536,14 +534,14 @@
                 <article>
                     <anchored-heading @heading="add" :level="2">Cost</anchored-heading>
                     <p>
-                        A card's fate cost is the numerical value that <span class="new">dictates how much fate</span> must be paid to play the card from a player's hand or provinces.
+                        A card's fate cost is the numerical value that dictates how much fate must be paid to play the card from a player's hand or provinces.
                     </p>
                     <p>
                         Some triggered card abilities also have an ability cost. Any imperative instruction (other than "choose...," which denotes one or more targets must be chosen, or "select...," which denotes that one or more of a number of effects must be selected) that appears before the dash of a triggered ability is considered a part of that ability's cost. Some examples of ability cost instructions are: "Bow...," "Spend...," "Sacrifice...," "Lose...," "Dishonor...," and "Discard...." 
                     </p>
                     <ul>
 						<li>
-							<span class="new">Unless otherwise specified, a card effect that modifies a cost only modifies the fate cost.</span>
+							              Unless otherwise specified, a card effect that modifies a cost only modifies the fate cost.
 						</li>
                         <li>
                             When a player is paying a cost, the payment must be made with cards and/or game elements
@@ -638,10 +636,10 @@
                             otherwise changed by card abilities and effects.
                         </li>
                         <li>
-                            If a <span class="new">character has a dash for a</span> skill value <span class="new">and a card ability</span> require<span class="new">s a numerical value for that skill</span>, treat the card as if it had an unmodifiable skill value of 0.
+                            If a character has a dash for a skill value and a card ability requires a numerical value for that skill, treat the card as if it had an unmodifiable skill value of 0.
                         </li>
                         <li>
-                            A character with a dash skill value cannot be <span class="new">involved</span> in a duel of that skill type. (see <a href="#duel-timing">D.2</a>).
+                            A character with a dash skill value cannot be involved in a duel of that skill type. (see <a href="#duel-timing">D.2</a>).
                         </li>
                     </ul>
                     <p>
@@ -683,17 +681,17 @@
                             No more than 3 copies of a single card by title can be included in any combination in a
                             player's dynasty and conflict decks.
                         </li>
-						<li>
-							<span class="new">A player cannot include more than 1 card (by card title) from
-							the <a href="#appendix-v-restricted-list">Restricted List</a> in their decks and set of
-							provinces. A player may include a number of copies of that
-							card in their decks based on that card's normal deck limit.</span>
-						</li>
+						            <li>
+                            A player cannot include more than 1 card (by card title) from
+                            the <a href="#appendix-v-restricted-list">Restricted List</a> in their decks and set of
+                            provinces. A player may include a number of copies of that
+                            card in their decks based on that card's normal deck limit.
+                        </li>
                         <li>
                             A player's set of provinces must include exactly 5 provinces.
-							<span class="new">For each element, that player must choose one province
+							For each element, that player must choose one province
 							associated with that element, such that all five elements are
-							represented among their set of provinces.</span>
+							represented among their set of provinces.
 							(Each province has a ring symbol in the lower right
                             corner of the card to indicate its association.) Each of these provinces must be in-clan or
                             be neutral.
@@ -909,7 +907,8 @@
                             follows the ability's resolution.
                         </li>
                         <li>
-                            Event cards engage the game state at the time they resolve. If an event card creates a
+                            <span class="new">Lasting effects, including those created by e</span>vent cards engage the game 
+                            state at the time they resolve. If an event card creates a
                             lasting effect on a set of cards, only cards that are in play (or in the affected game area
                             or game state) at the time the event is played are eligible to be affected. Cards that enter
                             play (or the affected game area or game state) after the resolution of the event are not
@@ -1562,16 +1561,16 @@
                         </li>
                         <li>
                             If a card leaves play and re-enters play during the same period,
-							<span class="new">or if a card transitions from one out-of-play area
-							to another (such as going from hand to discard pile),</span>
-							it is considered a new instance of the card<span class="new">. T</span>here is no memory of having used the ability during the specified
-                            period <span class="new">for any new instance of a card</span>. (This rule also applies to any ability with no specified limit.)
+							or if a card transitions from one out-of-play area
+							to another (such as going from hand to discard pile),
+							it is considered a new instance of the card. There is no memory of having used the ability during the specified
+                            period for any new instance of a card. (This rule also applies to any ability with no specified limit.)
                         </li>
 						<li>
-							<span class="new">If a card triggers its ability from a hidden out-of-play area
+							If a card triggers its ability from a hidden out-of-play area
 							(such as a hand or deck) but does not leave that hidden
 							area, that ability may be triggered again because it is
-							considered a new instance of the card.</span>
+							considered a new instance of the card.
 						</li>
                         <li>
                             All limits are player specific.
@@ -1748,6 +1747,12 @@
                 </article>
                 <article>
                     <anchored-heading @heading="add" :level="2">Own, Ownership</anchored-heading>
+                    <p>
+                        See "<a href="#control-and-ownership">Control and Ownership</a>".
+                    </p>
+                </article>
+                <article>
+                    <anchored-heading @heading="add" :level="2">Ordinary</anchored-heading>
                     <p>
                         See "<a href="#control-and-ownership">Control and Ownership</a>".
                     </p>
@@ -2122,7 +2127,7 @@
                     <anchored-heading @heading="add" :level="2">Rings</anchored-heading>
                     <p>
                         Rings, represented by double-sided tokens, are used to determine the type and element of
-                        conflicts. Each ring exists in one <span class="new">or more</span> of three states, as follows:
+                        conflicts. Each ring exists in one or more of three states, as follows:
                     </p>
                     <p>
                         <b>Unclaimed</b>
@@ -2139,11 +2144,11 @@
                     <p>
                         <b>Claimed</b>
                         &ndash;
-                        <span class="new">Each ring in a player's</span> claimed ring pool <span class="new">is a claimed ring</span>.
+                        Each ring in a player's claimed ring pool is a claimed ring.
                     </p>
                     <ul>
                         <li>
-                            <span class="new">While performing a</span> glory count<span class="new">, each player adds 1 to his or her total for each ring in his or her claimed ring pool</span>.
+                            While performing a glory count, each player adds 1 to his or her total for each ring in his or her claimed ring pool.
                         </li>
                         <li>
                             During the fate phase, place 1 fate on each unclaimed ring.
@@ -2619,16 +2624,18 @@
                 <article>
                     <anchored-heading @heading="add" :level="2">Triggering Condition</anchored-heading>
                     <p>
-                        A triggering condition is a specific occurrence that takes place in the game. On card abilities,
-                        the triggering condition is the element of the ability that references such an occurrence,
-                        indicating the timing point at which the ability may be used. The description of an ability's
-                        triggering condition often follows the word "when" (for interrupt abilities) or the word "after"
-                        (for reaction abilities).
+                        A triggering condition is a <span class="new">condition which dictates when an ability can be triggered.</span>
+                        On card abilities, the triggering condition is the element of the ability that references such a 
+                        <span class="new">condition, which most often comes in the form of a specific occurrence that takes place
+                        during the game. This</span> indicat<span class="new">es</span> the timing point at which the ability may 
+                        be used. The description of an ability's triggering condition often follows the word "when" (for interrupt 
+                        abilities) or the word "after" (for reaction abilities)<span class="new">, or the word "if" (for action 
+                        abilities.</span>
                     </p>
                     <p>
-                        If a single occurrence creates multiple triggering conditions (such as a single Earth ring
-                        effect causing a player to draw a card and another player to discard a card), those triggering
-                        conditions are handled in shared interrupt/reaction windows, in which abilities that refer to
+                        If a single occurrence creates multiple triggering conditions <span class="new">for reactions or interrupts </span>
+                        (such as a single Earth ring effect causing a player to draw a card and another player to discard a card), those 
+                        triggering conditions are handled in shared interrupt/reaction windows, in which abilities that refer to
                         any of the triggering conditions created by that occurrence may be used in any order.
                     </p>
                     <p>
@@ -2637,8 +2644,8 @@
                     </p>
                     <ol>
                         <li>
-                            The triggering condition becomes imminent. (In other words, if it is not canceled, changed,
-                            or otherwise preempted by interrupt abilities, the triggering condition is the next thing
+                            The triggering condition becomes imminent. (<span class="new">Meaning that </span> if it is not canceled, 
+                            changed, or otherwise preempted by interrupt abilities, the triggering condition is the next thing
                             that will occur in the game.)
                         </li>
                         <li>
@@ -3809,7 +3816,10 @@ If a conflict opportunity is passed, the player forfeits his or her right to use
                 </p>
 				
 				<p class="question">
-					If I use <a href="https://fiveringsdb.com/card/artisan-academy" target="_blank">Artisan Academy</a> (Core Set, 53) or <a href="https://fiveringsdb.com/card/pillow-book" target="_blank">Pillow Book</a> (Imperial Cycle, 113) to reveal <a href="https://fiveringsdb.com/card/test-of-skill" target="_blank">Test of Skill</a> (Imperial Cycle, 93) and then play it, what happens?
+					If I use <a href="https://fiveringsdb.com/card/artisan-academy" target="_blank">Artisan Academy</a> (Core Set, 53) or 
+          <a href="https://fiveringsdb.com/card/pillow-book" target="_blank">Pillow Book</a> (Imperial Cycle, 113) to reveal 
+          <a href="https://fiveringsdb.com/card/test-of-skill" target="_blank">Test of Skill</a> (Imperial Cycle, 93) and then 
+          play it, what happens?
 				</p>
 				<p>
 					When an event card is played, it is considered to remain in its
@@ -3833,7 +3843,51 @@ If a conflict opportunity is passed, the player forfeits his or her right to use
 					will take up one of the "revealed card slots" in its cost, but be
 					ineligible to be put into your hand by its effect.
 				</p>
-				
+        <span class="new">
+				<p class="question">
+          Can a character with <a href="https://fiveringsdb.com/card/above-question" target="_blank">Above Question</a> 
+          (Core, 141) be chosen as the target of an opponent’s <a href="https://fiveringsdb.com/card/court-games" target="_blank">
+          Court Games</a> (Core, 206) if they are the only participating character on that side of the conflict?
+        </p>
+        <p>
+          No. Regardless of which player is choosing the target, Above Question prevents the attached character from being chosen 
+          as the target for an opponent’s event.
+        </p>
+        <p class="question">
+          If I use <a href="https://fiveringsdb.com/card/the-mirror-s-gaze" target="_blank">The Mirror’s Gaze</a> (Elemental Cycle, 15) 
+          to copy an Interrupt that cancels a card or game effect, what happens?
+        </p>
+        <p>
+          You cannot copy cancel effects with The Mirror’s Gaze, as the event’s ability must successfully resolve before The Mirror’s
+          Gaze can be triggered. The following cards are examples of some events that cannot by copied by this attachment for this
+          reason: <a href="https://fiveringsdb.com/card/voice-of-honor" target="_blank">Voice of Honor</a> (Core, 145), 
+          <a href="https://fiveringsdb.com/card/display-of-power" target="_blank">Display of Power</a> (Core, 179), 
+          <a href="https://fiveringsdb.com/card/forged-edict" target="_blank">Forged Edict</a> (Core, 184), 
+          <a href="https://fiveringsdb.com/card/censure" target="_blank">Censure</a> (Imperial Cycle, 60)
+        </p>
+        <p class="question">
+          Can I use <a href="https://fiveringsdb.com/card/the-mirror-s-gaze" target="_blank">The Mirror’s Gaze</a> (Elemental Cycle, 15) 
+          to copy events whose effects reference their triggering conditions? If so, how do they work?
+        </p>
+        <p>
+          You cannot resolve effects with The Mirror’s Gaze if those effects are dependent upon the triggering condition (which The
+          Mirror’s Gaze ignores). The following cards are some examples of some events that cannot be copied by this attachment for
+          this reason: <a href="https://fiveringsdb.com/card/indomitable-will" target="_blank">Indomitable Will</a> (Core, 158), 
+          <a href="https://fiveringsdb.com/card/ready-for-battle" target="_blank">Ready for Battle</a> (Core, 165), 
+          <a href="https://fiveringsdb.com/card/i-can-swim" target="_blank">I Can Swim</a> (Core, 187), 
+          <a href="https://fiveringsdb.com/card/way-of-the-chrysanthemum" target="_blank">Way of the Chrysanthemum</a> 
+          (Imperial Cycle, 80)
+        </p>
+        <p class="question">
+          What happens if I put fate on the fire ring with <a href="https://fiveringsdb.com/card/master-alchemist" target="_blank">
+          Master Alchemist</a> (Elemental Cycle, 44) while that ring is contested
+          or claimed?
+        </p>
+        <p>
+          Fate will stay on rings up until the point at which they become contested. If the ring is already being contested when 
+          fate is added to it, the attacker will not gain that fate.
+        </p>
+        </span>
             </section>
             <section>
                 <anchored-heading @heading="add" :level="1">Appendix IV: Card Errata</anchored-heading>
@@ -3884,7 +3938,6 @@ If a conflict opportunity is passed, the player forfeits his or her right to use
             </section>
 			<section>
                 <anchored-heading @heading="add" :level="1" class="new">Appendix V: Restricted List</anchored-heading>
-				<span class="new">
 				<p>
 					When deckbuilding, a player may select one card from the
 					restricted list to include in their decks, and cannot include any
@@ -3918,8 +3971,7 @@ If a conflict opportunity is passed, the player forfeits his or her right to use
 						<a href="https://fiveringsdb.com/card/iron-mine" target="_blank">Iron Mine</a> (Imperial Cycle, 103)
 					</li>
 				</ol>
-				</span>
-			</section>
+				</section>
         </div>
     </div>
 </template>
