@@ -13,17 +13,23 @@
         <div class="contents order-sm-1 col-sm-8 mt-3">
             <h2>RULES REFERENCE</h2>
             <p>
-                Version 1.5
+                Version 1.6
             </p>
             <h3>SUMMARY OF CHANGES</h3>
             <p>
                 New entries and changes from previous editions will be noted in this space. Changes are noted in <span class="new">red text</span>.
             </p>
             <p>
-				<a href="#event-cards">Event Cards</a>, 
-				<a href="#ordinary">Ordinary</a>, 
-				<a href="#triggering-condition">Triggering Condition</a>, 
-				<a href="#appendix-iii-questions-and-answers">Appendix III: Questions and Answers</a>
+				<a href="#copy">Copy (of a card)</a>, 
+				<a href="#keywords">Keywords</a>, 
+				<a href="#modifiers">Modifiers</a>, 
+				<a href="#personal-honor-personal-dishonor">Personal Honor, Personal Dishonor</a>, 
+				<a href="#reveal">Reveal</a>, 
+				<a href="#rings">Rings</a>, 
+				<a href="#setup">Setup</a>, 
+				<a href="#unique-cards">Unique Cards</a>, 
+				<a href="#appendix-iii-questions-and-answers">Appendix III: Questions and Answers</a>,
+				<a href="#appendix-iv-card-errata">Appendix IV: Card Errata</a>
             </p>
             <hr>
             <section>
@@ -530,6 +536,11 @@
                         copy, regardless of cardtype, text, deck of origin, artwork, or any other characteristic(s) of
                         the card(s).
                     </p>
+					<ul>
+                        <li>
+                            A card is considered to be a copy of itself, as it shares its own title.
+                        </li>
+                    </ul>
                 </article>
                 <article>
                     <anchored-heading @heading="add" :level="2">Cost</anchored-heading>
@@ -907,7 +918,7 @@
                             follows the ability's resolution.
                         </li>
                         <li>
-                            <span class="new">Lasting effects, including those created by e</span>vent cards engage the game 
+                            Lasting effects, including those created by event cards engage the game 
                             state at the time they resolve. If an event card creates a
                             lasting effect on a set of cards, only cards that are in play (or in the affected game area
                             or game state) at the time the event is played are eligible to be affected. Cards that enter
@@ -1130,7 +1141,11 @@
                             causes the Imperial Favor status to change.
                         </li>
 						<li>
-							Other card abilities may require players to count current glory among their characters, or a subset of their characters. This is different from a glory count, and rings in a player's claimed ring pool are not added. For such card abilities, players count current glory among their specified characters in the same way they would count current <span class="icon icon-conflict-military"></span> or <span class="icon icon-conflict-political"></span> skill.
+							Other card abilities may require players to count current glory among their characters, or a subset 
+							of their characters. This is different from a glory count, and rings in a player's claimed ring pool 
+							are not added. For such card abilities, players count current glory among their specified characters 
+							in the same way they would count current <span class="icon icon-conflict-military"></span> or 
+							<span class="icon icon-conflict-political"></span> skill.
 						</li>
 						
                     </ul>
@@ -1475,9 +1490,9 @@
                             not replace the rules for that keyword in this glossary.
                         </li>
                         <li>
-                            A card is considered to have a keyword or to not have that keyword. A single card that has
-                            and/or is gaining the same keyword from multiple sources functions as if it has one instance
-                            of that keyword.
+                            A card <span class="new">can have multiple instances of the same keyword. However, a card </span>
+							that <span class="new">does so </span> functions as if it has one instance of that keyword, 
+							<span class="new">and the keyword will only resolve once per triggering condition.</span>
                         </li>
                     </ul>
                 </article>
@@ -1646,6 +1661,12 @@
                             modifiers that would take a value below zero can be applied, but, after all active modifiers
                             have been applied, any resultant value below zero is treated as zero.
                         </li>
+						<li>
+							<span class="new">During a duel, the bid on a player’s honor dial is applied as a modifier 
+						    independently of the normal process ofcalculating modifiers. It is added to the appropriate 
+							statistic even if that statistic has been set to a specific number, and is added after 
+							doubling and/or halving modifiers are calculated.</span>
+						</li>
                     </ul>
                 </article>
                 <article>
@@ -1754,7 +1775,7 @@
                 <article>
                     <anchored-heading @heading="add" :level="2">Ordinary</anchored-heading>
                     <p>
-                        See "<a href="#control-and-ownership">Control and Ownership</a>".
+                        See "<a href="#personal-honor-personal-dishonor">Personal Honor, Personal Dishonor</a>".
                     </p>
                 </article>
                 <article>
@@ -1869,6 +1890,11 @@
                         <li>
                             Should a character have both an honored status token and a dishonored status token at the same time, discard both tokens. The character returns to the ordinary state.
                         </li>
+						<li>
+							<span class="new">If a character enters play honored or dishonored, abilities cannot be 
+							triggered from that character becoming honored or dishonored, as it enters play already 
+							with that status.</span>
+						</li>
                     </ul>
                 </article>
                 <article>
@@ -2121,6 +2147,10 @@
                             While a card is revealed, it is still considered to be located in the game area (such as a
                             player's hand or deck) from which it is revealed.
                         </li>
+						<li>
+							<span class="new">When a province is revealed by a card effect, it remains
+							face-up until a card or game effect turns it face-down.</span>
+						</li>
                     </ul>
                 </article>
                 <article>
@@ -2160,6 +2190,10 @@
                         <li>
                             When a ring is claimed, it is still considered to be contested until all reactions to its claiming have resolved.
                         </li>
+						<li>
+							<span class="new">A card effect that refers to “the [ELEMENT] ring” refers to
+							any ring that has that element.</span>
+						</li>
                     </ul>
                     <p>
                         <b>Related:</b> <a href="#ring-effects">Ring Effects</a>
@@ -2336,10 +2370,8 @@
                             unclaimed ring pool.
                         </li>
                         <li>
-                            <b>Determine first player</b>. Randomly select a player. That player will be the first
-                            player. Place the first player token in front of this player. The player that is not
-                            randomly selected to be the first player gains 1 fate from the general token pool and adds
-                            it to their fate pool.
+                            <b>Determine first player</b>. <span class="new">Randomly select a player. That player will be the first
+                            player. Place the first player token in front of this player.</span>
                         </li>
                         <li>
                             <b>Shuffle dynasty and conflict decks</b>. Each player shuffles both their dynasty and
@@ -2624,16 +2656,16 @@
                 <article>
                     <anchored-heading @heading="add" :level="2">Triggering Condition</anchored-heading>
                     <p>
-                        A triggering condition is a <span class="new">condition which dictates when an ability can be triggered.</span>
+                        A triggering condition is a condition which dictates when an ability can be triggered.
                         On card abilities, the triggering condition is the element of the ability that references such a 
-                        <span class="new">condition, which most often comes in the form of a specific occurrence that takes place
-                        during the game. This</span> indicat<span class="new">es</span> the timing point at which the ability may 
+                        condition, which most often comes in the form of a specific occurrence that takes place
+                        during the game. This indicates the timing point at which the ability may 
                         be used. The description of an ability's triggering condition often follows the word "when" (for interrupt 
-                        abilities) or the word "after" (for reaction abilities)<span class="new">, or the word "if" (for action 
-                        abilities.</span>
+                        abilities) or the word "after" (for reaction abilities), or the word "if" (for action 
+                        abilities.
                     </p>
                     <p>
-                        If a single occurrence creates multiple triggering conditions <span class="new">for reactions or interrupts </span>
+                        If a single occurrence creates multiple triggering conditions for reactions or interrupts 
                         (such as a single Earth ring effect causing a player to draw a card and another player to discard a card), those 
                         triggering conditions are handled in shared interrupt/reaction windows, in which abilities that refer to
                         any of the triggering conditions created by that occurrence may be used in any order.
@@ -2644,7 +2676,7 @@
                     </p>
                     <ol>
                         <li>
-                            The triggering condition becomes imminent. (<span class="new">Meaning that </span> if it is not canceled, 
+                            The triggering condition becomes imminent. (Meaning that if it is not canceled, 
                             changed, or otherwise preempted by interrupt abilities, the triggering condition is the next thing
                             that will occur in the game.)
                         </li>
@@ -2684,7 +2716,7 @@
                     <ul>
                         <li>
                             A player cannot take control of or bring into play a unique card if he or she already
-                            controls or owns an in-play copy of that card.
+                            controls or owns <span class="new">another</span> an in-play copy of that card.
                         </li>
                         <li>
                             A player cannot bring into play a unique card owned by his or her opponent if that opponent controls an in-play copy of that card.
@@ -3187,15 +3219,18 @@
                 
 			<ul>
                 <li>
-Declare a military conflict.</li>
+					Declare a military conflict.
+				</li>
                 <li>
-Declare a political conflict.</li>
+					Declare a political conflict.
+				</li>
 				<li>
-Pass.</li>
+					Pass.
+				</li>
             </ul>
-			<p>
-If a conflict opportunity is passed, the player forfeits his or her right to use that opportunity this phase.
-</p>
+				<p>
+				If a conflict opportunity is passed, the player forfeits his or her right to use that opportunity this phase.
+				</p>
                 <p>
                     In order to declare a conflict, the attacking player must:
                 </p>
@@ -3785,15 +3820,15 @@ If a conflict opportunity is passed, the player forfeits his or her right to use
                 </p>
                 <p class="question">
                     If I play <a href="https://fiveringsdb.com/card/way-of-the-lion" target="_blank">Way of the Lion</a>
-                    (Core, 167) to double my character's base <span
-                        class="icon icon-conflict-military"></span> skill, and then play a second Way of the Lion, what
-                    is my character's new base <span
-                        class="icon icon-conflict-military"></span> skill?
+                    (Core, 167) to double my character's base <span class="icon icon-conflict-military"></span> skill, 
+					and then play a second Way of the Lion, what is my character's new base <span
+                    class="icon icon-conflict-military"></span> skill?
                 </p>
                 <p>
                     Way of the Lion doubles a character's base <span class="icon icon-conflict-military"></span> skill
-                    and sets it to the new value. When you play a second copy of Way of the Lion, the new value will be
-                    doubled (to now be quadruple the original skill value).
+                    and <span class="new">establishes the new value as the character's base <span class="icon 
+					icon-conflict-military"></span> skill.</span> When you play a second copy of Way of the Lion, the 
+					new value will be doubled (to now be quadruple the original skill value).
                 </p>
                 <p class="question">
                     If I use <a href="https://fiveringsdb.com/card/origami-master" target="_blank">Origami Master</a>'s
@@ -3814,12 +3849,11 @@ If a conflict opportunity is passed, the player forfeits his or her right to use
                     discarded and the character is returned to an ordinary state. See <a
                         href="#personal-honor-personal-dishonor">RRG "Personal Honor, Personal Dishonor"</a>.
                 </p>
-				
 				<p class="question">
 					If I use <a href="https://fiveringsdb.com/card/artisan-academy" target="_blank">Artisan Academy</a> (Core Set, 53) or 
-          <a href="https://fiveringsdb.com/card/pillow-book" target="_blank">Pillow Book</a> (Imperial Cycle, 113) to reveal 
-          <a href="https://fiveringsdb.com/card/test-of-skill" target="_blank">Test of Skill</a> (Imperial Cycle, 93) and then 
-          play it, what happens?
+                    <a href="https://fiveringsdb.com/card/pillow-book" target="_blank">Pillow Book</a> (Imperial Cycle, 113) to reveal 
+                    <a href="https://fiveringsdb.com/card/test-of-skill" target="_blank">Test of Skill</a> (Imperial Cycle, 93) and then 
+                    play it, what happens?
 				</p>
 				<p>
 					When an event card is played, it is considered to remain in its
@@ -3843,51 +3877,72 @@ If a conflict opportunity is passed, the player forfeits his or her right to use
 					will take up one of the "revealed card slots" in its cost, but be
 					ineligible to be put into your hand by its effect.
 				</p>
-        <span class="new">
 				<p class="question">
-          Can a character with <a href="https://fiveringsdb.com/card/above-question" target="_blank">Above Question</a> 
-          (Core, 141) be chosen as the target of an opponent’s <a href="https://fiveringsdb.com/card/court-games" target="_blank">
-          Court Games</a> (Core, 206) if they are the only participating character on that side of the conflict?
-        </p>
-        <p>
-          No. Regardless of which player is choosing the target, Above Question prevents the attached character from being chosen 
-          as the target for an opponent’s event.
-        </p>
-        <p class="question">
-          If I use <a href="https://fiveringsdb.com/card/the-mirror-s-gaze" target="_blank">The Mirror’s Gaze</a> (Elemental Cycle, 15) 
-          to copy an Interrupt that cancels a card or game effect, what happens?
-        </p>
-        <p>
-          You cannot copy cancel effects with The Mirror’s Gaze, as the event’s ability must successfully resolve before The Mirror’s
-          Gaze can be triggered. The following cards are examples of some events that cannot by copied by this attachment for this
-          reason: <a href="https://fiveringsdb.com/card/voice-of-honor" target="_blank">Voice of Honor</a> (Core, 145), 
-          <a href="https://fiveringsdb.com/card/display-of-power" target="_blank">Display of Power</a> (Core, 179), 
-          <a href="https://fiveringsdb.com/card/forged-edict" target="_blank">Forged Edict</a> (Core, 184), 
-          <a href="https://fiveringsdb.com/card/censure" target="_blank">Censure</a> (Imperial Cycle, 60)
-        </p>
-        <p class="question">
-          Can I use <a href="https://fiveringsdb.com/card/the-mirror-s-gaze" target="_blank">The Mirror’s Gaze</a> (Elemental Cycle, 15) 
-          to copy events whose effects reference their triggering conditions? If so, how do they work?
-        </p>
-        <p>
-          You cannot resolve effects with The Mirror’s Gaze if those effects are dependent upon the triggering condition (which The
-          Mirror’s Gaze ignores). The following cards are some examples of some events that cannot be copied by this attachment for
-          this reason: <a href="https://fiveringsdb.com/card/indomitable-will" target="_blank">Indomitable Will</a> (Core, 158), 
-          <a href="https://fiveringsdb.com/card/ready-for-battle" target="_blank">Ready for Battle</a> (Core, 165), 
-          <a href="https://fiveringsdb.com/card/i-can-swim" target="_blank">I Can Swim</a> (Core, 187), 
-          <a href="https://fiveringsdb.com/card/way-of-the-chrysanthemum" target="_blank">Way of the Chrysanthemum</a> 
-          (Imperial Cycle, 80)
-        </p>
-        <p class="question">
-          What happens if I put fate on the fire ring with <a href="https://fiveringsdb.com/card/master-alchemist" target="_blank">
-          Master Alchemist</a> (Elemental Cycle, 44) while that ring is contested
-          or claimed?
-        </p>
-        <p>
-          Fate will stay on rings up until the point at which they become contested. If the ring is already being contested when 
-          fate is added to it, the attacker will not gain that fate.
-        </p>
-        </span>
+                    Can a character with <a href="https://fiveringsdb.com/card/above-question" target="_blank">Above 
+					Question</a> (Core, 141) be chosen as the target of an opponent’s 
+					<a href="https://fiveringsdb.com/card/court-games" target="_blank">Court Games</a> (Core, 206) 
+					if they are the only participating character on that side of the conflict?
+                </p>
+                <p>
+                    No. Regardless of which player is choosing the target, Above Question prevents the attached character 
+					from being chosen as the target for an opponent’s event.
+                </p>
+                <p class="question">
+                    If I use <a href="https://fiveringsdb.com/card/the-mirror-s-gaze" target="_blank">The Mirror’s Gaze</a> 
+					(Elemental Cycle, 15) to copy an Interrupt that cancels a card or game effect, what happens?
+                </p>
+                <p>
+                    You cannot copy cancel effects with The Mirror’s Gaze, as the event’s ability must successfully resolve 
+					before The Mirror’s Gaze can be triggered. The following cards are examples of some events that cannot 
+					by copied by this attachment for this reason: 
+					<a href="https://fiveringsdb.com/card/voice-of-honor" target="_blank">Voice of Honor</a> (Core, 145), 
+					<a href="https://fiveringsdb.com/card/display-of-power" target="_blank">Display of Power</a> (Core, 179), 
+					<a href="https://fiveringsdb.com/card/forged-edict" target="_blank">Forged Edict</a> (Core, 184), 
+					<a href="https://fiveringsdb.com/card/censure" target="_blank">Censure</a> (Imperial Cycle, 60)
+				</p>
+				<p class="question">
+					Can I use <a href="https://fiveringsdb.com/card/the-mirror-s-gaze" target="_blank">The Mirror’s Gaze</a> 
+					(Elemental Cycle, 15) to copy events whose effects reference their triggering conditions? If so, how do 
+					they work?
+				</p>
+				<p>
+					You cannot resolve effects with The Mirror’s Gaze if those effects are dependent upon the triggering 
+					condition (which The Mirror’s Gaze ignores). The following cards are some examples of some events that 
+					cannot be copied by this attachment for this reason: 
+					<a href="https://fiveringsdb.com/card/indomitable-will" target="_blank">Indomitable Will</a> (Core, 158), 
+					<a href="https://fiveringsdb.com/card/ready-for-battle" target="_blank">Ready for Battle</a> (Core, 165), 
+					<a href="https://fiveringsdb.com/card/i-can-swim" target="_blank">I Can Swim</a> (Core, 187), 
+					<a href="https://fiveringsdb.com/card/way-of-the-chrysanthemum" target="_blank">Way of the Chrysanthemum</a> 
+					(Imperial Cycle, 80)
+				</p>
+				<p class="question">
+					What happens if I put fate on the fire ring with <a href="https://fiveringsdb.com/card/master-alchemist" 
+					target="_blank"> Master Alchemist</a> (Elemental Cycle, 44) while that ring is contested or claimed?
+				</p>
+				<p>
+					Fate will stay on rings up until the point at which they become contested. If the ring is already being 
+					contested when fate is added to it, the attacker will not gain that fate.
+				</p>
+			<span class="new">
+				<p class="question">
+					If Waning Hostilities (Imperial Cycle, 100) has been played, can I trigger Hisu Mori Toride (Elemental Cycle, 
+					1 and 101)?
+				</p>
+				<p>
+					No. Waning Hostilities limits each player to one conflict opportunity for the phase, and Hisu Mori Toride 
+					adds an additional <span class="icon icon-conflict-military"></span> conflict opportunity to the conflicts 
+					available to that player. Because Waning Hostilities sets a hard limit, no amount of additional conflicts 
+					will allow players to declare more than one conflict in that phase
+				</p>
+				<p class="question">
+					When an honored or dishonored character leaves play, when does its controller gain/lose honor?
+				</p>
+				<p>
+					Simultaneously with the character leaving play. The “Forced Interrupt” text on the honor/dishonor status 
+					tokens is text to remind its controller to gain or lose the honor, but is not itself a triggered ability 
+					in the same way as an Interrupt printed on a card.
+				</p>
+			</span>
             </section>
             <section>
                 <anchored-heading @heading="add" :level="1">Appendix IV: Card Errata</anchored-heading>
@@ -3935,6 +3990,14 @@ If a conflict opportunity is passed, the player forfeits his or her right to use
                     Should read: "When the effects of a <em>Spell</em> event your opponent plays during a conflict would initiate, put this character into play from your hand – cancel its effects."
                     <br> <i>(Added "from your hand.")</i>
                 </p>
+			<span class="new">
+				<h5>
+                    <a href="https://fiveringsdb.com/card/hawk-tattoo" target="_blank">Hawk Tattoo</a> (Elemental Cycle, 75)
+                </h5>
+				<p>
+					Should read: "Attach to a character you control."
+					<br> <i>(Added "Attach to a character you control.")</i>
+			</span>
             </section>
 			<section>
                 <anchored-heading @heading="add" :level="1" class="new">Appendix V: Restricted List</anchored-heading>
