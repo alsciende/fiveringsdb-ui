@@ -13,14 +13,15 @@
         <div class="contents order-sm-1 col-sm-8 mt-3">
             <h2>RULES REFERENCE</h2>
             <p>
-                Version 1.6
+                Version 1.7
             </p>
             <h3>SUMMARY OF CHANGES</h3>
             <p>
-                New entries and changes from previous editions will be noted in this space. Changes are noted in <span class="new">red text</span>.
+                <span class="new">Links to sections that contain new entries and changes from previous editions will be noted in this space.</span>.
             </p>
             <p>
-				<a href="#copy">Copy (of a card)</a>, 
+				<a href="#character-cards">Character</a>, 
+        <a href="#copy">Copy (of a character)</a>, 
 				<a href="#keywords">Keywords</a>, 
 				<a href="#modifiers">Modifiers</a>, 
 				<a href="#personal-honor-personal-dishonor">Personal Honor, Personal Dishonor</a>, 
@@ -378,6 +379,11 @@
                     </p>
                     <ul>
                         <li>
+                            Characters played from a player’s provinces can only be played during the dynasty phase. 
+                            Characters played from a player’s hand can only be played during any action window
+                            outside of the dynasty phase.
+                        </li>
+                        <li>
                             Character cards generally enter play ready and in a player's home area, and remain in play
                             unless removed by an ability or game step.
                         </li>
@@ -472,6 +478,30 @@
                     </table>
                 </article>
                 <article>
+                    <anchored-heading @heading="add" :level="2">Composure</anchored-heading>
+                    <p>
+                        Composure is a variable keyword ability. A card with this keyword gains an additional ability 
+                        while its controller’s honor bid is lower than that of one of his or her opponents
+                    </p>
+                    <ul>
+                        <li>
+                            Most uses of the composure keyword grant a constant ability that modifies a character’s skills 
+                            or glory. Some may grant triggered abilities that can only be used while a player has composure.
+                        </li>
+                        <li>
+                            “You have composure” is the phrase indicating that a player’s composure keyword is active. It is 
+                            used in reminder text to indicate that a player’s card has the ability granted by composure while 
+                            their honor bid is lower than an opponent’s.
+                        </li>
+                </article>
+                <article>
+                    <anchored-heading @heading="add" :level="2">Conflict</anchored-heading>
+                    <p>
+                        During the conflict phase, each player has two opportunities to declare a conflict against an opponent. 
+                        For the rules on how to resolve conflicts, see Framework Details on page 22.
+                    </p>
+                </article>
+                <article>
                     <anchored-heading @heading="add" :level="2">Constant Abilities</anchored-heading>
                     <p>
                         A constant ability is any non-keyword ability whose text contains no boldface timing trigger
@@ -536,9 +566,33 @@
                         copy, regardless of cardtype, text, deck of origin, artwork, or any other characteristic(s) of
                         the card(s).
                     </p>
-					<ul>
+					          <ul>
                         <li>
                             A card is considered to be a copy of itself, as it shares its own title.
+                        </li>
+                    </ul>
+                </article>
+                <article>
+                    <anchored-heading @heading="add" :level="2">Copy (of a character)</anchored-heading>
+                    <p>
+                        Some card abilities may cause a character to become a copy of another character. When that happens, 
+                        the character that is changing loses its name, cost, base skills and glory, traits, and ability text. 
+                        It gains the name, cost, base skills and glory, traits, and ability text of the copied character for 
+                        the duration indicated by the card ability
+                    </p>
+					          <ul>
+                        <li>
+                            Cards that refer to a character’s printed text (skills, traits, abilities, etc.) still refer to 
+                            the text physically printed on the card.
+                        </li>
+                        <li>
+                            When a character becomes a copy of another character, only the base skills and printed characteristics 
+                            are copied. If the character that is changing gains characteristics (such as traits or ability text) 
+                            from another card ability (such as an event or attachment) then those characteristics are not lost.
+                        </li>
+                        <li>
+                            A character can only become a copy of a unique character if its owner and/or controller does not also 
+                            own or control a copy (by title) of that unique character.
                         </li>
                     </ul>
                 </article>
@@ -551,9 +605,9 @@
                         Some triggered card abilities also have an ability cost. Any imperative instruction (other than "choose...," which denotes one or more targets must be chosen, or "select...," which denotes that one or more of a number of effects must be selected) that appears before the dash of a triggered ability is considered a part of that ability's cost. Some examples of ability cost instructions are: "Bow...," "Spend...," "Sacrifice...," "Lose...," "Dishonor...," and "Discard...." 
                     </p>
                     <ul>
-						<li>
+						            <li>
 							              Unless otherwise specified, a card effect that modifies a cost only modifies the fate cost.
-						</li>
+						            </li>
                         <li>
                             When a player is paying a cost, the payment must be made with cards and/or game elements
                             that player controls. The word "friendly" is used as a reminder of this in some costs.
@@ -695,15 +749,13 @@
 						            <li>
                             A player cannot include more than 1 card (by card title) from
                             the <a href="#appendix-v-restricted-list">Restricted List</a> in their decks and set of
-                            provinces. A player may include a number of copies of that
-                            card in their decks based on that card's normal deck limit.
+                            provinces. Up to a full legal playset (usually 3 copies) of that card may be included in 
+                            the appropriate deck or provinces.
                         </li>
                         <li>
-                            A player's set of provinces must include exactly 5 provinces.
-							For each element, that player must choose one province
-							associated with that element, such that all five elements are
-							represented among their set of provinces.
-							(Each province has a ring symbol in the lower right
+                            A player's set of provinces must include exactly 5 provinces. For each element, that player 
+                            must choose one province associated with that element, such that all five elements are
+							              represented among their set of provinces. (Each province has a ring symbol in the lower right
                             corner of the card to indicate its association.) Each of these provinces must be in-clan or
                             be neutral.
                         </li>
@@ -838,7 +890,7 @@
                     <anchored-heading @heading="add" :level="2">Duel</anchored-heading>
                     <p>
                         Some card abilities initiate a duel between two characters participating in a conflict. For the
-                        rules on how to resolve a duel, see "<a href="#duel-timing">Duel timing</a>".
+                        rules on how to initiate and resolve a duel, see "<a href="#duel-timing">D. Duel Timing</a>".
                     </p>
                 </article>
                 <article>
@@ -1140,14 +1192,13 @@
                             result. Such counts do not affect the status of the Imperial Favor, unless the ability text
                             causes the Imperial Favor status to change.
                         </li>
-						<li>
-							Other card abilities may require players to count current glory among their characters, or a subset 
-							of their characters. This is different from a glory count, and rings in a player's claimed ring pool 
-							are not added. For such card abilities, players count current glory among their specified characters 
-							in the same way they would count current <span class="icon icon-conflict-military"></span> or 
-							<span class="icon icon-conflict-political"></span> skill.
-						</li>
-						
+                        <li>
+                          Other card abilities may require players to count current glory among their characters, or a subset 
+                          of their characters. This is different from a glory count, and rings in a player's claimed ring pool 
+                          are not added. For such card abilities, players count current glory among their specified characters 
+                          in the same way they would count current <span class="icon icon-conflict-military"></span> or 
+                          <span class="icon icon-conflict-political"></span> skill.
+                        </li>
                     </ul>
                     <p>
                         <b>Related:</b> <a href="#imperial-favor-imperial-favor-contest">Imperial Favor</a>, <a href="#current">Current</a>
@@ -1322,14 +1373,23 @@
                         <li>
                             A player's stronghold cannot leave play.
                         </li>
-						<li>
-							If a card enters or leaves play, any lasting effects, delayed effects, or pending effects that are currently or about to interact with that card no longer do so. This is also true if a card transitions from one out-of-play area to another (such as going from hand to discard pile).
-						</li>
+                        <li>
+                            If a card enters or leaves play, any lasting effects, delayed effects, or pending effects that are 
+                            currently or about to interact with that card no longer do so. This is also true if a card transitions 
+                            from one out-of-play area to another (such as going from hand to discard pile).
+                        </li>
+                        <li>
+                            If a card would enter a deck of the incorrect deck type (conflict or dynasty), it is put into the 
+                            discard pile of its owner corresponding to its correct deck type instead.
+                        </li>
+                        <li>
+                            If a dynasty card would enter a player’s hand of conflict cards, it is put into its owner’s discard 
+                            pile instead.
+                        </li>
                     </ul>
                     <p>
                         <b>Related:</b> <a href="#enters-play">Enters Play</a>, <a href="#leaves-play">Leaves Play</a>,
-                        <a
-                                href="#play-and-put-into-play">Play and Put Into Play</a>
+                        <a href="#play-and-put-into-play">Play and Put Into Play</a>
                     </p>
                 </article>
                 <article>
@@ -1373,7 +1433,7 @@
                         <li>
                             Check play restrictions and verify the existence of eligible targets: can the card be
                             played, or the ability initiated, at this time? If the play restrictions are not met, or
-                            there are no eligible targets for the ability, the process cannot proceed.
+                            there are not enough eligible targets for the ability, the process cannot proceed.
                         </li>
                         <li>
                             Determine the cost (or costs, if multiple costs are required) to play the card or initiate
@@ -1477,11 +1537,11 @@
                 <article>
                     <anchored-heading @heading="add" :level="2">Keywords</anchored-heading>
                     <p>
-                        A keyword is a card ability which conveys specific rules to its card. The keywords in the core
-                        set are: <a href="#ancestral">Ancestral</a>, <a href="#courtesy">Courtesy</a>, <a
-                            href="#covert">Covert</a>, <a href="#limited">Limited</a>, <a href="#no-attachments">No
-                        Attachments</a>, <a href="#pride">Pride</a>, <a href="#restricted">Restricted</a>, and <a
-                            href="#sincerity">Sincerity</a>.
+                        A keyword is a card ability which conveys specific rules to its card. The keywords in the game
+                        are: <a href="#ancestral">Ancestral</a>, <a href="#composure">Composure</a>,
+                             <a href="#courtesy">Courtesy</a>, <a href="#covert">Covert</a>, <a href="#limited">Limited</a>, 
+                             <a href="#no-attachments">No Attachments</a>, <a href="#pride">Pride</a>, 
+                             <a href="#restricted">Restricted</a>, and <a href="#sincerity">Sincerity</a>.
                     </p>
                     <ul>
                         <li>
@@ -1490,9 +1550,15 @@
                             not replace the rules for that keyword in this glossary.
                         </li>
                         <li>
-                            A card <span class="new">can have multiple instances of the same keyword. However, a card </span>
-							that <span class="new">does so </span> functions as if it has one instance of that keyword, 
-							<span class="new">and the keyword will only resolve once per triggering condition.</span>
+                            A card can have multiple instances of the same keyword. However, a card 
+							              that does so functions as if it has one instance of that keyword, 
+							              and the keyword will only resolve once per triggering condition.
+                        </li>
+                        <li>
+                            Some keywords, such as Composure, are variable keywords. Variable keywords operate in the same 
+                            way as other keywords, but their effects are unique on a card-by-card basis. Each variable keyword 
+                            has the same condition in which they become active, but different effects based on the individual 
+                            card’s text.
                         </li>
                     </ul>
                 </article>
@@ -1575,18 +1641,16 @@
                             during the specified period.
                         </li>
                         <li>
-                            If a card leaves play and re-enters play during the same period,
-							or if a card transitions from one out-of-play area
-							to another (such as going from hand to discard pile),
-							it is considered a new instance of the card. There is no memory of having used the ability during the specified
-                            period for any new instance of a card. (This rule also applies to any ability with no specified limit.)
+                            If a card leaves play and re-enters play during the same period, or if a card transitions from one 
+                            out-of-play area to another (such as going from hand to discard pile), it is considered a new instance 
+                            of the card. There is no memory of having used the ability during the specified period for any new 
+                            instance of a card. (This rule also applies to any ability with no specified limit.)
                         </li>
-						<li>
-							If a card triggers its ability from a hidden out-of-play area
-							(such as a hand or deck) but does not leave that hidden
-							area, that ability may be triggered again because it is
-							considered a new instance of the card.
-						</li>
+                        <li>
+                            If a card triggers its ability from a hidden out-of-play area (such as a hand or deck) but does not 
+                            leave that hidden area, that ability may be triggered again because it is considered a new instance 
+                            of the card.
+                        </li>
                         <li>
                             All limits are player specific.
                         </li>
@@ -1596,9 +1660,41 @@
                         </li>
                     </ul>
                     <p>
-                        <b>Related:</b> <a href="#max-x-per-period">Max X per [period]</a>
+                        <b>Related:</b> <a href="#limits-of-triggered-abilities">Limits of Triggered Abilities</a>, 
+                                        <a href="#max-x-per-period">Max X per [period]</a>
                     </p>
                 </article>
+                <article>
+                    <anchored-heading @heading="add" :level="2">Limits of Triggered Abilities</anchored-heading>
+                    <p>
+                        Unless otherwise specified, each triggered ability can only be used once per game round. This general 
+                        restriction applies to any triggered ability that does not have “Limit X per [period]” printed as part 
+                        of the ability’s text.
+                    </p>
+                    <ul>
+                        <li>
+                            If a card leaves play and re-enters play during the same period, or if a card transitions from one 
+                            out-of-play area to another (such as going from hand to discard pile), it is considered a new instance 
+                            of the card. There is no memory of having used the ability for any new instance of a card for the purposes 
+                            of this general restriction.
+                        </li>
+                        <li>
+                            If a card triggers its ability from a hidden out-of-play area (such as a hand or deck) but does not leave 
+                            that hidden area, that ability may be triggered again because it is considered a new instance of the card.
+                        </li>
+                        <li>
+                            All limits are player specific.
+                        </li>
+                        <li>
+                            If the effects of an ability are canceled, the use of the ability is still counted against the general 
+                            restriction of only once per game round.
+                        </li>
+                    </ul>
+                    <p>
+                        <b>Related:</b> <a href="#limit-x-per-period">Limit X per [period]</a> 
+                                        <a href="#max-x-per-period">Max X per [period]</a>
+                    </p>
+                </article>        
                 <article>
                     <anchored-heading @heading="add" :level="2">Max X per [period]</anchored-heading>
                     <p>
@@ -1619,7 +1715,8 @@
                         </li>
                     </ul>
                     <p>
-                        <b>Related:</b> <a href="#limit-x-per-period">Limit X per [period]</a>
+                        <b>Related:</b> <a href="#limit-x-per-period">Limit X per [period]</a>,
+                                        <a href="#limits-of-triggered-abilities">Limits of Triggered Abilities</a>
                     </p>
                 </article>
                 <article>
@@ -1661,12 +1758,12 @@
                             modifiers that would take a value below zero can be applied, but, after all active modifiers
                             have been applied, any resultant value below zero is treated as zero.
                         </li>
-						<li>
-							<span class="new">During a duel, the bid on a player’s honor dial is applied as a modifier 
-						    independently of the normal process ofcalculating modifiers. It is added to the appropriate 
-							statistic even if that statistic has been set to a specific number, and is added after 
-							doubling and/or halving modifiers are calculated.</span>
-						</li>
+						            <li>
+							              During a duel, the bid on a player’s honor dial is applied as a modifier independently of the 
+                            normal process of calculating modifiers. It is added to the appropriate statistic even if that 
+                            statistic has been set to a specific number, and is added after doubling and/or halving modifiers 
+                            are calculated.
+						            </li>
                     </ul>
                 </article>
                 <article>
@@ -1813,8 +1910,8 @@
                         </li>
                         <li>
                             If a character "cannot participate" in a conflict, that character cannot be declared as an
-                            attacker or defender for, move into, be played into, or put into play in that conflict. If an already participating
-                            character gains "cannot participate" status during a conflict, move it home bowed.
+                            attacker or defender for, move into, be played into, or put into play in that conflict. If an 
+                            already participating character gains "cannot participate" status during a conflict, move it home bowed.
                         </li>
                     </ul>
                 </article>
@@ -1888,13 +1985,13 @@
                             dishonored status token cannot become dishonored.
                         </li>
                         <li>
-                            Should a character have both an honored status token and a dishonored status token at the same time, discard both tokens. The character returns to the ordinary state.
+                            Should a character have both an honored status token and a dishonored status token at the same time, 
+                            discard both tokens. The character returns to the ordinary state.
                         </li>
-						<li>
-							<span class="new">If a character enters play honored or dishonored, abilities cannot be 
-							triggered from that character becoming honored or dishonored, as it enters play already 
-							with that status.</span>
-						</li>
+						            <li>
+							              If a character enters play honored or dishonored, abilities cannot be triggered from that character 
+                            becoming honored or dishonored, as it enters play already with that status.
+ 						            </li>
                     </ul>
                 </article>
                 <article>
@@ -2088,9 +2185,10 @@
                         set aside and has no further interaction with the game in any manner for the duration of its
                         removal. If there is no specified duration, a card that has been removed from the game is
                         considered removed until the end of the game.
-						<li>
-							Cards that have been removed from the game are faceup, open information that is available to both players, unless otherwise specified.
-						</li>
+						        <li>
+							          Cards that have been removed from the game are faceup, open information that is available to both players, 
+                        unless otherwise specified.
+						        </li>
                     </p>
                 </article>
                 <article>
@@ -2098,16 +2196,20 @@
                     <p>
                         A replacement effect is an effect (usually an interrupt) that replaces the resolution of a
                         triggering condition with a different means of resolving the same triggering condition, but in
-                        such a manner that the triggering condition is still considered to occur. The word "instead" is
-                        frequently indicative of such an effect. After all interrupts to the triggering condition have
-                        resolved and it is time to resolve the triggering condition itself, the replacement effect
-                        resolves instead.
+                        such a manner that the triggering condition is still considered to occur for the purposes of paying 
+                        non-sacrifice costs. The word "instead" is frequently indicative of such an effect. After all interrupts 
+                        to the triggering condition have resolved and it is time to resolve the triggering condition itself, 
+                        the replacement effect resolves instead.
                     </p>
                     <ul>
                         <li>
                             If multiple replacement effects are initiated against the same triggering condition, the
                             most recently initiated replacement effect is the one used for the resolution of the
                             triggering condition.
+                        </li>
+                        <li>
+                            If the new resolution of a triggering condition caused by a replacement effect would not change the 
+                            game state, that replacement effect cannot be initiated.
                         </li>
                     </ul>
                 </article>
@@ -2147,10 +2249,10 @@
                             While a card is revealed, it is still considered to be located in the game area (such as a
                             player's hand or deck) from which it is revealed.
                         </li>
-						<li>
-							<span class="new">When a province is revealed by a card effect, it remains
-							face-up until a card or game effect turns it face-down.</span>
-						</li>
+						            <li>
+							              When a province is revealed by a card effect, it remains
+							              face-up until a card or game effect turns it face-down.
+						            </li>
                     </ul>
                 </article>
                 <article>
@@ -2178,7 +2280,8 @@
                     </p>
                     <ul>
                         <li>
-                            While performing a glory count, each player adds 1 to his or her total for each ring in his or her claimed ring pool.
+                            While performing a glory count, each player adds 1 to his or her total for each ring in his or her claimed 
+                            ring pool.
                         </li>
                         <li>
                             During the fate phase, place 1 fate on each unclaimed ring.
@@ -2190,10 +2293,9 @@
                         <li>
                             When a ring is claimed, it is still considered to be contested until all reactions to its claiming have resolved.
                         </li>
-						<li>
-							<span class="new">A card effect that refers to “the [ELEMENT] ring” refers to
-							any ring that has that element.</span>
-						</li>
+						            <li>
+							              A card effect that refers to “the [ELEMENT] ring” refers to any ring that has that element.
+ 						            </li>
                     </ul>
                     <p>
                         <b>Related:</b> <a href="#ring-effects">Ring Effects</a>
@@ -2230,7 +2332,8 @@
                             may choose among those elements when the conflict's ring effect resolves.
                         </li>
                         <li>
-                            When a player is instructed to resolve multiple ring effects, they resolve each effect (or pass on that effect) in its entirety before resolving the next ring effect.
+                            When a player is instructed to resolve multiple ring effects, they resolve each effect (or pass on that effect) 
+                            in its entirety before resolving the next ring effect.
                         </li>
                     </ul>
                 </article>
@@ -2252,13 +2355,17 @@
                             the game by other card abilities.
                         </li>
                         <li>
-                            In sanctioned tournament play, eligibility for Keeper and Seeker roles for each clan is determined by the Clan Roles webpage found at <a href="https://www.fantasyflightgames.com/en/op/l5r-lcg/roles/" target="_blank">https://www.fantasyflightgames.com/en/op/l5r-lcg/roles/</a>
+                            In sanctioned tournament play, eligibility for Keeper and Seeker roles for each clan is determined by the 
+                            Clan Roles webpage found at <a href="https://www.fantasyflightgames.com/en/op/l5r-lcg/roles/" target="_blank">
+                            https://www.fantasyflightgames.com/en/op/l5r-lcg/roles/</a>
                         </li>
-						<li>
-							Each non-Keeper, non-Seeker role is available to all clans regardless of the clan role eligibility. This is in addition to any Keeper or Seeker role(s) available to that clan.
-						</li>
+						            <li>
+							              Each non-Keeper, non-Seeker role is available to all clans regardless of the clan role eligibility. 
+                            This is in addition to any Keeper or Seeker role(s) available to that clan.
+						            </li>
                         <li>
-                            Some cards have the text, "___ role only." This is a deckbuilding restriction, and is not active during gameplay.
+                            Some cards have the text, "___ role only." This is a deckbuilding restriction, and is not active 
+                            during gameplay.
                         </li>
                     </ul>
                 </article>
@@ -2370,8 +2477,8 @@
                             unclaimed ring pool.
                         </li>
                         <li>
-                            <b>Determine first player</b>. <span class="new">Randomly select a player. That player will be the first
-                            player. Place the first player token in front of this player.</span>
+                            <b>Determine first player</b>. Randomly select a player. That player will be the first
+                            player. Place the first player token in front of this player.
                         </li>
                         <li>
                             <b>Shuffle dynasty and conflict decks</b>. Each player shuffles both their dynasty and
@@ -2388,8 +2495,8 @@
                         </li>
                         <li>
                             <b>Fill provinces</b>. Each player places a card from the top of their dynasty deck facedown
-                            onto each of their empty non-stronghold provinces. In player order, each player looks at each of his or her cards placed in this manner and has one opportunity to
-                            mulligan any number of them.
+                            onto each of their empty non-stronghold provinces. In player order, each player looks at each 
+                            of his or her cards placed in this manner and has one opportunity to mulligan any number of them.
                         </li>
                         <ul>
                             <li>
@@ -2478,7 +2585,8 @@
                 <article>
                     <anchored-heading @heading="add" :level="2">Stronghold</anchored-heading>
                     <p>
-                        A player's stronghold is considered in play. A stronghold card cannot leave play, move from the stronghold province, be turned facedown, or change control.
+                        A player's stronghold is considered in play. A stronghold card cannot leave play, move from the 
+                        stronghold province, be turned facedown, or change control.
                     </p>
                 </article>
                 <article>
@@ -2522,29 +2630,32 @@
                             simultaneously.
                         </li>
                         <li>
-                            An ability that can choose "any number" of targets does not successfully resolve (and cannot
-                            change the game state) if zero of those targets are chosen. If there are zero eligible
-                            targets for an ability that can choose "any number" of targets, the ability cannot initiate.
+                            An ability that can choose “any number” of targets, or “up to X” targets, can successfully 
+                            resolve if zero such targets are chosen, unless choosing zero such targets would cause the 
+                            resolution of the ability’s effect to not change the game state in any way.
                         </li>
                         <li>
-                            The resolution of some effects (such as post-then effects, or delayed effects) requires that
-                            targets are chosen after the initiation of the effect. Such targets need not be verified
-                            when checking play restrictions and determining whether or not the entire ability may
-                            initiate. If there are no valid targets at the time such targets would be chosen, that
-                            aspect of the effect fails to resolve.
+                            Some abilities require the choice of a target that is not directly affected by the ability — the 
+                            target is instead chosen as a reference point for the resolution of the ability. This is referred 
+                            to as a “referential target.”
                         </li>
                         <li>
                             A card is not an eligible target for an ability if the resolution of that ability's effect
-                            could not affect the target at all. <em>(For example, a bowed character cannot be chosen as
-                            the target for an ability that reads "<b>Action:</b> Choose a character &ndash; bow that
-                            character.")</em>
+                            could not affect the target at all, unless it is a referential target. <em>(For example, a bowed 
+                            character cannot be chosen as the target for an ability that reads "<b>Action:</b> Choose a 
+                            character &ndash; bow that character.")</em>
                         </li>
                         <li>
-                            Some abilities require the choice of a target that is not directly affected by the ability
-                            &ndash;
-                            the target is instead chosen as a reference point while resolving the ability. When choosing
-                            referential targets, a player is not bound by the rule that a target is ineligible if the
-                            resolution of the effect would not affect the chosen target.
+                            A card is only eligible to be chosen as a referential target for an ability if that ability’s 
+                            effect (using the referential target) would result in a change of game state. <em>(For example, a
+                            character with no attachments cannot be chosen as the target for an ability that reads “<b>Action:</b>
+                            Choose a character — discard each attachment on that character.”)</em>
+                        </li>
+                        <li>
+                            The resolution of some effects (such as post-then effects, or delayed effects) requires that targets 
+                            are chosen after the initiation of the effect. Such targets need not be verified when checking play 
+                            restrictions and determining whether or not the entire ability may initiate. If there are no valid 
+                            targets at the time such targets would be chosen, that aspect of the effect fails to resolve.
                         </li>
                     </ul>
                 </article>
@@ -2622,7 +2733,7 @@
                         </li>
                         <li>
                             Unless otherwise specified by the ability itself, each triggered ability may be triggered
-                            once per round.
+                            once per round. This limit is player specific.
                         </li>
                         <li>
                             Triggered abilities are written in a <em>"triggering condition (and/or) cost (and/or)
@@ -2647,10 +2758,10 @@
                         </li>
                     </ul>
                     <p>
-                        <b>Related:</b> <a href="#ability">Ability</a>, <a href="#action">Action</a>, <a
-                            href="#cost">Cost</a>, <a href="#effect">Effect</a>, <a href="#interrupts">Interrupts</a>,
-                        <a
-                                href="#reactions">Reactions</a>, <a href="#target">Target</a>
+                        <b>Related:</b> <a href="#ability">Ability</a>, <a href="#action">Action</a>, 
+                                        <a href="#cost">Cost</a>, <a href="#effect">Effect</a>, <a href="#interrupts">Interrupts</a>,
+                                        <a href="#limits-of-triggered-abilities">Limits of Triggered Abilities</a>,
+                                        <a href="#reactions">Reactions</a>, <a href="#target">Target</a>
                     </p>
                 </article>
                 <article>
@@ -2716,7 +2827,7 @@
                     <ul>
                         <li>
                             A player cannot take control of or bring into play a unique card if he or she already
-                            controls or owns <span class="new">another</span> an in-play copy of that card.
+                            controls or owns <span class="new">another</span> in-play copy of that card.
                         </li>
                         <li>
                             A player cannot bring into play a unique card owned by his or her opponent if that opponent controls an in-play copy of that card.
@@ -3217,20 +3328,20 @@
                     When a player has an opportunity to declare a conflict, that player may:
                 </p>
                 
-			<ul>
+			          <ul>
                 <li>
-					Declare a military conflict.
-				</li>
+					          Declare a military conflict.
+				        </li>
                 <li>
-					Declare a political conflict.
-				</li>
-				<li>
-					Pass.
-				</li>
-            </ul>
-				<p>
-				If a conflict opportunity is passed, the player forfeits his or her right to use that opportunity this phase.
-				</p>
+					          Declare a political conflict.
+				        </li>
+                <li>
+                    Pass.
+                </li>
+                </ul>
+				        <p>
+				           If a conflict opportunity is passed, the player forfeits his or her right to use that opportunity this phase.
+				        </p>
                 <p>
                     In order to declare a conflict, the attacking player must:
                 </p>
@@ -3392,9 +3503,10 @@
                 <p>
                     If no player won the conflict (in step 3.2.3), the ring is returned to the unclaimed ring pool.
                 </p>
-				<p>
-					The ring continues to define the conflict type and element(s) until the end of the conflict even after it ceases to be contested.
-				</p>
+                <p>
+                  The ring continues to define the conflict type and element(s) until the end of the conflict even after it 
+                  ceases to be contested.
+                </p>
                 <anchored-heading @heading="add" :level="3">3.2.8. Return home</anchored-heading>
                 <p>
                     Simultaneously bow each ready participating character in the conflict. Return each participating
@@ -3532,19 +3644,45 @@
                         <td><b>D.9</b> Duel ends.</td>
                     </tr>
                 </table>
-                <anchored-heading @heading="add" :level="3">D.1. Duel begins</anchored-heading>
+                <anchored-heading @heading="add" :level="3">D.1. Initiate a duel</anchored-heading>
                 <p>
-                    A duel is initiated by the successful resolution of any action ability that challenges another
-                    character to a duel. When such an ability resolves, this timing window opens.
+                    When a card ability initiates a duel, part of the cost of that ability may use the phrase, 
+                    “initiate a [type] duel.” This opens the duel timing window.
                 </p>
                 <p>
-                    This step formalizes the beginning of the duel.
+                    To initiate a duel, the player resolving the card ability must choose two characters to duel 
+                    against each other: one they control and one controlled by an opponent. The following parameters 
+                    exist on which characters can be chosen for the duel:
                 </p>
-                <anchored-heading @heading="add" :level="3">D.2. Establish challenger and challengee</anchored-heading>
+                <ul>
+                    <li>
+                        One character must be controlled by the player whose card ability initiates the duel, and one 
+                        character must be controlled by an opponent of that player.
+                    </li>
+                    <li>
+                        If a duel is initiated during a conflict, both characters chosen must be participating.
+                    </li>
+                    <li>
+                        If a duel is initiated by an ability on a character card, that character must be chosen to be 
+                        involved in the duel. The character chosen to duel against that character is controlled by an 
+                        opponent of the player initiating the duel.
+                    </li>
+                </ul>
                 <p>
-                    The ability that initiated the duel (in step D.1) will have identified two characters that are
-                    involved in the duel. The character controlled by the player who initiated the ability is the
-                    challenger. The character controlled by his or her opponent is the challengee.
+                    If this process is completed, a duel has been initiated. Otherwise, the duel fails to initiate and cannot resolve.
+                </p>
+                <anchored-heading @heading="add" :level="3">Resolve the duel</anchored-heading>
+                <p>
+                    A duel is resolved during the successful resolution of any triggered ability that instructs players to 
+                    “resolve the duel,” or that their “character challenges the opponent’s character to a [type] duel.” 
+                    To resolve a duel, perform the following steps:
+                </p>
+                <anchored-heading @heading="add" :level="3">D.2. Establish the challenge</anchored-heading>
+                <p>
+                    The process of initiating the duel (in step D.1) will have identified the two characters that are
+                    involved in the duel, as well as the kind of duel that will take place. This statistic 
+                    (<span class="icon icon-conflict-military"></span> skill, <span class="icon icon-conflict-political"></span> 
+                    skill, or glory) will be used to determine the results of the duel.
                 </p>
                 <anchored-heading @heading="add" :level="3">D.3. Duel honor bid</anchored-heading>
                 <p>
@@ -3553,7 +3691,8 @@
                 </p>
                 <anchored-heading @heading="add" :level="3">D.4. Reveal honor dials</anchored-heading>
                 <p>
-                    The players simultaneously reveal their bids.
+                    The players simultaneously reveal their bids. If they cannot (because the dials are already revealed), 
+                    skip to step D.7.
                 </p>
                 <p>
                     Once a player reveals an honor bid, the dial is placed next to the player's stronghold and remains
@@ -3565,33 +3704,39 @@
                     bid that is equal to the difference between the two bids. If the bids are equal, no honor is
                     transferred during this step.
                 </p>
-                <anchored-heading @heading="add" :level="3">D.6. Modify dueling skill</anchored-heading>
+                <anchored-heading @heading="add" :level="3">D.6. Modify dueling statistic</anchored-heading>
                 <p>
-                    The ability that initiated the duel (in step D.1) established which type of skill (military or
-                    political) is being used to determine the results of the duel. Each player adds his or her honor bid
-                    to the specified skill of his or her character that is involved in the duel. This modification
-                    persists until the end of the duel.
+                    The process of initiating the duel (in step D.1) will have established which statistic 
+                    (<span class="icon icon-conflict-military"></span> skill, <span class="icon icon-conflict-political"></span> 
+                    skill, or glory) is being used to determine the results of the duel. Each player adds his or her honor bid 
+                    to the specified statistic of his or her character that is involved in the duel. This modification persists 
+                    until the end of the duel.
                 </p>
                 <ul>
                     <li>
                         <b>NOTE</b>: Any skill modifiers that were active at the time the duel was initiated are still
                         applicable during the duel.
                     </li>
+                    <li>
+                        If multiple characters are involved in the duel on the same side, add their dueling statistics 
+                        together. They are considered to be one character for the purposes of determining duel results 
+                        and win or lose together.
+                    </li>
                 </ul>
                 <anchored-heading @heading="add" :level="3">D.7. Compare skill values and determine result
                 </anchored-heading>
                 <p>
-                    Compare the modified skill values of each character involved in the duel to determine the results.
+                    Compare the modified statistic values of each character involved in the duel to determine the results.
                 </p>
                 <ul>
                     <li>
-                        The player controlling the character with the higher skill value wins the duel.
+                        The character with the higher value is the duel’s winner.
                     </li>
                     <li>
-                        The player controlling the character with the lower skill value loses the duel.
+                        The character with the lower value is the duel’s loser.
                     </li>
                     <li>
-                        If the skill values are the same, neither character wins the duel, and neither character loses the duel.
+                        If the values are the same, neither character wins the duel, and neither character loses the duel.
                     </li>
                 </ul>
                 <anchored-heading @heading="add" :level="3">D.8. Apply duel results</anchored-heading>
@@ -3821,14 +3966,14 @@
                 <p class="question">
                     If I play <a href="https://fiveringsdb.com/card/way-of-the-lion" target="_blank">Way of the Lion</a>
                     (Core, 167) to double my character's base <span class="icon icon-conflict-military"></span> skill, 
-					and then play a second Way of the Lion, what is my character's new base <span
+					          and then play a second Way of the Lion, what is my character's new base <span
                     class="icon icon-conflict-military"></span> skill?
                 </p>
                 <p>
-                    Way of the Lion doubles a character's base <span class="icon icon-conflict-military"></span> skill
-                    and <span class="new">establishes the new value as the character's base <span class="icon 
-					icon-conflict-military"></span> skill.</span> When you play a second copy of Way of the Lion, the 
-					new value will be doubled (to now be quadruple the original skill value).
+                    Way of the Lion doubles a character's base <span class="icon icon-conflict-military"></span> skill and 
+                    establishes the new value as the character's base <span class="icon icon-conflict-military"></span> 
+                    skill. When you play a second copy of Way of the Lion, the new value will be doubled (to now be quadruple the 
+                    original skill value).
                 </p>
                 <p class="question">
                     If I use <a href="https://fiveringsdb.com/card/origami-master" target="_blank">Origami Master</a>'s
@@ -3849,100 +3994,98 @@
                     discarded and the character is returned to an ordinary state. See <a
                         href="#personal-honor-personal-dishonor">RRG "Personal Honor, Personal Dishonor"</a>.
                 </p>
-				<p class="question">
-					If I use <a href="https://fiveringsdb.com/card/artisan-academy" target="_blank">Artisan Academy</a> (Core Set, 53) or 
+				        <p class="question">
+					          If I use <a href="https://fiveringsdb.com/card/artisan-academy" target="_blank">Artisan Academy</a> (Core Set, 53) or 
                     <a href="https://fiveringsdb.com/card/pillow-book" target="_blank">Pillow Book</a> (Imperial Cycle, 113) to reveal 
                     <a href="https://fiveringsdb.com/card/test-of-skill" target="_blank">Test of Skill</a> (Imperial Cycle, 93) and then 
                     play it, what happens?
-				</p>
-				<p>
-					When an event card is played, it is considered to remain in its
-					original zone until its cost has successfully been payed, at which
-					point it gets placed onto the table in a state of "being played"
-					before being placed in its owner's discard pile after its effects
-					resolve. Therefore, during the payment of the Test of Skill's cost,
-					it is still on top of your deck and will be revealed as part of the
-					cost of playing the event.
-				</p>
-				<p>
-					While it is already revealed by the Academy or Pillow Book, it
-					can still be revealed again to satisfy its own cost. However, once
-					it leaves the top of your deck (prior to resolving its effect in step
-					7 — see '<a href="#initiating-abilities-playing-cards">Initiating Abilities</a>'), it no longer becomes
-					"one of the revealed cards" and cannot be put back into your
-					hand. For more information, see '<a href="#in-play-and-out-of-play">In Play and Out of Play</a>'.
-				</p>
-				<p>
-					Therefore, if you play Test of Skill from the top of your deck, it
-					will take up one of the "revealed card slots" in its cost, but be
-					ineligible to be put into your hand by its effect.
-				</p>
-				<p class="question">
-                    Can a character with <a href="https://fiveringsdb.com/card/above-question" target="_blank">Above 
-					Question</a> (Core, 141) be chosen as the target of an opponent’s 
-					<a href="https://fiveringsdb.com/card/court-games" target="_blank">Court Games</a> (Core, 206) 
-					if they are the only participating character on that side of the conflict?
                 </p>
                 <p>
-                    No. Regardless of which player is choosing the target, Above Question prevents the attached character 
-					from being chosen as the target for an opponent’s event.
+                  When an event card is played, it is considered to remain in its
+                  original zone until its cost has successfully been payed, at which
+                  point it gets placed onto the table in a state of "being played"
+                  before being placed in its owner's discard pile after its effects
+                  resolve. Therefore, during the payment of the Test of Skill's cost,
+                  it is still on top of your deck and will be revealed as part of the
+                  cost of playing the event.
+                </p>
+                <p>
+                  While it is already revealed by the Academy or Pillow Book, it
+                  can still be revealed again to satisfy its own cost. However, once
+                  it leaves the top of your deck (prior to resolving its effect in step
+                  7 — see '<a href="#initiating-abilities-playing-cards">Initiating Abilities</a>'), it no longer becomes
+                  "one of the revealed cards" and cannot be put back into your
+                  hand. For more information, see '<a href="#in-play-and-out-of-play">In Play and Out of Play</a>'.
+                </p>
+                <p>
+                  Therefore, if you play Test of Skill from the top of your deck, it
+                  will take up one of the "revealed card slots" in its cost, but be
+                  ineligible to be put into your hand by its effect.
                 </p>
                 <p class="question">
-                    If I use <a href="https://fiveringsdb.com/card/the-mirror-s-gaze" target="_blank">The Mirror’s Gaze</a> 
-					(Elemental Cycle, 15) to copy an Interrupt that cancels a card or game effect, what happens?
+                            Can a character with <a href="https://fiveringsdb.com/card/above-question" target="_blank">Above 
+                  Question</a> (Core, 141) be chosen as the target of an opponent’s 
+                  <a href="https://fiveringsdb.com/card/court-games" target="_blank">Court Games</a> (Core, 206) 
+                  if they are the only participating character on that side of the conflict?
+                        </p>
+                        <p>
+                            No. Regardless of which player is choosing the target, Above Question prevents the attached character 
+                  from being chosen as the target for an opponent’s event.
+                        </p>
+                        <p class="question">
+                            If I use <a href="https://fiveringsdb.com/card/the-mirror-s-gaze" target="_blank">The Mirror’s Gaze</a> 
+                  (Elemental Cycle, 15) to copy an Interrupt that cancels a card or game effect, what happens?
+                        </p>
+                        <p>
+                            You cannot copy cancel effects with The Mirror’s Gaze, as the event’s ability must successfully resolve 
+                  before The Mirror’s Gaze can be triggered. The following cards are examples of some events that cannot 
+                  by copied by this attachment for this reason: 
+                  <a href="https://fiveringsdb.com/card/voice-of-honor" target="_blank">Voice of Honor</a> (Core, 145), 
+                  <a href="https://fiveringsdb.com/card/display-of-power" target="_blank">Display of Power</a> (Core, 179), 
+                  <a href="https://fiveringsdb.com/card/forged-edict" target="_blank">Forged Edict</a> (Core, 184), 
+                  <a href="https://fiveringsdb.com/card/censure" target="_blank">Censure</a> (Imperial Cycle, 60)
+                </p>
+                <p class="question">
+                  Can I use <a href="https://fiveringsdb.com/card/the-mirror-s-gaze" target="_blank">The Mirror’s Gaze</a> 
+                  (Elemental Cycle, 15) to copy events whose effects reference their triggering conditions? If so, how do 
+                  they work?
                 </p>
                 <p>
-                    You cannot copy cancel effects with The Mirror’s Gaze, as the event’s ability must successfully resolve 
-					before The Mirror’s Gaze can be triggered. The following cards are examples of some events that cannot 
-					by copied by this attachment for this reason: 
-					<a href="https://fiveringsdb.com/card/voice-of-honor" target="_blank">Voice of Honor</a> (Core, 145), 
-					<a href="https://fiveringsdb.com/card/display-of-power" target="_blank">Display of Power</a> (Core, 179), 
-					<a href="https://fiveringsdb.com/card/forged-edict" target="_blank">Forged Edict</a> (Core, 184), 
-					<a href="https://fiveringsdb.com/card/censure" target="_blank">Censure</a> (Imperial Cycle, 60)
-				</p>
-				<p class="question">
-					Can I use <a href="https://fiveringsdb.com/card/the-mirror-s-gaze" target="_blank">The Mirror’s Gaze</a> 
-					(Elemental Cycle, 15) to copy events whose effects reference their triggering conditions? If so, how do 
-					they work?
-				</p>
-				<p>
-					You cannot resolve effects with The Mirror’s Gaze if those effects are dependent upon the triggering 
-					condition (which The Mirror’s Gaze ignores). The following cards are some examples of some events that 
-					cannot be copied by this attachment for this reason: 
-					<a href="https://fiveringsdb.com/card/indomitable-will" target="_blank">Indomitable Will</a> (Core, 158), 
-					<a href="https://fiveringsdb.com/card/ready-for-battle" target="_blank">Ready for Battle</a> (Core, 165), 
-					<a href="https://fiveringsdb.com/card/i-can-swim" target="_blank">I Can Swim</a> (Core, 187), 
-					<a href="https://fiveringsdb.com/card/way-of-the-chrysanthemum" target="_blank">Way of the Chrysanthemum</a> 
-					(Imperial Cycle, 80)
-				</p>
-				<p class="question">
-					What happens if I put fate on the fire ring with <a href="https://fiveringsdb.com/card/master-alchemist" 
-					target="_blank"> Master Alchemist</a> (Elemental Cycle, 44) while that ring is contested or claimed?
-				</p>
-				<p>
-					Fate will stay on rings up until the point at which they become contested. If the ring is already being 
-					contested when fate is added to it, the attacker will not gain that fate.
-				</p>
-			<span class="new">
-				<p class="question">
-					If Waning Hostilities (Imperial Cycle, 100) has been played, can I trigger Hisu Mori Toride (Elemental Cycle, 
-					1 and 101)?
-				</p>
-				<p>
-					No. Waning Hostilities limits each player to one conflict opportunity for the phase, and Hisu Mori Toride 
-					adds an additional <span class="icon icon-conflict-military"></span> conflict opportunity to the conflicts 
-					available to that player. Because Waning Hostilities sets a hard limit, no amount of additional conflicts 
-					will allow players to declare more than one conflict in that phase
-				</p>
-				<p class="question">
-					When an honored or dishonored character leaves play, when does its controller gain/lose honor?
-				</p>
-				<p>
-					Simultaneously with the character leaving play. The “Forced Interrupt” text on the honor/dishonor status 
-					tokens is text to remind its controller to gain or lose the honor, but is not itself a triggered ability 
-					in the same way as an Interrupt printed on a card.
-				</p>
-			</span>
+                  You cannot resolve effects with The Mirror’s Gaze if those effects are dependent upon the triggering 
+                  condition (which The Mirror’s Gaze ignores). The following cards are some examples of some events that 
+                  cannot be copied by this attachment for this reason: 
+                  <a href="https://fiveringsdb.com/card/indomitable-will" target="_blank">Indomitable Will</a> (Core, 158), 
+                  <a href="https://fiveringsdb.com/card/ready-for-battle" target="_blank">Ready for Battle</a> (Core, 165), 
+                  <a href="https://fiveringsdb.com/card/i-can-swim" target="_blank">I Can Swim</a> (Core, 187), 
+                  <a href="https://fiveringsdb.com/card/way-of-the-chrysanthemum" target="_blank">Way of the Chrysanthemum</a> 
+                  (Imperial Cycle, 80)
+                </p>
+                <p class="question">
+                  What happens if I put fate on the fire ring with <a href="https://fiveringsdb.com/card/master-alchemist" 
+                  target="_blank"> Master Alchemist</a> (Elemental Cycle, 44) while that ring is contested or claimed?
+                </p>
+                <p>
+                  Fate will stay on rings up until the point at which they become contested. If the ring is already being 
+                  contested when fate is added to it, the attacker will not gain that fate.
+                </p>
+                <p class="question">
+                  If Waning Hostilities (Imperial Cycle, 100) has been played, can I trigger Hisu Mori Toride (Elemental Cycle, 
+                  1 and 101)?
+                </p>
+                <p>
+                  No. Waning Hostilities limits each player to one conflict opportunity for the phase, and Hisu Mori Toride 
+                  adds an additional <span class="icon icon-conflict-military"></span> conflict opportunity to the conflicts 
+                  available to that player. Because Waning Hostilities sets a hard limit, no amount of additional conflicts 
+                  will allow players to declare more than one conflict in that phase
+                </p>
+                <p class="question">
+                  When an honored or dishonored character leaves play, when does its controller gain/lose honor?
+                </p>
+                <p>
+                  Simultaneously with the character leaving play. The “Forced Interrupt” text on the honor/dishonor status 
+                  tokens is text to remind its controller to gain or lose the honor, but is not itself a triggered ability 
+                  in the same way as an Interrupt printed on a card.
+                </p>
             </section>
             <section>
                 <anchored-heading @heading="add" :level="1">Appendix IV: Card Errata</anchored-heading>
@@ -3976,64 +4119,108 @@
                     Should read: "...set the base strength of the attacked province to 1 until the end of the conflict."
                     <br> <i>(Added "until the end of the conflict.")</i>
                 </p>
-				<h5>
+				        <h5>
                     <a href="https://fiveringsdb.com/card/kaito-kosori" target="_blank">Kaito Kosori</a> (Disciples of the Void, 18)
                 </h5>
                 <p>
                     Should read: "During each <span class="icon icon-element-air"></span> conflict, if you control at least 1 participating character and if this character is in your home area and ready, it contributes its skill to your side."
                     <br> <i>(Added "and ready.")</i>
                 </p>
-				<h5>
+				        <h5>
                     <a href="https://fiveringsdb.com/card/yogo-kikuyo" target="_blank">Yogo Kikuyo</a> (Disciples of the Void, 25)
                 </h5>
                 <p>
                     Should read: "When the effects of a <em>Spell</em> event your opponent plays during a conflict would initiate, put this character into play from your hand – cancel its effects."
                     <br> <i>(Added "from your hand.")</i>
                 </p>
-			<span class="new">
-				<h5>
+				        <h5>
+                    <a href="https://fiveringsdb.com/card/oracle-of-stone" target="_blank">Oracle of Stone</a> (Elemental Cycle, 37)
+                </h5>
+				        <p>
+					          Should read: “Then, each player discards 2 cards from his or her hand.”
+					          <br> <i>(Added “from his or her hand.”)</i>
+                </p>
+                <h5>
+                    <a href="https://fiveringsdb.com/card/ikebana-artisan" target="_blank">Ikebana Artisan</a> (Elemental Cycle, 63)
+                </h5>
+				        <p>
+					          The text after the dash should read: “cancel that honor loss. Then, lose 1 fate. (Unlimited.)”
+					          <br> <i>(Replaces “lose 1 fate instead. (Unlimited.)”)</i>
+                </p>
+                <h5>
+                    <a href="https://fiveringsdb.com/card/hidden-moon-dojo" target="_blank">Hidden Moon Dojo</a> (Elemental Cycle, 68)
+                </h5>
+				        <p>
+					          The title should be spelled Hidden Moon Dōjō.
+                    <br> Should have the <b>Dōjō</b> trait.
+					          <br> <i>(Updated the spelling of the title and trait.)</i>
+                </p>
+				        <h5>
                     <a href="https://fiveringsdb.com/card/hawk-tattoo" target="_blank">Hawk Tattoo</a> (Elemental Cycle, 75)
                 </h5>
-				<p>
-					Should read: "Attach to a character you control."
-					<br> <i>(Added "Attach to a character you control.")</i>
-			</span>
-            </section>
+				        <p>
+					          Should read: "Attach to a character you control."
+					          <br> <i>(Added "Attach to a character you control.")</i>
+                </p>
+                <h5>
+                    <a href="https://fiveringsdb.com/card/mantra-of-earth" target="_blank">Mantra of Earth</a> (Elemental Cycle, 116)
+                </h5>
+				        <p>
+					          Should read: “opponents’ card abilities cannot choose that character as a target.”
+					          <br> <i>(Replaces “opponents’ card effects cannot target that character.”)</i>
+                </p>
+      </section>
 			<section>
-                <anchored-heading @heading="add" :level="1" class="new">Appendix V: Restricted List</anchored-heading>
+        <anchored-heading @heading="add" :level="1" class="new">Appendix V: Restricted List</anchored-heading>
 				<p>
-					When deckbuilding, a player may select one card from the
-					restricted list to include in their decks, and cannot include any
-					other restricted cards in their decks and set of provinces. A
-					player may run as many copies of his or her chosen restricted
-					card in a deck as the regular game rules (or card text) allow.
+					  When deckbuilding, a player may select one card from the restricted list to include in their decks, and cannot 
+            include any other restricted cards in their decks and set of provinces. A player may run as many copies of his 
+            or her chosen restricted card in a deck as the regular game rules (or card text) allow.
 				</p>
-				<ol>
+				<ul>
+          <li>
+              <a href="https://fiveringsdb.com/card/guest-of-honor" target="_blank">Guest of Honor</a> (Core Set, 51)
+          </li>
+          <li>
+              <a href="https://fiveringsdb.com/card/niten-master" target="_blank">Niten Master</a> (Core Set, 64)
+          </li>
+          <li>
+              <a href="https://fiveringsdb.com/card/young-rumormonger" target="_blank">Young Rumormonger</a> (Core Set, 101)
+          </li>
+          <li>
+              <a href="https://fiveringsdb.com/card/rebuild" target="_blank">Rebuild</a> (Core Set, 136)
+          </li>
 					<li>
-						<a href="https://fiveringsdb.com/card/mirumoto-s-fury" target="_blank">Mirumoto's Fury</a> (Core Set, 159)
+						  <a href="https://fiveringsdb.com/card/mirumoto-s-fury" target="_blank">Mirumoto's Fury</a> (Core Set, 159)
 					</li>
 					<li>
-						<a href="https://fiveringsdb.com/card/for-greater-glory" target="_blank">For Greater Glory</a> (Core Set, 168)
+						  <a href="https://fiveringsdb.com/card/for-greater-glory" target="_blank">For Greater Glory</a> (Core Set, 168)
 					</li>
 					<li>
-						<a href="https://fiveringsdb.com/card/against-the-waves" target="_blank">Against the Waves</a> (Core Set, 177)
+						  <a href="https://fiveringsdb.com/card/forged-edict" target="_blank">Forged Edict</a> (Core Set, 184)
 					</li>
 					<li>
-						<a href="https://fiveringsdb.com/card/forged-edict" target="_blank">Forged Edict</a> (Core Set, 184)
+						  <a href="https://fiveringsdb.com/card/charge" target="_blank">Charge!</a> (Core Set, 210)
 					</li>
 					<li>
-						<a href="https://fiveringsdb.com/card/charge" target="_blank">Charge!</a> (Core Set, 210)
+						  <a href="https://fiveringsdb.com/card/pathfinder-s-blade" target="_blank">Pathfinder's Blade</a> (Imperial Cycle, 31)
+					</li>
+          <li>
+              <a href="https://fiveringsdb.com/card/feast-or-famine" target="_blank">Feast or Famine</a> (Imperial Cycle, 41)
+          </li>
+					<li>
+ 						  <a href="https://fiveringsdb.com/card/policy-debate" target="_blank">Policy Debate</a> (Imperial Cycle, 40)
 					</li>
 					<li>
-						<a href="https://fiveringsdb.com/card/pathfinder-s-blade" target="_blank">Pathfinder's Blade</a> (Imperial Cycle, 31)
+						  <a href="https://fiveringsdb.com/card/a-fate-worse-than-death" target="_blank">A Fate Wose than Death</a> (Imperial Cycle, 98)
 					</li>
-					<li>
-						<a href="https://fiveringsdb.com/card/policy-debate" target="_blank">Policy Debate</a> (Imperial Cycle, 40)
-					</li>
-					<li>
-						<a href="https://fiveringsdb.com/card/iron-mine" target="_blank">Iron Mine</a> (Imperial Cycle, 103)
-					</li>
-				</ol>
+          <li>
+              <a href="https://fiveringsdb.com/card/isawa-tadaka" target="_blank">Isawa Tadaka</a> (Disciples of the Void, 10)
+          </li>
+          <li>
+              <a href="https://fiveringsdb.com/card/void-fist" target="_blank">Void Fist</a> (Elemental Cycle, 94)
+          </li>
+				</ul>
 				</section>
         </div>
     </div>
