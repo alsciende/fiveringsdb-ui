@@ -59,7 +59,7 @@
       const clanOptions = stores.cards().distinct('clan').filter(clan => clan !== 'neutral').sort()
         .map(clan => ({ value: clan, text: this.$t(`clan.${clan}`) }));
       return {
-        clanRoles: [],
+        allClanRoles: [],
         clan: null,
         role: null,
         stronghold: null,
@@ -71,13 +71,13 @@
       strongholdOptions() {
         return stores.cards({ type: 'stronghold', clan: this.clan }).map(card => ({ value: card.id, text: card.name }));
       },
-      clanRole() {
-        return this.clanRoles.find(clanRole => clanRole.clan === this.clan);
+      clanRoles() {
+        return this.allClanRoles.filter(clanRole => clanRole.clan === this.clan);
       },
       roleOptions() {
         return stores.cards({ type: 'role' }).map(role => ({
           value: role.id,
-          text: role.name + (this.clanRole && this.clanRole.card.id === role.id ? ' (Current Clan Role)' : ''),
+          text: role.name + (this.clanRoles.filter(card => card.id === role.id).length > 0 ? ' (Current Clan Role)' : ''),
         }));
       },
     },
@@ -95,7 +95,7 @@
         .public()
         .get('clan-roles')
         .then((result) => {
-          this.clanRoles = result.records;
+          this.allClanRoles = result.records;
         })
         .catch((reason) => {
           this.$notify({
