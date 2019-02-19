@@ -13,22 +13,20 @@
         <div class="contents order-sm-1 col-sm-8 mt-3">
             <h2>RULES REFERENCE</h2>
             <p>
-                Version 1.7
+                Version 2.0
             </p>
             <h3>SUMMARY OF CHANGES</h3>
             <p>
-                <span class="new">Links to sections that contain new entries and changes from previous editions will be noted in this space.</span>.
+                <span class="new">Links to sections that contain new entries and changes from previous editions will 
+                be noted in this space.</span>.
             </p>
             <p>
-				<a href="#character-cards">Character</a>, 
+				<a href="#challenge">Challenge</a>, 
         <a href="#copy">Copy (of a character)</a>, 
-				<a href="#keywords">Keywords</a>, 
-				<a href="#modifiers">Modifiers</a>, 
-				<a href="#personal-honor-personal-dishonor">Personal Honor, Personal Dishonor</a>, 
-				<a href="#reveal">Reveal</a>, 
-				<a href="#rings">Rings</a>, 
-				<a href="#setup">Setup</a>, 
+				<a href="#dash">Dash</a>, 
+				<a href="#initiating-abilities-playing-cards">Initiating Abilities / Playing Cards</a>, 
 				<a href="#unique-cards">Unique Cards</a>, 
+        <a href="#duel-timing">Duel Timing</a>, 
 				<a href="#appendix-iii-questions-and-answers">Appendix III: Questions and Answers</a>,
 				<a href="#appendix-iv-card-errata">Appendix IV: Card Errata</a>
             </p>
@@ -109,8 +107,9 @@
                         </li>
                     </ul>
                     <p>
-                        <b>Related:</b> <a href="#cost">Cost</a>, <a href="#effects">Effects</a>, <a
-                            href="#forced">Forced</a>, <a href="#target">Target</a>, <a href="#triggered-abilities">Triggered
+                        <b>Related:</b> <a href="#cost">Cost</a>, <a href="#effects">Effects</a>, 
+                                        <a href="#forced">Forced</a>, <a href="#target">Target</a>, 
+                                        <a href="#triggered-abilities">Triggered
                         Abilities</a>
                     </p>
                 </article>
@@ -118,8 +117,8 @@
                     <anchored-heading @heading="add" :level="2">Action, Action Ability</anchored-heading>
                     <p>
                         An action ability is a triggered card ability that contains the boldface "<b>Action:</b>"
-                        precursor. An action ability may be triggered by its controller during any action window (see <a
-                            href="#appendix-i-timing-and-gameplay">"Appendix I: Timing and Gameplay"</a>).
+                        precursor. An action ability may be triggered by its controller during any action window 
+                        (see <a href="#appendix-i-timing-and-gameplay">"Appendix I: Timing and Gameplay"</a>).
                     </p>
                     <ul>
                         <li>
@@ -182,8 +181,8 @@
                             attach.
                         </li>
                         <li>
-                            An attachment can only attach to a character in play, unless otherwise specified by the attachment's
-                            text.
+                            An attachment can only attach to a character in play, unless otherwise specified by the 
+                            attachment's text.
                         </li>
                         <li>
                             There is no limit on the number of attachments that may be attached to a card or game
@@ -283,11 +282,13 @@
                             following the standard game rules.
                         </li>
                         <li>
-                            If three of a player's non-stronghold provinces are broken, that player's stronghold becomes an eligible province against which attacks may be made.
-                            If a player's stronghold province is broken, that player loses the game.
+                            If three of a player's non-stronghold provinces are broken, that player's stronghold becomes 
+                            an eligible province against which attacks may be made. If a player's stronghold province is 
+                            broken, that player loses the game.
                         </li>
                         <li>
-                            If a province breaks for any reason other than through standard conflict resolution, the opponent of the player who controls that province is considered to have broken the province.
+                            If a province breaks for any reason other than through standard conflict resolution, the 
+                            opponent of the player who controls that province is considered to have broken the province.
                         </li>
                     </ul>
                 </article>
@@ -366,9 +367,9 @@
                 <article>
                     <anchored-heading @heading="add" :level="2">Challenge</anchored-heading>
                     <p>
-                        Some card abilities use the word "challenge" to initiate a duel between two characters
-                        participating in a conflict. For the rules on how to resolve a duel, see "<a
-                            href="#duel-timing">Duel timing</a>".
+                        Some card abilities use the word "challenge" to begin the process of resolving a duel between 
+                        two characters. For the rules on how to resolve a duel, see 
+                        "<a href="#duel-timing">Duel timing</a>".
                     </p>
                 </article>
                 <article>
@@ -498,7 +499,7 @@
                     <anchored-heading @heading="add" :level="2">Conflict</anchored-heading>
                     <p>
                         During the conflict phase, each player has two opportunities to declare a conflict against an opponent. 
-                        For the rules on how to resolve conflicts, see Framework Details on page 22.
+                        For the rules on how to resolve conflicts, see <a href="#framework-details">Framework Details</a>.
                     </p>
                 </article>
                 <article>
@@ -588,21 +589,34 @@
                         <li>
                             When a character becomes a copy of another character, only the base skills and printed characteristics 
                             are copied. If the character that is changing gains characteristics (such as traits or ability text) 
-                            from another card ability (such as an event or attachment) then those characteristics are not lost.
+                            from another non-copy card ability (such as an event or attachment) then those characteristics are 
+                            not lost.
                         </li>
                         <li>
                             A character can only become a copy of a unique character if its owner and/or controller does not also 
                             own or control a copy (by title) of that unique character.
+                        </li>
+                        <li>
+                            Becoming a copy of another character replaces the character’s base skills and glory. This is not 
+                            applying a modifier (dashes can be replaced).
+                        </li>
+                        <li>
+                            A character cannot become a copy of another character if both characters have the same title.
                         </li>
                     </ul>
                 </article>
                 <article>
                     <anchored-heading @heading="add" :level="2">Cost</anchored-heading>
                     <p>
-                        A card's fate cost is the numerical value that dictates how much fate must be paid to play the card from a player's hand or provinces.
+                        A card's cost is the numerical value that dictates how much fate must be paid to play the card 
+                        from a player's hand or provinces.
                     </p>
                     <p>
-                        Some triggered card abilities also have an ability cost. Any imperative instruction (other than "choose...," which denotes one or more targets must be chosen, or "select...," which denotes that one or more of a number of effects must be selected) that appears before the dash of a triggered ability is considered a part of that ability's cost. Some examples of ability cost instructions are: "Bow...," "Spend...," "Sacrifice...," "Lose...," "Dishonor...," and "Discard...." 
+                        Some triggered card abilities also have an ability cost. Any imperative instruction (other than 
+                        "choose...," which denotes one or more targets must be chosen, or "select...," which denotes that 
+                        one or more of a number of effects must be selected) that appears before the dash of a triggered 
+                        ability is considered a part of that ability's cost. Some examples of ability cost instructions 
+                        are: "Bow...," "Spend...," "Sacrifice...," "Lose...," "Dishonor...," and "Discard...." 
                     </p>
                     <ul>
 						            <li>
@@ -674,7 +688,8 @@
                     </p>
                     <ul>
                         <li>
-                            When resolving an ability that references a "current" skill or glory count during a conflict, count the skill or glory values that would be used if the conflict were currently resolving.
+                            When resolving an ability that references a "current" skill or glory count during a conflict, 
+                            count the skill or glory values that would be used if the conflict were currently resolving.
                         </li>
                     </ul>
                 </article>
@@ -697,14 +712,14 @@
                             its controller's home area in a bowed state.
                         </li>
                         <li>
-                            If a character has a dash for a skill value, that skill value cannot be modified or
-                            otherwise changed by card abilities and effects.
+                            If a character has a dash for a skill value, that skill value cannot be modified by card abilities.
                         </li>
                         <li>
-                            If a character has a dash for a skill value and a card ability requires a numerical value for that skill, treat the card as if it had an unmodifiable skill value of 0.
+                            If a character has a dash for a skill value and a card ability requires a numerical value for that 
+                            skill, treat the card as if it had an unmodifiable skill value of 0.
                         </li>
                         <li>
-                            A character with a dash skill value cannot be involved in a duel of that skill type. (see <a href="#duel-timing">D.2</a>).
+                            A character with a dash skill value cannot be involved in a duel of that skill type.
                         </li>
                     </ul>
                     <p>
@@ -858,7 +873,7 @@
                 <article>
                     <anchored-heading @heading="add" :level="2">Dishonored, Dishonored Status Token</anchored-heading>
                     <p>
-                        See "<a href="#personal-honor-personal-dishonor">Personal Honor</a>".
+                        See "<a href="#personal-honor-personal-dishonor">Personal Honor, Personal Dishonor</a>".
                     </p>
                 </article>
                 <article>
@@ -889,7 +904,7 @@
                 <article>
                     <anchored-heading @heading="add" :level="2">Duel</anchored-heading>
                     <p>
-                        Some card abilities initiate a duel between two characters participating in a conflict. For the
+                        Some card abilities initiate a duel between two characters. For the
                         rules on how to initiate and resolve a duel, see "<a href="#duel-timing">D. Duel Timing</a>".
                     </p>
                 </article>
@@ -1011,7 +1026,11 @@
                             of an attack, immediately turn the province faceup.
                         </li>
                         <li>
-                            A facedown province is considered to be a different entity than its faceup side. While a province is facedown, its faceup side is considered to be out of play. When a province is turned faceup, the "faceup province" and "facedown province" simultaneously exchange positions, such that the facedown province is now out of play and the faceup province is now in play. The opposite is true when a province is turned facedown.
+                            A facedown province is considered to be a different entity than its faceup side. 
+                            While a province is facedown, its faceup side is considered to be out of play. When a 
+                            province is turned faceup, the "faceup province" and "facedown province" simultaneously 
+                            exchange positions, such that the facedown province is now out of play and the faceup 
+                            province is now in play. The opposite is true when a province is turned facedown.
                         </li>
                     </ul>
                 </article>
