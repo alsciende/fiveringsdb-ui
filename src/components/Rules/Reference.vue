@@ -13,22 +13,20 @@
         <div class="contents order-sm-1 col-sm-8 mt-3">
             <h2>RULES REFERENCE</h2>
             <p>
-                Version 1.7
+                Version 2.0
             </p>
             <h3>SUMMARY OF CHANGES</h3>
             <p>
-                <span class="new">Links to sections that contain new entries and changes from previous editions will be noted in this space.</span>.
+                <span class="new">Links to sections that contain new entries and changes from previous editions will 
+                be noted in this space.</span>.
             </p>
             <p>
-				<a href="#character-cards">Character</a>, 
+				<a href="#challenge">Challenge</a>, 
         <a href="#copy">Copy (of a character)</a>, 
-				<a href="#keywords">Keywords</a>, 
-				<a href="#modifiers">Modifiers</a>, 
-				<a href="#personal-honor-personal-dishonor">Personal Honor, Personal Dishonor</a>, 
-				<a href="#reveal">Reveal</a>, 
-				<a href="#rings">Rings</a>, 
-				<a href="#setup">Setup</a>, 
+				<a href="#dash">Dash</a>, 
+				<a href="#initiating-abilities-playing-cards">Initiating Abilities / Playing Cards</a>, 
 				<a href="#unique-cards">Unique Cards</a>, 
+        <a href="#duel-timing">Duel Timing</a>, 
 				<a href="#appendix-iii-questions-and-answers">Appendix III: Questions and Answers</a>,
 				<a href="#appendix-iv-card-errata">Appendix IV: Card Errata</a>
             </p>
@@ -109,8 +107,9 @@
                         </li>
                     </ul>
                     <p>
-                        <b>Related:</b> <a href="#cost">Cost</a>, <a href="#effects">Effects</a>, <a
-                            href="#forced">Forced</a>, <a href="#target">Target</a>, <a href="#triggered-abilities">Triggered
+                        <b>Related:</b> <a href="#cost">Cost</a>, <a href="#effects">Effects</a>, 
+                                        <a href="#forced">Forced</a>, <a href="#target">Target</a>, 
+                                        <a href="#triggered-abilities">Triggered
                         Abilities</a>
                     </p>
                 </article>
@@ -118,8 +117,8 @@
                     <anchored-heading @heading="add" :level="2">Action, Action Ability</anchored-heading>
                     <p>
                         An action ability is a triggered card ability that contains the boldface "<b>Action:</b>"
-                        precursor. An action ability may be triggered by its controller during any action window (see <a
-                            href="#appendix-i-timing-and-gameplay">"Appendix I: Timing and Gameplay"</a>).
+                        precursor. An action ability may be triggered by its controller during any action window 
+                        (see <a href="#appendix-i-timing-and-gameplay">"Appendix I: Timing and Gameplay"</a>).
                     </p>
                     <ul>
                         <li>
@@ -182,8 +181,8 @@
                             attach.
                         </li>
                         <li>
-                            An attachment can only attach to a character in play, unless otherwise specified by the attachment's
-                            text.
+                            An attachment can only attach to a character in play, unless otherwise specified by the 
+                            attachment's text.
                         </li>
                         <li>
                             There is no limit on the number of attachments that may be attached to a card or game
@@ -283,11 +282,13 @@
                             following the standard game rules.
                         </li>
                         <li>
-                            If three of a player's non-stronghold provinces are broken, that player's stronghold becomes an eligible province against which attacks may be made.
-                            If a player's stronghold province is broken, that player loses the game.
+                            If three of a player's non-stronghold provinces are broken, that player's stronghold becomes 
+                            an eligible province against which attacks may be made. If a player's stronghold province is 
+                            broken, that player loses the game.
                         </li>
                         <li>
-                            If a province breaks for any reason other than through standard conflict resolution, the opponent of the player who controls that province is considered to have broken the province.
+                            If a province breaks for any reason other than through standard conflict resolution, the 
+                            opponent of the player who controls that province is considered to have broken the province.
                         </li>
                     </ul>
                 </article>
@@ -366,9 +367,9 @@
                 <article>
                     <anchored-heading @heading="add" :level="2">Challenge</anchored-heading>
                     <p>
-                        Some card abilities use the word "challenge" to initiate a duel between two characters
-                        participating in a conflict. For the rules on how to resolve a duel, see "<a
-                            href="#duel-timing">Duel timing</a>".
+                        Some card abilities use the word "challenge" to begin the process of resolving a duel between 
+                        two characters. For the rules on how to resolve a duel, see 
+                        "<a href="#duel-timing">Duel timing</a>".
                     </p>
                 </article>
                 <article>
@@ -498,7 +499,7 @@
                     <anchored-heading @heading="add" :level="2">Conflict</anchored-heading>
                     <p>
                         During the conflict phase, each player has two opportunities to declare a conflict against an opponent. 
-                        For the rules on how to resolve conflicts, see Framework Details on page 22.
+                        For the rules on how to resolve conflicts, see <a href="#framework-details">Framework Details</a>.
                     </p>
                 </article>
                 <article>
@@ -588,21 +589,34 @@
                         <li>
                             When a character becomes a copy of another character, only the base skills and printed characteristics 
                             are copied. If the character that is changing gains characteristics (such as traits or ability text) 
-                            from another card ability (such as an event or attachment) then those characteristics are not lost.
+                            from another non-copy card ability (such as an event or attachment) then those characteristics are 
+                            not lost.
                         </li>
                         <li>
                             A character can only become a copy of a unique character if its owner and/or controller does not also 
                             own or control a copy (by title) of that unique character.
+                        </li>
+                        <li>
+                            Becoming a copy of another character replaces the character’s base skills and glory. This is not 
+                            applying a modifier (dashes can be replaced).
+                        </li>
+                        <li>
+                            A character cannot become a copy of another character if both characters have the same title.
                         </li>
                     </ul>
                 </article>
                 <article>
                     <anchored-heading @heading="add" :level="2">Cost</anchored-heading>
                     <p>
-                        A card's fate cost is the numerical value that dictates how much fate must be paid to play the card from a player's hand or provinces.
+                        A card's cost is the numerical value that dictates how much fate must be paid to play the card 
+                        from a player's hand or provinces.
                     </p>
                     <p>
-                        Some triggered card abilities also have an ability cost. Any imperative instruction (other than "choose...," which denotes one or more targets must be chosen, or "select...," which denotes that one or more of a number of effects must be selected) that appears before the dash of a triggered ability is considered a part of that ability's cost. Some examples of ability cost instructions are: "Bow...," "Spend...," "Sacrifice...," "Lose...," "Dishonor...," and "Discard...." 
+                        Some triggered card abilities also have an ability cost. Any imperative instruction (other than 
+                        "choose...," which denotes one or more targets must be chosen, or "select...," which denotes that 
+                        one or more of a number of effects must be selected) that appears before the dash of a triggered 
+                        ability is considered a part of that ability's cost. Some examples of ability cost instructions 
+                        are: "Bow...," "Spend...," "Sacrifice...," "Lose...," "Dishonor...," and "Discard...." 
                     </p>
                     <ul>
 						            <li>
@@ -674,7 +688,8 @@
                     </p>
                     <ul>
                         <li>
-                            When resolving an ability that references a "current" skill or glory count during a conflict, count the skill or glory values that would be used if the conflict were currently resolving.
+                            When resolving an ability that references a "current" skill or glory count during a conflict, 
+                            count the skill or glory values that would be used if the conflict were currently resolving.
                         </li>
                     </ul>
                 </article>
@@ -697,14 +712,14 @@
                             its controller's home area in a bowed state.
                         </li>
                         <li>
-                            If a character has a dash for a skill value, that skill value cannot be modified or
-                            otherwise changed by card abilities and effects.
+                            If a character has a dash for a skill value, that skill value cannot be modified by card abilities.
                         </li>
                         <li>
-                            If a character has a dash for a skill value and a card ability requires a numerical value for that skill, treat the card as if it had an unmodifiable skill value of 0.
+                            If a character has a dash for a skill value and a card ability requires a numerical value for that 
+                            skill, treat the card as if it had an unmodifiable skill value of 0.
                         </li>
                         <li>
-                            A character with a dash skill value cannot be involved in a duel of that skill type. (see <a href="#duel-timing">D.2</a>).
+                            A character with a dash skill value cannot be involved in a duel of that skill type.
                         </li>
                     </ul>
                     <p>
@@ -858,7 +873,7 @@
                 <article>
                     <anchored-heading @heading="add" :level="2">Dishonored, Dishonored Status Token</anchored-heading>
                     <p>
-                        See "<a href="#personal-honor-personal-dishonor">Personal Honor</a>".
+                        See "<a href="#personal-honor-personal-dishonor">Personal Honor, Personal Dishonor</a>".
                     </p>
                 </article>
                 <article>
@@ -889,7 +904,7 @@
                 <article>
                     <anchored-heading @heading="add" :level="2">Duel</anchored-heading>
                     <p>
-                        Some card abilities initiate a duel between two characters participating in a conflict. For the
+                        Some card abilities initiate a duel between two characters. For the
                         rules on how to initiate and resolve a duel, see "<a href="#duel-timing">D. Duel Timing</a>".
                     </p>
                 </article>
@@ -911,7 +926,7 @@
                         </li>
                     </ul>
                     <p>
-                        <b>Related:</b> <a href="#unique-cards">Unique</a>
+                        <b>Related:</b> <a href="#unique-cards">Unique Cards</a>
                     </p>
                 </article>
                 <article>
@@ -1011,7 +1026,11 @@
                             of an attack, immediately turn the province faceup.
                         </li>
                         <li>
-                            A facedown province is considered to be a different entity than its faceup side. While a province is facedown, its faceup side is considered to be out of play. When a province is turned faceup, the "faceup province" and "facedown province" simultaneously exchange positions, such that the facedown province is now out of play and the faceup province is now in play. The opposite is true when a province is turned facedown.
+                            A facedown province is considered to be a different entity than its faceup side. 
+                            While a province is facedown, its faceup side is considered to be out of play. When a 
+                            province is turned faceup, the "faceup province" and "facedown province" simultaneously 
+                            exchange positions, such that the facedown province is now out of play and the faceup 
+                            province is now in play. The opposite is true when a province is turned facedown.
                         </li>
                     </ul>
                 </article>
@@ -1036,7 +1055,8 @@
                             spent to a ring, it is placed on that ring.
                         </li>
                         <li>
-                            Whenever a player plays a character from his or her hand or provinces, after that character enters play, that player has the option of placing any number of fate from his or her
+                            Whenever a player plays a character from his or her hand or provinces, after that character 
+                            enters play, that player has the option of placing any number of fate from his or her
                             fate pool onto that character.
                         </li>
                         <li>
@@ -1094,9 +1114,9 @@
                             reactions.
                         </li>
                         <li>
-                            If two or more forced and/or mandatory abilities (such as keywords) would initiate at the same moment, the first player
-                            determines the order in which the abilities initiate, regardless of who controls the cards
-                            bearing those abilities.
+                            If two or more forced and/or mandatory abilities (such as keywords) would initiate at the 
+                            same moment, the first player determines the order in which the abilities initiate, 
+                            regardless of who controls the cards bearing those abilities.
                         </li>
                         <li>
                             Each forced ability must resolve completely before the next forced ability to the same
@@ -1162,15 +1182,15 @@
                         </li>
                     </ul>
                     <p>
-                        <b>Related:</b> <a href="#personal-honor-personal-dishonor">Personal Honor and Dishonor</a>, <a
-                            href="#glory-count">Glory Count</a>
+                        <b>Related:</b> <a href="#personal-honor-personal-dishonor">Personal Honor, Personal Dishonor</a>, 
+                                        <a href="#glory-count">Glory Count</a>
                     </p>
                 </article>
                 <article>
                     <anchored-heading @heading="add" :level="2">Glory Count</anchored-heading>
                     <p>
-                        When the players are asked to perform a glory count, each player counts the total glory value among the
-                        ready characters he or she controls, and adds 1 to the total for each ring in his or her claimed
+                        When the players are asked to perform a glory count, each player counts the total glory value among 
+                        the ready characters he or she controls, and adds 1 to the total for each ring in his or her claimed
                         ring pool. The player with the highest total wins the glory count.
                     </p>
                     <ul>
@@ -1201,7 +1221,8 @@
                         </li>
                     </ul>
                     <p>
-                        <b>Related:</b> <a href="#imperial-favor-imperial-favor-contest">Imperial Favor</a>, <a href="#current">Current</a>
+                        <b>Related:</b> <a href="#imperial-favor-imperial-favor-contest">Imperial Favor</a>, 
+                                        <a href="#current">Current</a>
                     </p>
                 </article>
                 <article>
@@ -1278,7 +1299,7 @@
                 <article>
                     <anchored-heading @heading="add" :level="2">Honored, Honored Status Token</anchored-heading>
                     <p>
-                        See "<a href="#personal-honor-personal-dishonor">Personal Honor</a>".
+                        See "<a href="#personal-honor-personal-dishonor">Personal Honor, Personal Dishonor</a>".
                     </p>
                 </article>
                 <article>
@@ -1457,11 +1478,14 @@
                         </li>
                         <li>
                             The card attempts to enter play, or the effects of the ability attempt to initiate. An
-                            interrupt ability that cancels this initiation may be used at this time. At this time the card is considered "played" or the ability "triggered."
+                            interrupt ability that cancels this initiation may be used at this time. 
                         </li>
                         <li>
-                            The effects of the ability (if not canceled in step 6) complete their initiation, and
-                            resolve.
+                            The card enters play, or the effects of the ability (if not canceled in step 6) complete their 
+                            initiation, and resolve.
+                        </li>
+                        <li>
+                            At this time the card is considered "played" or the ability "triggered."
                         </li>
                     </ol>
                     <p>
@@ -1758,12 +1782,6 @@
                             modifiers that would take a value below zero can be applied, but, after all active modifiers
                             have been applied, any resultant value below zero is treated as zero.
                         </li>
-						            <li>
-							              During a duel, the bid on a player’s honor dial is applied as a modifier independently of the 
-                            normal process of calculating modifiers. It is added to the appropriate statistic even if that 
-                            statistic has been set to a specific number, and is added after doubling and/or halving modifiers 
-                            are calculated.
-						            </li>
                     </ul>
                 </article>
                 <article>
@@ -1798,7 +1816,8 @@
                             to mulligan during that step after seeing the opponent's decision.
                         </li>
                         <li>
-                            After a player mulligans the cards in their provinces, they may look at the new cards before drawing their conflict hand.
+                            After a player mulligans the cards in their provinces, they may look at the new cards before drawing 
+                            their conflict hand.
                         </li>
                     </ul>
                 </article>
@@ -1864,15 +1883,15 @@
                     </ul>
                 </article>
                 <article>
-                    <anchored-heading @heading="add" :level="2">Own, Ownership</anchored-heading>
-                    <p>
-                        See "<a href="#control-and-ownership">Control and Ownership</a>".
-                    </p>
-                </article>
-                <article>
                     <anchored-heading @heading="add" :level="2">Ordinary</anchored-heading>
                     <p>
                         See "<a href="#personal-honor-personal-dishonor">Personal Honor, Personal Dishonor</a>".
+                    </p>
+                </article>
+                <article>
+                    <anchored-heading @heading="add" :level="2">Own, Ownership</anchored-heading>
+                    <p>
+                        See "<a href="#control-and-ownership">Control and Ownership</a>".
                     </p>
                 </article>
                 <article>
@@ -2013,10 +2032,10 @@
                             A card that has been put into play is not considered to have been "played."
                         </li>
                         <li>
-                            In order to <b>play</b> a card, its fate cost (after modifiers) must be paid.
+                            In order to <em>play</em> a card, its fate cost (after modifiers) must be paid.
                         </li>
                         <li>
-                            When a card is <b>put into play</b>, its fate cost is ignored.
+                            When a card is <em>put into play</em>, its fate cost is ignored.
                         </li>
                         <li>
                             Unless otherwise instructed by the put into play effect, characters that enter play in this manner do so ready and at home. Non-character cards that enter play in this
@@ -2212,6 +2231,9 @@
                             game state, that replacement effect cannot be initiated.
                         </li>
                     </ul>
+                    <p>
+                        <b>Related:</b> <a href="#would">"Would"</a>
+                    </p>
                 </article>
                 <article>
                     <anchored-heading @heading="add" :level="2">"Resolve this ability twice"</anchored-heading>
@@ -2251,7 +2273,7 @@
                         </li>
 						            <li>
 							              When a province is revealed by a card effect, it remains
-							              face-up until a card or game effect turns it face-down.
+							              faceup until a card or game effect turns it facedown.
 						            </li>
                     </ul>
                 </article>
@@ -2827,10 +2849,11 @@
                     <ul>
                         <li>
                             A player cannot take control of or bring into play a unique card if he or she already
-                            controls or owns <span class="new">another</span> in-play copy of that card.
+                            controls or owns another in-play card with the same title or printed title.
                         </li>
                         <li>
-                            A player cannot bring into play a unique card owned by his or her opponent if that opponent controls an in-play copy of that card.
+                            A player cannot bring into play a unique card owned by his or her opponent if that opponent 
+                            controls an in-play card with the same title or printed title.
                         </li>
                         <li>
                             As a player action during the dynasty phase, a player may discard a copy (by title) of a
@@ -3428,7 +3451,7 @@
                 <p>
                     Once both players consecutively pass their action opportunities, proceed to the next step.
                 </p>
-                <anchored-heading @heading="add" :level="3">3.2.3. Compare skill values</anchored-heading>
+                <anchored-heading @heading="add" :level="3">3.2.3. Compare skill values and determine result</anchored-heading>
                 <p>
                     The conflict type indicates which skill value is used to resolve the conflict. During a military
                     conflict use military skill. During a political conflict use political skill.
@@ -3617,10 +3640,10 @@
                         <td id="Duel_Timing" class="top">D. Duel Timing</td>
                     </tr>
                     <tr>
-                        <td><b>D.1</b> Duel begins.</td>
+                        <td><b>D.1</b> Initiate a duel.</td>
                     </tr>
                     <tr>
-                        <td><b>D.2</b> Establish challenger and challengee.</td>
+                        <td><b>D.2</b> Establish the challenge.</td>
                     </tr>
                     <tr>
                         <td><b>D.3</b> Duel honor bid.</td>
@@ -3632,10 +3655,10 @@
                         <td><b>D.5</b> Transfer honor.</td>
                     </tr>
                     <tr>
-                        <td><b>D.6</b> Modify dueling skill.</td>
+                        <td><b>D.6</b> Calculate dueling statistic.</td>
                     </tr>
                     <tr>
-                        <td><b>D.7</b> Compare skill value and determine results.</td>
+                        <td><b>D.7</b> Add honor bid, compare values, and determine result.</td>
                     </tr>
                     <tr>
                         <td><b>D.8</b> Apply duel results.</td>
@@ -3669,7 +3692,8 @@
                     </li>
                 </ul>
                 <p>
-                    If this process is completed, a duel has been initiated. Otherwise, the duel fails to initiate and cannot resolve.
+                    If this process is completed, a duel has been initiated. Otherwise, the duel fails to initiate and cannot 
+                    resolve.
                 </p>
                 <anchored-heading @heading="add" :level="3">Resolve the duel</anchored-heading>
                 <p>
@@ -3691,8 +3715,7 @@
                 </p>
                 <anchored-heading @heading="add" :level="3">D.4. Reveal honor dials</anchored-heading>
                 <p>
-                    The players simultaneously reveal their bids. If they cannot (because the dials are already revealed), 
-                    skip to step D.7.
+                    The players simultaneously reveal their bids.
                 </p>
                 <p>
                     Once a player reveals an honor bid, the dial is placed next to the player's stronghold and remains
@@ -3704,29 +3727,26 @@
                     bid that is equal to the difference between the two bids. If the bids are equal, no honor is
                     transferred during this step.
                 </p>
-                <anchored-heading @heading="add" :level="3">D.6. Modify dueling statistic</anchored-heading>
+                <anchored-heading @heading="add" :level="3">D.6. Calculate dueling statistic</anchored-heading>
                 <p>
                     The process of initiating the duel (in step D.1) will have established which statistic 
                     (<span class="icon icon-conflict-military"></span> skill, <span class="icon icon-conflict-political"></span> 
-                    skill, or glory) is being used to determine the results of the duel. Each player adds his or her honor bid 
-                    to the specified statistic of his or her character that is involved in the duel. This modification persists 
-                    until the end of the duel.
+                    skill, or glory) is being used to determine the results of the duel.  Each player calculates the current 
+                    value of that statistic for their character involved in the duel. Any skill modifiers that were active 
+                    at the time the duel was initiated are still applicable during the duel.
                 </p>
                 <ul>
                     <li>
-                        <b>NOTE</b>: Any skill modifiers that were active at the time the duel was initiated are still
-                        applicable during the duel.
-                    </li>
-                    <li>
-                        If multiple characters are involved in the duel on the same side, add their dueling statistics 
-                        together. They are considered to be one character for the purposes of determining duel results 
-                        and win or lose together.
+                        If multiple characters are involved in the duel on the same side, add their dueling statistics together. 
+                        The value calculated in this step is treated as the skill value of a single character for the purposes 
+                        of determining duel results. Those characters win or lose the duel together
                     </li>
                 </ul>
-                <anchored-heading @heading="add" :level="3">D.7. Compare skill values and determine result
+                <anchored-heading @heading="add" :level="3">D.7. Add honor bid, compare values, and determine result
                 </anchored-heading>
                 <p>
-                    Compare the modified statistic values of each character involved in the duel to determine the results.
+                    Each player adds their duel honor bid to the statistic value they calculated in step D.6. 
+                    Compare the new totals on each side of the duel to determine the results.
                 </p>
                 <ul>
                     <li>
@@ -3736,7 +3756,8 @@
                         The character with the lower value is the duel’s loser.
                     </li>
                     <li>
-                        If the values are the same, neither character wins the duel, and neither character loses the duel.
+                        If the values are the same, neither character is the duel’s winner and neither character is the 
+                        duel’s loser
                     </li>
                 </ul>
                 <anchored-heading @heading="add" :level="3">D.8. Apply duel results</anchored-heading>
@@ -3861,11 +3882,10 @@
                     133), does my opponent get to trigger their Watch Commander before it goes to the discard pile?
                 </p>
                 <p>
-                    Yes. A card is considered to have been played when it reaches step 6 of the process of initiating
-                    abilities (see <a
-                        href="#initiating-abilities-playing-cards">RRG "Initiating Abilities / Playing Cards"</a>). The
-                    effects of an event resolve at step 7. Therefore, when you play Let Go targeting your opponent's
-                    Watch Commander, they will react to you playing Let Go before you resolve its effects.
+                    No. When an event card is played, its costs are paid, its effects are resolved (or canceled), and it 
+                    is placed in its owner’s discard pile prior to opening the reaction window which follows the ability’s 
+                    resolution (see page 7). An event card is considered “played” after its effects resolve (see page 10). 
+                    This is a reversal of a previous FAQ entry.
                 </p>
                 <p class="question">
                     Can I use <a href="https://fiveringsdb.com/card/reprieve" target="_blank">Reprieve</a> (Core, 132)
@@ -4086,6 +4106,26 @@
                   tokens is text to remind its controller to gain or lose the honor, but is not itself a triggered ability 
                   in the same way as an Interrupt printed on a card.
                 </p>
+                <p class="question">
+                  What happens if Kakita Toshimoko’s (Children of the Empire, 14) interrupt causes the skill values to change
+                  during conflict resolution, even if he loses the duel?
+                </p>
+                <p>
+                  Kakita Toshimoko’s ability interrupts the resolution of step 3.2.3 in the conflict phase when skill values 
+                  are calculated and a winner is determined (page 23). Because interrupts resolve before their triggering 
+                  condition (page 10), and because “would” effects have the capability to change the triggering condition 
+                  (page 19), Toshimoko’s ability has the potential to change the outcome of step 3.2.3
+                </p>
+                <p>
+                  Therefore, if a character’s skill values are dependent upon the players’ honor bids, Toshimoko’s duel 
+                  changes those bids, and he loses the duel, it is possible that Toshimoko could lose the duel but win 
+                  the conflict (if up against a Sincere Challenger (Children of the Empire, 27) who loses composure in 
+                  a political conflict, for example, or by being honored by Kyūden Kakita (Masters of the Court, 1)). 
+                  It is also possible that recalculating skill values for step 3.2.3 due to Toshimoko’s ability could cause 
+                  a province that would originally be breaking to no longer be breaking if the loss of skill (or increase 
+                  of Toshimoko’s skill) causes the attacking player to not have the excess skill necessary to cause the 
+                  province to break.
+                </p>
             </section>
             <section>
                 <anchored-heading @heading="add" :level="1">Appendix IV: Card Errata</anchored-heading>
@@ -4168,6 +4208,13 @@
 				        <p>
 					          Should read: “opponents’ card abilities cannot choose that character as a target.”
 					          <br> <i>(Replaces “opponents’ card effects cannot target that character.”)</i>
+                </p>
+                <h5>
+                    <a href="https://fiveringsdb.com/card/stay-your-hand" target="_blank">Stay Your Hand</a> (Children of the Empire, 80)
+                </h5>
+				        <p>
+					          Should read: “When a duel that targets a character you control would resolve”
+					          <br> <i>(Replaces “When an opponent initiates a duel that targets a character you control”)</i>
                 </p>
       </section>
 			<section>
