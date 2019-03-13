@@ -20,7 +20,8 @@
                 </div>
             </div>
             <p v-if="card.type === 'character'">
-                <span>Cost: {{ card.cost }}.</span>
+                <span v-if="!card.cost"><span class="strike-through">Cost</span>.</span>
+                <span v-else>Cost: {{ card.cost }}.</span>
                 <span v-if="card.military === undefined"><span class="strike-through">Military</span>.</span>
                 <span v-else>Military: {{ card.military }}.</span>
                 <span v-if="card.political === undefined"><span class="strike-through">Political</span>.</span>
@@ -28,7 +29,8 @@
                 <span>Glory: {{ card.glory }}.</span>
             </p>
             <p v-if="card.type === 'attachment'">
-                <span>Cost: {{ card.cost }}.</span>
+                <span v-if="!card.cost"><span class="strike-through">Cost</span>.</span>
+                <span v-else>Cost: {{ card.cost }}.</span>
                 <span>Military: {{ card.military_bonus === undefined ? '-' : card.military_bonus }}.</span>
                 <span>Political: {{ card.political_bonus === undefined ? '-' : card.political_bonus }}.</span>
             </p>
@@ -47,7 +49,8 @@
                 <span>Influence: {{ card.influence_pool }}.</span>
             </p>
             <p v-if="card.type === 'event'">
-                <span>Cost: {{ card.cost }}.</span>
+                <span v-if="!card.cost"><span class="strike-through">Cost</span>.</span>
+                <span v-else>Cost: {{ card.cost }}.</span>
             </p>
             <div class="card-text mb-2">
                 <p v-for="(line, index) in textLines" :key="index" class="card-text">
