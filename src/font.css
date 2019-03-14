@@ -78,3 +78,6 @@
 .icon-clan-unicorn:before {
   content: "\e90d";
 }
+.icon-element-any:before {
+  content: "\e90e";
+}
