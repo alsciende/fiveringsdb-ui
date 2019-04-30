@@ -13,7 +13,7 @@
         <div class="contents order-sm-1 col-sm-8 mt-3">
             <h2>RULES REFERENCE</h2>
             <p>
-                Version 2.0
+                Version 9
             </p>
             <h3>SUMMARY OF CHANGES</h3>
             <p>
@@ -21,14 +21,15 @@
                 be noted in this space.</span>.
             </p>
             <p>
-				<a href="#challenge">Challenge</a>, 
-        <a href="#copy">Copy (of a character)</a>, 
-				<a href="#dash">Dash</a>, 
-				<a href="#initiating-abilities-playing-cards">Initiating Abilities / Playing Cards</a>, 
-				<a href="#unique-cards">Unique Cards</a>, 
+				<a href="#bid-value">Bid Value</a>, 
+        <a href="#disguised">Disguised</a>, 
+				<a href="#keywords">Keywords</a>, 
+				<a href="#provinces-province-cards">Provinces, Province Cards</a>, 
+				<a href="#5-3-discard-from-provinces">Framework Details 5.3</a>, 
         <a href="#duel-timing">Duel Timing</a>, 
 				<a href="#appendix-iii-questions-and-answers">Appendix III: Questions and Answers</a>,
 				<a href="#appendix-iv-card-errata">Appendix IV: Card Errata</a>
+        <a href="#appendix-v-restricted-list">Appendix V: Restricted List</a>
             </p>
             <hr>
             <section>
@@ -248,6 +249,10 @@
                     <ul>
                         <li>
                             When the value of an honor bid is modified, the setting on the dial is not itself adjusted.
+                        </li>
+                        <li>
+                            If a card ability references a player’s honor bid, the ability is referencing the current setting 
+                            on the player’s honor dial.
                         </li>
                     </ul>
                 </article>
@@ -868,6 +873,39 @@
                             If multiple cards are discarded simultaneously, the owner of the cards chooses the order in
                             which those cards are placed in the discard pile.
                         </li>
+                    </ul>
+                </article>
+                <article>
+                    <anchored-heading @heading="add" :level="2">Disguised</anchored-heading>
+                    <p>
+                        The disguised keyword appears on unique characters. When a character is played using the disguised keyword, 
+                        it replaces a non-unique character of the correct <em>Trait</em> or clan affiliation, inheriting all of that 
+                        character’s attachments, fate, and status tokens. This is an alternate means by which to play a character
+                        and carries a number of unique rules including, but not limited to, an additional cost of choosing and 
+                        discarding a non-unique character.
+                    </p>
+                    <ul>
+                        <li>
+                            When playing a character using the disguised keyword, you may play that character during the conflict 
+                            phase, following all timing rules which apply to playing characters from hand.
+                        </li>
+                        <li>
+                            To play a character using the disguised keyword, you must choose a non-unique character you control of 
+                            the appropriate <em>Trait</em> or clan affiliation as an additional cost to play the character. Reduce 
+                            the cost to play the disguised character by the printed cost of the chosen character, play the disguised 
+                            character, then move all attachments and tokens (fate, status, etc.) from the chosen character to the
+                            disguised character. Finally, discard the chosen character from play. Interrupts cannot be used to 
+                            replace or prevent this discard.
+                        </li>
+                        <li>
+                            A character played using the disguised keyword cannot be played into a conflict unless the character 
+                            chosen by the keyword was also participating in the conflict, and fate from your fate pool cannot be 
+                            put on it.
+                        </li>
+                        <li>
+                            A character played using this keyword enters play ready.
+                        </li>
+                        
                     </ul>
                 </article>
                 <article>
@@ -1563,7 +1601,8 @@
                     <p>
                         A keyword is a card ability which conveys specific rules to its card. The keywords in the game
                         are: <a href="#ancestral">Ancestral</a>, <a href="#composure">Composure</a>,
-                             <a href="#courtesy">Courtesy</a>, <a href="#covert">Covert</a>, <a href="#limited">Limited</a>, 
+                             <a href="#courtesy">Courtesy</a>, <a href="#covert">Covert</a>, 
+                             <a href="#disguised">Disguised</a>, <a href="#limited">Limited</a>, 
                              <a href="#no-attachments">No Attachments</a>, <a href="#pride">Pride</a>, 
                              <a href="#restricted">Restricted</a>, and <a href="#sincerity">Sincerity</a>.
                     </p>
@@ -1574,9 +1613,10 @@
                             not replace the rules for that keyword in this glossary.
                         </li>
                         <li>
-                            A card can have multiple instances of the same keyword. However, a card 
-							              that does so functions as if it has one instance of that keyword, 
-							              and the keyword will only resolve once per triggering condition.
+                            A card can have multiple instances of the same keyword. However, a card that does so functions as 
+                            if it has one instance of that keyword, and the keyword will only resolve once per triggering condition.
+                            Variable keywords (see below) are an exception: if a card has multiple instances of a variable 
+                            keyword, each of those instances acts on the card independently.
                         </li>
                         <li>
                             Some keywords, such as Composure, are variable keywords. Variable keywords operate in the same 
@@ -2115,7 +2155,19 @@
                             A broken province is considered to have a blank text box, and its ability cannot be used.
                         </li>
                         <li>
-                            If a province has more than one card in it, those cards are considered to all be in the same province. Characters can be played and holdings provide their bonuses. Do not refill a province until it is empty.
+                            If a province has more than one card in it, those cards are considered to all be in the same province. 
+                            Characters can be played and holdings provide their bonuses. Do not refill a province until it is empty.
+                        </li>
+                        <li>
+                            Each player’s non-stronghold provinces are placed in a linear row in front of that player. Each of 
+                            those provinces is adjacent to the province immediately to its left and right. A player’s stronghold 
+                            province is not adjacent to any other province.
+                        </li>
+                        <li>
+                            Each province has one or more elements associated with it. A province with a fivefold <i>tomoe</i> symbol 
+                            in place of a single element, such as Toshi Ranbo (Inheritance Cycle, 1), counts as a province of all five 
+                            elements at all times and can be selected during deck construction to fulfill the province slot of any 
+                            element.
                         </li>
                     </ul>
                 </article>
@@ -3144,7 +3196,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td><b>3.2.3</b> Compare skill values.</td>
+                        <td><b>3.2.3</b> Compare skill values and determine result.</td>
                     </tr>
                     <tr>
                         <td><b>3.2.4</b> Apply unopposed.</td>
@@ -3611,7 +3663,8 @@
                     her unbroken provinces.
                 </p>
                 <p>
-                    Each card discarded in this manner is replaced facedown from its owner's dynasty deck.
+                    Each province that becomes empty in this way is refilled with a facedown card from the top of its owner’s 
+                    dynasty deck.
                 </p>
                 <anchored-heading @heading="add" :level="3">5.4. Return rings</anchored-heading>
                 <p>
@@ -4032,8 +4085,8 @@
                 <p>
                   While it is already revealed by the Academy or Pillow Book, it
                   can still be revealed again to satisfy its own cost. However, once
-                  it leaves the top of your deck (prior to resolving its effect in step
-                  7 — see '<a href="#initiating-abilities-playing-cards">Initiating Abilities</a>'), it no longer becomes
+                  it leaves the top of your deck ((after paying costs and choosing targets in step
+                  5 — see '<a href="#initiating-abilities-playing-cards">Initiating Abilities</a>'), it no longer becomes
                   "one of the revealed cards" and cannot be put back into your
                   hand. For more information, see '<a href="#in-play-and-out-of-play">In Play and Out of Play</a>'.
                 </p>
@@ -4126,6 +4179,29 @@
                   of Toshimoko’s skill) causes the attacking player to not have the excess skill necessary to cause the 
                   province to break.
                 </p>
+                <p class="question">
+                    Can I play events such as Hurricane Punch (Elemental Cycle, 17) or My Ancestor’s Strength (Elemental Cycle, 
+                    77) on a character whose skill values have been set to a particular value by Unleash the Djinn (Elemental 
+                    Cycle, 120)?
+                </p>
+                <p>
+                    Yes. Modifiers can be applied to a character’s skill values even after a “set” modifier is applied to 
+                    those values. While the “set” modifier overrides the other active modifiers, those modifiers may continue 
+                    to be applied as card effects may refer to them.
+                </p>
+                <p class="question">
+                    If my opponent, who has exactly 1 more card in hand than me, chooses my ordinary (not honored) character as 
+                    the target of their For Shame (Core, 207), does my Steward of the Rich Frog (Inheritance Cycle, 54) allow 
+                    me to select the “dishonor” option?
+                </p>
+                <p>
+                    No. After a player has paid the event’s costs (Step 4 of the process of playing cards, see page 10) and chosen 
+                    its targets (Step 5), the event is put on the table in a state of “being played” before being placed in its 
+                    owner’s discard pile after its effects resolve. Therefore, while choosing targets during Step 5, Steward of 
+                    the Rich Frog’s text prevents characters from receiving dishonored status tokens. Because selecting options
+                    happens during the same step as choosing targets, the For Shame is still in your opponent’s hand when you must 
+                    make the selection, and you cannot select an option whose effect would fail to change the game state.
+                </p>
             </section>
             <section>
                 <anchored-heading @heading="add" :level="1">Appendix IV: Card Errata</anchored-heading>
@@ -4135,6 +4211,24 @@
                     applies to. Unless errata for a card appears below, the original English printing of that card and
                     all of its information is considered accurate, and overrides all other printings. This includes
                     translated cards, promotional cards, and printings which may appear in alternate products.
+                </p>
+                <h5>
+                    <a href="https://fiveringsdb.com/card/city-of-the-oprn-hand" target="_blank">City of the Open Hand</a> 
+                    (Core Set, 6)
+                </h5>
+                <p>
+                    Should read: “...bow this stronghold and select one – either that opponent loses 1 honor, or you gain 1 honor.”
+                    <br>
+                    <i>(Replaces “...bow this stronghold – take 1 honor from that player.”)</i>
+                </p>
+                <h5>
+                    <a href="https://fiveringsdb.com/card/restoration-of-balance" target="_blank">Restoration of Balance</a> 
+                    (Core Set, 10)
+                </h5>
+                <p>
+                    Should read: “<em>Interrupt</em>: When this province is broken...”
+                    <br>
+                    <i>(Replaces “<em>Reaction</em>: After this province is revealed...”)</i>
                 </p>
                 <h5>
                     <a href="https://fiveringsdb.com/card/kaiu-inventor" target="_blank">Kaiu Inventor</a> (Imperial
@@ -4157,57 +4251,87 @@
                 </h5>
                 <p>
                     Should read: "...set the base strength of the attacked province to 1 until the end of the conflict."
-                    <br> <i>(Added "until the end of the conflict.")</i>
+                    <br> 
+                    <i>(Added "until the end of the conflict.")</i>
+                </p>
+                <h5>
+                    <a href="https://fiveringsdb.com/card/isawa-tadaka" target="_blank">Isawa Tadaka</a> (Disciples of the
+                    Void, 10)
+                </h5>
+                <p>
+                    Should read: “While the <span class="icon icon-element-earth"></span> ring is contested or in your claimed 
+                    ring pool, each opponent cannot play copies of event cards that are in their conflict discard pile.”
+                    <br>
+                    <i>(Replaces “Each opponent cannot play copies of event cards that are in his or her conflict discard pile 
+                    unless the <span class="icon icon-element-earth"></span> ring is in that player’s claimed ring pool.”)</i>
                 </p>
 				        <h5>
                     <a href="https://fiveringsdb.com/card/kaito-kosori" target="_blank">Kaito Kosori</a> (Disciples of the Void, 18)
                 </h5>
                 <p>
-                    Should read: "During each <span class="icon icon-element-air"></span> conflict, if you control at least 1 participating character and if this character is in your home area and ready, it contributes its skill to your side."
-                    <br> <i>(Added "and ready.")</i>
+                    Should read: "During each <span class="icon icon-element-air"></span> conflict, if you control at least 1 
+                    participating character and if this character is in your home area and ready, it contributes its skill to your side."
+                    <br> 
+                    <i>(Added "and ready.")</i>
                 </p>
 				        <h5>
                     <a href="https://fiveringsdb.com/card/yogo-kikuyo" target="_blank">Yogo Kikuyo</a> (Disciples of the Void, 25)
                 </h5>
                 <p>
                     Should read: "When the effects of a <em>Spell</em> event your opponent plays during a conflict would initiate, put this character into play from your hand – cancel its effects."
-                    <br> <i>(Added "from your hand.")</i>
+                    <br> 
+                    <i>(Added "from your hand.")</i>
                 </p>
 				        <h5>
                     <a href="https://fiveringsdb.com/card/oracle-of-stone" target="_blank">Oracle of Stone</a> (Elemental Cycle, 37)
                 </h5>
 				        <p>
 					          Should read: “Then, each player discards 2 cards from his or her hand.”
-					          <br> <i>(Added “from his or her hand.”)</i>
+					          <br> 
+                    <i>(Added “from his or her hand.”)</i>
                 </p>
                 <h5>
                     <a href="https://fiveringsdb.com/card/ikebana-artisan" target="_blank">Ikebana Artisan</a> (Elemental Cycle, 63)
                 </h5>
 				        <p>
 					          The text after the dash should read: “cancel that honor loss. Then, lose 1 fate. (Unlimited.)”
-					          <br> <i>(Replaces “lose 1 fate instead. (Unlimited.)”)</i>
+					          <br> 
+                    <i>(Replaces “lose 1 fate instead. (Unlimited.)”)</i>
                 </p>
                 <h5>
                     <a href="https://fiveringsdb.com/card/hidden-moon-dojo" target="_blank">Hidden Moon Dojo</a> (Elemental Cycle, 68)
                 </h5>
 				        <p>
 					          The title should be spelled Hidden Moon Dōjō.
-                    <br> Should have the <b>Dōjō</b> trait.
-					          <br> <i>(Updated the spelling of the title and trait.)</i>
+                    <br> 
+                    Should have the <b>Dōjō</b> trait.
+					          <br> 
+                    <i>(Updated the spelling of the title and trait.)</i>
                 </p>
 				        <h5>
                     <a href="https://fiveringsdb.com/card/hawk-tattoo" target="_blank">Hawk Tattoo</a> (Elemental Cycle, 75)
                 </h5>
 				        <p>
 					          Should read: "Attach to a character you control."
-					          <br> <i>(Added "Attach to a character you control.")</i>
+					          <br> 
+                    <i>(Added "Attach to a character you control.")</i>
                 </p>
                 <h5>
                     <a href="https://fiveringsdb.com/card/mantra-of-earth" target="_blank">Mantra of Earth</a> (Elemental Cycle, 116)
                 </h5>
 				        <p>
 					          Should read: “opponents’ card abilities cannot choose that character as a target.”
-					          <br> <i>(Replaces “opponents’ card effects cannot target that character.”)</i>
+					          <br> 
+                    <i>(Replaces “opponents’ card effects cannot target that character.”)</i>
+                </p>
+                <h5>
+                    <a href="https://fiveringsdb.com/card/paragon-of-grace" target="_blank">Paragon of Grace</a> 
+                    (Children of the Empire, 13)
+                </h5>
+				        <p>
+					          Should read: “During a conflict in which this character is participating on your side alone”
+					          <br> 
+                    <i>(Added “on your side”)</i>
                 </p>
                 <h5>
                     <a href="https://fiveringsdb.com/card/stay-your-hand" target="_blank">Stay Your Hand</a> (Children of the Empire, 80)
@@ -4216,6 +4340,16 @@
 					          Should read: “When a duel that targets a character you control would resolve”
 					          <br> <i>(Replaces “When an opponent initiates a duel that targets a character you control”)</i>
                 </p>
+                <h5>
+                    <a href="https://fiveringsdb.com/card/the-spear-rushes-forth" target="_blank">The Spear Rushes Forth</a> 
+                    (Masters of the Court, 23)
+                </h5>
+				        <p>
+					          Should read: “discard an honored status token”
+					          <br> 
+                    <i>(Replaces “discard an honor token”)</i>
+                </p>
+
       </section>
 			<section>
         <anchored-heading @heading="add" :level="1" class="new">Appendix V: Restricted List</anchored-heading>
@@ -4237,6 +4371,9 @@
           <li>
               <a href="https://fiveringsdb.com/card/rebuild" target="_blank">Rebuild</a> (Core Set, 136)
           </li>
+          <li>
+              <a href="https://fiveringsdb.com/card/steward-of-law" target="_blank">Steward of Law</a> (Core Set, 139)
+          </li>
 					<li>
 						  <a href="https://fiveringsdb.com/card/mirumoto-s-fury" target="_blank">Mirumoto's Fury</a> (Core Set, 159)
 					</li>
@@ -4249,6 +4386,9 @@
 					<li>
 						  <a href="https://fiveringsdb.com/card/charge" target="_blank">Charge!</a> (Core Set, 210)
 					</li>
+          <li>
+              <a href="https://fiveringsdb.com/card/embrace-the-void" target="_blank">Embrace the Void</a> (Imperial Cycle, 16)
+          </li>
 					<li>
 						  <a href="https://fiveringsdb.com/card/pathfinder-s-blade" target="_blank">Pathfinder's Blade</a> (Imperial Cycle, 31)
 					</li>
@@ -4263,6 +4403,9 @@
 					</li>
           <li>
               <a href="https://fiveringsdb.com/card/isawa-tadaka" target="_blank">Isawa Tadaka</a> (Disciples of the Void, 10)
+          </li>
+          <li>
+              <a href="https://fiveringsdb.com/card/secluded-shrine" target="_blank">Secluded Shrine</a> (Disciples of the Void, 12)
           </li>
           <li>
               <a href="https://fiveringsdb.com/card/void-fist" target="_blank">Void Fist</a> (Elemental Cycle, 94)
