@@ -499,6 +499,7 @@
                             used in reminder text to indicate that a player’s card has the ability granted by composure while 
                             their honor bid is lower than an opponent’s.
                         </li>
+                    </ul>
                 </article>
                 <article>
                     <anchored-heading @heading="add" :level="2">Conflict</anchored-heading>
@@ -4399,7 +4400,7 @@
  						  <a href="https://fiveringsdb.com/card/policy-debate" target="_blank">Policy Debate</a> (Imperial Cycle, 40)
 					</li>
 					<li>
-						  <a href="https://fiveringsdb.com/card/a-fate-worse-than-death" target="_blank">A Fate Wose than Death</a> (Imperial Cycle, 98)
+						  <a href="https://fiveringsdb.com/card/a-fate-worse-than-death" target="_blank">A Fate Worse than Death</a> (Imperial Cycle, 98)
 					</li>
           <li>
               <a href="https://fiveringsdb.com/card/isawa-tadaka" target="_blank">Isawa Tadaka</a> (Disciples of the Void, 10)
