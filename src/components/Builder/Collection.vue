@@ -82,18 +82,7 @@
         const cards = this.mainClan === null
           ? stores.cards()
           : stores.cards(
-            { 
-              allowed_clans: { has: this.mainClan } 
-            },
-            [
-              {
-                side: ['dynasty', 'role', 'province']
-              }, 
-              {
-                side: 'conflict',
-                influence_cost: { isUndefined: false }
-              }
-            ]
+            {allowed_clans: { has: this.mainClan }}
           );
 
         return this.filters.reduce(
