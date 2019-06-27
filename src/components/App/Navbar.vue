@@ -12,13 +12,18 @@
                     <b-nav-item-dropdown text="Cards" left :class="[ section === 'cards' ? 'active' : '']">
                         <b-dropdown-item :to="{name:'cards-by-default'}" exact>All</b-dropdown-item>
                         <template v-for="cycle in cycles">
-                            <b-dropdown-header v-if="cycle.size > 1">{{ cycle.name }}</b-dropdown-header>
+                            <b-dropdown-item 
+                                    v-if="cycle.size > 0"
+                                    :key="cycle.id"
+                                    :to="{name:'cards-by-cycle-id', params: {id : cycle.id}}">
+                                <b>{{ cycle.name }}</b>
+                            </b-dropdown-item>
                             <b-dropdown-item
                                     v-for="pack in cycle.packs"
                                     :key="pack.id"
-                                    :to="{name:'cards-by-pack-id',params:{id:pack.id}}"
+                                    :to="{name:'cards-by-pack-id', params: { id : pack.id}}"
                                     exact>
-                                {{ pack.name }}
+                                  {{ pack.name }}
                             </b-dropdown-item>
                         </template>
                     </b-nav-item-dropdown>

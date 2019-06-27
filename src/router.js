@@ -61,6 +61,13 @@ export default new Router({
       meta: { section: 'cards' },
     },
     {
+      path: '/cycle/:id',
+      name: 'cards-by-cycle-id',
+      component: Browser,
+      props: true,
+      meta: { section: 'cards' },
+    },
+    {
       path: '/clan/:id',
       name: 'cards-by-clan-id',
       component: Browser,

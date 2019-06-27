@@ -233,6 +233,8 @@
             return `${stores.cards({ id: route.params.id }).first().name} • Card` || defaultTitle;
           case 'cards-by-pack-id':
             return `${stores.packs({ id: route.params.id }).first().name} • Pack` || defaultTitle;
+          case 'cards-by-cycle-id':
+            return `${stores.cycles({ id: route.params.id }).first().name} • Cycle` || defaultTitle;
           case 'cards-by-clan-id':
             return `${this.$t(`clan.${route.params.id}`)} • Clan` || defaultTitle;
           default:
