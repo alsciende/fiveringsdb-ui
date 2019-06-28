@@ -57,7 +57,7 @@ class QueryParser {
     }
 
     // looking for a type
-    const match = this.findToken('(\\w{1,3})([:<>!])');
+    const match = this.findToken('(\\w{1,9})([:<>!])');
     if (match) {
       // we have found a token "{condition}:"
       this.clause.name = match[1].toLowerCase();
