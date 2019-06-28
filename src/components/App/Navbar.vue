@@ -13,12 +13,14 @@
                         <b-dropdown-item :to="{name:'cards-by-default'}" exact>All</b-dropdown-item>
                         <template v-for="cycle in cycles">
                             <b-dropdown-item 
+                                    class="small-dropdown-text"
                                     v-if="cycle.size > 0"
                                     :key="cycle.id"
                                     :to="{name:'cards-by-cycle-id', params: {id : cycle.id}}">
                                 <b>{{ cycle.name }}</b>
                             </b-dropdown-item>
                             <b-dropdown-item
+                                    class="small-dropdown-text"
                                     v-for="pack in cycle.packs"
                                     :key="pack.id"
                                     :to="{name:'cards-by-pack-id', params: { id : pack.id}}"
@@ -104,4 +106,7 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
+  .small-dropdown-text {
+    font-size: 0.8em;
+  }
 </style>
