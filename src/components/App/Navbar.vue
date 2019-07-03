@@ -22,7 +22,8 @@
                                         <v-icon :key="cycle.id + '_caret_down'" name="caret-down" scale="0.75"></v-icon>
                             </b-dropdown-header> 
                             <b-collapse :id="cycle.id"
-                                        :key="cycle.id + '_collapse'">
+                                        :key="cycle.id + '_collapse'"
+                                        accordion="cycle-accordion">
                               <b-dropdown-item  v-if="cycle.size > 1" 
                                                 :to="{name:'cards-by-cycle-id', params: {id : cycle.id}}">
                                   <b>All cards of {{ cycle.name }}</b>
