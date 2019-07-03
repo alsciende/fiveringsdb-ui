@@ -19,7 +19,12 @@
                                                 :key="cycle.id"
                                                 role="button">
                                         {{ cycle.name }}
-                                        <v-icon :key="cycle.id + '_caret_down'" name="caret-down" scale="0.75"></v-icon>
+                                        <span class="when-opened">
+                                          <v-icon :key="cycle.id + '_caret_down'" name="caret-down" scale="0.75"></v-icon>
+                                        </span>
+                                        <span class="when-closed">
+                                          <v-icon :key="cycle.id + '_caret_right'" name="caret-right" scale="0.75"></v-icon>
+                                        </span>
                             </b-dropdown-header> 
                             <b-collapse :id="cycle.id"
                                         :key="cycle.id + '_collapse'"
@@ -115,7 +120,7 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
+<style scoped>
   .cycle-header {
     font-size: 1em;
   }
@@ -123,4 +128,9 @@
   .cycle-header:hover {
     cursor: pointer;
   }
+
+  .collapsed > .when-opened,
+    :not(.collapsed) > .when-closed {
+        display: none;
+    }
 </style>
