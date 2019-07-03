@@ -3,7 +3,7 @@
 
         <builder-collection-filter
                 :startingClans="startingClans"
-                v-model="filters"
+                v-model="cardFilters"
         ></builder-collection-filter>
 
         <table class="table table-sm">
@@ -37,6 +37,10 @@
   import * as types from '@/store/mutation-types';
   import BuilderCollectionRow from './CollectionRow';
   import BuilderCollectionFilter from './CollectionFilter';
+  import queryParser from '@/service/queryParser';
+  import QueryInput from '@/classes/QueryInput';
+  import queryMapper from '@/service/queryMapper';
+  import queryBuilder from '@/service/queryBuilder';
 
   export default {
     name: 'builder-collection',
@@ -46,7 +50,11 @@
     },
     data() {
       return {
-        filters: [],
+        cardFilters: {
+          filter: [],
+          packFilter: [],
+          queryString: ''
+        },
       };
     },
     computed: {
@@ -79,15 +87,16 @@
         return roleRestrictionFilter;
       },
       cards() {
-        const cards = this.mainClan === null
-          ? stores.cards()
-          : stores.cards(
-            {allowed_clans: { has: this.mainClan }}
-          );
-
-        return this.filters.reduce(
-          (cards, filter) => cards.filter(filter),
-          cards.filter(this.roleRestrictionFilter));
+        const clauses = queryParser.parse(this.cardFilters.queryString);
+        const queryInput = new QueryInput(clauses);
+        const queryFilters = queryBuilder.build(queryInput);
+        var cards = stores.cards.apply(this, queryFilters)
+                                .filter(this.cardFilters.filter)
+                                .filter(this.cardFilters.packFilter)
+        if (this.mainClan !== null) {
+          cards = cards.filter({allowed_clans: { has: this.mainClan }})
+        }
+        return cards.filter(this.roleRestrictionFilter);
       },
       cardslots() {
         return this.cards.map(record => ({
