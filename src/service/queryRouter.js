@@ -5,7 +5,11 @@ class QueryRouter {
     this.config = {
       id: 'cards-by-card-id',
       p: 'cards-by-pack-id',
+      pack: 'cards-by-pack-id',
       c: 'cards-by-clan-id',
+      clan: 'cards-by-clan-id',
+      y: 'cards-by-cycle-id',
+      cycle: 'cards-by-cycle-id'
     };
     this.reverseMatching = {
       'cards-by-search-query': function matcher(route) {
@@ -15,10 +19,13 @@ class QueryRouter {
         return `id:${route.params.id}`;
       },
       'cards-by-pack-id': function matcher(route) {
-        return `p:${route.params.id}`;
+        return `pack:${route.params.id}`;
       },
       'cards-by-clan-id': function matcher(route) {
-        return `c:${route.params.id}`;
+        return `clan:${route.params.id}`;
+      },
+      'cards-by-cycle-id': function matcher(route) {
+        return `cycle:${route.params.id}`;
       },
       'cards-by-default': '',
     };

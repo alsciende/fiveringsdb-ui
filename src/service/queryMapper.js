@@ -16,60 +16,120 @@ class QueryMapper {
         type: 'id',
         description: 'Card Id',
       },
+      text: {
+        name: 'text_canonical',
+        type: 'string',
+        description: 'Card Text',
+      },
       x: {
         name: 'text_canonical',
         type: 'string',
         description: 'Card Text',
+      },
+      pack: {
+        name: 'packs',
+        type: 'join',
+        description: 'Pack',
       },
       p: {
         name: 'packs',
         type: 'join',
         description: 'Pack',
       },
+      cycle: {
+        name: 'cycles',
+        type: 'join',
+        description: 'Cycle',
+      },
       y: {
         name: 'cycles',
         type: 'join',
         description: 'Cycle',
+      },
+      clan: {
+        name: 'clan',
+        type: 'id',
+        description: 'Card Clan',
       },
       c: {
         name: 'clan',
         type: 'id',
         description: 'Card Clan',
       },
+      type: {
+        name: 'type',
+        type: 'id',
+        description: 'Card Type',
+      },
       t: {
         name: 'type',
         type: 'id',
         description: 'Card Type',
+      },
+      side: {
+        name: 'side',
+        type: 'id',
+        description: 'Card Deck',
       },
       d: {
         name: 'side',
         type: 'id',
         description: 'Card Deck',
       },
+      trait: {
+        name: 'traits',
+        type: 'join',
+        description: 'Traits',
+      },
       k: {
         name: 'traits',
         type: 'join',
         description: 'Traits',
+      },
+      influence: {
+        name: 'influence_cost',
+        type: 'integer',
+        description: 'Influence Cost',
       },
       i: {
         name: 'influence_cost',
         type: 'integer',
         description: 'Influence Cost',
       },
+      cost: {
+        name: 'cost',
+        type: 'integer',
+        description: 'Fate Cost',
+      },
       f: {
         name: 'cost',
         type: 'integer',
         description: 'Fate Cost',
+      },
+      unicity: {
+        name: 'unicity',
+        type: 'boolean',
+        description: 'Unique',
       },
       u: {
         name: 'unicity',
         type: 'boolean',
         description: 'Unique',
       },
+      glory: {
+        name: 'glory',
+        type: 'integer',
+        description: 'Glory',
+      },
       g: {
         name: 'glory',
         type: 'integer',
         description: 'Glory',
+      },
+      element: {
+        name: 'element',
+        type: 'id',
+        description: 'Element',
       },
       e: {
         name: 'element',
