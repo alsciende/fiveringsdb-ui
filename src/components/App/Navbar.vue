@@ -12,21 +12,30 @@
                     <b-nav-item-dropdown text="Cards" left :class="[ section === 'cards' ? 'active' : '']">
                         <b-dropdown-item :to="{name:'cards-by-default'}" exact>All</b-dropdown-item>
                         <template v-for="cycle in cycles">
-                            <b-dropdown-item 
-                                    class="small-dropdown-text"
-                                    v-if="cycle.size > 0"
-                                    :key="cycle.id"
-                                    :to="{name:'cards-by-cycle-id', params: {id : cycle.id}}">
-                                <b>{{ cycle.name }}</b>
-                            </b-dropdown-item>
-                            <b-dropdown-item
-                                    class="small-dropdown-text"
-                                    v-for="pack in cycle.packs"
-                                    :key="pack.id"
-                                    :to="{name:'cards-by-pack-id', params: { id : pack.id}}"
-                                    exact>
-                                  {{ pack.name }}
-                            </b-dropdown-item>
+                          <b-dropdown-divider :key="cycle.name + '_divider'"/>
+                          <template v-if="cycle.size >= 1">
+                            <b-dropdown-header  v-b-toggle="cycle.id"
+                                                class="cycle-header"
+                                                :key="cycle.id"
+                                                role="button">
+                                        {{ cycle.name }}
+                                        <v-icon :key="cycle.id + '_caret_down'" name="caret-down" scale="0.75"></v-icon>
+                            </b-dropdown-header> 
+                            <b-collapse :id="cycle.id"
+                                        :key="cycle.id + '_collapse'">
+                              <b-dropdown-item  v-if="cycle.size > 1" 
+                                                :to="{name:'cards-by-cycle-id', params: {id : cycle.id}}">
+                                  <b>All cards of {{ cycle.name }}</b>
+                              </b-dropdown-item>
+                              <b-dropdown-item
+                                      v-for="pack in cycle.packs"
+                                      :key="pack.id"
+                                      :to="{name:'cards-by-pack-id', params: { id : pack.id}}"
+                                      exact>
+                                      {{ pack.name }}
+                              </b-dropdown-item>
+                            </b-collapse> 
+                          </template>
                         </template>
                     </b-nav-item-dropdown>
                     <b-nav-item
@@ -106,7 +115,11 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
-  .small-dropdown-text {
-    font-size: 0.8em;
+  .cycle-header {
+    font-size: 1em;
+  }
+
+  .cycle-header:hover {
+    cursor: pointer;
   }
 </style>

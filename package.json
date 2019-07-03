@@ -28,6 +28,7 @@
     "taffydb": "^2.7.3",
     "vue": "^2.4.2",
     "vue-analytics": "^4.4.0",
+    "vue-awesome": "^3.5.4",
     "vue-chartjs": "^3.1.1",
     "vue-cli": "^2.8.2",
     "vue-i18n": "^7.2.0",
