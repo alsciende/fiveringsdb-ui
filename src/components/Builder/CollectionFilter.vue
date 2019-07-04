@@ -77,10 +77,7 @@
   import debounce from 'lodash/debounce';
   import stores from '@/service/storeService';
   import typeIcons from '@/service/typeIcons';
-  import queryParser from '@/service/queryParser';
-  import QueryInput from '@/classes/QueryInput';
   import queryMapper from '@/service/queryMapper';
-  import queryBuilder from '@/service/queryBuilder';
   import CoreCountSelector from './CoreCountSelector';
 
   const INPUT_DEBOUNCE_TIMER_MS = 500;
@@ -101,7 +98,7 @@
         previews: false,
         packs: stores.packs({ released_at: { isNull: false } }).select('id'),
         queryString: '',
-        queryFilter: [],
+        packFilter: [],
         filter: {
           clan: this.startingClans,
           side: ['dynasty', 'conflict', 'province', 'role'],
@@ -117,19 +114,19 @@
     },
     computed: {
       value() {
-        const filters = [this.filter];
-        if (this.queryFilter.length > 0) {
-          filters.push(this.queryFilter);
-        }
         const packs = [{ packs: { has: this.packs } }];
         if (this.previews) {
           packs.push({ preview: true });
         }
-        filters.push(packs);
-        return filters;
+        this.packFilter = packs;
+        return {
+          filter: this.filter,
+          packFilter: this.packFilter,
+          queryString: this.queryString
+        };
       },
       cycles() {
-        return stores.cycles().get();
+        return stores.cycles().order('position').get();
       },
     },
     methods: {
@@ -140,11 +137,6 @@
         if (evt.shiftKey && evt.target.tagName === 'INPUT') {
           this.$set(this.filter, option, [evt.target.value]);
         }
-      },
-      updateQuery() {
-        const clauses = queryParser.parse(this.queryString);
-        const queryInput = new QueryInput(clauses);
-        this.queryFilter = queryBuilder.build(queryInput);
       },
       typeIcon(type) {
         return typeIcons.icon(type);
@@ -177,10 +169,7 @@
     watch: {
       value() {
         this.$emit('input', this.value);
-      },
-      queryString: debounce(function update() {
-        this.updateQuery();
-      }, INPUT_DEBOUNCE_TIMER_MS),
+      }
     },
     mounted() {
       this.$emit('input', this.value);
