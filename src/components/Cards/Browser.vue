@@ -182,7 +182,7 @@
           case 'text':
             return 30;
           default:
-            return 20;
+            return 25;
         }
       },
     },
