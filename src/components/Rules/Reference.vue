@@ -1202,7 +1202,7 @@
                         </li>
                     </ul>
                     <p>
-                        <b>Related:</b> <a href="#give">Give</a>,<a href="#loses">Loses</a>,
+                        <b>Related:</b> <a href="#give">Give</a>, <a href="#loses">Loses</a>,
                                         <a href="#printed">Printed</a>, <a href="#take">Take</a>
                     </p>
                 </article>
@@ -1217,7 +1217,7 @@
                         to be gaining the tokens.
                     </ul>
                     <p>
-                        <b>Related:</b> <a href="#gains">Gains</a>,<a href="#loses">Loses</a>,<a href="#take">Take</a>
+                        <b>Related:</b> <a href="#gains">Gains</a>, <a href="#loses">Loses</a>, <a href="#take">Take</a>
                     </p>
                 </article>
                 <article>
@@ -1788,7 +1788,7 @@
                         moved to a specific destination, return them to the general token pool.
                     </ul>
                     <p>
-                        <b>Related:</b> <a href="#gains">Gains</a>,<a href="#give">Give</a>,<a href="#take">Take</a>
+                        <b>Related:</b> <a href="#gains">Gains</a>, <a href="#give">Give</a>, <a href="#take">Take</a>
                     </p>
                 </article>
                 <article>
@@ -2714,7 +2714,7 @@
                         considered to be losing the tokens.
                     </ul>
                     <p>
-                        <b>Related:</b> <a href="#gains">Gains</a>,<a href="#give">Give</a>,<a href="#loses">Loses</a>
+                        <b>Related:</b> <a href="#gains">Gains</a>, <a href="#give">Give</a>, <a href="#loses">Loses</a>
                     </p>
                 </article>
                 <article>
