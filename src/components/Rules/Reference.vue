@@ -13,7 +13,7 @@
         <div class="contents order-sm-1 col-sm-8 mt-3">
             <h2>RULES REFERENCE</h2>
             <p>
-                Version 9
+                Version 10
             </p>
             <h3>SUMMARY OF CHANGES</h3>
             <p>
@@ -21,14 +21,14 @@
                 be noted in this space.</span>.
             </p>
             <p>
-				<a href="#bid-value">Bid Value</a>, 
+				<a href="#cost">Cost</a>, 
         <a href="#disguised">Disguised</a>, 
-				<a href="#keywords">Keywords</a>, 
-				<a href="#provinces-province-cards">Provinces, Province Cards</a>, 
-				<a href="#5-3-discard-from-provinces">Framework Details 5.3</a>, 
-        <a href="#duel-timing">Duel Timing</a>, 
-				<a href="#appendix-iii-questions-and-answers">Appendix III: Questions and Answers</a>,
-				<a href="#appendix-iv-card-errata">Appendix IV: Card Errata</a>
+				<a href="#duel">Duel</a>, 
+				<a href="#gains">Gains</a>, 
+        <a href="#give">Give</a>, 
+				<a href="#loses">Loses</a>, 
+        <a href="#take">Take</a>, 
+				<a href="#target">Target</a>,
         <a href="#appendix-v-restricted-list">Appendix V: Restricted List</a>
             </p>
             <hr>
@@ -629,6 +629,10 @@
 							              Unless otherwise specified, a card effect that modifies a cost only modifies the fate cost.
 						            </li>
                         <li>
+                            If a card has a dash as its printed fate cost, the card cannot be played. Its printed fate cost 
+                            is considered to be 0 for the purposes of card abilities which require a numerical value.
+                        </li>
+                        <li>
                             When a player is paying a cost, the payment must be made with cards and/or game elements
                             that player controls. The word "friendly" is used as a reminder of this in some costs.
                         </li>
@@ -883,7 +887,7 @@
                         it replaces a non-unique character of the correct <em>Trait</em> or clan affiliation, inheriting all of that 
                         character’s attachments, fate, and status tokens. This is an alternate means by which to play a character
                         and carries a number of unique rules including, but not limited to, an additional cost of choosing and 
-                        discarding a non-unique character.
+                        discarding a non-unique character to discard when the disguised character enters play.
                     </p>
                     <ul>
                         <li>
@@ -943,9 +947,13 @@
                 <article>
                     <anchored-heading @heading="add" :level="2">Duel</anchored-heading>
                     <p>
-                        Some card abilities initiate a duel between two characters. For the
+                        Some card abilities initiate a duel between two (or more) characters. For the
                         rules on how to initiate and resolve a duel, see "<a href="#duel-timing">D. Duel Timing</a>".
                     </p>
+                    <ul>
+                        Most card abilities that initiate a duel use the phrase “initiate a [type] duel.” The characters chosen 
+                        during duel initiation are considered to be chosen as targets of the ability that initiates the duel.
+                    </ul>
                 </article>
                 <article>
                     <anchored-heading @heading="add" :level="2">Duplicates</anchored-heading>
@@ -1183,8 +1191,9 @@
                     </p>
                     <ul>
                         <li>
-                            If a player gains fate or honor, that player takes the specified amount of fate or honor
-                            from the general token pool and adds it to his or her fate pool or honor pool.
+                            If a player gains fate or honor, that player takes the specified amount of fate or honor and adds 
+                            it to their fate pool or honor pool. Unless that player is gaining the fate or honor from a specific 
+                            source, the token is taken from the general token pool.
                         </li>
                         <li>
                             If a card gains a characteristic (such as a <em>Trait</em>, a keyword, or ability text), the
@@ -1193,15 +1202,22 @@
                         </li>
                     </ul>
                     <p>
-                        <b>Related:</b> <a href="#printed">Printed</a>
+                        <b>Related:</b> <a href="#give">Give</a>,<a href="#loses">Loses</a>,
+                                        <a href="#printed">Printed</a>, <a href="#take">Take</a>
                     </p>
                 </article>
                 <article>
                     <anchored-heading @heading="add" :level="2">Give</anchored-heading>
                     <p>
-                        If a player is instructed to give tokens to an opponent, those tokens are removed from the
-                        giving player's pool of tokens (or specified game area), and are added to that opponent's token
-                        pool.
+                        If a player is instructed to give tokens to another player, those tokens are removed from the giving 
+                        player’s pool of tokens (or specified game area), and are added to the other player’s token pool.
+                    </p>
+                    <ul>
+                        The player giving the tokens is considered to be losing the tokens and the other player is considered 
+                        to be gaining the tokens.
+                    </ul>
+                    <p>
+                        <b>Related:</b> <a href="#gains">Gains</a>,<a href="#loses">Loses</a>,<a href="#take">Take</a>
                     </p>
                 </article>
                 <article>
@@ -1759,7 +1775,22 @@
                         <b>Related:</b> <a href="#limit-x-per-period">Limit X per [period]</a> 
                                         <a href="#max-x-per-period">Max X per [period]</a>
                     </p>
-                </article>        
+                </article>
+                <article>
+                    <anchored-heading @heading="add" :level="2">Loses</anchored-heading>
+                    <p>
+                        If a player loses fate or honor, that player takes the specified amount of fate or honor and removes it 
+                        from their fate pool or honor pool. Unless that player is moving the fate or honor to a specific 
+                        destination, the token is returned to the general token pool.
+                    </p>
+                    <ul>
+                        When tokens are removed from a card, that card is considered to lose those tokens. If the tokens are not
+                        moved to a specific destination, return them to the general token pool.
+                    </ul>
+                    <p>
+                        <b>Related:</b> <a href="#gains">Gains</a>,<a href="#give">Give</a>,<a href="#take">Take</a>
+                    </p>
+                </article>
                 <article>
                     <anchored-heading @heading="add" :level="2">Max X per [period]</anchored-heading>
                     <p>
@@ -2678,6 +2709,13 @@
                         element is removed from the other player's token pool and added to the taking player's token
                         pool.
                     </p>
+                    <ul>
+                        The player taking the tokens is considered to be gaining the tokens and the other player is 
+                        considered to be losing the tokens.
+                    </ul>
+                    <p>
+                        <b>Related:</b> <a href="#gains">Gains</a>,<a href="#give">Give</a>,<a href="#loses">Loses</a>
+                    </p>
                 </article>
                 <article>
                     <anchored-heading @heading="add" :level="2">Target</anchored-heading>
@@ -2703,6 +2741,11 @@
                         <li>
                             If multiple targets are required to be chosen by the same player, these are chosen
                             simultaneously.
+                        </li>
+                        <li>
+                            Most card abilities that initiate a duel (see <a href="#duel-timing">Duel Timing</a>) use the phrase 
+                            “initiate a [type] duel.” The characters chosen during duel initiation are considered to be chosen 
+                            as targets of the ability that initiates the duel.
                         </li>
                         <li>
                             An ability that can choose “any number” of targets, or “up to X” targets, can successfully 
@@ -4383,6 +4426,9 @@
 					</li>
 					<li>
 						  <a href="https://fiveringsdb.com/card/forged-edict" target="_blank">Forged Edict</a> (Core Set, 184)
+					</li>
+					<li>
+						  <a href="https://fiveringsdb.com/card/spyglass" target="_blank">Spyglass</a> (Core Set, 193)
 					</li>
 					<li>
 						  <a href="https://fiveringsdb.com/card/charge" target="_blank">Charge!</a> (Core Set, 210)
