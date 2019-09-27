@@ -13,23 +13,7 @@
         <div class="contents order-sm-1 col-sm-8 mt-3">
             <h2>RULES REFERENCE</h2>
             <p>
-                Version 10
-            </p>
-            <h3>SUMMARY OF CHANGES</h3>
-            <p>
-                <span class="new">Links to sections that contain new entries and changes from previous editions will 
-                be noted in this space.</span>.
-            </p>
-            <p>
-				<a href="#cost">Cost</a>, 
-        <a href="#disguised">Disguised</a>, 
-				<a href="#duel">Duel</a>, 
-				<a href="#gains">Gains</a>, 
-        <a href="#give">Give</a>, 
-				<a href="#loses">Loses</a>, 
-        <a href="#take">Take</a>, 
-				<a href="#target">Target</a>,
-        <a href="#appendix-v-restricted-list">Appendix V: Restricted List</a>
+                Version 11
             </p>
             <hr>
             <section>
@@ -108,10 +92,11 @@
                         </li>
                     </ul>
                     <p>
-                        <b>Related:</b> <a href="#cost">Cost</a>, <a href="#effects">Effects</a>, 
-                                        <a href="#forced">Forced</a>, <a href="#target">Target</a>, 
-                                        <a href="#triggered-abilities">Triggered
-                        Abilities</a>
+                        <b>Related:</b> <a href="#cost">Cost</a>, 
+										<a href="#effects">Effects</a>, 
+                                        <a href="#forced">Forced</a>, 
+										<a href="#target">Target</a>, 
+                                        <a href="#triggered-abilities">Triggered Abilities</a>
                     </p>
                 </article>
                 <article>
@@ -154,6 +139,31 @@
                         </li>
                     </ul>
                 </article>
+				<article>
+					<anchored-heading @heading="add" :level="2">Additional Conflicts</anchored-heading>
+					<p>
+					    Some card abilities allow a player to declare an additional conflict during the conflict phase. 
+						The additional conflict created by such an effect is in addition to a player’s two normal conflict 
+						opportunities. It does not replace the normal <span class="icon icon-conflict-military"></span> or 
+                        <span class="icon icon-conflict-political"></span> conflict opportunity that player has each conflict 
+						phase.
+					</P>
+				</article>
+				<article>
+					<anchored-heading @heading="add" :level="2">Additional Cost</anchored-heading>
+					<p>
+						Some card abilities require an additional cost to be played to play a card, trigger an ability, or 
+						perform a framework step. If the additional cost cannot be paid, the game action cannot be initiated.
+					</p>
+					<ul>
+						<li>
+							All costs are paid simultaneously, including additional ones.
+						</li>
+					</ul>
+					<p>
+                        <b>Related:</b> <a href="#cost">Cost</a>
+                    </p>
+				</article>
                 <article>
                     <anchored-heading @heading="add" :level="2">Against</anchored-heading>
                     <p>
@@ -327,7 +337,7 @@
                     <p>
                         Some card abilities can "cancel" other card or game effects. Cancel abilities interrupt the
                         initiation of an effect, and prevent the effect from initiating. Because of this, cancel
-                        abilities have timing priority over <b>all</b> other interrupts to the effect that is attempting
+                        abilities have timing priority over <em>all</em> other interrupts to the effect that is attempting
                         to initiate.
                     </p>
                     <ul>
@@ -487,7 +497,7 @@
                     <anchored-heading @heading="add" :level="2">Composure</anchored-heading>
                     <p>
                         Composure is a variable keyword ability. A card with this keyword gains an additional ability 
-                        while its controller’s honor bid is lower than that of one of his or her opponents
+                        while its controller’s honor bid is lower than that of one of his or her opponents.
                     </p>
                     <ul>
                         <li>
@@ -524,6 +534,10 @@
                         <li>
                             If multiple instances of the same constant ability are in play, each instance affects the
                             game state independently.
+                        </li>
+						<li>
+                            If a constant ability would cause a card to leave play, interrupt abilities cannot be used to 
+							replace or prevent that constant ability.
                         </li>
                     </ul>
                 </article>
@@ -570,7 +584,7 @@
                     <anchored-heading @heading="add" :level="2">Copy (of a card)</anchored-heading>
                     <p>
                         A copy of a card is defined by title: any other card that shares the same title is considered a
-                        copy, regardless of cardtype, text, deck of origin, artwork, or any other characteristic(s) of
+                        copy, regardless of card type, text, deck of origin, artwork, or any other characteristic(s) of
                         the card(s).
                     </p>
 					          <ul>
@@ -583,11 +597,11 @@
                     <anchored-heading @heading="add" :level="2">Copy (of a character)</anchored-heading>
                     <p>
                         Some card abilities may cause a character to become a copy of another character. When that happens, 
-                        the character that is changing loses its name, cost, base skills and glory, traits, and ability text. 
-                        It gains the name, cost, base skills and glory, traits, and ability text of the copied character for 
-                        the duration indicated by the card ability
+                        the character that is changing loses its name, cost, base skills and glory, traits, clan affiliation,
+						and ability text. It gains the name, cost, base skills and glory, traits, clan affiliation,and ability 
+						text of the copied character for the duration indicated by the card ability.
                     </p>
-					          <ul>
+					<ul>
                         <li>
                             Cards that refer to a character’s printed text (skills, traits, abilities, etc.) still refer to 
                             the text physically printed on the card.
@@ -625,9 +639,9 @@
                         are: "Bow...," "Spend...," "Sacrifice...," "Lose...," "Dishonor...," and "Discard...." 
                     </p>
                     <ul>
-						            <li>
-							              Unless otherwise specified, a card effect that modifies a cost only modifies the fate cost.
-						            </li>
+						<li>
+							Unless otherwise specified, a card effect that modifies a cost only modifies the fate cost.
+						</li>
                         <li>
                             If a card has a dash as its printed fate cost, the card cannot be played. Its printed fate cost 
                             is considered to be 0 for the purposes of card abilities which require a numerical value.
@@ -655,6 +669,9 @@
                             does not have the potential to change the game state.
                         </li>
                     </ul>
+					 <p>
+                        <b>Related:</b> <a href="#additional-cost">Additional Cost</a>
+                    </p>
                 </article>
                 <article>
                     <anchored-heading @heading="add" :level="2">Count</anchored-heading>
@@ -679,6 +696,10 @@
                         and cannot be declared as a defender for that conflict.
                     </p>
                     <ul>
+						<li>
+                            When a conflict is initiated against a facedown province, resolve the covert keyword before 
+							revealing that province.
+                        </li>
                         <li>
                             Card abilities may be used to move characters that have been evaded by covert into a
                             conflict as defenders.
@@ -780,7 +801,7 @@
                         <li>
                             A player's set of provinces must include exactly 5 provinces. For each element, that player 
                             must choose one province associated with that element, such that all five elements are
-							              represented among their set of provinces. (Each province has a ring symbol in the lower right
+							represented among their set of provinces. (Each province has a ring symbol in the lower right
                             corner of the card to indicate its association.) Each of these provinces must be in-clan or
                             be neutral.
                         </li>
@@ -897,10 +918,10 @@
                         <li>
                             To play a character using the disguised keyword, you must choose a non-unique character you control of 
                             the appropriate <em>Trait</em> or clan affiliation as an additional cost to play the character. Reduce 
-                            the cost to play the disguised character by the printed cost of the chosen character, play the disguised 
-                            character, then move all attachments and tokens (fate, status, etc.) from the chosen character to the
-                            disguised character. Finally, discard the chosen character from play. Interrupts cannot be used to 
-                            replace or prevent this discard.
+                            the cost to play the disguised character by the printed cost of the chosen character, pay that cost and 
+							put the disguised into play, then move all attachments and tokens (fate, status, etc.) from the chosen 
+							character to the disguised character. Finally, discard the chosen character from play. Interrupts cannot 
+							be used to replace or prevent this discard.
                         </li>
                         <li>
                             A character played using the disguised keyword cannot be played into a conflict unless the character 
@@ -951,8 +972,10 @@
                         rules on how to initiate and resolve a duel, see "<a href="#duel-timing">D. Duel Timing</a>".
                     </p>
                     <ul>
-                        Most card abilities that initiate a duel use the phrase “initiate a [type] duel.” The characters chosen 
-                        during duel initiation are considered to be chosen as targets of the ability that initiates the duel.
+						<li>
+							Most card abilities that initiate a duel use the phrase “initiate a [type] duel.” The characters chosen 
+							during duel initiation are considered to be chosen as targets of the ability that initiates the duel.
+						</li>
                     </ul>
                 </article>
                 <article>
@@ -1004,6 +1027,11 @@
                             If an ability instructs a player to pick among multiple effects, an effect that has the
                             potential to change the game state must be picked.
                         </li>
+						<li>
+							Unless an effect uses the word “then” or the phrase “if you do,” all effects of a card ability 
+							are resolved simultaneously. The decision whether to resolve any optional effects (usually
+							indicated by the word “may”) is made before applying the results of the ability’s effects.
+						</li>
                     </ul>
                 </article>
                 <article>
@@ -1202,8 +1230,8 @@
                         </li>
                     </ul>
                     <p>
-                        <b>Related:</b> <a href="#give">Give</a>,<a href="#loses">Loses</a>,
-                                        <a href="#printed">Printed</a>, <a href="#take">Take</a>
+                        <b>Related:</b> <a href="#give">Give</a>, <a href="#loses">Loses</a>, <a href="#printed">Printed</a>, 
+					<a href="#take">Take</a>
                     </p>
                 </article>
                 <article>
@@ -1217,7 +1245,7 @@
                         to be gaining the tokens.
                     </ul>
                     <p>
-                        <b>Related:</b> <a href="#gains">Gains</a>,<a href="#loses">Loses</a>,<a href="#take">Take</a>
+                        <b>Related:</b> <a href="#gains">Gains</a>, <a href="#loses">Loses</a>, <a href="#take">Take</a>
                     </p>
                 </article>
                 <article>
@@ -1392,7 +1420,7 @@
                         <li>
                             The +1 skill modifier granted by the Imperial Favor applies to any conflict of the specified
                             type in which its bearer controls at least one participating character. This modifier
-                            applies to the <b>player's</b> total skill that is counted for the conflict, but does not
+                            applies to the <em>player's</em> total skill that is counted for the conflict, but does not
                             modify the skill value of any of the characters participating in the conflict.
                         </li>
                         <li>
@@ -1490,14 +1518,14 @@
                         </li>
                     </ul>
                     <p>
-                        <em><b>Example:</b> Tom is building a Lion Clan deck, and has 10 influence to spend on
+                        <i><b>Example:</b> Tom is building a Lion Clan deck, and has 10 influence to spend on
                             out-of-clan cards, as indicated by the Lion stronghold, Shiro no Yojin. He must spend all of
                             his influence on cards from a single clan. He chooses to select cards from the Crane Clan.
                             Tom decides to include 3 copies of Admit Defeat (2 influence cost each), 3 copies of The
                             Perfect Gift (1 influence cost each), and 1 copy of Duelist Training (1 influence cost). As
                             this is all of Tom's influence, he cannot include any other Crane Clan cards in his conflict
                             deck. All of the other cards in Tom's conflict deck must either be from the Lion Clan, or be
-                            neutral.</em>
+                            neutral.</i>
                     </p>
                     <anchored-heading @heading="add" :level="2">Initiating Abilities / Playing Cards</anchored-heading>
                     <p>
@@ -1547,17 +1575,12 @@
                         Interrupts and reactions may be used throughout this process as normal, should their triggering
                         conditions occur.
                     </p>
-                    <ul>
-                        <li>
-                            If an ability instructs a player to "resolve this ability twice," repeat steps 5&ndash;7 of
-                            this process immediately after the first resolution of the ability's effect (i.e., resolve
-                            the ability again before any reactions to the first resolution of the effect may be
-                            triggered). Costs are not paid a second time when an ability is resolved twice.
-                        </li>
-                    </ul>
                     <p>
-                        <b>Related:</b> <a href="#ability">Ability</a>, <a href="#cost">Cost</a>, <a
-                            href="#target">Target</a>
+                        <b>Related:</b> <a href="#ability">Ability</a>, 
+										<a href="#cost">Cost</a>, 
+										<a href="#effects">Effects</a>, 
+										<a href="#resolve-an-ability">Resolve an Ability</a>, 
+										<a href="#target">Target</a>
                     </p>
                 </article>
                 <article>
@@ -1788,7 +1811,7 @@
                         moved to a specific destination, return them to the general token pool.
                     </ul>
                     <p>
-                        <b>Related:</b> <a href="#gains">Gains</a>,<a href="#give">Give</a>,<a href="#take">Take</a>
+                        <b>Related:</b> <a href="#gains">Gains</a>, <a href="#give">Give</a>, <a href="#take">Take</a>
                     </p>
                 </article>
                 <article>
@@ -1854,6 +1877,16 @@
                             modifiers that would take a value below zero can be applied, but, after all active modifiers
                             have been applied, any resultant value below zero is treated as zero.
                         </li>
+                        <li>
+                            If a value “cannot be increased/decreased,” any modifiers to that value that would increase/decrease 
+							it are ignored for the duration of the “cannot be increased/decreased” effect, even if those 
+							modifiers were applied before applying the “cannot be increased/decreased” effect.
+                        </li>
+                        <ul>
+                            <li>
+                                “Set” modifiers are not ignored, as they do not directly increase/decrease the value.
+                            </li>
+                        </ul>
                     </ul>
                 </article>
                 <article>
@@ -2002,7 +2035,8 @@
                         <li>
                             If a character "cannot participate" in a conflict, that character cannot be declared as an
                             attacker or defender for, move into, be played into, or put into play in that conflict. If an 
-                            already participating character gains "cannot participate" status during a conflict, move it home bowed.
+                            already participating character gains "cannot participate" status during a conflict, move it 
+							home bowed.
                         </li>
                     </ul>
                 </article>
@@ -2079,10 +2113,10 @@
                             Should a character have both an honored status token and a dishonored status token at the same time, 
                             discard both tokens. The character returns to the ordinary state.
                         </li>
-						            <li>
-							              If a character enters play honored or dishonored, abilities cannot be triggered from that character 
+			<li>
+			    If a character enters play honored or dishonored, abilities cannot be triggered from that character 
                             becoming honored or dishonored, as it enters play already with that status.
- 						            </li>
+ 			</li>
                     </ul>
                 </article>
                 <article>
@@ -2110,7 +2144,8 @@
                             When a card is <em>put into play</em>, its fate cost is ignored.
                         </li>
                         <li>
-                            Unless otherwise instructed by the put into play effect, characters that enter play in this manner do so ready and at home. Non-character cards that enter play in this
+                            Unless otherwise instructed by the put into play effect, characters that enter play in this 
+                            manner do so ready and at home. Non-character cards that enter play in this
                             manner must do so in a play area or state that matches the rules of playing the card.
                         </li>
                         <li>
@@ -2288,11 +2323,11 @@
                         set aside and has no further interaction with the game in any manner for the duration of its
                         removal. If there is no specified duration, a card that has been removed from the game is
                         considered removed until the end of the game.
-						        <li>
-							          Cards that have been removed from the game are faceup, open information that is available to both players, 
-                        unless otherwise specified.
-						        </li>
-                    </p>
+					</p>
+					<li>
+						Cards that have been removed from the game are faceup, open information that is available 
+						to both players, unless otherwise specified.
+					</li>
                 </article>
                 <article>
                     <anchored-heading @heading="add" :level="2">Replacement Effects</anchored-heading>
@@ -2320,9 +2355,20 @@
                     </p>
                 </article>
                 <article>
-                    <anchored-heading @heading="add" :level="2">"Resolve this ability twice"</anchored-heading>
+                    <anchored-heading @heading="add" :level="2">"Resolve an Ability"</anchored-heading>
+					<p>
+						Some abilities instruct a player to “resolve an ability” or “resolve this ability twice.” To resolve 
+						a triggered ability, resolve all text after the bold timing word (action, reaction, or interrupt),
+						paying all ability costs, choosing any relevant targets, and resolving the ability’s effect.
+					</p>
+					<ul>
+						<li>
+							When resolving a card’s ability, that card is not being played, and its fate cost (or other costs 
+							associated with playing the card) are not paid.
+						</li>
+					</ul>
                     <p>
-                        See "<a href="#initiating-abilities-playing-cards">Initiating Abilities / Playing Cards</a>".
+                        <b>Related:</b> <a href="#initiating-abilities-playing-cards">Initiating Abilities / Playing Cards</a>
                     </p>
                 </article>
                 <article>
@@ -2338,7 +2384,9 @@
                             character as soon as the illegal game state occurs.
                         </li>
                         <li>
-                            A player may choose to play a third restricted attachment onto a character, but that character's controller must immediately choose and discard one of its restricted attachments when the new attachment enters play.
+                            A player may choose to play a third restricted attachment onto a character, but that character's 
+                            controller must immediately choose and discard one of its restricted attachments when the new attachment 
+                            enters play.
                         </li>
                     </ul>
                 </article>
@@ -2355,10 +2403,9 @@
                             While a card is revealed, it is still considered to be located in the game area (such as a
                             player's hand or deck) from which it is revealed.
                         </li>
-						            <li>
-							              When a province is revealed by a card effect, it remains
-							              faceup until a card or game effect turns it facedown.
-						            </li>
+			<li>
+			    When a province is revealed by a card effect, it remains faceup until a card or game effect turns it facedown.
+			</li>
                     </ul>
                 </article>
                 <article>
@@ -2386,8 +2433,8 @@
                     </p>
                     <ul>
                         <li>
-                            While performing a glory count, each player adds 1 to his or her total for each ring in his or her claimed 
-                            ring pool.
+                            While performing a glory count, each player adds 1 to his or her total for each ring in his or her 
+							claimed ring pool.
                         </li>
                         <li>
                             During the fate phase, place 1 fate on each unclaimed ring.
@@ -2397,11 +2444,12 @@
                             attacking player's fate pool.
                         </li>
                         <li>
-                            When a ring is claimed, it is still considered to be contested until all reactions to its claiming have resolved.
+                            When a ring is claimed, it is still considered to be contested until all reactions to its claiming 
+							have resolved.
                         </li>
-						            <li>
-							              A card effect that refers to “the [ELEMENT] ring” refers to any ring that has that element.
- 						            </li>
+						<li>
+							A card effect that refers to “the [ELEMENT] ring” refers to any ring that has that element.
+						</li>
                     </ul>
                     <p>
                         <b>Related:</b> <a href="#ring-effects">Ring Effects</a>
@@ -2438,8 +2486,8 @@
                             may choose among those elements when the conflict's ring effect resolves.
                         </li>
                         <li>
-                            When a player is instructed to resolve multiple ring effects, they resolve each effect (or pass on that effect) 
-                            in its entirety before resolving the next ring effect.
+                            When a player is instructed to resolve multiple ring effects, they resolve each effect 
+							(or pass on that effect) in its entirety before resolving the next ring effect.
                         </li>
                     </ul>
                 </article>
@@ -2461,14 +2509,15 @@
                             the game by other card abilities.
                         </li>
                         <li>
-                            In sanctioned tournament play, eligibility for Keeper and Seeker roles for each clan is determined by the 
-                            Clan Roles webpage found at <a href="https://www.fantasyflightgames.com/en/op/l5r-lcg/roles/" target="_blank">
+                            In sanctioned tournament play, eligibility for Keeper and Seeker roles for each clan is 
+							determined by the Clan Roles webpage found at 
+							<a href="https://www.fantasyflightgames.com/en/op/l5r-lcg/roles/" target="_blank">
                             https://www.fantasyflightgames.com/en/op/l5r-lcg/roles/</a>
                         </li>
-						            <li>
-							              Each non-Keeper, non-Seeker role is available to all clans regardless of the clan role eligibility. 
+						<li>
+							Each non-Keeper, non-Seeker role is available to all clans regardless of the clan role eligibility. 
                             This is in addition to any Keeper or Seeker role(s) available to that clan.
-						            </li>
+						</li>
                         <li>
                             Some cards have the text, "___ role only." This is a deckbuilding restriction, and is not active 
                             during gameplay.
@@ -2714,7 +2763,7 @@
                         considered to be losing the tokens.
                     </ul>
                     <p>
-                        <b>Related:</b> <a href="#gains">Gains</a>,<a href="#give">Give</a>,<a href="#loses">Loses</a>
+                        <b>Related:</b> <a href="#gains">Gains</a>, <a href="#give">Give</a>, <a href="#loses">Loses</a>
                     </p>
                 </article>
                 <article>
@@ -2797,6 +2846,23 @@
                     </ul>
                 </article>
                 <article>
+                    <anchored-heading @heading="add" :level="2">The word "To"</anchored-heading>
+                    <p>
+                        If the effect text of a card ability includes the word "to," then the text that follows the word 
+						“to” can only be resolved if the preceding text was successfully resolved in full.
+                    </p>
+                    <ul>
+                        <li>
+                            If the pre-to aspect of an effect successfully resolves in full, the post-to aspect of that 
+							effect resolves simultaneously with all other effects of that card ability.
+                        </li>
+                        <li>
+                            If the pre-to aspect of an effect does not successfully resolve in full, the post-to
+                            aspect’s resolution is canceled.
+                        </li>
+                    </ul>
+                </article>
+                <article>
                     <anchored-heading @heading="add" :level="2">Token Pool, General Token Pool</anchored-heading>
                     <p>
                         The token pool (also referred to as the general token pool) is created during setup and contains
@@ -2854,8 +2920,8 @@
                             once per round. This limit is player specific.
                         </li>
                         <li>
-                            Triggered abilities are written in a <em>"triggering condition (and/or) cost (and/or)
-                            targeting requirements &ndash; effect"</em> template. Ability text before the dash consists
+                            Triggered abilities are written in a <i>"triggering condition (and/or) cost (and/or)
+                            targeting requirements &ndash; effect"</i> template. Ability text before the dash consists
                             of triggering conditions (and/or) costs (and/or) targeting requirements. Ability text after
                             the dash consists of effects. and may sometimes include targeting requirements that come
                             into play as the effect is being resolved.
@@ -2865,7 +2931,7 @@
                             the ability is considered an effect.
                         </li>
                         <li>
-                            A triggered ability can only be initiated if its effect has the potential to change the game
+                            A triggered ability can only be initiated if its <i>effect</i> has the potential to change the game
                             state on its own. This potential is assessed without taking into account the consequences of
                             the cost payment or the consequences of any other ability
                             interactions.
@@ -3447,20 +3513,20 @@
                     When a player has an opportunity to declare a conflict, that player may:
                 </p>
                 
-			          <ul>
+		<ul>
                 <li>
-					          Declare a military conflict.
-				        </li>
+		    Declare a military conflict.
+		</li>
                 <li>
-					          Declare a political conflict.
-				        </li>
+		    Declare a political conflict.
+		</li>
                 <li>
                     Pass.
                 </li>
                 </ul>
-				        <p>
-				           If a conflict opportunity is passed, the player forfeits his or her right to use that opportunity this phase.
-				        </p>
+		<p>
+		    If a conflict opportunity is passed, the player forfeits his or her right to use that opportunity this phase.
+		</p>
                 <p>
                     In order to declare a conflict, the attacking player must:
                 </p>
@@ -3677,7 +3743,9 @@
                 <anchored-heading @heading="add" :level="3">4.2. Discard characters with no fate</anchored-heading>
                 <p>
                     In player order, each player discards each character he or she controls with no fate on it. These
-                    characters are discarded one at a time, in the order of the discarding player's choosing.
+                    characters are discarded one at a time, in the order of the discarding player's choosing. Only 
+					characters with no fate on them during the initation of this step are discarded, and each character 
+					is only discarded once.
                 </p>
                 <anchored-heading @heading="add" :level="3">4.3. Remove fate from characters</anchored-heading>
                 <p>
@@ -3945,307 +4013,378 @@
                 </ol>
             </section>
             <section>
-                <anchored-heading @heading="add" :level="1">Appendix III: Questions and Answers
+                <anchored-heading @heading="add" :level="1">Appendix III: Card Clarifications
                 </anchored-heading>
                 <p>
-                    This section provides answers to a number of common questions that are asked about the game. The
-                    entries are presented in a "question and answer" format, with the newest questions at the end of the
-                    list.
+                    This section provides answers to a number of common questions that are asked about cards in the game. 
+					These answers are organized by the expansion and collector number of the card whose rules interaction 
+					has raised the question.
                 </p>
-                <p class="question">
-                    Can I trigger <a href="https://fiveringsdb.com/card/shameful-display" target="_blank">Shameful
-                    Display</a> (Core, 24) if only one of the two chosen characters would change their honored status?
-                </p>
-                <p class="answer">
-                    Yes. The rules state that you cannot trigger an ability if its effect would fail to change the game
-                    state, but one of the chosen characters is changing their status so a game state change occurs.
-                    Neither the honoring nor the dishonoring aspect of Shameful Display is dependent upon the other.
-                </p>
-                <p class="question">
-                    Can I trigger the ability of <a href="https://fiveringsdb.com/card/akodo-toturi" target="_blank">Akodo
-                    Toturi</a> (Core, 79) or <a
-                        href="https://fiveringsdb.com/card/doji-hotaru" target="_blank">Doji Hotaru</a> (Core, 52) when
-                    I win a corresponding challenge as the defender?
-                </p>
-                <p>
-                    You can trigger the ability as the defender, but per <a href="#ring-effects">RRG "Ring Effects"</a>,
-                    resolving the ring's effect instructs the attacking player to choose a target, draw cards, or gain
-                    honor. Your opponent would resolve the ring's effect, not you.
-                </p>
-                <p class="question">
-                    If I play <a href="https://fiveringsdb.com/card/let-go" target="_blank">Let Go</a> (Core, 155)
-                    targeting my opponent's <a
-                        href="https://fiveringsdb.com/card/watch-commander" target="_blank">Watch Commander</a> (Core,
-                    133), does my opponent get to trigger their Watch Commander before it goes to the discard pile?
-                </p>
-                <p>
-                    No. When an event card is played, its costs are paid, its effects are resolved (or canceled), and it 
-                    is placed in its owner’s discard pile prior to opening the reaction window which follows the ability’s 
-                    resolution (see page 7). An event card is considered “played” after its effects resolve (see page 10). 
-                    This is a reversal of a previous FAQ entry.
-                </p>
-                <p class="question">
-                    Can I use <a href="https://fiveringsdb.com/card/reprieve" target="_blank">Reprieve</a> (Core, 132)
-                    to prevent a character from being sacrificed for a cost, such as that of <a
-                        href="https://fiveringsdb.com/card/shosuro-actress" target="_blank">Shosuro Actress</a> (Core,
-                    103) or <a
-                        href="https://fiveringsdb.com/card/steadfast-witch-hunter"
-                        target="_blank">Steadfast Witch Hunter</a> (Core, 35)? What about <a
-                        href="https://fiveringsdb.com/card/way-of-the-crab" target="_blank">Way of the Crab</a> (Core,
-                    137)?
-                </p>
-                <p>
-                    Reprieve will prevent a character from being sacrificed. If that occurs during the payment of a cost
-                    (Actress, Witch Hunter, Way of the Crab, etc.) then that cost is not considered to have been paid as
-                    the sacrifice was prevented (see <a
-                        href="#sacrifice">RRG "Sacrifice"</a>). However, this occurs during step 4 of the process of
-                    initiating abilities (<a
-                        href="#initiating-abilities-playing-cards">RRG "Initiating Abilities / Playing Cards"</a>),
-                    which is before step 6 when the game determines whether an ability has been triggered. Therefore,
-                    because the ability is not considered to have been used, it could be triggered again in the next
-                    available action window. If an event is canceled in this way, it will remain unplayed in its owner's
-                    hand (<a
-                        href="#cost">RRG "Cost"</a>).
-                </p>
-                <p>
-                    This is different from using Reprieve to prevent a character from being sacrificed to Way of the
-                    Crab's effect. Because nothing is dependent upon whether or not the effect of Way of the Crab
-                    resolved successfully, it does not matter that the sacrifice was prevented by Reprieve. In the same
-                    way that an event whose effects were canceled by <a
-                        href="https://fiveringsdb.com/card/voice-of-honor" target="_blank">Voice of Honor</a> (Core,
-                    145) is still considered to have been played, Way of the Crab is still considered to have "resolved"
-                    (albeit unsuccessfully) even if its effect is prevented by Reprieve.
-                </p>
-                <p class="question">
-                    If my opponent plays <a href="https://fiveringsdb.com/card/banzai"
-                                            target="_blank">Banzai!</a> (Core, 204) and I wish to cancel it with <a
-                        href="https://fiveringsdb.com/card/voice-of-honor" target="_blank">Voice of Honor</a> (Core,
-                    145), can I cancel the whole effect, or just half of it?
-                </p>
-                <p>
-                    When your opponent plays Banzai!, they will select a target to receive +2<span
-                        class="icon icon-conflict-military"></span>. You may interrupt to cancel this effect, which
-                    would also cancel the option to repeat the ability. If you do not, and they choose to pay 1 honor to
-                    resolve the ability again, then you have another opportunity to interrupt to cancel the (new) set of
-                    effects that give +2<span
-                        class="icon icon-conflict-military"></span> to a character. Thus, you can choose to cancel
-                    either the entire card effect, just the second part of the card effect, or none of the card effect.
-                </p>
-                <p class="question">
-                    Can I play <a href="https://fiveringsdb.com/card/way-of-the-crab" target="_blank">Way of the
-                    Crab</a> (Core, 137) during the Dynasty Phase?
-                </p>
-                <p>
-                    Yes. During the Dynasty Phase, you may play a character from a province or take an action, which
-                    includes playing events from your hand.
-                </p>
-                <p class="question">
-                    How does <a href="https://fiveringsdb.com/card/display-of-power" target="_blank">Display of
-                    Power</a> (Core, 179) interact with cards such as <a
-                        href="https://fiveringsdb.com/card/seeker-of-knowledge" target="_blank">Seeker of Knowledge</a>
-                    (Core, 171) and <a
-                        href="https://fiveringsdb.com/card/pilgrimage" target="_blank">Pilgrimage</a> (Core, 22)?
-                </p>
-                <p>
-                    Display of Power is played during step 3.2.3 of conflict resolution, when the defending player loses
-                    the conflict (see <a
-                        href="#3-2-3-compare-skill-values">RRG "3.2.3. Compare skill values"</a>). It produces a delayed
-                    effect that takes place during step 3.2.6, "Resolve Ring Effects" that cancels the normal effects of
-                    ring resolution and replaces it with "resolve the ring effect as if you had won the conflict as the
-                    attacking player." Losing honor for unopposed and breaking the province will occur before resolving
-                    Display of Power's effect.
-                </p>
-                <p>
-                    Should the Pilgrimage province not be broken when Display of Power resolves, the delayed effect of
-                    Display takes precedence over Pilgrimage, canceling the normal resolution of Resolve Ring Effects
-                    and replacing it with the adjusted means of resolution. However, the Pilgrimage effect ("cancel all
-                    ring effects") still cancels the Display of Power's attempt to resolve the ring for the defender.
-                    The defender claims the ring.
-                </p>
-                <p>
-                    Because Display of Power interacts with the Resolve Ring Effects step rather than the specific
-                    effect chosen by the attacker, the attacker does not have the option to choose a specific ring
-                    effect to resolve when Seeker of Knowledge is attacking (or whether they would like to resolve a
-                    ring effect at all). When Display of Power resolves the ring effect, the defender has the
-                    opportunity to choose which ring effect they would like to resolve instead.
-                </p>
-                <p class="question">
-                    If <a href="https://fiveringsdb.com/card/steward-of-law" target="_blank">Steward of Law</a> (Core,
-                    139) is in a conflict, can an honored character be dishonored?
-                </p>
-                <p>
-                    Yes. Steward of Law prevents characters from "becoming dishonored," which means "gaining the
-                    dishonored status token." Most of the time this occurs through the act of dishonoring, but it would
-                    also prevent the use of an ability that moved or placed a dishonored status token. If a character
-                    could be dishonored without gaining a dishonored token (such as an honored character being
-                    dishonored and returning to ordinary state), they will still do so.
-                </p>
-                <p class="question">
-                    If I play <a href="https://fiveringsdb.com/card/way-of-the-lion" target="_blank">Way of the Lion</a>
-                    (Core, 167) to double my character's base <span class="icon icon-conflict-military"></span> skill, 
-					          and then play a second Way of the Lion, what is my character's new base <span
-                    class="icon icon-conflict-military"></span> skill?
-                </p>
-                <p>
-                    Way of the Lion doubles a character's base <span class="icon icon-conflict-military"></span> skill and 
-                    establishes the new value as the character's base <span class="icon icon-conflict-military"></span> 
-                    skill. When you play a second copy of Way of the Lion, the new value will be doubled (to now be quadruple the 
-                    original skill value).
-                </p>
-                <p class="question">
-                    If I use <a href="https://fiveringsdb.com/card/origami-master" target="_blank">Origami Master</a>'s
-                    ability (Imperial Cycle, 84) to move an honored status token to another character, is that character
-                    being honored? Does it allow <a
-                        href="https://fiveringsdb.com/card/savvy-politician" target="_blank">Savvy Politician</a>'s
-                    ability (Core, 45) to trigger?
-                </p>
-                <p>
-                    If a character gains an honored status token through a card effect, it is "becoming honored,"
-                    (gaining the honored status) which is different from "being honored" (going through the process of
-                    honoring). This will not trigger effects such as that of Savvy Politician or <a
-                        href="https://fiveringsdb.com/card/young-rumormonger" target="_blank">Young Rumormonger</a>
-                    (Core Set, 101).
-                </p>
-                <p>
-                    Note: If a character has both an honored status token and a dishonored status token, both are
-                    discarded and the character is returned to an ordinary state. See <a
-                        href="#personal-honor-personal-dishonor">RRG "Personal Honor, Personal Dishonor"</a>.
-                </p>
-				        <p class="question">
-					          If I use <a href="https://fiveringsdb.com/card/artisan-academy" target="_blank">Artisan Academy</a> (Core Set, 53) or 
-                    <a href="https://fiveringsdb.com/card/pillow-book" target="_blank">Pillow Book</a> (Imperial Cycle, 113) to reveal 
-                    <a href="https://fiveringsdb.com/card/test-of-skill" target="_blank">Test of Skill</a> (Imperial Cycle, 93) and then 
-                    play it, what happens?
-                </p>
-                <p>
-                  When an event card is played, it is considered to remain in its
-                  original zone until its cost has successfully been payed, at which
-                  point it gets placed onto the table in a state of "being played"
-                  before being placed in its owner's discard pile after its effects
-                  resolve. Therefore, during the payment of the Test of Skill's cost,
-                  it is still on top of your deck and will be revealed as part of the
-                  cost of playing the event.
-                </p>
-                <p>
-                  While it is already revealed by the Academy or Pillow Book, it
-                  can still be revealed again to satisfy its own cost. However, once
-                  it leaves the top of your deck ((after paying costs and choosing targets in step
-                  5 — see '<a href="#initiating-abilities-playing-cards">Initiating Abilities</a>'), it no longer becomes
-                  "one of the revealed cards" and cannot be put back into your
-                  hand. For more information, see '<a href="#in-play-and-out-of-play">In Play and Out of Play</a>'.
-                </p>
-                <p>
-                  Therefore, if you play Test of Skill from the top of your deck, it
-                  will take up one of the "revealed card slots" in its cost, but be
-                  ineligible to be put into your hand by its effect.
-                </p>
-                <p class="question">
-                            Can a character with <a href="https://fiveringsdb.com/card/above-question" target="_blank">Above 
-                  Question</a> (Core, 141) be chosen as the target of an opponent’s 
-                  <a href="https://fiveringsdb.com/card/court-games" target="_blank">Court Games</a> (Core, 206) 
-                  if they are the only participating character on that side of the conflict?
-                        </p>
-                        <p>
-                            No. Regardless of which player is choosing the target, Above Question prevents the attached character 
-                  from being chosen as the target for an opponent’s event.
-                        </p>
-                        <p class="question">
-                            If I use <a href="https://fiveringsdb.com/card/the-mirror-s-gaze" target="_blank">The Mirror’s Gaze</a> 
-                  (Elemental Cycle, 15) to copy an Interrupt that cancels a card or game effect, what happens?
-                        </p>
-                        <p>
-                            You cannot copy cancel effects with The Mirror’s Gaze, as the event’s ability must successfully resolve 
-                  before The Mirror’s Gaze can be triggered. The following cards are examples of some events that cannot 
-                  by copied by this attachment for this reason: 
-                  <a href="https://fiveringsdb.com/card/voice-of-honor" target="_blank">Voice of Honor</a> (Core, 145), 
-                  <a href="https://fiveringsdb.com/card/display-of-power" target="_blank">Display of Power</a> (Core, 179), 
-                  <a href="https://fiveringsdb.com/card/forged-edict" target="_blank">Forged Edict</a> (Core, 184), 
-                  <a href="https://fiveringsdb.com/card/censure" target="_blank">Censure</a> (Imperial Cycle, 60)
-                </p>
-                <p class="question">
-                  Can I use <a href="https://fiveringsdb.com/card/the-mirror-s-gaze" target="_blank">The Mirror’s Gaze</a> 
-                  (Elemental Cycle, 15) to copy events whose effects reference their triggering conditions? If so, how do 
-                  they work?
-                </p>
-                <p>
-                  You cannot resolve effects with The Mirror’s Gaze if those effects are dependent upon the triggering 
-                  condition (which The Mirror’s Gaze ignores). The following cards are some examples of some events that 
-                  cannot be copied by this attachment for this reason: 
-                  <a href="https://fiveringsdb.com/card/indomitable-will" target="_blank">Indomitable Will</a> (Core, 158), 
-                  <a href="https://fiveringsdb.com/card/ready-for-battle" target="_blank">Ready for Battle</a> (Core, 165), 
-                  <a href="https://fiveringsdb.com/card/i-can-swim" target="_blank">I Can Swim</a> (Core, 187), 
-                  <a href="https://fiveringsdb.com/card/way-of-the-chrysanthemum" target="_blank">Way of the Chrysanthemum</a> 
-                  (Imperial Cycle, 80)
-                </p>
-                <p class="question">
-                  What happens if I put fate on the fire ring with <a href="https://fiveringsdb.com/card/master-alchemist" 
-                  target="_blank"> Master Alchemist</a> (Elemental Cycle, 44) while that ring is contested or claimed?
-                </p>
-                <p>
-                  Fate will stay on rings up until the point at which they become contested. If the ring is already being 
-                  contested when fate is added to it, the attacker will not gain that fate.
-                </p>
-                <p class="question">
-                  If Waning Hostilities (Imperial Cycle, 100) has been played, can I trigger Hisu Mori Toride (Elemental Cycle, 
-                  1 and 101)?
-                </p>
-                <p>
-                  No. Waning Hostilities limits each player to one conflict opportunity for the phase, and Hisu Mori Toride 
-                  adds an additional <span class="icon icon-conflict-military"></span> conflict opportunity to the conflicts 
-                  available to that player. Because Waning Hostilities sets a hard limit, no amount of additional conflicts 
-                  will allow players to declare more than one conflict in that phase
-                </p>
-                <p class="question">
-                  When an honored or dishonored character leaves play, when does its controller gain/lose honor?
-                </p>
-                <p>
-                  Simultaneously with the character leaving play. The “Forced Interrupt” text on the honor/dishonor status 
-                  tokens is text to remind its controller to gain or lose the honor, but is not itself a triggered ability 
-                  in the same way as an Interrupt printed on a card.
-                </p>
-                <p class="question">
-                  What happens if Kakita Toshimoko’s (Children of the Empire, 14) interrupt causes the skill values to change
-                  during conflict resolution, even if he loses the duel?
-                </p>
-                <p>
-                  Kakita Toshimoko’s ability interrupts the resolution of step 3.2.3 in the conflict phase when skill values 
-                  are calculated and a winner is determined (page 23). Because interrupts resolve before their triggering 
-                  condition (page 10), and because “would” effects have the capability to change the triggering condition 
-                  (page 19), Toshimoko’s ability has the potential to change the outcome of step 3.2.3
-                </p>
-                <p>
-                  Therefore, if a character’s skill values are dependent upon the players’ honor bids, Toshimoko’s duel 
-                  changes those bids, and he loses the duel, it is possible that Toshimoko could lose the duel but win 
-                  the conflict (if up against a Sincere Challenger (Children of the Empire, 27) who loses composure in 
-                  a political conflict, for example, or by being honored by Kyūden Kakita (Masters of the Court, 1)). 
-                  It is also possible that recalculating skill values for step 3.2.3 due to Toshimoko’s ability could cause 
-                  a province that would originally be breaking to no longer be breaking if the loss of skill (or increase 
-                  of Toshimoko’s skill) causes the attacking player to not have the excess skill necessary to cause the 
-                  province to break.
-                </p>
-                <p class="question">
-                    Can I play events such as Hurricane Punch (Elemental Cycle, 17) or My Ancestor’s Strength (Elemental Cycle, 
-                    77) on a character whose skill values have been set to a particular value by Unleash the Djinn (Elemental 
-                    Cycle, 120)?
-                </p>
-                <p>
-                    Yes. Modifiers can be applied to a character’s skill values even after a “set” modifier is applied to 
-                    those values. While the “set” modifier overrides the other active modifiers, those modifiers may continue 
-                    to be applied as card effects may refer to them.
-                </p>
-                <p class="question">
-                    If my opponent, who has exactly 1 more card in hand than me, chooses my ordinary (not honored) character as 
-                    the target of their For Shame (Core, 207), does my Steward of the Rich Frog (Inheritance Cycle, 54) allow 
-                    me to select the “dishonor” option?
-                </p>
-                <p>
-                    No. After a player has paid the event’s costs (Step 4 of the process of playing cards, see page 10) and chosen 
-                    its targets (Step 5), the event is put on the table in a state of “being played” before being placed in its 
-                    owner’s discard pile after its effects resolve. Therefore, while choosing targets during Step 5, Steward of 
-                    the Rich Frog’s text prevents characters from receiving dishonored status tokens. Because selecting options
-                    happens during the same step as choosing targets, the For Shame is still in your opponent’s hand when you must 
-                    make the selection, and you cannot select an option whose effect would fail to change the game state.
-                </p>
+				<anchored-heading @heading="add" :level="2">Core Set</anchored-heading>
+				<h5>
+                    <a href="https://fiveringsdb.com/card/shameful-display" target="_blank">Shameful Display</a> (24)
+                </h5>
+                <ul>
+					<li>
+						Neither the honoring nor the dishonoring aspect of Shameful Display’s ability is dependent upon the 
+						other. Additionally, targets for the ability may be chosen even if one or both of those characters 
+						could be either honored or dishonored (you do not need to select which character is receiving which 
+						aspect when choosing targets). If Shameful Display honors/dishonors one character and fails to 
+						honor/dishonor the other, it has still resolved successfully, even though it failed to affect one of 
+						the chosen characters. That character is still a valid target for the ability as it could have been 
+						affected by either aspect at the time it was chosen.
+					</li>
+                </ul>
+				<h5>
+                    <a href="https://fiveringsdb.com/card/savvy-politician" target="_blank">Savvy Politician</a> (45)
+                </h5>
+                <ul>
+					<li>
+						Savvy Politician’s ability does not trigger if an honored status token is moved to it by a card ability. 
+						It only triggers if an effect “honors” it.
+					</li>
+                </ul>
+				<h5>
+                    <a href="https://fiveringsdb.com/card/doji-hotaru" target="_blank">Doji Hotaru</a> (52)
+                </h5>
+                <ul>
+					<li>
+						This character’s ability can be triggered while it is defending, but per page 16, resolving the ring’s 
+						effect instructs the attacking player to choose a target, draw cards, or gain honor. The <u>attacking 
+						player</u> would resolve the ring’s effect, not Doji Hotaru’s controller.
+					</li>
+                </ul>
+				<h5>
+                    <a href="https://fiveringsdb.com/card/akodo-toturi" target="_blank">Akodo Toturi</a> (79)
+                </h5>
+                <ul>
+					<li>
+						This character’s ability can be triggered while it is defending, but per page 16, resolving the ring’s 
+						effect instructs the attacking player to choose a target, draw cards, or gain honor. The <u>attacking 
+						player</u> would resolve the ring’s effect, not Akodo Toturi’s controller.
+					</li>
+                </ul>
+				<h5>
+                    <a href="https://fiveringsdb.com/card/young-rumormonger" target="_blank">Young Rumormonger</a> (101)
+                </h5>
+                <ul>
+					<li>
+						Young Rumormonger’s ability does not trigger if an honored or dishonored status token is moved to a 
+						character by a card ability. It only triggers if an effect “honors” or “dishonors” a character.
+					</li>
+                </ul>
+				<h5>
+                    <a href="https://fiveringsdb.com/card/reprieve" target="_blank">Reprieve</a> (132)
+                </h5>
+                <ul>
+					<li>
+						Reprieve’s effect can prevent a character from being sacrificed.
+					</li>
+					<ul>
+						<li>
+							If that occurs during the payment of a <u>cost</u>, then that cost is not considered to have been paid 
+							as the sacrifice was prevented (see page 5). If the sacrifice while paying an event’s cost is 
+							prevented, the effects do not initiate and that event remains unplayed in its owner’s hand.
+						</li>
+						<li>
+							If that occurs during the resolution of an <u>effect</u>, then nothing is dependent upon whether or not 
+							the sacrifice resolved successfully. In the same way that an event whose effects were canceled by 
+							Voice of Honor (Core, 145) is still considered to have been played, a card like Way of the Crab 
+							(Core, 137) is still considered to have been played even if its effects are prevented by Reprieve.
+						</li>
+					</ul>
+                </ul>
+				<h5>
+                    <a href="https://fiveringsdb.com/card/watch-commander" target="_blank">Watch Commander</a> (133)
+                </h5>
+                <ul>
+					<li>
+						If a player plays a card whose effects result in Watch Commander being discarded, its ability cannot 
+						be triggered as it is no longer in play.
+					</li>
+                </ul>
+				<h5>
+                    <a href="https://fiveringsdb.com/card/steward-of-law" target="_blank">Steward of Law</a> (139)
+                </h5>
+                <ul>
+					<li>
+						If a character “cannot receive dishonored status tokens,” then those tokens cannot be placed on or 
+						moved to that character. That character cannot be dishonored if it is ordinary. (See page 32.)
+					</li>
+                </ul>
+				<h5>
+                    <a href="https://fiveringsdb.com/card/above-question" target="_blank">Above Question</a> (141)
+                </h5>
+                <ul>
+					<li>
+						If Above Question is played on an opponent’s character, that opponent cannot choose the attached 
+						character as a target for their own events.
+					</li>
+					<ul>
+						<li>
+							If the attached character is the only participating character controlled by that opponent, 
+							Court Games’s honoring effect (Core, 206) cannot be selected, as the attached character cannot 
+							be chosen as a target.
+						</li>
+					</ul>
+                </ul>
+				<h5>
+                    <a href="https://fiveringsdb.com/card/way-of-the-lion" target="_blank">Way of the Lion</a> (167)
+                </h5>
+                <ul>
+					<li>
+						When you play two copies of Way of the Lion on the same character during a conflict, that character’s 
+						<span class="icon icon-conflict-military"></span> skill will be doubled twice (to now be quadruple the 
+						original skill value). The new base skill value continues to double if additional copies are played.
+					</li>
+                </ul>
+				<h5>
+                    <a href="https://fiveringsdb.com/card/display-of-power" target="_blank">Display of Power</a> (179)
+                </h5>
+                <ul>
+					<li>
+						When Display of Power is played, it produces a delayed effect that cancels the normal effects of ring 
+						resolution during step 3.2.6 “Resolve Ring Effects” and replaces it with “resolve the ring effect as 
+						if you had won the conflict as the attacking player.” Losing honor for unopposed and breaking the 
+						province will occur before resolving Display of Power’s effect.
+					</li>
+					<ul>
+						<li>
+							Should Pilgrimage (Core, 22) not be broken when Display of Power resolves, the delayed effect of 
+							Display takes precedence over Pilgrimage, canceling the normal resolution of “Resolve Ring Effects” 
+							and replacing it with the adjusted means of resolution. However, the Pilgrimage effect (“cancel all 
+							ring effects”) still cancels the Display of Power’s attempt to resolve the ring for the defender. 
+							The defender claims the ring.
+						</li>
+						<li>
+							Because Display of Power interacts with the “Resolve Ring Effects” step rather than the specific 
+							effect chosen by the attacker, the attacker does not have the option to choose a specific ring effect 
+							to resolve when Seeker of Knowledge (Core, 171) is attacking (or whether they would like to resolve a 
+							ring effect at all). When Display of Power resolves the ring effect, the defender has the opportunity 
+							to choose which ring effect they would like to resolve instead, and may choose to not resolve the 
+							ring’s effect if they desire.
+						</li>
+					</ul>
+                </ul>
+				<h5>
+                    <a href="https://fiveringsdb.com/card/banzai" target="_blank">Banzai!</a> (204)
+                </h5>
+                <ul>
+					<li>
+						When Banzai! is played, a player can choose to cancel Banzai!’s entire card effect, just the second part 
+						of its effect, or none of its effect.
+					</li>
+					<ul>
+						<li>
+							When Banzai!’s effect initiates during the step 6 of playing the card (see page 11), the effects that 
+							initiate are: “you may lose 1 honor, the chosen character gets +2<span class="icon icon-conflict-military">
+							</span>, and if you lost 1 honor resolve this ability twice.” If Banzai!’s effects are canceled at this 
+							time, none of those things happen and the card’s effects do not resolve at all.
+							<br><br>
+							If those effects resolve, and the 1 honor is lost, “resolve this ability twice” causes the ability’s 
+							resolution to return to step 5 (“choose a participating character”). This causes the effects to 
+							initiate a second time, and thus they can be canceled a second time to prevent the second 
+							+2<span class="icon icon-conflict-military"></span> and optional honor loss.
+						</li>
+					</ul>
+                </ul>
+				<anchored-heading @heading="add" :level="2">Disciples of the Void</anchored-heading>
+				<h5>
+                    <a href="https://fiveringsdb.com/card/secluded-shrine" target="_blank">Secluded Shrine</a> (12)
+                </h5>
+                <ul>
+					<li>
+						The ring chosen for Secluded Shrine’s effect can be in multiple states at once. For example, while 
+						unclaimed, the chosen ring simultaneously counts as being in both the unclaimed ring pool and in 
+						your claimed ring pool.
+					</li>
+					<ul>
+						<li>
+							You cannot move the chosen ring out of your claimed ring pool due to the cost or effect of a 
+							card ability unless the physical ring token is in your claimed ring pool.
+						</li>
+					</ul>
+                </ul>
+				<anchored-heading @heading="add" :level="2">Warriors of the Wind</anchored-heading>
+				<h5>
+                    <a href="https://fiveringsdb.com/card/agasha-taiko" target="_blank">Agasha Taiko</a> (14)
+                </h5>
+                <ul>
+					<li>
+						The province that is chosen by Agasha Taiko’s ability cannot be declared as the attacked province 
+						and the conflict cannot be moved to it.
+					</li>
+					<ul>
+						<li>
+							If Agasha Taiko is played during a conflict and chooses the currently attacked province for her 
+							ability, the conflict immediately ends with no winner and all participating characters are moved 
+							home bowed.
+						</li>
+					</ul>
+                </ul>
+				<anchored-heading @heading="add" :level="2">Masters of the Court</anchored-heading>
+				<h5>
+                    <a href="https://fiveringsdb.com/card/maker-of-keepsakes" target="_blank">Maker of Keepsakes</a> (7)
+                </h5>
+                <ul>
+					<li>
+						If a character “cannot receive dishonored status tokens,” then those tokens cannot be placed on or 
+						moved to that character. That character cannot be dishonored if it is ordinary.
+					</li>
+                </ul>
+				<anchored-heading @heading="add" :level="2">Imperial Cycle</anchored-heading>
+				<h5>
+                    <a href="https://fiveringsdb.com/card/test-of-skill" target="_blank">Test of Skill</a> (93)
+                </h5>
+                <ul>
+					<li>
+						If you play Test of Skill from the top of your deck (with a card such as Artisan Academy (Core, 53) 
+						or Pillow Book (Imperial, 93)), it will take up one of the “revealed card slots” in its cost, but be 
+						ineligible to be put into your hand by its effect.
+					</li>
+					<ul>
+						<li>
+							When an event card is played, it is considered to remain in its original zone until its cost 
+							has successfully been payed, at which point it gets placed onto the table in a state of “being 
+							played” before being placed in its owner’s discard pile after its effects resolve. Therefore,
+							during the payment of the Test of Skill’s cost, it is still on top of your deck and will be 
+							revealed as part of the cost of playing the event.
+						</li>
+						<li>
+							While it is already revealed by the Academy or Pillow Book, it can still be revealed again to 
+							satisfy its own cost. However, once it leaves the top of your deck (after paying costs and 
+							choosing targets in step 5—see ‘Initiating Abilities’ on page 11), it no longer becomes “one 
+							of the revealed cards” and cannot be put back into your hand. For more information, see ‘In 
+							Play and Out of Play’ on page 10.
+						</li>
+					</ul>
+                </ul>
+				<h5>
+                    <a href="https://fiveringsdb.com/card/waning-hostilities" target="_blank">Waning Hostilities</a> (100)
+                </h5>
+                <ul>
+					<li>
+						Waning Hostilities limits each player to one conflict opportunity for the phase. Because Waning 
+						Hostilities sets a hard limit, no amount of additional conflicts gained through card effects can 
+						allow players to declare more than one conflict in that phase.
+					</li>
+                </ul>
+				<anchored-heading @heading="add" :level="2">Elemental Cycle</anchored-heading>
+				<h5>
+                    <a href="https://fiveringsdb.com/card/the-mirror-s-gaze" target="_blank">The Mirror's Gaze</a> (15)
+                </h5>
+                <ul>
+					<li>
+						The Mirror’s Gaze cannot be used to copy interrupts or reactions whose effects cancel a card effect 
+						or framework step.
+					</li>
+					<ul>
+						<li>
+							The following cards are some examples of some events that cannot by copied by this attachment for 
+							this reason: Voice of Honor (Core, 145), Display of Power (Core, 179), Forged Edict (Core, 184), 
+							Censure (Imperial Cycle, 60)
+						</li>
+					</ul>
+					<li>
+						The Mirror’s Gaze cannot be used to copy events whose effects reference their triggering conditions 
+						(which are ignored).
+					</li>
+					<ul>
+						<li>
+							The following cards are some examples of some events that cannot be copied by this attachment for
+							this reason: Indomitable Will (Core, 158), Ready for Battle (Core, 165), I Can Swim (Core, 187), 
+							Way of the Chrysanthemum (Imperial Cycle, 80)
+						</li>
+					</ul>
+                </ul>
+				<h5>
+                    <a href="https://fiveringsdb.com/card/master-alchemist" target="_blank">Master Alchemist</a> (44)
+                </h5>
+                <ul>
+					<li>
+						Master Alchemist can be used to place fate on the <span class="icon icon-element-fire"></span> ring
+						while it is contested or claimed. Fate will stay on rings up until the point at which they become 
+						contested. If the ring is already being contested when fate is added to it, the attacker will not 
+						gain that fate.
+					</li>
+                </ul>
+				<anchored-heading @heading="add" :level="2">Children of the Empire</anchored-heading>
+				<h5>
+                    <a href="https://fiveringsdb.com/card/kakita-toshimoko" target="_blank">Kakita Toshimoko</a> (14)
+                </h5>
+                <ul>
+					<li>
+						If a participating character’s skill values are dependent upon players’ honor bids, Kakita 
+						Toshimoko’s interrupt ability can alter the calculation of skill totals in step 3.2.3 before fully
+						resolving that step by changing those players’ bids and potentially changing which player wins or 
+						loses the conflict due to the change in skill values.
+					</li>
+					<ul>
+						<li>
+							Because interrupts resolve before their triggering condition (page 11), and because “would” 
+							effects have the capability to change the triggering condition (page 20), Toshimoko’s ability 
+							has the potential to change the outcome of step 3.2.3. Therefore, if: a character’s skill values 
+							are dependent upon the players’ honor bids, Toshimoko’s duel changes those bids, and he loses 
+							the duel, then it is possible that Toshimoko could lose the duel but win the conflict (if up 
+							against a Sincere Challenger (Children of the Empire, 27) who loses composure in a political 
+							conflict, for example, or by being honored by Kyūden Kakita (Masters of the Court, 1)). It is 
+							also possible that recalculating skill values for step 3.2.3 due to Toshimoko’s ability could cause 
+							a province that would originally be breaking to no longer be breaking if the loss of skill (or 
+							increase of Toshimoko’s skill) causes the attacking player to not have the excess skill necessary 
+							to cause the province to break.
+						</li>
+					</ul>
+                </ul>
+				<h5>
+                    <a href="https://fiveringsdb.com/card/unmatched-expertise" target="_blank">Unmatched Expertise</a> (65)
+                </h5>
+                <ul>
+					<li>
+						If a character “cannot receive dishonored status tokens,” then those tokens cannot be placed on or 
+						moved to that character. That character cannot be dishonored if it is ordinary. (See page 32.)
+					</li>
+                </ul>
+				<anchored-heading @heading="add" :level="2">Inheritance Cycle</anchored-heading>
+				<h5>
+                    <a href="https://fiveringsdb.com/card/command-respect" target="_blank">Command Respect</a> (18)
+                </h5>
+                <ul>
+					<li>
+						When an event card is played, it is considered to still be in its owner’s hand while determining 
+						whether a card’s play restrictions are met. Command Respect cannot be played if both players have 
+						the same number of cards in hand.
+					</li>
+                </ul>
+				<h5>
+                    <a href="https://fiveringsdb.com/card/akodo-kaede" target="_blank">Akodo Kaede</a> (28)
+                </h5>
+                <ul>
+					<li>
+						Akodo Kaede’s effect can prevent a character from being sacrificed. (See Reprieve, page 29)
+					</li>
+                </ul>
+				<h5>
+                    <a href="https://fiveringsdb.com/card/steward-of-the-rich-frog" target="_blank">Steward of the Rich Frog</a> (54)
+                </h5>
+                <ul>
+					<li>
+						When an event card is played, it is considered to still be in its owner’s hand until after all costs and 
+						selections have been made.
+					</li>
+					<ul>
+						<li>
+							While choosing targets during Step 5 of the process of playing For Shame (Core, 207) on a Steward 
+							of the Rich Frog, the Steward’s text prevents characters from receiving dishonored status tokens. 
+							Because selecting options happens during the same step as choosing targets, the For Shame is still 
+							in the opponent’s hand when the selection is made, and an option whose effect would fail to change 
+							the game state cannot be selected.
+						</li>
+					</ul>
+					<li>
+						If a character “cannot receive dishonored status tokens,” then those tokens cannot be placed on or moved to 
+						that character. That character cannot be dishonored if it is ordinary.
+					</li>
+                </ul>
             </section>
             <section>
                 <anchored-heading @heading="add" :level="1">Appendix IV: Card Errata</anchored-heading>
@@ -4257,7 +4396,7 @@
                     translated cards, promotional cards, and printings which may appear in alternate products.
                 </p>
                 <h5>
-                    <a href="https://fiveringsdb.com/card/city-of-the-oprn-hand" target="_blank">City of the Open Hand</a> 
+                    <a href="https://fiveringsdb.com/card/city-of-the-open-hand" target="_blank">City of the Open Hand</a> 
                     (Core Set, 6)
                 </h5>
                 <p>
@@ -4322,7 +4461,8 @@
                     <a href="https://fiveringsdb.com/card/yogo-kikuyo" target="_blank">Yogo Kikuyo</a> (Disciples of the Void, 25)
                 </h5>
                 <p>
-                    Should read: "When the effects of a <em>Spell</em> event your opponent plays during a conflict would initiate, put this character into play from your hand – cancel its effects."
+                    Should read: "When the effects of a <em>Spell</em> event your opponent plays during a conflict would initiate, 
+					put this character into play from your hand – cancel its effects."
                     <br> 
                     <i>(Added "from your hand.")</i>
                 </p>
